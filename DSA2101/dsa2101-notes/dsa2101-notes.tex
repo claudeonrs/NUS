@@ -1,0 +1,196 @@
+\documentclass{article}
+\usepackage[a4paper, left=15mm, top=20mm, right=15mm,bottom=20mm]{geometry}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{lscape}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{DSA2101}
+\rhead{claudeonrs}
+\rfoot{\thepage}
+\usepackage{amsmath, amssymb, amsfonts, listings}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep, topsep=0pt}
+\setlist[enumerate]{noitemsep, topsep=0pt}
+\setlist[description]{noitemsep, topsep=0pt}
+
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0.4}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{commentgreen}{rgb}{0.4,0.8,0.6}
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},   
+  commentstyle=\color{red},
+  keywordstyle=\color{blue},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codegreen},
+  basicstyle=\ttfamily,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+\title{No Title}
+\author{Claudeon R Susanto}
+\date{}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+
+\renewcommand{\familydefault}{\sfdefault}   % Supprime le serif (dyslexie)
+\usepackage[font=sf, labelfont={sf}]{caption}
+\usepackage{multicol}
+\usepackage{makecell}
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+
+
+% own commands
+\newcommand{\eg}[0]{\textit{e.g. }}
+\newcommand{\ie}[0]{\textit{i.e. }}
+\newcommand{\impt}[0]{\textcolor{red}{\textbf{[IMPT] }}}
+
+
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\setlength{\columnseprule}{1pt}
+\begin{document}
+%\maketitle
+\fontfamily{lmss}\selectfont
+\begin{multicols}{2}
+\section{R Programming}
+\subsection*{List}
+\begin{itemize}
+	\item \texttt{[[idx]]}: get element in a list
+	\item \texttt{str(ls)}: get \textbf{str}ucture of a list (similar to summary)
+	\item \texttt{saveRDS} and \texttt{loadRDS}
+\end{itemize}
+\subsection*{Recycling Rule}
+\begin{itemize}
+	\item shorter vectors are recycled until they match the length of the longest vector
+	\item the length of the longest vector must be a multiple of the shorter vector in arithmetic operations!
+\end{itemize}
+\subsection*{Useful functions}
+\begin{itemize}
+	\item \texttt{sample(x, size, replace, prob)}
+	\begin{itemize}
+		\item \texttt{size}: length of output vector
+		\item \texttt{replace}: if \texttt{TRUE}, then sampling is with replacement
+		\item \texttt{prob}: a vector of probability weights
+	\end{itemize}
+	\item \texttt{rep(x, times, length.out)}
+	\item \texttt{table()}
+	\item \texttt{args(func)}: list the arguments of a function
+	\item \texttt{seq(from, to, by, length)}
+	\item \texttt{paste(v1, v2, sep)}: concatenate vectors after converting them to characters
+	\begin{itemize}
+		\item \texttt{sep}: separator between elements of \texttt{v1} and \texttt{v2}
+		\item The recycling rule applies when \texttt{length(v1) != length(v2)}
+	\end{itemize}
+	\item \texttt{apply} function family: apply function to each row (1) or column (2) 
+	\begin{itemize}
+		\item \texttt{apply(X, margin, func, ...)}
+		\begin{itemize}
+			\item Note that \texttt{X} must be a matrix in \texttt{apply}
+		\end{itemize}
+		\item \texttt{sapply} returns a vector or a matrix
+		\item \texttt{lapply} returns a list, useful when the output of the function may not be all of the same length/type
+	\end{itemize}
+\end{itemize}
+\subsection*{Function debugging}
+\begin{itemize}
+	\item \texttt{cat("...")}: used to print statements
+	\item \texttt{browser()}: debugging with breakpoint
+\end{itemize}
+\subsection*{Important classes}
+\subsubsection*{Strings}
+\begin{itemize}
+	\item Start by importing \texttt{tidyverse} and \texttt{stringr}
+	\item Library functions
+	\begin{itemize}
+		\item \texttt{str\_length}: returns vector of string lengths
+		\item \texttt{str\_c(..., sep)}: concatenate strings with optional separator
+		\item \texttt{str\_sub(string, start, end)}: returns vector of substrings
+	\end{itemize}
+	\item Regular expressions (\texttt{str\_view()} to test out regex), \href{https://stringr.tidyverse.org/articles/regular-expressions.html}{\textit{\underline{Tidyverse Article}}}
+	\begin{itemize}
+		\item to match an \textbf{a} at the beginning of a string
+		\begin{verbatim}
+			str_view(x, "^a")
+		\end{verbatim}
+		\item to match an \textbf{a} at the end of a string
+		\begin{verbatim}
+			str_view(x, "a$")
+		\end{verbatim}
+		\item to match an \textbf{a} or \textbf{e} at the end of a string
+		\begin{verbatim}
+			str_view(x, "[ae]$")
+		\end{verbatim}
+		\item to match a string of 3 chars with \textbf{a} in the middle
+		\begin{verbatim}
+			str_view(x, ".a.")
+		\end{verbatim}
+	\end{itemize}
+	\item \texttt{str\_detect(vec, regex)}: returns a boolean vector
+	\item \texttt{str\_extract(vec, regex)}: returns a vector of strings, particularly helpful for \texttt{".a."} regex
+\end{itemize}
+\subsubsection*{Factors}
+\texttt{factor(vec, levels=c(...))}: convert \texttt{vec} to factors with fixes levels
+
+\subsubsection*{Date}
+\begin{itemize}
+	\item \texttt{as.Date(x, format)}: convert string x to \texttt{Date} object \\ e.g. \texttt{as.Date("2014/02/22", "\%Y/\%m/\%d")}
+	\item \texttt{months(d)}: what month of the year is the date in?
+	\item \texttt{weekdays(d)}: what day of the week is the date on?
+	\item \texttt{Sys.Date()}
+	\item \texttt{cut(x, breaks, labels)}: usually used to group dates that fall into a month/week/quarter
+	\begin{itemize}
+		\item \texttt{breaks}: numeric vector/string (\texttt{"month", "week"})
+		\item \texttt{labels}: if \texttt{TRUE}, return a label vector
+	\end{itemize}
+	
+\end{itemize}
+
+\subsection*{Basic Plotting}
+\subsubsection*{\texttt{plot()}}
+\begin{itemize}
+	\item \texttt{pch}: abbr. for plotting character
+	\item \texttt{col}: use string or \texttt{rgb(..., alpha=?)} to change colour
+	\item \texttt{cex}: abbr. for character expansion
+	\item use \texttt{points()} or \texttt{lines()} to add more stuff to an existing plot
+	
+\end{itemize}
+\subsubsection*{\texttt{barplot()}}
+
+\section{Importing Data}
+\end{multicols}
+
+
+
+
+
+
+\end{document}

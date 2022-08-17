@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage[a4paper, left=15mm, top=20mm, right=15mm,bottom=20mm]{geometry}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{lscape}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{CS2040}
+\rhead{claudeonrs}
+\rfoot{\thepage}
+\usepackage{amsmath, amssymb, amsfonts, listings}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep, topsep=0pt}
+\setlist[enumerate]{noitemsep, topsep=0pt}
+\setlist[description]{noitemsep, topsep=0pt}
+
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0.4}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{commentgreen}{rgb}{0.4,0.8,0.6}
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},   
+  commentstyle=\color{red},
+  keywordstyle=\color{blue},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codegreen},
+  basicstyle=\ttfamily,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+\title{No Title}
+\author{Claudeon R Susanto}
+\date{}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+
+\renewcommand{\familydefault}{\sfdefault}   % Supprime le serif (dyslexie)
+\usepackage[font=sf, labelfont={sf}]{caption}
+\usepackage{multicol}
+\usepackage{makecell}
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+
+
+% own commands
+\newcommand{\eg}[0]{\textit{e.g. }}
+\newcommand{\ie}[0]{\textit{i.e. }}
+\newcommand{\impt}[0]{\textcolor{red}{\textbf{[IMPT] }}}
+
+
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\setlength{\columnseprule}{1pt}
+\begin{document}
+%\maketitle
+\fontfamily{lmss}\selectfont
+\begin{multicols}{2}
+\section{Data Structures}
+\subsection{Linked List}
+\begin{itemize}
+	\item How to find cycle?\\
+	Answer: use fast and slow pointers
+	\begin{lstlisting}[language=java]
+		slow = slow.next;
+		fast = fast.next.next;\end{lstlisting}
+\end{itemize}
+
+\section{Algorithms}
+\subsection{Sorting}
+
+
+\section{Java Tricks}
+\begin{itemize}
+	\item Use \texttt{StringBuilder} for return statements
+	\begin{itemize}
+		\item \href{https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html}{Java StringBuilder API}
+		\item \href{https://leetcode.com/problems/zigzag-conversion/solution/}{Zigzag conversion}
+	\end{itemize}
+	
+\end{itemize}
+\end{multicols}
+
+
+
+
+
+
+\end{document}
