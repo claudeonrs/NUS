@@ -29,21 +29,21 @@
 \definecolor{commentgreen}{rgb}{0.4,0.8,0.6}
 %Code listing style named "mystyle"
 \lstdefinestyle{mystyle}{
-  backgroundcolor=\color{backcolour},   
+  backgroundcolor=\color{backcolour},
   commentstyle=\color{red},
   keywordstyle=\color{blue},
   numberstyle=\tiny\color{codegray},
   stringstyle=\color{codegreen},
   basicstyle=\ttfamily,
-  breakatwhitespace=false,         
-  breaklines=true,                 
-  captionpos=b,                    
-  keepspaces=true,                 
-  numbers=left,                    
-  numbersep=5pt,                  
-  showspaces=false,                
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
   showstringspaces=false,
-  showtabs=false,                  
+  showtabs=false,
   tabsize=2
 }
 
@@ -110,14 +110,15 @@
 		\item \texttt{sep}: separator between elements of \texttt{v1} and \texttt{v2}
 		\item The recycling rule applies when \texttt{length(v1) != length(v2)}
 	\end{itemize}
-	\item \texttt{apply} function family: apply function to each row (1) or column (2) 
+	\item \texttt{apply} function family: apply function to each row (1) or column (2)
 	\begin{itemize}
 		\item \texttt{apply(X, margin, func, ...)}
 		\begin{itemize}
-			\item Note that \texttt{X} must be a matrix in \texttt{apply}
+			\item Note that \texttt{X} must be a \textbf{matrix} or \textbf{df} in \texttt{apply}
 		\end{itemize}
-		\item \texttt{sapply} returns a vector or a matrix
-		\item \texttt{lapply} returns a list, useful when the output of the function may not be all of the same length/type
+		\item \texttt{sapply} returns a vector or a matrix, \textbf{input must be 1 dimensional!}
+		\item \texttt{lapply} returns a list, useful when the output of the function may not be all of the same length/type, \textbf{input must be 1 dimensional!}
+		\item \texttt{replicate(n, func)}: replicate anonymous function $n$ number of times (especially useful for random number generations)
 	\end{itemize}
 \end{itemize}
 \subsection*{Function debugging}
@@ -158,7 +159,8 @@
 	\item \texttt{str\_extract(vec, regex)}: returns a vector of strings, particularly helpful for \texttt{".a."} regex
 \end{itemize}
 \subsubsection*{Factors}
-\texttt{factor(vec, levels=c(...))}: convert \texttt{vec} to factors with fixes levels
+\texttt{factor(vec, levels=c(...))}: convert \texttt{vec} to factors with fixes levels\\
+\texttt{unique(vec)}: returns a vector with unique values
 
 \subsubsection*{Date}
 \begin{itemize}
@@ -171,21 +173,59 @@
 		\item \texttt{breaks}: numeric vector/string (\texttt{"month", "week"})
 		\item \texttt{labels}: if \texttt{TRUE}, return a label vector
 	\end{itemize}
-	
+
 \end{itemize}
 
 \subsection*{Basic Plotting}
 \subsubsection*{\texttt{plot()}}
 \begin{itemize}
 	\item \texttt{pch}: abbr. for plotting character
-	\item \texttt{col}: use string or \texttt{rgb(..., alpha=?)} to change colour
+	\begin{lstlisting}[language=R]
+	# show all pch characters
+	example(pch)\end{lstlisting}
+	\item \texttt{col}:
+	\begin{lstlisting}[language=R]
+	# show all preset colours
+	colours()
+	# set custom colour, alpha is transparency
+	col <- rgb(..., alpha=?)\end{lstlisting}
 	\item \texttt{cex}: abbr. for character expansion
+	\item \texttt{bty}: change box borders
+	\item \textbf{!!} \texttt{?par} shows all parameters for \texttt{plot()}
 	\item use \texttt{points()} or \texttt{lines()} to add more stuff to an existing plot
-	
+
 \end{itemize}
 \subsubsection*{\texttt{barplot()}}
+\subsubsection*{\texttt{hist()}}
+\begin{itemize}
+	\item \texttt{freq}: makes the y-axis a proportion of all the total shit (count/total), not total count using integer
+\end{itemize}
 
 \section{Importing Data}
+
+\subsection*{CSV Files}
+\texttt{read.csv()}: main arguments:
+\begin{itemize}
+	\item \texttt{file}: filename/path
+	\item \texttt{skip}: skip lines?
+	\item \texttt{header}: default is \texttt{TRUE}
+	\item \texttt{row.names}
+	\item \texttt{stringsAsFactors}
+	\item \texttt{na.strings}: what are the \texttt{NA} values
+	\item \texttt{colClasses}: what classes are the columns (in terms of class names vector)\\
+\end{itemize}
+\textbf{Procedure when dealing with CSV}:
+\begin{itemize}
+	\item \texttt{apply(salaries, 2, function(x) sum(is.na(x)))} (check if any column has missing values)
+	\item if \texttt{read.csv} doesn't work, can try \texttt{readLines} and \texttt{str\_split} to split commas
+\end{itemize}
+
+
+\subsection*{Excel Files}
+\begin{itemize}
+	\item import \texttt{readxl}, data is in the form of a tibble
+	\item \texttt{read\_excel}
+\end{itemize}
 \end{multicols}
 
 

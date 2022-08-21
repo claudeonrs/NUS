@@ -1,0 +1,294 @@
+\documentclass{article}
+\usepackage[a4paper, left=15mm, top=20mm, right=15mm,bottom=20mm]{geometry}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{lscape}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{ST2131}
+\rhead{claudeonrs}
+\rfoot{\thepage}
+\usepackage{amsmath, amssymb, amsfonts, listings}
+\usepackage{xcolor}
+
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0.4}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{commentgreen}{rgb}{0.4,0.8,0.6}
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{red},
+  keywordstyle=\color{blue},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codegreen},
+  basicstyle=\ttfamily,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+\title{No Title}
+\author{Claudeon R Susanto}
+\date{}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+
+\renewcommand{\familydefault}{\sfdefault}   % Supprime le serif (dyslexie)
+\usepackage[font=sf, labelfont={sf}]{caption}
+\usepackage{multicol}
+\usepackage{makecell}
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\setlength{\columnseprule}{1pt}
+\begin{document}
+%\maketitle
+\fontfamily{lmss}\selectfont
+
+
+%\begin{landscape}
+
+
+\section{Table of Distributions}
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+Notation & PMF/PDF and Support & \makecell{Expected\\ Value} & Variance & MGF\\
+\hline
+
+\makecell{Bernoulli \\ Be$(p)$} & \makecell{$P(X=1) = p$\\ $P(X=0)=q$} & $p$ & $pq$ & $q+pe^t$\\
+\hline
+\makecell{Binomial \\ Bin$(n,p)$} & \makecell{$P(X=k) = {n \choose k}p^kq^{n-k}$ \\ $k=0,1,2,\dots, n$} & $np$ & $npq$ & $(q+pe^t)^n$\\
+\hline
+\makecell{Geometric \\ Geom$(p)$} & \makecell{$P(X=k) = pq^{k-1}$ \\ $k=1,2,\dots$} & $\frac{1}{p}$ & $\frac{q}{p^2}$ &\makecell{$\frac{pe^t}{1-qe^t}$, \\ $qe^t<1$}\\
+\hline
+\makecell{Negative Binomial \\ NB$(r,p)$} & \makecell{$P(X=k) = {k-1 \choose r-1}p^rq^{k-r}$ \\ $k=r,r+1,\dots$} & $\frac{r}{p}$ & $\frac{rq}{p^2}$ & \makecell{$\left(\frac{pe^t}{1-qe^t}\right)^r$, \\ $qe^t<1$}\\
+\hline
+\makecell{Hypergeometric \\ HGeom$(n,N,m)$} & \makecell{$P(X=k) = \frac{{m \choose k}{N-m \choose n-k}}{{N\choose n}}$ \\ $k=0,1,\dots n$} & $\frac{nm}{N}$ & $\frac{nm}{N}\left[\frac{(n-1)(m-1)}{N-1} + 1 - \frac{nm}{N}\right] $ & messy \\
+\hline
+\makecell{Poisson \\ Poisson$(\lambda)$} & \makecell{$P(X=k) = \frac{e^{-\lambda}\lambda^k}{k!}$ \\ $k=0,1,2,\dots$} & $\lambda$ & $\lambda$ & $e^{\lambda(e^t-1)}$\\
+\hline
+\hline
+\makecell{Uniform \\ U$(a,b)$} & \makecell{$f(x)=\frac{1}{b-a}$ \\ $x \in (a,b)$} & $\frac{a+b}{2}$ & $\frac{(b-a)^2}{12}$ & $\frac{e^{bt}-e^{at}}{(b-a)t}$\\
+\hline
+\makecell{Normal \\ $\mathcal{N}(\mu,\sigma^2)$} & \makecell{$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$ \\ $x \in (-\infty,\infty)$} & $\mu$ & $\sigma^2$ & $\exp\left( \mu t+ \frac{\sigma^2t^2}{2}\right)$\\
+\hline
+\makecell{Exponential \\ Exp$(\lambda)$} & \makecell{$f(x) = \lambda e^{-\lambda x}$ \\ $x \in [0,\infty)$} & $\frac{1}{\lambda}$ & $\frac{1}{\lambda^2}$ & \makecell{$\frac{\lambda}{\lambda-t}$,\\ $t < \lambda$}\\
+\hline
+\makecell{Gamma \\ Gamma$(a,\lambda)$} & \makecell{$f(x) = \frac{\lambda e^{-\lambda x} (\lambda x)^{\alpha-1}}{\Gamma(\alpha)}$ \\ $x \in [0,\infty)$} & $\frac{\alpha}{\lambda}$ & $\frac{\alpha}{\lambda^2}$ & \makecell{$\left(\frac{\lambda}{\lambda-t}\right)^a$,\\ $t < \lambda$} \\
+\hline
+\makecell{Beta \\ Beta$(a,b)$} & \makecell{$f(x) = \frac{1}{B(a,b)}x^{a-1}(1-x)^{b-1}$ \\ $x \in (0,1)$} & $\frac{a}{a+b}$ &$\frac{ab}{(a+b)^2(a+b+1)}$ & messy\\
+\hline
+\makecell{Chi-Square \\ $\chi^2_n$} & \makecell{$f(x) =\frac{1}{2^{n/2}\Gamma(n/2)}x^{n/2-1}e^{-x/2}$ \\ $x \in (0,\infty)$} &$n$ &$2n$ & \makecell{$(1-2t)^{-n/2}$ \\ $t < 1/2$ }\\
+
+\end{tabular}
+
+\end{center}
+%\end{landscape}
+
+\section{Useful Results}
+\begin{multicols}{2}
+\subsection{Probability}
+\begin{description}
+ \item[Sample space] is the set of all possible outcomes of an experiment, usually denoted by $S$. For tossing two dice,
+ \begin{equation*}
+ \begin{split}
+ S &= \{(1,1),(1,2),\dots,(1,6),(2,1),\dots,(6,6)\} \\
+ &= \{(i,j): 1 \leq i,j\leq 6\}
+ \end{split}
+ \end{equation*}
+ \item[Event] Any subset $A$ of the sample space is an event
+ \item[Odds] The odds of an event $A$ is defined by $\frac{P(A)}{1-P(A)}$
+\end{description}
+ \subsubsection*{Increasing/Decreasing Events}
+ If $\{E_n\}$ is an increasing sequence of events, then $$\lim_{n\rightarrow \infty} E_n = \bigcup_{i=1}^{\infty}E_i$$
+ If $\{E_n\}$ is a decreasing sequence of events, then $$\lim_{n\rightarrow \infty} E_n = \bigcap_{i=1}^{\infty}E_i$$
+ If $\{E_n\}$ is either an increasing or decreasing sequence of events, then
+ $$P(\lim_{n\rightarrow \infty}E_n) = \lim_{n\rightarrow \infty}P(E_n)$$
+\subsubsection*{Conditional Probability}
+$$P(A|B) = P(A|BC)P(C|B) + P(A|BC^C)P(C^C|B)$$
+\end{multicols}
+\begin{description}
+\item[Inclusion/Exclusion Principle] Let $E_1, E_2, \dots, E_n$ be any events, then
+ \begin{equation*}
+ \begin{split}
+  P(E_1 \cup E_2 \cup \dots \cup E_n) = &\sum_{i=1}^{n}P(E_i) - \sum_{1 \leq i_1 < i_2 \leq n} P(E_{i_1} \cap E_{i_2}) + \cdots\\
+  & (-1)^{r+1}\sum_{1\leq i_1 < \cdots < i_r \leq n} P(E_{i_1} \cap \cdots \cap E_{i_r})\\
+  &+\cdots +  (-1)^{n+1}P(E_1 \cap \cdots \cap E_n)
+ \end{split}
+ \end{equation*}
+\end{description}
+
+\subsubsection*{Derangement/Matching Problem}
+$$P(\text{at least one match}) = 1 - \frac{1}{2!}+\frac{1}{3!} -\cdots (-1)^{n+1}\frac{1}{n!}$$
+$$P(k\text{ matches}) = {n \choose k} \frac{1}{n(n-1)\cdots(n-k+1)}\cdot \left({1- 1 + \frac{1}{2!}-\frac{1}{3!} +\cdots (-1)^{n-k}\frac{1}{(n-k)!}}\right)$$
+
+\begin{multicols}{2}
+
+
+\subsection{Discrete RV}
+Suppose $X \sim$ Poisson$(\lambda)$ and $Y \sim$ Bin$(X,p)$, then
+$X-Y$ and $Y$ are independent and
+$$X-Y \sim \text{Poisson}(\lambda(1-p)), Y \sim \text{Poisson}(\lambda p)$$
+
+\subsection{Continuous RV}
+\subsubsection*{Exponential Distribution}
+\begin{equation*}
+ P(X>s+t| X>s) = P(X>t)
+\end{equation*}
+\subsubsection*{Gamma Distribution}
+\begin{equation*}
+ \Gamma(\alpha) = \int_{0}^{\infty}e^{-t}t^{\alpha-1}dt
+\end{equation*}
+\begin{itemize}
+ \item $\Gamma(1)= 1$  and $\Gamma(\alpha) = (\alpha-1)\Gamma(\alpha-1)$
+ \item $\Gamma(n)=(n-1)!$ for $n = 1,2,3,\dots$
+ \item If $X_i \sim \text{Exp}(\lambda)$ independently, then $\sum_{i=1}^n X_i \sim \text{Gamma}(n,\lambda)$
+
+\end{itemize}
+
+\subsubsection*{Beta Distribution}
+\begin{equation*}
+\begin{split}
+ B(a,b) &= \int_{0}^{1}t^{a-1}(1-t)^{b-1}dt\\
+ &= \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
+\end{split}
+\end{equation*}
+\begin{equation*}
+ \text{Beta}(1,1) \equiv \text{U}(0,1)\\
+\end{equation*}
+If $X\sim$Gamma$(\alpha,\lambda)$ and $Y\sim$Gamma$(\beta,\lambda)$, then $U=X+Y \sim$Gamma$(\alpha+\beta, \lambda)$ and $V=X/(X+Y) \sim$Beta$(\alpha,\beta)$ and are independent
+
+\subsubsection*{Chi-Square Distribution}
+$$\chi^2_n \equiv \text{Gamma}\left(\frac{n}{2},\frac{1}{2}\right) $$
+$$\Gamma(\frac{1}{2}) = \sqrt{\pi}$$
+\subsubsection*{Monotonic Transformation}
+\begin{equation*}
+ f_Y(y) =\left\{\begin{array}{ll}
+f_X(g^{-1}(y))\left|\frac{d}{dy}g^{-1}(y)\right| & \text{if } y \in \mathcal{R}(g)\\
+0 & \text{otherwise}
+\end{array}  \right.
+\end{equation*}
+
+\subsection{Joint Distribution}
+\begin{equation*}
+\begin{split}
+ P(a_1 &< X \leq a_2, b_1 < Y \leq b_2) = F_{X,Y}(a_2,b_2)\\ &- F_{X,Y}(a_1,b_2) + F_{X,Y}(a_1,b_1) - F_{X,Y}(a_2,b_1)
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+ f_{X,Y}(x,y) = \frac{\partial^2}{\partial x \partial y}F_{X,Y}(x,y)
+\end{equation*}
+
+\begin{equation*}
+ f_{X,Y}(x,y) = h(x)g(y) \Leftrightarrow X \text{ and } Y \text{ are independent}
+\end{equation*}
+\subsubsection*{Convolution of Independent Distributions}
+$$F_{X+Y}(a) = \int_{-\infty}^{\infty}F_X(a-y)f_Y(y)dy$$
+$$f_{X+Y}(a) = \int_{-\infty}^{\infty}f_X(a-y)f_Y(y)dy$$
+
+
+
+
+
+
+\end{multicols}
+\subsubsection*{Bivariate Normal Distribution}
+\begin{equation*}
+\begin{split}
+f_{X,Y}(x,y) = \frac{1}{2\pi\sigma_x\sigma_y\sqrt{1-\rho^2}} \times \exp{\left(-\frac{1}{2(1-\rho^2)}\left[\left(\frac{x-\mu_x}{\sigma_x}\right)^2 + \left(\frac{y-\mu_y}{\sigma_y}\right)^2 - 2\rho\frac{(x-\mu_x)(y-\mu_y)}{\sigma_x\sigma_y}\right]\right)}
+\end{split}
+\end{equation*}
+\subsubsection*{Joint Transformation}
+\begin{equation*}
+ f_{Y_1,Y_2,\dots,Y_n}({y_1,y_2,\dots,y_n}) = f_{X_1,X_2,\dots,X_n}({x_1,x_2,\dots,x_n})\frac{1}{|J({x_1,x_2,\dots,x_n})|}
+\end{equation*}
+where
+\begin{equation*}
+ J({x_1,x_2,\dots,x_n}) = \left|\begin{array}{cccc}
+ \frac{\partial g_1}{\partial x_1} & \frac{\partial g_1}{\partial x_2} & \cdots & \frac{\partial g_1}{\partial x_n}\\
+ \frac{\partial g_2}{\partial x_1} & \frac{\partial g_2}{\partial x_2} & \cdots & \frac{\partial g_2}{\partial x_n}\\
+ \vdots & \vdots & \ddots & \vdots\\
+ \frac{\partial g_n}{\partial x_1} & \frac{\partial g_n}{\partial x_2} & \cdots & \frac{\partial g_n}{\partial x_n}\\
+ \end{array}
+ \right|,
+\end{equation*}
+$Y_i = g_i({X_1,X_2,\dots,X_n})$, and $x_i = h_i({y_1,y_2,\dots,y_n})$ for $i = 1,2,\dots,n$
+\begin{multicols}{2}
+\subsection{Expectations and Variance}
+\subsubsection*{Expectations}
+\begin{itemize}
+ \item If $X$ and $Y$ are independent, then $E[g(X)h(Y)] = E[g(x)]E[h(y)]$
+ \item $E(X) = E[E[X|Y]]$
+\end{itemize}
+
+\subsubsection*{Covariance}
+\begin{equation*}
+\begin{split}
+ Cov(X,Y) &= E[(X-\mu_X)(Y-\mu_Y)]\\
+ &= E(XY)-E(X)E(Y)
+\end{split}
+\end{equation*}
+$$Cov\left(\sum_{i=1}^n a_iX_i, \sum_{j=1}^m b_jY_j\right) = \sum_{i=1}^n\sum_{j=1}^m a_ib_jCov(X_i,Y_j)$$
+$$Var\left(\sum_{k=1}^{n}X_k\right) = \sum_{k=1}^{n}Var(X_k) + 2\sum_{1\leq i<j \leq n}Cov(X_i,X_j)$$
+$$Var(X|Y) = E[X^2|Y] - [E(X|Y)]^2$$
+$$Var(X) = E[Var(X|Y)] + Var[E(X|Y)]$$
+\subsubsection*{Correlation}
+$$\rho(X,Y) = \frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}$$
+\begin{center}
+ $\rho(X,Y) = \pm 1$ iff $Y = \pm aX + b$ where $a =\frac{\sigma_Y}{\sigma_X}$
+\end{center}
+
+\subsubsection*{Moment Generating Functions}
+$$M_{X}(t) = E(e^{tX})$$
+$$E(X^n) = \left.\frac{d^n}{dt^n}M_{X}(t)\right|_{t=0}$$
+\begin{description}
+\item[Taylor Series Expansion] $$g(x) = g(\mu) + \frac{g'(\mu)}{1!}(x-\mu) + \frac{g''(\mu)}{2!}(x-\mu)^2 + \dots$$
+\item[Multiplicative Property] If $X$ and $Y$ are independent, then $M_{X+Y}(t) = M_X(t)M_Y(t)$
+\item[Uniqueness Property] If $\exists t$ such that $M_X(t) = M_Y(t) \forall t \in(-h,h)$ then $X$ and $Y$ have the same distributions
+\end{description}
+\subsubsection*{Joint Moment Generating Functions}
+$$M_{\small{X_1,X_2,\dots,X_n}}(t_1,t_2,\dots,t_n) = E[e^{t_1X_1 + t_2X_2 + \dots + t_nX_n}]$$
+$$M_{X_i}(t)= E[e^{tX_i}] = M_{\small{X_1,X_2,\dots,X_n}}(0,\cdots,0,t,0,\cdots,0)$$
+\subsection{Inequalities}
+$$a\leq X \leq b \Rightarrow a\leq E(X) \leq b$$
+\begin{description}
+ \item[Monotone Property] $X \leq Y \Rightarrow E(X) \leq E(Y)$
+ \item[Boole's inequality] $$P\left(\bigcup_{k=1}^n A_k\right) \leq \sum_{k=1}^nP(A_k)$$
+ \item[Markov's inequality] Let $X$ be a \underline{\textbf{nonnegative}} random variable. For $a > 0$, we have
+ $$P(X\geq a) \leq \frac{E(X)}{a}$$
+ \item[Chebyshev's inequality] For $a > 0$, we have
+ $$P(|X-\mu|\geq a) \leq \frac{Var(X)}{a^2}$$
+ \item[One-sided Chebyshev's inequality] If $X$ is a r.v. with mean $0$ and finite variance $\sigma^2$, then, for any $a > 0$,
+ $$P(X\geq a) \leq \frac{\sigma^2}{\sigma^2+a^2}$$
+ \item[Jensen's inequality] If $g(x)$ is a convex function, then
+ $$E[g(x)] \geq g[E(X)]$$
+\end{description}
+
+\end{multicols}
+
+\end{document}

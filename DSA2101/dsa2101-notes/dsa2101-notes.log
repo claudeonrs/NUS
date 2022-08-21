@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  17 AUG 2022 10:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  21 AUG 2022 10:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -642,80 +642,101 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 138.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-38.
+21.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-38.
+21.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-138.
+121.
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-138.
+121.
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 138.
+(Font)              <10> on input line 121.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 138.
+(Font)              <7> on input line 121.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 138.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 138
+(Font)              <5> on input line 121.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 121
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 138
+LaTeX Font Info:    Trying to load font information for U+msb on input line 121
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 6032) in paragraph at lines 171--172
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 139.
+
+Underfull \hbox (badness 6032) in paragraph at lines 173--174
 []\T1/lmtt/m/n/10 breaks\T1/lmss/m/n/10 : nu-meric vec-tor/string (\T1/lmtt/m/n
 /10 "month",
  []
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 178.
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 180.
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2020/03/24 1.8d listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2020/03/24 1.8d listings language file
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] (./dsa2101-notes.aux)
+]
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
+
+ []
+
+
+Overfull \hbox (10.17453pt too wide) in paragraph at lines 219--220
+[]\T1/lmtt/m/n/10 apply(salaries, 2, function(x) sum(is.na(x)))
+ []
+
+[2] (./dsa2101-notes.aux)
 Package rerunfilecheck Info: File `dsa2101-notes.out' has not changed.
 (rerunfilecheck)             Checksum: 6A6B90010BC50D224BF6803AABC0DF23;227.
  ) 
 Here is how much of TeX's memory you used:
- 15174 strings out of 480171
- 238885 string characters out of 5894489
- 572051 words of memory out of 5000000
- 32899 multiletter control sequences out of 15000+600000
- 502731 words of font info for 55 fonts, out of 8000000 for 9000
+ 16171 strings out of 480171
+ 249048 string characters out of 5894489
+ 793420 words of memory out of 5000000
+ 33873 multiletter control sequences out of 15000+600000
+ 505502 words of font info for 56 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,11n,63p,331b,485s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,63p,287b,2070s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on dsa2101-notes.pdf (1 page, 127552 bytes).
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/shar
+e/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+sso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmtt10.pfb>
+Output written on dsa2101-notes.pdf (2 pages, 147933 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
- 15 named destinations out of 1000 (max. 500000)
+ 95 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
+ 27 named destinations out of 1000 (max. 500000)
  17 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -7,7 +7,6 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{lscape}
-\usepackage{arev}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -19,6 +18,7 @@
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep, topsep=0pt}
 \setlist[enumerate]{noitemsep, topsep=0pt}
+\setlist[description]{noitemsep, topsep=0pt}
 
 
 %New colors defined below
@@ -29,21 +29,21 @@
 \definecolor{commentgreen}{rgb}{0.4,0.8,0.6}
 %Code listing style named "mystyle"
 \lstdefinestyle{mystyle}{
-  backgroundcolor=\color{backcolour},   
+  backgroundcolor=\color{backcolour},
   commentstyle=\color{red},
   keywordstyle=\color{blue},
   numberstyle=\tiny\color{codegray},
   stringstyle=\color{codegreen},
   basicstyle=\ttfamily,
-  breakatwhitespace=false,         
-  breaklines=true,                 
-  captionpos=b,                    
-  keepspaces=true,                 
-  numbers=left,                    
-  numbersep=5pt,                  
-  showspaces=false,                
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
   showstringspaces=false,
-  showtabs=false,                  
+  showtabs=false,
   tabsize=2
 }
 
@@ -97,10 +97,19 @@
 \end{itemize}
 
 \textbf{Opportunity cost} of any choice: whatever must be given up when we make that choice
+\begin{equation*}
+	\begin{aligned}
+		\text{Opp. cost} &= \text{explicit costs} +\text{implicit costs}\\
+		&= \text{what you get when you give up the good}
+	\end{aligned}
+\end{equation*}
 \begin{itemize}
 	\item \underline{Explicit cost}: monetary sacrifice
 	\item \underline{Implicit cost}: non-monetary e.g. time
 	\item \textcolor{red}{\textbf{[IMPT]}} when the alternatives to a choice are mutually exclusive, the implicit cost of the choice is the value of the next best alternative
+	\begin{itemize}
+		\item can try listing all the possible alternatives; if it's infinite then usually opp cost is monetary value
+	\end{itemize}
 \end{itemize}
 
 \subsection{Five core principles}
@@ -162,19 +171,23 @@
 \begin{itemize}
 	\item Points on the PPF: possible and efficient
 	\item Points under the PPF: possible but not efficient
-	\item Points above the PPF: not possible
+	\item Points above the PPF: not possible\\
 \end{itemize}
-\textbf{Moving along} a PPF 
+Movements:
 \begin{itemize}
-	\item Involves \underline{shifting resources} from the production of one good to the production of the other good 
-	\item Because resources are limited and hence sacrifice has to be made
-	\item \textbf{Slope} of PPF $=$ \textbf{Opportunity cost} of good $x$ in terms of good $y$ 
-	
-\end{itemize}
-\textbf{Shifting} of PPF
+
+	\item \textbf{Moving along} a PPF
+	\begin{itemize}
+		\item Involves \underline{shifting resources} from the production of one good to the production of the other good
+		\item Because resources are limited and hence sacrifice has to be made
+		\item \textbf{Slope} of PPF $=$ \textbf{Opportunity cost} of good $x$ in terms of good $y$
+
+	\end{itemize}
+	\item \textbf{Shifting} of PPF
 \begin{itemize}
 	\item Due to \underline{additional resources} or \underline{improvement} in technology
-	\item The economy can produce more of good $x$ or good $y$ or any combination in between
+	\item The economy can produce more of good $x$ or good $y$ or any combination in between\\
+\end{itemize}
 \end{itemize}
 \textbf{Shapes} of PPF
 \begin{itemize}
@@ -184,7 +197,7 @@
 		\item When different resources are suited for different uses
 		\item Different resources have different opp. costs of producing one good in terms of the other good (e.g. different workers have different skills)
 		\item Explanation:
-		\begin{itemize}
+			\begin{itemize}
 			\item Initially, most workers including those who are better at producing good B are producing good A $\rightarrow$ to get more good B, we can shift workers who are more efficient in producing B from the production of A to B $\rightarrow$ hence we don't need to give up so many of good A
 			\item However, producing more of good B would require shifting workers who are more efficient in A than B $\rightarrow$ hence there would be a huge drop in output of A $\rightarrow$ higher opp. cost
 		\end{itemize}
@@ -203,7 +216,7 @@
 	\item Producer A can produce the same amount of good $x$ by giving up fewer of good $y$ as compared to producer B
 	\item \impt Absolute advantage is not necessary for comparative advantage
 	\item Gains from trade arise from comparative advantage (\underline{differences in opp. costs})
-	\item When each country specializes in the good in which it has a comparative advantage, 
+	\item When each country specializes in the good in which it has a comparative advantage,
 	\begin{itemize}
 		\item total production in all countries is higher,
 		\item the world's economic pie is bigger,
@@ -226,9 +239,227 @@ Note that there are different possibilities for CA/AA
 	\end{itemize}
 \end{itemize}
 
+\subsection{Supply and Demand}
+\textbf{Why?} How supply and demand determine prices in a market economy which has the function of allocating the economy's scarce resources\\
+\begin{description}
+	\item[{Market Economy}]: allocates resources through the \underline{decentralized} decisions of households and firms as they interact in markets for goods and services
+	\item [\textbf{Market}]: a group of \underline{buyers} and \underline{sellers} of a particular good and service
+	\item [\textbf{Perfectly Competitive Market}]: \underline{Identical} goods and services, \underline{Numerous} buyers and sellers, no one can affect market price (price taker)
+\end{description}
 
+\subsubsection{Demand}
+$Q^D$: the amount of the good that buyers are willing and able to purchase
+\begin{itemize}
+	\item $Q^D$ in the market is the sum of the $Q^D$ by all buyers at each price\\
+\end{itemize}
+\textbf{Law of Demand}: As the $P$ of good $\Uparrow$, the $Q^D$ $\Downarrow$\\
+\textbf{Demand Schedule}: a table that shows the relationship between $P$ and $Q^D$ of a good\\
+\textbf{Demand Curve}: Shows how $P$ affects $Q^D$, ceteris paribus (other things kept equal)\\
+
+\textbf{Non-price determinants of DD}
+\begin{itemize}
+	\item Number of buyers
+	\item $Y$ (Income)/type of good (\textit{normal/inferior});\\are they positively/negatively related to income?
+	\item $P$ of related goods (substitutes/complement?);\\ \impt will cause a shift in $DD$ curve, not $Q^D$
+	\item Tastes and preferences
+	\item Expectations (of future \underline{$P$ or $Y$})
+\end{itemize}
+
+\subsubsection{Supply}
+$Q^S$: the amount of the good that sellers are willing and able to sell
+\begin{itemize}
+	\item $Q^S$ in the market is the sum of the $Q^S$ by all sellers at each price\\
+\end{itemize}
+\textbf{Law of Supply}: As the $P$ of good $\Uparrow$, the $Q^S$ $\Uparrow$\\
+\textbf{Supply Schedule}: a table that shows the relationship between $P$ and $Q^S$ of a good\\
+\textbf{Supply Curve}: Shows how $P$ affects $Q^S$, ceteris paribus (other things kept equal)\\
+
+\textbf{Non-price determinants of SS}
+\begin{itemize}
+	\item Number of sellers
+	\item Input prices\\
+	a $\Downarrow$ in input prices will $\Uparrow\pi$ at each output $P$, so firms increase $Q^S$ at each $P$
+	\item Technology
+	\item Weather/Natural factors
+	\item Expectations (of future events/$P$)
+	\item Expectations (of future \underline{$P$ or $Y$})
+\end{itemize}
+
+\subsubsection{DD and SS}
+\textbf{Equilibrium}: a state in which opposing forces are balanced so that one is not greater than the other.
+\begin{itemize}
+	\item Eq. $P$: the price that equates $Q^D$ with $Q^S$
+	\item Eq. $Q$: $Q^S$ and $Q^D$ at the eq. $P$
+\end{itemize}
+\textbf{Surplus/excess supply}: $Q^S -  Q_D$ when $Q^S >  Q^D$\\
+\textbf{Shortage/excess demand}: $Q^D -  Q^S$ when $Q^D > Q^S$\\
+
+One important question to ask: will DD change more than SS when both curves shift?
+
+\subsection{Elasticity}
+
+\subsubsection{PED}
+\textbf{PED} measures how much $Q^D$ responds to a change in $P$
+\begin{equation*}
+\begin{aligned}
+	PED &= \frac{\%\Delta Q^D}{\%\Delta P}\\
+	&= \frac{Q^D_2 - Q^D_1}{\frac{Q^D_2 + Q^D_1 }{2}}\cdot 100\% \left/ \frac{P_2 - P_1}{\frac{P_2 + P_1 }{2}}\cdot 100\%\right.\\
+	&= \frac{Q^D_2 - Q^D_1}{Q^D_2 + Q^D_1} \left/ \frac{P_2 - P_1}{P_2 + P_1}\right. \text{(using midpoint)}\\
+\end{aligned}
+\end{equation*}
+\textbf{Types of DD curves}:
+\begin{itemize}
+	\item Perfectly inelastic ($PED = 0$)
+	\item Inelastic ($PED < 1$)
+	\item Unit elastic ($PED = 1$)
+	\item Elastic ($PED > 1$)
+	\item Perfectly elastic ($PED = \infty$)\\
+\end{itemize}
+\textbf{Factors that affect PED}:
+\begin{itemize}
+	\item How \textbf{broadly} or \textbf{narrowly} the good is defined\\
+	number of substitutes?? e.g. fruits vs apple
+	\item Is the good a \textbf{necessity} or \textbf{luxury}?\\
+	e.g. water vs orange juice
+	\item The extent to which \textbf{close substitutes} are available\\
+	e.g. breakfast cereal vs rabies vaccine
+	\item How \textbf{expensive/cheap} the good is\\
+	Proportion of income?? e.g. Nike vs nonbranded flip-flops
+	\item \textbf{Time horizon}\\
+	in the SR, when $P$ changes, there's not much we can do (PED is close to 0)\\
+	in the LR, more substitutes are available hence PED$\Uparrow$\\
+\end{itemize}
+\textbf{How does PED affect $R$}?
+\begin{itemize}
+	\item Elastic $\Rightarrow$ $\%\Delta Q^D > \%\Delta P$
+	\begin{itemize}
+		\item If $P \Downarrow$, $R_{total} \Uparrow$ as the $\Uparrow R$ from $\Uparrow Q$ dominates $\Downarrow R$ from $\Downarrow P$
+		\item If $P \Uparrow$, $R_{total} \Downarrow$ as the $\Downarrow R$ from $\Downarrow Q$ dominates $\Uparrow R$ from $\Uparrow P$
+	\end{itemize}
+	\item Inelastic $\Rightarrow$ $\%\Delta Q^D < \%\Delta P$
+	\begin{itemize}
+		\item If $P \Downarrow$, $R_{total} \Downarrow$ as the $\Downarrow R$ from $\Downarrow P$ dominates $\Uparrow R$ from $\Uparrow Q$
+		\item If $P \Uparrow$, $R_{total} \Uparrow$ as the $\Uparrow R$ from $\Uparrow P$ dominates $\Downarrow R$ from $\Downarrow Q$ \\
+		\textbf{\eg} Pharmacies increase the price of insulin by 10\%
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{CED}
+\textbf{CED} measures how much $Q^D$ responds to a change in the price of another good
+$$CED = \frac{\%\Delta Q^D_1}{\%\Delta P_2}$$
+\begin{itemize}
+	\item Substitutes $\Rightarrow$ CED > 0
+	\item Complements $\Rightarrow$ CED < 0
+\end{itemize}
+
+\subsubsection{YED}
+\textbf{YED} measures how much $Q^D$ responds to a change in the $Y$
+$$YED = \frac{\%\Delta Q^D}{\%\Delta Y}$$
+\begin{itemize}
+	\item Normal goods $\Rightarrow$ YED > 0
+	\item Inferior goods $\Rightarrow$ YED < 0
+\end{itemize}
+
+\subsubsection{PES}
+\textbf{PES} measures how $Q^S$ responds to a change in $P$
+$$PES = \frac{\%\Delta Q^S}{\%\Delta P}$$\\
+\textbf{Factors that affect PES:}
+\begin{itemize}
+	\item How \textbf{easily} sellers can change the quantity they produce\\
+	The more easily, the greater the PES and vice versa
+	\item \textbf{Time horizon}\\
+	In the SR, PES is low. In the LR, PES is high because firms build new factories and new firms enter the market
+\end{itemize}
+\impt If DD shift, consider PES
+
+\subsection{The Efficiency of Markets}
+\textbf{Welfare economics}: how the allocation of resources affects \textit{economic well-being}
+\begin{itemize}
+	\item \textit{how much} of each good and service is produced
+	\item \textit{which producers} produce them
+	\item \textit{which consumers} consume them\\
+\end{itemize}
+\textbf{Willingness to Pay (WTP)}: \textit{maximum amount} the buyer will pay for that good
+\begin{itemize}
+	\item measures how much the buyer \underline{values} the good
+	\item Buyer will buy the good if $WTP \geq P$
+	$$WTP_{\text{market}} = \sum WTP_{\text{buyer}}$$
+	\item \textbf{Marginal buyer}: the buyer who would leave the market if $P$ were any higher\\
+	\impt height of DD curve is the WTP of the marginal buyer
+	\item \textbf{Consumer Surplus (CS)}: the amount a buyer is willing to pay - the amount he actually pays
+	$$CS = WTP - P$$
+	(area below $DD$ but above $P$ from 0 to $Q$)
+	\item If $P \uparrow$, CS will fall
+	\begin{itemize}
+		\item $\downarrow CS$ due to less buyers and they leave market
+		\item $\downarrow CS$ due to remaining buyers paying higher $P$\\
+	\end{itemize}
+\end{itemize}
+\textbf{Cost/Willingness to Sell (WTS)}: value of everything a seller must give up to produce a good \underline{(opportunity cost)} $=$ input costs + value of the seller's time
+\begin{itemize}
+	\item Seller will produce only if $P \geq C$
+	\item \textbf{Marginal seller}: the seller who would leave if the P were any lower\\
+	\impt the height of the SS curve is the WTS of the marginal seller
+	\item \textbf{Producer Surplus (PS)}: the amount the seler receives for a good - his cost
+	$$PS = P - Cost$$
+	(area above $SS$ but below $P$ from 0 to $Q$)
+	\item If $P \downarrow$, PS will fall
+	\begin{itemize}
+		\item $\downarrow PS$ due to less sellers and they leave market
+		\item $\downarrow PS$ due to remaining sellers receiving less\\
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Efficiency}
+\begin{equation*}
+	\begin{aligned}
+		\text{Total Surplus} &= \text{Value to Buyers} - \text{Cost to Sellers}\\
+		&= CS - PS
+	\end{aligned}
+\end{equation*}
+*CS = buyers' gains from participating in the market\\
+*PS = sellers' gains from participating in the market\\
+*Total Surplus = total gains from trade (a measure of \textit{society's well-being})\\
+
+\begin{itemize}
+	\item An allocation of resources is \underline{efficient} if Total Surplus is \underline{maximized}
+	\begin{itemize}
+		\item goods are consumed by buyers who value them most highly
+		\item goods are produced by sellers with the lowest cost\\
+	\end{itemize}
+\end{itemize}
+
+\fbox{\begin{minipage}{22em}
+		(Harford Chapter 3): A set of interconnected \textbf{perfectly competitive markets} results in:
+		\begin{enumerate}
+			\item Companies making things the right way ($\downarrow$Costs)
+			\item Companies making the right things (no externalities)
+			\item Things being made in the right proportions (no under/over allocation)
+			\item Things going to the right people (those with the highest valuation get to consume the goods)
+		\end{enumerate}
+	\end{minipage}}
+
+\textbf{the Invisible Hand}
+\begin{itemize}
+	\item Interaction between buyers and sellers determine $P$
+	\item Each $P$ reflects sellers' costs and buyers' valuation of the good
+	\item Self-interested sellers and buyers use $P$ to guide and make decisions which will allocate resources\\
+\end{itemize}
+
+\fbox{\begin{minipage}{22em}
+\textbf{First Fundamental Theorem of Welfare Economics}, Assume that:
+\begin{enumerate}
+	\item \textbf{Markets} and \textbf{market prices} exist for all goods
+	\item All buyers and sellers are \textbf{competitive price takers}
+	\item Each person's utility depends only on his own consumption
+\end{enumerate}
+then any market equilibrium is efficient
+\end{minipage}}
 
 \end{multicols}
+
+
+
 
 
 

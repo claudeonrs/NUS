@@ -29,21 +29,21 @@
 \definecolor{commentgreen}{rgb}{0.4,0.8,0.6}
 %Code listing style named "mystyle"
 \lstdefinestyle{mystyle}{
-  backgroundcolor=\color{backcolour},   
+  backgroundcolor=\color{backcolour},
   commentstyle=\color{red},
   keywordstyle=\color{blue},
   numberstyle=\tiny\color{codegray},
   stringstyle=\color{codegreen},
   basicstyle=\ttfamily,
-  breakatwhitespace=false,         
-  breaklines=true,                 
-  captionpos=b,                    
-  keepspaces=true,                 
-  numbers=left,                    
-  numbersep=5pt,                  
-  showspaces=false,                
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
   showstringspaces=false,
-  showtabs=false,                  
+  showtabs=false,
   tabsize=2
 }
 
@@ -84,12 +84,26 @@
 \section{Data Structures}
 \subsection{Linked List}
 \begin{itemize}
+	\item Motivation: implementation of list using array needs to occupy contiguous memory space (can result in memory error)
+	\item Variants of linked list:
+	\begin{itemize}
+		\item Tailed (need to maintain \texttt{head} and \texttt{tail})
+		\item Circular
+		\item Doubly linked (\texttt{prev} and \texttt{next} attributes for \texttt{ListNode})
+	\end{itemize}
 	\item How to find cycle?\\
 	Answer: use fast and slow pointers
 	\begin{lstlisting}[language=java]
 		slow = slow.next;
 		fast = fast.next.next;\end{lstlisting}
+	\item \impt Drawing pictures is very important to visualize the program!
 \end{itemize}
+
+\textbf{Java API}: \texttt{ArrayList} or \texttt{LinkedList}
+\begin{lstlisting}[language=Java]
+	\\ constructor
+	ArrayList<Integer> list = new ArrayList<Integer>;
+\end{lstlisting}
 
 \section{Algorithms}
 \subsection{Sorting}
@@ -102,7 +116,7 @@
 		\item \href{https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html}{Java StringBuilder API}
 		\item \href{https://leetcode.com/problems/zigzag-conversion/solution/}{Zigzag conversion}
 	\end{itemize}
-	
+
 \end{itemize}
 \end{multicols}
 

@@ -1,0 +1,761 @@
+Date,HomeTeam,AwayTeam,Referee,FGT,SGT,TGT,FOGT,FIGT,SIGT,SEGT,EGT,NGT,FGW,SGW,TGW,FOGW,FIGW,SIGW,SEGW,EGW,NGW
+16/8/2014,Arsenal,Crystal Palace,J Moss,35,45,90,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+16/8/2014,Leicester,Everton,M Jones,20,22,45,86,-,-,-,-,-,A,H,A,H,-,-,-,-,-
+16/8/2014,Man United,Swansea,M Dean,28,53,72,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+16/8/2014,QPR,Hull,C Pawson,52,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+16/8/2014,Stoke,Aston Villa,A Taylor,50,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+16/8/2014,West Brom,Sunderland,N Swarbrick,5,42,74,85,-,-,-,-,-,A,H,H,A,-,-,-,-,-
+16/8/2014,West Ham,Tottenham,C Foy,90,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+17/8/2014,Liverpool,Southampton,M Clattenburg,23,56,79,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+17/8/2014,Newcastle,Man City,M Atkinson,39,90,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+18/8/2014,Burnley,Chelsea,M Oliver,14,17,21,34,-,-,-,-,-,H,A,A,A,-,-,-,-,-
+23/8/2014,Aston Villa,Newcastle,M Dean,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+23/8/2014,Chelsea,Leicester,L Mason,63,77,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+23/8/2014,Crystal Palace,West Ham,M Clattenburg,34,37,49,62,-,-,-,-,-,A,A,H,A,-,-,-,-,-
+23/8/2014,Everton,Arsenal,K Friend,19,45,83,90,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+23/8/2014,Southampton,West Brom,R East,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+23/8/2014,Swansea,Burnley,C Pawson,23,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+24/8/2014,Hull,Stoke,J Moss,42,83,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+24/8/2014,Sunderland,Man United,M Atkinson,17,30,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+24/8/2014,Tottenham,QPR,A Taylor,12,30,37,65,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+25/8/2014,Man City,Liverpool,M Oliver,41,55,69,83,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+30/8/2014,Burnley,Man United,C Foy,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+30/8/2014,Everton,Chelsea,J Moss,1,3,45,67,69,74,76,77,90,A,A,H,A,H,A,H,A,A
+30/8/2014,Man City,Stoke,L Mason,58,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+30/8/2014,Newcastle,Crystal Palace,M Jones,1,38,48,74,88,90,-,-,-,A,H,A,H,H,A,-,-,-
+30/8/2014,QPR,Sunderland,R Madley,45,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+30/8/2014,Swansea,West Brom,P Tierney,2,24,71,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+30/8/2014,West Ham,Southampton,M Dean,27,45,68,83,-,-,-,-,-,H,A,A,A,-,-,-,-,-
+31/8/2014,Aston Villa,Hull,M Clattenburg,14,36,74,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+31/8/2014,Leicester,Arsenal,A Taylor,20,22,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+31/8/2014,Tottenham,Liverpool,P Dowd,8,49,60,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+13/9/2014,Arsenal,Man City,M Clattenburg,28,64,74,83,-,-,-,-,-,A,H,H,A,-,-,-,-,-
+13/9/2014,Chelsea,Swansea,K Friend,11,45,56,67,81,86,-,-,-,A,H,H,H,H,A,-,-,-
+13/9/2014,Crystal Palace,Burnley,M Dean,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+13/9/2014,Liverpool,Aston Villa,L Mason,9,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+13/9/2014,Southampton,Newcastle,C Foy,6,19,54,90,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+13/9/2014,Stoke,Leicester,M Oliver,64,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+13/9/2014,Sunderland,Tottenham,C Pawson,2,3,48,82,-,-,-,-,-,A,H,A,H,-,-,-,-,-
+13/9/2014,West Brom,Everton,A Taylor,2,66,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+14/9/2014,Man United,QPR,P Dowd,24,36,44,58,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+15/9/2014,Hull,West Ham,M Atkinson,39,50,64,67,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+20/9/2014,Aston Villa,Arsenal,M Jones,33,34,36,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+20/9/2014,Burnley,Sunderland,A Taylor,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+20/9/2014,Newcastle,Hull,N Swarbrick,49,68,74,87,-,-,-,-,-,A,A,H,H,-,-,-,-,-
+20/9/2014,QPR,Stoke,M Atkinson,11,42,51,88,-,-,-,-,-,A,H,A,H,-,-,-,-,-
+20/9/2014,Swansea,Southampton,J Moss,80,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+20/9/2014,West Ham,Liverpool,C Pawson,2,7,27,88,-,-,-,-,-,H,H,A,H,-,-,-,-,-
+21/9/2014,Everton,Crystal Palace,M Oliver,9,30,54,70,83,-,-,-,-,H,A,A,A,H,-,-,-,-
+21/9/2014,Leicester,Man United,M Clattenburg,13,16,17,57,62,64,79,83,-,A,A,H,A,H,H,H,H,-
+21/9/2014,Man City,Chelsea,M Dean,71,85,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+21/9/2014,Tottenham,West Brom,K Friend,74,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+27/9/2014,Arsenal,Tottenham,M Oliver,56,74,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+27/9/2014,Chelsea,Aston Villa,P Dowd,7,59,79,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+27/9/2014,Crystal Palace,Leicester,K Stroud,51,55,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+27/9/2014,Hull,Man City,A Taylor,7,11,21,32,68,87,-,-,-,A,A,H,H,A,A,-,-,-
+27/9/2014,Liverpool,Everton,M Atkinson,65,90,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+27/9/2014,Man United,West Ham,L Mason,5,22,37,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+27/9/2014,Southampton,QPR,M Clattenburg,55,66,68,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+27/9/2014,Sunderland,Swansea,C Foy,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+28/9/2014,West Brom,Burnley,J Moss,30,45,56,90,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+29/9/2014,Stoke,Newcastle,C Pawson,15,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+4/10/2014,Aston Villa,Man City,C Foy,82,88,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+4/10/2014,Hull,Crystal Palace,M Dean,61,89,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+4/10/2014,Leicester,Burnley,P Dowd,34,39,41,90,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+4/10/2014,Liverpool,West Brom,M Oliver,45,56,61,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+4/10/2014,Sunderland,Stoke,N Swarbrick,4,15,23,79,-,-,-,-,-,H,A,H,H,-,-,-,-,-
+4/10/2014,Swansea,Newcastle,L Mason,17,43,50,75,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+5/10/2014,Chelsea,Arsenal,M Atkinson,27,78,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+5/10/2014,Man United,Everton,K Friend,27,55,62,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+5/10/2014,Tottenham,Southampton,M Jones,40,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+5/10/2014,West Ham,QPR,A Taylor,5,59,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+18/10/2014,Arsenal,Hull,R East,13,18,46,90,-,-,-,-,-,H,A,A,H,-,-,-,-,-
+18/10/2014,Burnley,West Ham,K Friend,50,54,60,70,-,-,-,-,-,A,A,H,A,-,-,-,-,-
+18/10/2014,Crystal Palace,Chelsea,C Pawson,6,51,90,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+18/10/2014,Everton,Aston Villa,A Taylor,18,48,77,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+18/10/2014,Man City,Tottenham,J Moss,13,15,20,68,75,-,-,-,-,H,A,H,H,H,-,-,-,-
+18/10/2014,Newcastle,Leicester,M Atkinson,71,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+18/10/2014,Southampton,Sunderland,A Marriner,12,18,37,63,69,78,79,86,-,H,H,H,H,H,H,H,H,-
+19/10/2014,QPR,Liverpool,P Dowd,67,87,90,90,90,-,-,-,-,A,H,A,H,A,-,-,-,-
+19/10/2014,Stoke,Swansea,M Oliver,34,43,76,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+20/10/2014,West Brom,Man United,M Dean,8,48,66,87,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+25/10/2014,Liverpool,Hull,N Swarbrick,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+25/10/2014,Southampton,Stoke,J Moss,33,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+25/10/2014,Sunderland,Arsenal,K Friend,30,90,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+25/10/2014,Swansea,Leicester,M Jones,34,57,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+25/10/2014,West Brom,Crystal Palace,M Clattenburg,16,45,51,90,-,-,-,-,-,A,A,H,H,-,-,-,-,-
+25/10/2014,West Ham,Man City,M Atkinson,21,75,77,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+26/10/2014,Burnley,Everton,A Marriner,4,20,29,86,-,-,-,-,-,A,H,A,A,-,-,-,-,-
+26/10/2014,Man United,Chelsea,P Dowd,53,90,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+26/10/2014,Tottenham,Newcastle,A Taylor,18,46,58,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+27/10/2014,QPR,Aston Villa,L Mason,17,69,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+1/11/2014,Arsenal,Burnley,C Pawson,70,72,90,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+1/11/2014,Chelsea,QPR,M Jones,32,62,76,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+1/11/2014,Everton,Swansea,K Friend,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+1/11/2014,Hull,Southampton,M Atkinson,3,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+1/11/2014,Leicester,West Brom,S Attwell,47,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+1/11/2014,Newcastle,Liverpool,A Marriner,74,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+1/11/2014,Stoke,West Ham,C Foy,33,56,60,73,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+2/11/2014,Aston Villa,Tottenham,N Swarbrick,16,84,90,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+2/11/2014,Man City,Man United,M Oliver,63,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+3/11/2014,Crystal Palace,Sunderland,P Dowd,31,55,79,90,-,-,-,-,-,A,H,A,A,-,-,-,-,-
+8/11/2014,Burnley,Hull,M Clattenburg,50,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+8/11/2014,Liverpool,Chelsea,A Taylor,9,14,67,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+8/11/2014,Man United,Crystal Palace,C Foy,67,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+8/11/2014,QPR,Man City,M Dean,21,32,76,83,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+8/11/2014,Southampton,Leicester,M Oliver,76,80,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+8/11/2014,West Ham,Aston Villa,J Moss,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+9/11/2014,Sunderland,Everton,L Mason,67,76,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+9/11/2014,Swansea,Arsenal,P Dowd,63,75,78,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+9/11/2014,Tottenham,Stoke,M Jones,6,33,78,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+9/11/2014,West Brom,Newcastle,C Pawson,45,62,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+22/11/2014,Arsenal,Man United,M Dean,56,85,90,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+22/11/2014,Chelsea,West Brom,L Mason,11,25,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+22/11/2014,Everton,West Ham,M Clattenburg,26,56,74,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+22/11/2014,Leicester,Sunderland,R Madley,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+22/11/2014,Man City,Swansea,N Swarbrick,9,19,62,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+22/11/2014,Newcastle,QPR,C Foy,78,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+22/11/2014,Stoke,Burnley,M Atkinson,12,13,32,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+23/11/2014,Crystal Palace,Liverpool,J Moss,2,17,78,81,-,-,-,-,-,A,H,H,H,-,-,-,-,-
+23/11/2014,Hull,Tottenham,C Pawson,8,61,90,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+24/11/2014,Aston Villa,Southampton,P Dowd,29,81,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+29/11/2014,Burnley,Aston Villa,G Scott,38,87,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+29/11/2014,Liverpool,Stoke,C Pawson,85,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+29/11/2014,Man United,Hull,A Taylor,16,42,66,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+29/11/2014,QPR,Leicester,R East,4,38,45,68,73,-,-,-,-,A,H,H,A,H,-,-,-,-
+29/11/2014,Sunderland,Chelsea,K Friend,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+29/11/2014,Swansea,Crystal Palace,M Atkinson,15,25,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+29/11/2014,West Brom,Arsenal,C Foy,60,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+29/11/2014,West Ham,Newcastle,M Dean,56,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+30/11/2014,Southampton,Man City,M Jones,51,80,88,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+30/11/2014,Tottenham,Everton,M Oliver,15,21,45,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+2/12/2014,Burnley,Newcastle,P Dowd,34,48,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+2/12/2014,Crystal Palace,Aston Villa,M Oliver,32,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+2/12/2014,Leicester,Liverpool,L Mason,22,27,54,84,-,-,-,-,-,H,A,A,A,-,-,-,-,-
+2/12/2014,Man United,Stoke,J Moss,21,39,59,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+2/12/2014,Swansea,QPR,K Friend,78,83,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+2/12/2014,West Brom,West Ham,M Jones,10,35,45,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+3/12/2014,Arsenal,Southampton,A Marriner,89,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+3/12/2014,Chelsea,Tottenham,M Dean,19,22,73,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+3/12/2014,Everton,Hull,R Madley,34,59,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+3/12/2014,Sunderland,Man City,C Pawson,19,21,39,55,71,-,-,-,-,H,A,A,A,A,-,-,-,-
+6/12/2014,Hull,West Brom,M Oliver,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+6/12/2014,Liverpool,Sunderland,N Swarbrick,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+6/12/2014,Man City,Everton,A Marriner,24,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+6/12/2014,Newcastle,Chelsea,M Atkinson,57,79,83,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+6/12/2014,QPR,Burnley,J Moss,51,74,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+6/12/2014,Stoke,Arsenal,A Taylor,1,35,45,68,70,-,-,-,-,H,H,H,A,A,-,-,-,-
+6/12/2014,Tottenham,Crystal Palace,L Mason,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+7/12/2014,Aston Villa,Leicester,C Pawson,13,18,71,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+7/12/2014,West Ham,Swansea,C Foy,19,41,66,87,-,-,-,-,-,A,H,H,H,-,-,-,-,-
+8/12/2014,Southampton,Man United,K Friend,12,31,71,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+13/12/2014,Arsenal,Newcastle,L Mason,15,54,58,63,89,-,-,-,-,H,H,H,A,H,-,-,-,-
+13/12/2014,Burnley,Southampton,M Clattenburg,73,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+13/12/2014,Chelsea,Hull,C Foy,7,68,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+13/12/2014,Crystal Palace,Stoke,K Friend,11,13,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+13/12/2014,Leicester,Man City,J Moss,40,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+13/12/2014,Sunderland,West Ham,P Dowd,22,29,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+13/12/2014,West Brom,Aston Villa,M Dean,72,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+14/12/2014,Man United,Liverpool,M Atkinson,12,40,71,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+14/12/2014,Swansea,Tottenham,R Madley,4,48,89,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+15/12/2014,Everton,QPR,N Swarbrick,33,44,53,80,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+20/12/2014,Aston Villa,Man United,L Mason,18,53,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+20/12/2014,Hull,Swansea,M Clattenburg,15,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+20/12/2014,Man City,Crystal Palace,P Dowd,49,61,81,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+20/12/2014,QPR,West Brom,C Pawson,11,20,24,48,86,-,-,-,-,A,A,H,H,H,-,-,-,-
+20/12/2014,Southampton,Everton,J Moss,38,65,82,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+20/12/2014,Tottenham,Burnley,M Jones,22,28,36,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+20/12/2014,West Ham,Leicester,M Atkinson,24,56,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+21/12/2014,Liverpool,Arsenal,M Oliver,45,45,64,90,-,-,-,-,-,H,A,A,H,-,-,-,-,-
+21/12/2014,Newcastle,Sunderland,A Taylor,90,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+22/12/2014,Stoke,Chelsea,N Swarbrick,2,78,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+26/12/2014,Arsenal,QPR,M Atkinson,37,65,79,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+26/12/2014,Burnley,Liverpool,A Taylor,62,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+26/12/2014,Chelsea,West Ham,M Oliver,31,62,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+26/12/2014,Crystal Palace,Southampton,M Dean,17,48,53,86,-,-,-,-,-,A,A,A,H,-,-,-,-,-
+26/12/2014,Everton,Stoke,L Mason,38,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+26/12/2014,Leicester,Tottenham,N Swarbrick,1,49,72,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+26/12/2014,Man United,Newcastle,M Jones,23,36,53,87,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+26/12/2014,Sunderland,Hull,A Marriner,1,32,51,90,-,-,-,-,-,H,A,A,A,-,-,-,-,-
+26/12/2014,Swansea,Aston Villa,R East,13,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+26/12/2014,West Brom,Man City,M Clattenburg,8,13,34,87,-,-,-,-,-,A,A,A,H,-,-,-,-,-
+28/12/2014,Aston Villa,Sunderland,M Atkinson,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+28/12/2014,Hull,Leicester,P Dowd,32,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+28/12/2014,Man City,Burnley,K Friend,23,33,47,81,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+28/12/2014,Newcastle,Everton,C Pawson,5,34,51,68,84,-,-,-,-,A,H,H,H,A,-,-,-,-
+28/12/2014,QPR,Crystal Palace,M Jones,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+28/12/2014,Southampton,Chelsea,A Taylor,17,45,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+28/12/2014,Stoke,West Brom,R East,51,67,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+28/12/2014,Tottenham,Man United,J Moss,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+28/12/2014,West Ham,Arsenal,N Swarbrick,41,44,54,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+29/12/2014,Liverpool,Swansea,A Marriner,33,51,52,61,69,-,-,-,-,H,H,A,H,H,-,-,-,-
+1/1/2015,Aston Villa,Crystal Palace,R Madley,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+1/1/2015,Hull,Everton,K Friend,33,43,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+1/1/2015,Liverpool,Leicester,M Jones,17,40,58,60,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+1/1/2015,Man City,Sunderland,R East,57,66,68,71,73,-,-,-,-,H,H,A,A,H,-,-,-,-
+1/1/2015,Newcastle,Burnley,M Dean,15,19,26,66,78,86,-,-,-,H,A,H,A,H,A,-,-,-
+1/1/2015,QPR,Swansea,A Taylor,20,90,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+1/1/2015,Southampton,Arsenal,C Pawson,34,56,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+1/1/2015,Stoke,Man United,M Oliver,2,26,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+1/1/2015,Tottenham,Chelsea,P Dowd,18,30,44,45,52,61,78,87,-,A,H,H,H,H,A,H,A,-
+1/1/2015,West Ham,West Brom,J Moss,10,42,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+10/1/2015,Burnley,QPR,A Marriner,12,33,37,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+10/1/2015,Chelsea,Newcastle,R East,43,59,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+10/1/2015,Crystal Palace,Tottenham,A Taylor,49,69,80,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+10/1/2015,Everton,Man City,M Atkinson,74,78,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+10/1/2015,Leicester,Aston Villa,M Oliver,45,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+10/1/2015,Sunderland,Liverpool,C Pawson,9,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+10/1/2015,Swansea,West Ham,M Dean,43,74,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+10/1/2015,West Brom,Hull,N Swarbrick,77,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+11/1/2015,Arsenal,Stoke,J Moss,6,33,49,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+11/1/2015,Man United,Southampton,P Dowd,69,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+17/1/2015,Aston Villa,Liverpool,M Clattenburg,25,79,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+17/1/2015,Burnley,Crystal Palace,P Dowd,13,15,28,48,88,-,-,-,-,H,H,A,A,A,-,-,-,-
+17/1/2015,Leicester,Stoke,A Marriner,63,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+17/1/2015,Newcastle,Southampton,R Madley,14,29,62,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+17/1/2015,QPR,Man United,N Swarbrick,58,90,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+17/1/2015,Swansea,Chelsea,J Moss,1,20,34,36,80,-,-,-,-,A,A,A,A,A,-,-,-,-
+17/1/2015,Tottenham,Sunderland,C Foy,3,31,88,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+18/1/2015,Man City,Arsenal,M Dean,24,66,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+18/1/2015,West Ham,Hull,M Atkinson,49,69,72,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+19/1/2015,Everton,West Brom,M Oliver,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+31/1/2015,Chelsea,Man City,M Clattenburg,41,45,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+31/1/2015,Crystal Palace,Everton,R East,2,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+31/1/2015,Hull,Newcastle,P Dowd,40,50,78,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+31/1/2015,Liverpool,West Ham,A Marriner,51,80,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+31/1/2015,Man United,Leicester,M Atkinson,27,32,44,80,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+31/1/2015,Stoke,QPR,M Dean,21,34,36,90,-,-,-,-,-,H,H,A,H,-,-,-,-,-
+31/1/2015,Sunderland,Burnley,L Mason,20,34,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+31/1/2015,West Brom,Tottenham,K Friend,7,15,64,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+1/2/2015,Arsenal,Aston Villa,A Taylor,8,56,64,75,90,-,-,-,-,H,H,H,H,H,-,-,-,-
+1/2/2015,Southampton,Swansea,M Oliver,83,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+7/2/2015,Aston Villa,Chelsea,N Swarbrick,8,48,66,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+7/2/2015,Everton,Liverpool,A Taylor,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+7/2/2015,Leicester,Crystal Palace,L Mason,55,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+7/2/2015,Man City,Hull,J Moss,35,90,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+7/2/2015,QPR,Southampton,R East,90,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+7/2/2015,Swansea,Sunderland,P Dowd,42,66,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+7/2/2015,Tottenham,Arsenal,M Atkinson,11,56,86,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+8/2/2015,Burnley,West Brom,M Dean,11,32,45,67,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+8/2/2015,Newcastle,Stoke,K Friend,74,90,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+8/2/2015,West Ham,Man United,M Clattenburg,49,90,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+10/2/2015,Arsenal,Leicester,M Jones,27,41,62,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+10/2/2015,Hull,Aston Villa,M Oliver,22,74,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+10/2/2015,Liverpool,Tottenham,P Dowd,15,26,53,61,83,-,-,-,-,H,A,H,A,H,-,-,-,-
+10/2/2015,Sunderland,QPR,M Atkinson,17,45,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+11/2/2015,Chelsea,Everton,J Moss,89,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+11/2/2015,Crystal Palace,Newcastle,A Marriner,42,71,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+11/2/2015,Man United,Burnley,K Friend,6,12,45,82,-,-,-,-,-,H,A,H,H,-,-,-,-,-
+11/2/2015,Southampton,West Ham,C Pawson,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+11/2/2015,Stoke,Man City,L Mason,33,38,55,70,76,-,-,-,-,A,H,A,A,A,-,-,-,-
+11/2/2015,West Brom,Swansea,R Madley,60,74,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+21/2/2015,Aston Villa,Stoke,R East,20,45,90,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+21/2/2015,Chelsea,Burnley,M Atkinson,14,81,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+21/2/2015,Crystal Palace,Arsenal,M Clattenburg,8,45,90,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+21/2/2015,Hull,QPR,A Taylor,16,39,89,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+21/2/2015,Man City,Newcastle,C Foy,2,12,21,51,53,-,-,-,-,H,H,H,H,H,-,-,-,-
+21/2/2015,Sunderland,West Brom,M Jones,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+21/2/2015,Swansea,Man United,N Swarbrick,28,30,73,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+22/2/2015,Everton,Leicester,P Dowd,57,63,70,88,-,-,-,-,-,H,A,A,H,-,-,-,-,-
+22/2/2015,Southampton,Liverpool,K Friend,3,73,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+22/2/2015,Tottenham,West Ham,J Moss,22,62,81,90,-,-,-,-,-,A,A,H,H,-,-,-,-,-
+28/2/2015,Burnley,Swansea,J Moss,65,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+28/2/2015,Man United,Sunderland,R East,66,84,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+28/2/2015,Newcastle,Aston Villa,L Mason,37,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+28/2/2015,Stoke,Hull,N Swarbrick,72,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+28/2/2015,West Brom,Southampton,P Dowd,2,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+28/2/2015,West Ham,Crystal Palace,M Dean,41,51,63,76,-,-,-,-,-,A,A,A,H,-,-,-,-,-
+1/3/2015,Arsenal,Everton,A Marriner,39,89,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+1/3/2015,Liverpool,Man City,M Clattenburg,11,26,75,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+3/3/2015,Aston Villa,West Brom,J Moss,23,67,90,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+3/3/2015,Hull,Sunderland,M Dean,15,77,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+3/3/2015,Southampton,Crystal Palace,M Atkinson,83,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+4/3/2015,Liverpool,Burnley,L Mason,29,51,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+4/3/2015,Man City,Leicester,R Madley,45,88,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+4/3/2015,Newcastle,Man United,A Taylor,89,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+4/3/2015,QPR,Arsenal,K Friend,64,69,82,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+4/3/2015,Stoke,Everton,M Clattenburg,32,84,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+4/3/2015,Tottenham,Swansea,M Oliver,7,19,51,60,89,-,-,-,-,H,A,H,H,A,-,-,-,-
+4/3/2015,West Ham,Chelsea,A Marriner,23,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+7/3/2015,QPR,Tottenham,C Pawson,34,69,76,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+14/3/2015,Arsenal,West Ham,A Taylor,45,81,84,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+14/3/2015,Burnley,Man City,A Marriner,61,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+14/3/2015,Crystal Palace,QPR,L Mason,21,40,42,83,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+14/3/2015,Leicester,Hull,J Moss,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+14/3/2015,Sunderland,Aston Villa,N Swarbrick,16,18,37,44,-,-,-,-,-,A,A,A,A,-,-,-,-,-
+14/3/2015,West Brom,Stoke,M Oliver,20,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+15/3/2015,Chelsea,Southampton,M Dean,11,19,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+15/3/2015,Everton,Newcastle,M Atkinson,20,56,90,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+15/3/2015,Man United,Tottenham,M Clattenburg,9,19,34,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+16/3/2015,Swansea,Liverpool,R East,68,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+21/3/2015,Aston Villa,Swansea,R Madley,87,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+21/3/2015,Man City,West Brom,N Swarbrick,27,40,77,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+21/3/2015,Newcastle,Arsenal,M Jones,24,28,49,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+21/3/2015,Southampton,Burnley,R East,37,58,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+21/3/2015,Stoke,Crystal Palace,A Marriner,14,41,45,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+21/3/2015,Tottenham,Leicester,M Dean,6,13,38,50,64,85,90,-,-,H,H,A,A,H,H,A,-,-
+21/3/2015,West Ham,Sunderland,L Mason,88,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+22/3/2015,Hull,Chelsea,M Oliver,2,10,27,28,77,-,-,-,-,A,A,H,H,A,-,-,-,-
+22/3/2015,Liverpool,Man United,M Atkinson,14,59,69,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+22/3/2015,QPR,Everton,J Moss,18,65,77,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+4/4/2015,Arsenal,Liverpool,A Taylor,37,40,45,76,90,-,-,-,-,H,H,H,A,H,-,-,-,-
+4/4/2015,Chelsea,Stoke,J Moss,39,44,62,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+4/4/2015,Everton,Southampton,L Mason,16,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+4/4/2015,Leicester,West Ham,M Clattenburg,12,32,86,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+4/4/2015,Man United,Aston Villa,R East,43,79,80,90,-,-,-,-,-,H,H,A,H,-,-,-,-,-
+4/4/2015,Swansea,Hull,A Marriner,18,37,50,90,-,-,-,-,-,H,H,A,H,-,-,-,-,-
+4/4/2015,West Brom,QPR,L Probert,15,37,43,58,90,-,-,-,-,A,A,A,H,A,-,-,-,-
+5/4/2015,Burnley,Tottenham,M Atkinson,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+5/4/2015,Sunderland,Newcastle,M Dean,45,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+6/4/2015,Crystal Palace,Man City,M Oliver,34,48,78,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+7/4/2015,Aston Villa,QPR,C Pawson,7,10,33,55,78,83,-,-,-,A,H,H,A,A,H,-,-,-
+11/4/2015,Burnley,Arsenal,M Dean,12,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+11/4/2015,Southampton,Hull,K Friend,57,82,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+11/4/2015,Sunderland,Crystal Palace,A Taylor,48,51,53,62,90,-,-,-,-,A,A,A,A,H,-,-,-,-
+11/4/2015,Swansea,Everton,M Oliver,41,69,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+11/4/2015,Tottenham,Aston Villa,L Probert,35,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+11/4/2015,West Brom,Leicester,M Atkinson,8,20,26,81,90,-,-,-,-,H,A,H,A,A,-,-,-,-
+11/4/2015,West Ham,Stoke,R East,7,90,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+12/4/2015,Man United,Man City,M Clattenburg,8,14,27,67,73,89,-,-,-,A,H,H,H,H,A,-,-,-
+12/4/2015,QPR,Chelsea,A Marriner,88,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+13/4/2015,Liverpool,Newcastle,L Mason,9,70,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+18/4/2015,Chelsea,Man United,M Dean,38,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+18/4/2015,Crystal Palace,West Brom,J Moss,2,53,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+18/4/2015,Everton,Burnley,M Jones,29,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+18/4/2015,Leicester,Swansea,L Probert,15,90,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+18/4/2015,Stoke,Southampton,M Clattenburg,22,47,84,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+19/4/2015,Man City,West Ham,A Taylor,18,36,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+19/4/2015,Newcastle,Tottenham,K Friend,30,46,53,90,-,-,-,-,-,A,H,A,A,-,-,-,-,-
+25/4/2015,Burnley,Leicester,A Taylor,60,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+25/4/2015,Crystal Palace,Hull,M Clattenburg,51,90,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+25/4/2015,Man City,Aston Villa,M Dean,3,66,68,85,89,-,-,-,-,H,H,A,A,H,-,-,-,-
+25/4/2015,Newcastle,Swansea,N Swarbrick,20,45,50,71,87,-,-,-,-,H,A,A,A,H,-,-,-,-
+25/4/2015,QPR,West Ham,M Jones,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+25/4/2015,Southampton,Tottenham,J Moss,29,43,65,70,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+25/4/2015,Stoke,Sunderland,M Atkinson,2,27,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+25/4/2015,West Brom,Liverpool,R East,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+26/4/2015,Arsenal,Chelsea,M Oliver,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+26/4/2015,Everton,Man United,A Marriner,5,35,74,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+28/4/2015,Hull,Liverpool,L Probert,37,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+29/4/2015,Leicester,Chelsea,M Clattenburg,45,48,79,83,-,-,-,-,-,H,A,A,A,-,-,-,-,-
+2/5/2015,Aston Villa,Everton,M Clattenburg,11,45,60,65,90,-,-,-,-,H,H,A,H,A,-,-,-,-
+2/5/2015,Leicester,Newcastle,M Dean,1,17,48,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+2/5/2015,Liverpool,QPR,M Atkinson,20,73,87,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+2/5/2015,Man United,West Brom,A Taylor,63,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+2/5/2015,Sunderland,Southampton,M Jones,21,22,55,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+2/5/2015,Swansea,Stoke,C Pawson,77,90,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+2/5/2015,West Ham,Burnley,J Moss,24,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+3/5/2015,Chelsea,Crystal Palace,K Friend,45,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+3/5/2015,Tottenham,Man City,A Marriner,29,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+4/5/2015,Hull,Arsenal,L Mason,28,33,45,57,-,-,-,-,-,A,A,A,H,-,-,-,-,-
+9/5/2015,Aston Villa,West Ham,L Mason,31,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+9/5/2015,Crystal Palace,Man United,M Oliver,19,57,78,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+9/5/2015,Everton,Sunderland,L Probert,53,85,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+9/5/2015,Hull,Burnley,M Atkinson,62,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+9/5/2015,Leicester,Southampton,R East,7,19,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+9/5/2015,Newcastle,West Brom,C Foy,32,41,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+9/5/2015,Stoke,Tottenham,M Clattenburg,21,32,86,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+10/5/2015,Chelsea,Liverpool,A Marriner,5,44,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+10/5/2015,Man City,QPR,M Dean,4,32,50,65,70,87,-,-,-,H,H,H,H,H,H,-,-,-
+11/5/2015,Arsenal,Swansea,K Friend,85,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+16/5/2015,Burnley,Stoke,M Oliver,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+16/5/2015,Liverpool,Crystal Palace,J Moss,26,43,60,90,-,-,-,-,-,H,A,A,A,-,-,-,-,-
+16/5/2015,QPR,Newcastle,L Probert,24,54,61,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+16/5/2015,Southampton,Aston Villa,R Madley,13,14,16,26,38,45,81,-,-,H,H,H,H,H,A,H,-,-
+16/5/2015,Sunderland,Leicester,M Atkinson,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+16/5/2015,Tottenham,Hull,A Taylor,54,61,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+16/5/2015,West Ham,Everton,K Friend,62,68,90,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+17/5/2015,Man United,Arsenal,M Dean,30,82,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+17/5/2015,Swansea,Man City,M Clattenburg,21,36,45,64,74,90,-,-,-,A,A,H,H,A,A,-,-,-
+18/5/2015,West Brom,Chelsea,M Jones,9,47,60,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+20/5/2015,Arsenal,Sunderland,A Taylor,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+24/5/2015,Arsenal,West Brom,R Madley,4,15,17,37,57,-,-,-,-,H,H,H,H,A,-,-,-,-
+24/5/2015,Aston Villa,Burnley,M Jones,6,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+24/5/2015,Chelsea,Sunderland,L Mason,26,37,70,88,-,-,-,-,-,A,H,H,H,-,-,-,-,-
+24/5/2015,Crystal Palace,Swansea,C Pawson,57,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+24/5/2015,Everton,Tottenham,J Moss,25,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+24/5/2015,Hull,Man United,L Probert,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+24/5/2015,Leicester,QPR,M Oliver,16,43,51,52,57,86,-,-,-,H,H,H,H,A,H,-,-,-
+24/5/2015,Man City,Southampton,C Foy,31,88,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+24/5/2015,Newcastle,West Ham,M Atkinson,54,85,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+24/5/2015,Stoke,Liverpool,A Taylor,22,26,30,41,45,70,86,-,-,H,H,H,H,H,A,H,-,-
+8/8/2015,Bournemouth,Aston Villa,M Clattenburg,72,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+8/8/2015,Chelsea,Swansea,M Oliver,23,29,30,55,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+8/8/2015,Everton,Watford,M Jones,14,76,83,86,-,-,-,-,-,A,H,A,H,-,-,-,-,-
+8/8/2015,Leicester,Sunderland,L Mason,11,18,25,60,66,71,-,-,-,H,H,H,A,H,A,-,-,-
+8/8/2015,Man United,Tottenham,J Moss,22,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+8/8/2015,Norwich,Crystal Palace,S Hooper,39,49,69,90,-,-,-,-,-,A,A,H,A,-,-,-,-,-
+9/8/2015,Arsenal,West Ham,M Atkinson,43,57,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+9/8/2015,Newcastle,Southampton,C Pawson,24,42,48,79,-,-,-,-,-,A,H,H,A,-,-,-,-,-
+9/8/2015,Stoke,Liverpool,A Taylor,86,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+10/8/2015,West Brom,Man City,M Dean,9,24,59,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+14/8/2015,Aston Villa,Man United,M Dean,29,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+15/8/2015,Southampton,Everton,M Oliver,22,45,84,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+15/8/2015,Sunderland,Norwich,K Friend,26,38,58,88,-,-,-,-,-,A,A,A,H,-,-,-,-,-
+15/8/2015,Swansea,Newcastle,M Jones,9,52,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+15/8/2015,Tottenham,Stoke,R Madley,19,45,78,83,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+15/8/2015,Watford,West Brom,P Tierney,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+15/8/2015,West Ham,Leicester,A Taylor,27,38,55,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+16/8/2015,Crystal Palace,Arsenal,L Mason,16,28,55,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+16/8/2015,Man City,Chelsea,M Atkinson,31,79,85,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+17/8/2015,Liverpool,Bournemouth,C Pawson,26,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+22/8/2015,Crystal Palace,Aston Villa,K Stroud,71,77,87,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+22/8/2015,Leicester,Tottenham,M Atkinson,81,82,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+22/8/2015,Man United,Newcastle,C Pawson,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+22/8/2015,Norwich,Stoke,M Dean,11,28,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+22/8/2015,Sunderland,Swansea,N Swarbrick,45,62,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+22/8/2015,West Ham,Bournemouth,J Moss,11,28,48,53,66,79,82,-,-,A,A,H,H,A,A,H,-,-
+23/8/2015,Everton,Man City,A Taylor,60,88,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+23/8/2015,Watford,Southampton,A Marriner,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+23/8/2015,West Brom,Chelsea,M Clattenburg,20,30,36,43,59,-,-,-,-,A,A,H,A,H,-,-,-,-
+24/8/2015,Arsenal,Liverpool,M Oliver,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+29/8/2015,Aston Villa,Sunderland,R Madley,8,11,41,52,-,-,-,-,-,A,H,H,A,-,-,-,-,-
+29/8/2015,Bournemouth,Leicester,N Swarbrick,24,86,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+29/8/2015,Chelsea,Crystal Palace,C Pawson,65,79,81,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+29/8/2015,Liverpool,West Ham,K Friend,3,29,90,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+29/8/2015,Man City,Watford,M Clattenburg,47,56,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+29/8/2015,Newcastle,Arsenal,A Marriner,52,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+29/8/2015,Stoke,West Brom,M Oliver,45,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+29/8/2015,Tottenham,Everton,M Jones,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+30/8/2015,Southampton,Norwich,J Moss,45,65,68,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+30/8/2015,Swansea,Man United,M Atkinson,48,61,66,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+12/9/2015,Arsenal,Stoke,J Moss,31,85,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+12/9/2015,Crystal Palace,Man City,M Jones,90,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+12/9/2015,Everton,Chelsea,A Marriner,17,22,36,83,-,-,-,-,-,H,H,A,H,-,-,-,-,-
+12/9/2015,Man United,Liverpool,M Oliver,49,70,84,86,-,-,-,-,-,H,H,A,H,-,-,-,-,-
+12/9/2015,Norwich,Bournemouth,M Atkinson,35,52,67,81,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+12/9/2015,Watford,Swansea,R Madley,59,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+12/9/2015,West Brom,Southampton,S Attwell,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+13/9/2015,Leicester,Aston Villa,M Dean,39,64,72,82,89,-,-,-,-,A,A,H,H,H,-,-,-,-
+13/9/2015,Sunderland,Tottenham,C Pawson,82,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+14/9/2015,West Ham,Newcastle,A Taylor,9,48,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+19/9/2015,Aston Villa,West Brom,M Atkinson,39,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+19/9/2015,Bournemouth,Sunderland,K Friend,4,9,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+19/9/2015,Chelsea,Arsenal,M Dean,53,90,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+19/9/2015,Man City,West Ham,R Madley,6,31,45,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+19/9/2015,Newcastle,Watford,R East,10,28,62,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+19/9/2015,Stoke,Leicester,A Marriner,13,20,51,69,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+19/9/2015,Swansea,Everton,S Attwell,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+20/9/2015,Liverpool,Norwich,A Taylor,48,61,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+20/9/2015,Southampton,Man United,M Clattenburg,13,34,50,68,86,-,-,-,-,H,A,A,A,H,-,-,-,-
+20/9/2015,Tottenham,Crystal Palace,M Oliver,68,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+26/9/2015,Leicester,Arsenal,C Pawson,13,18,33,58,81,89,90,-,-,H,A,A,A,A,H,A,-,-
+26/9/2015,Liverpool,Aston Villa,J Moss,2,59,66,67,71,-,-,-,-,H,H,A,H,A,-,-,-,-
+26/9/2015,Man United,Sunderland,M Jones,45,46,90,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+26/9/2015,Newcastle,Chelsea,M Atkinson,42,60,79,86,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+26/9/2015,Southampton,Swansea,R East,11,54,61,83,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+26/9/2015,Stoke,Bournemouth,L Mason,33,76,84,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+26/9/2015,Tottenham,Man City,M Clattenburg,25,45,50,61,79,-,-,-,-,A,H,H,H,H,-,-,-,-
+26/9/2015,West Ham,Norwich,M Dean,9,33,83,90,-,-,-,-,-,A,H,A,H,-,-,-,-,-
+27/9/2015,Watford,Crystal Palace,A Taylor,71,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+28/9/2015,West Brom,Everton,R Madley,41,54,55,75,84,-,-,-,-,H,H,A,A,A,-,-,-,-
+3/10/2015,Aston Villa,Stoke,M Jones,55,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+3/10/2015,Bournemouth,Watford,M Oliver,28,45,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+3/10/2015,Chelsea,Southampton,R Madley,10,44,60,73,-,-,-,-,-,H,A,A,A,-,-,-,-,-
+3/10/2015,Crystal Palace,West Brom,J Moss,68,89,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+3/10/2015,Man City,Newcastle,K Friend,18,42,49,51,54,60,62,-,-,A,H,H,H,H,H,H,-,-
+3/10/2015,Norwich,Leicester,M Clattenburg,28,48,69,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+3/10/2015,Sunderland,West Ham,N Swarbrick,10,22,45,60,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+4/10/2015,Arsenal,Man United,A Taylor,6,7,19,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+4/10/2015,Everton,Liverpool,M Atkinson,42,45,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+4/10/2015,Swansea,Tottenham,M Dean,16,27,31,65,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+17/10/2015,Chelsea,Aston Villa,R East,34,54,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+17/10/2015,Crystal Palace,West Ham,M Clattenburg,22,25,88,90,-,-,-,-,-,A,H,A,A,-,-,-,-,-
+17/10/2015,Everton,Man United,J Moss,18,22,62,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+17/10/2015,Man City,Bournemouth,M Dean,7,11,22,29,45,89,-,-,-,H,H,A,H,H,H,-,-,-
+17/10/2015,Southampton,Leicester,P Tierney,21,38,67,90,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+17/10/2015,Tottenham,Liverpool,C Pawson,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+17/10/2015,Watford,Arsenal,M Jones,62,68,74,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+17/10/2015,West Brom,Sunderland,M Atkinson,54,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+18/10/2015,Newcastle,Norwich,A Taylor,14,20,26,33,34,64,66,85,-,H,A,H,H,A,H,H,H,-
+19/10/2015,Swansea,Stoke,R Madley,4,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+24/10/2015,Arsenal,Everton,L Mason,36,38,44,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+24/10/2015,Aston Villa,Swansea,N Swarbrick,62,68,87,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+24/10/2015,Leicester,Crystal Palace,M Dean,60,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+24/10/2015,Norwich,West Brom,K Friend,47,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+24/10/2015,Stoke,Watford,M Atkinson,43,69,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+24/10/2015,West Ham,Chelsea,J Moss,17,56,79,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+25/10/2015,Bournemouth,Tottenham,R East,1,9,17,30,56,64,-,-,-,H,A,A,A,A,A,-,-,-
+25/10/2015,Liverpool,Southampton,A Marriner,77,87,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+25/10/2015,Man United,Man City,M Clattenburg,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+25/10/2015,Sunderland,Newcastle,R Madley,45,65,86,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+31/10/2015,Chelsea,Liverpool,M Clattenburg,4,45,74,83,-,-,-,-,-,H,A,A,A,-,-,-,-,-
+31/10/2015,Crystal Palace,Man United,M Jones,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+31/10/2015,Man City,Norwich,R Madley,67,84,89,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+31/10/2015,Newcastle,Stoke,R East,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+31/10/2015,Swansea,Arsenal,K Friend,49,68,73,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+31/10/2015,Watford,West Ham,K Stroud,39,48,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+31/10/2015,West Brom,Leicester,A Taylor,30,57,64,77,84,-,-,-,-,H,A,A,A,H,-,-,-,-
+1/11/2015,Everton,Sunderland,A Marriner,19,31,45,50,55,60,62,76,-,H,H,A,A,H,H,H,H,-
+1/11/2015,Southampton,Bournemouth,C Pawson,31,36,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+2/11/2015,Tottenham,Aston Villa,M Dean,3,45,79,90,-,-,-,-,-,H,H,A,H,-,-,-,-,-
+7/11/2015,Bournemouth,Newcastle,L Mason,27,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+7/11/2015,Leicester,Watford,R East,53,65,76,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+7/11/2015,Man United,West Brom,M Dean,52,90,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+7/11/2015,Norwich,Swansea,M Clattenburg,70,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+7/11/2015,Stoke,Chelsea,A Taylor,53,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+7/11/2015,Sunderland,Southampton,M Jones,69,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+7/11/2015,West Ham,Everton,P Tierney,30,43,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+8/11/2015,Arsenal,Tottenham,M Atkinson,32,77,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+8/11/2015,Aston Villa,Man City,C Pawson,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+8/11/2015,Liverpool,Crystal Palace,N Swarbrick,21,42,82,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+21/11/2015,Chelsea,Norwich,C Pawson,64,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+21/11/2015,Everton,Aston Villa,M Oliver,17,29,43,59,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+21/11/2015,Man City,Liverpool,J Moss,8,23,32,44,81,-,-,-,-,A,A,A,H,A,-,-,-,-
+21/11/2015,Newcastle,Leicester,M Jones,45,62,83,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+21/11/2015,Southampton,Stoke,L Mason,10,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+21/11/2015,Swansea,Bournemouth,A Marriner,10,26,28,39,-,-,-,-,-,A,A,H,H,-,-,-,-,-
+21/11/2015,Watford,Man United,R Madley,11,87,90,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+21/11/2015,West Brom,Arsenal,M Clattenburg,28,35,40,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+22/11/2015,Tottenham,West Ham,A Taylor,23,33,50,83,87,-,-,-,-,H,H,H,H,A,-,-,-,-
+23/11/2015,Crystal Palace,Sunderland,M Atkinson,80,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+28/11/2015,Aston Villa,Watford,L Mason,17,41,69,85,89,-,-,-,-,A,H,A,A,H,-,-,-,-
+28/11/2015,Bournemouth,Everton,K Friend,25,35,80,87,90,90,-,-,-,A,A,H,H,A,H,-,-,-
+28/11/2015,Crystal Palace,Newcastle,S Attwell,10,14,17,41,47,90,-,-,-,A,H,H,H,H,H,-,-,-
+28/11/2015,Leicester,Man United,C Pawson,24,45,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+28/11/2015,Man City,Southampton,R East,9,21,50,70,-,-,-,-,-,H,H,A,H,-,-,-,-,-
+28/11/2015,Sunderland,Stoke,M Dean,82,84,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+29/11/2015,Liverpool,Swansea,A Taylor,62,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+29/11/2015,Norwich,Arsenal,J Moss,30,43,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+29/11/2015,Tottenham,Chelsea,M Oliver,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+29/11/2015,West Ham,West Brom,M Atkinson,17,50,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+5/12/2015,Arsenal,Sunderland,R Madley,33,45,63,90,-,-,-,-,-,H,A,H,H,-,-,-,-,-
+5/12/2015,Chelsea,Bournemouth,M Jones,82,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+5/12/2015,Man United,West Ham,M Clattenburg,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+5/12/2015,Southampton,Aston Villa,A Taylor,44,73,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+5/12/2015,Stoke,Man City,M Atkinson,7,15,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+5/12/2015,Swansea,Leicester,M Oliver,5,22,68,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+5/12/2015,Watford,Norwich,M Dean,30,90,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+5/12/2015,West Brom,Tottenham,J Moss,15,39,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+6/12/2015,Newcastle,Liverpool,A Marriner,69,90,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+7/12/2015,Everton,Crystal Palace,C Pawson,76,81,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+12/12/2015,Bournemouth,Man United,A Taylor,2,24,54,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+12/12/2015,Crystal Palace,Southampton,M Dean,38,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+12/12/2015,Man City,Swansea,R Madley,26,90,90,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+12/12/2015,Norwich,Everton,M Atkinson,15,47,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+12/12/2015,Sunderland,Watford,G Scott,4,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+12/12/2015,West Ham,Stoke,A Marriner,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+13/12/2015,Aston Villa,Arsenal,K Friend,8,38,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+13/12/2015,Liverpool,West Brom,C Pawson,21,30,73,90,-,-,-,-,-,H,A,A,H,-,-,-,-,-
+13/12/2015,Tottenham,Newcastle,R East,39,74,90,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+14/12/2015,Leicester,Chelsea,M Clattenburg,34,48,77,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+19/12/2015,Chelsea,Sunderland,R East,5,13,50,53,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+19/12/2015,Everton,Leicester,J Moss,27,32,65,69,89,-,-,-,-,A,H,A,A,H,-,-,-,-
+19/12/2015,Man United,Norwich,M Oliver,38,55,67,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+19/12/2015,Newcastle,Aston Villa,M Atkinson,38,61,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+19/12/2015,Southampton,Tottenham,K Friend,40,43,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+19/12/2015,Stoke,Crystal Palace,R Madley,45,76,88,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+19/12/2015,West Brom,Bournemouth,M Dean,52,79,87,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+20/12/2015,Swansea,West Ham,L Mason,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+20/12/2015,Watford,Liverpool,M Clattenburg,3,15,85,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+21/12/2015,Arsenal,Man City,A Marriner,33,45,82,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+26/12/2015,Aston Villa,West Ham,M Dean,45,62,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+26/12/2015,Bournemouth,Crystal Palace,M Oliver,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+26/12/2015,Chelsea,Watford,A Marriner,32,42,56,65,-,-,-,-,-,H,A,A,H,-,-,-,-,-
+26/12/2015,Liverpool,Leicester,M Atkinson,63,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+26/12/2015,Man City,Sunderland,A Taylor,12,17,22,54,59,-,-,-,-,H,H,H,H,A,-,-,-,-
+26/12/2015,Newcastle,Everton,L Mason,90,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+26/12/2015,Southampton,Arsenal,J Moss,19,55,69,90,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+26/12/2015,Stoke,Man United,K Friend,19,26,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+26/12/2015,Swansea,West Brom,R East,9,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+26/12/2015,Tottenham,Norwich,M Jones,26,42,80,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+28/12/2015,Arsenal,Bournemouth,R East,27,63,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+28/12/2015,Crystal Palace,Swansea,N Swarbrick,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+28/12/2015,Everton,Stoke,M Clattenburg,17,22,45,64,71,80,90,-,-,A,H,A,H,H,A,A,-,-
+28/12/2015,Man United,Chelsea,M Atkinson,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+28/12/2015,Norwich,Aston Villa,G Scott,24,87,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+28/12/2015,Watford,Tottenham,A Taylor,17,41,89,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+28/12/2015,West Brom,Newcastle,M Jones,78,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+28/12/2015,West Ham,Southampton,M Oliver,13,69,79,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+29/12/2015,Leicester,Man City,C Pawson,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+30/12/2015,Sunderland,Liverpool,K Friend,46,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+2/1/2016,Arsenal,Newcastle,A Taylor,72,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+2/1/2016,Leicester,Bournemouth,A Marriner,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+2/1/2016,Man United,Swansea,J Moss,48,70,77,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+2/1/2016,Norwich,Southampton,M Clattenburg,76,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+2/1/2016,Sunderland,Aston Villa,C Pawson,30,63,72,90,-,-,-,-,-,H,A,H,H,-,-,-,-,-
+2/1/2016,Watford,Man City,M Atkinson,55,82,85,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+2/1/2016,West Brom,Stoke,L Mason,61,81,90,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+2/1/2016,West Ham,Liverpool,R Madley,10,55,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+3/1/2016,Crystal Palace,Chelsea,K Friend,29,60,66,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+3/1/2016,Everton,Tottenham,M Oliver,22,45,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+12/1/2016,Aston Villa,Crystal Palace,M Clattenburg,58,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+12/1/2016,Bournemouth,West Ham,M Atkinson,17,67,74,84,-,-,-,-,-,H,A,A,A,-,-,-,-,-
+12/1/2016,Newcastle,Man United,M Dean,9,38,42,67,79,90,-,-,-,A,A,H,H,A,H,-,-,-
+13/1/2016,Chelsea,West Brom,A Taylor,20,33,73,86,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+13/1/2016,Liverpool,Arsenal,M Jones,10,14,19,25,55,90,-,-,-,H,A,H,A,A,H,-,-,-
+13/1/2016,Man City,Everton,R East,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+13/1/2016,Southampton,Watford,C Pawson,16,74,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+13/1/2016,Stoke,Norwich,N Swarbrick,49,55,67,78,-,-,-,-,-,H,A,H,H,-,-,-,-,-
+13/1/2016,Swansea,Sunderland,G Scott,3,21,40,49,61,85,-,-,-,A,H,H,A,A,A,-,-,-
+13/1/2016,Tottenham,Leicester,L Mason,83,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+16/1/2016,Aston Villa,Leicester,R East,29,75,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+16/1/2016,Bournemouth,Norwich,R Madley,10,54,75,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+16/1/2016,Chelsea,Everton,M Jones,50,56,64,66,90,90,-,-,-,A,A,H,H,A,H,-,-,-
+16/1/2016,Man City,Crystal Palace,J Moss,22,41,69,84,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+16/1/2016,Newcastle,West Ham,N Swarbrick,6,15,49,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+16/1/2016,Southampton,West Brom,M Atkinson,5,35,72,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+16/1/2016,Tottenham,Sunderland,M Dean,41,42,60,67,79,-,-,-,-,A,H,H,H,H,-,-,-,-
+17/1/2016,Liverpool,Man United,M Clattenburg,78,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+17/1/2016,Stoke,Arsenal,C Pawson,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+18/1/2016,Swansea,Watford,M Oliver,27,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+23/1/2016,Crystal Palace,Tottenham,M Atkinson,30,63,84,90,-,-,-,-,-,H,A,A,A,-,-,-,-,-
+23/1/2016,Leicester,Stoke,M Dean,42,66,87,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+23/1/2016,Man United,Southampton,M Jones,87,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+23/1/2016,Norwich,Liverpool,L Mason,19,29,41,54,56,63,75,90,90,A,H,H,H,A,A,A,H,A
+23/1/2016,Sunderland,Bournemouth,R East,13,45,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+23/1/2016,Watford,Newcastle,A Marriner,46,58,71,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+23/1/2016,West Brom,Aston Villa,R Madley,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+23/1/2016,West Ham,Man City,C Pawson,1,9,56,81,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+24/1/2016,Arsenal,Chelsea,M Clattenburg,23,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+24/1/2016,Everton,Swansea,A Taylor,17,26,34,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+2/2/2016,Arsenal,Southampton,L Mason,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+2/2/2016,Crystal Palace,Bournemouth,M Jones,27,34,57,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+2/2/2016,Leicester,Liverpool,A Marriner,60,72,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+2/2/2016,Man United,Stoke,R East,14,23,53,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+2/2/2016,Norwich,Tottenham,K Friend,2,30,90,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+2/2/2016,Sunderland,Man City,S Attwell,16,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+2/2/2016,West Brom,Swansea,N Swarbrick,64,90,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+2/2/2016,West Ham,Aston Villa,J Moss,58,85,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+3/2/2016,Everton,Newcastle,C Pawson,23,88,90,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+3/2/2016,Watford,Chelsea,M Dean,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+6/2/2016,Aston Villa,Norwich,M Atkinson,45,51,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+6/2/2016,Liverpool,Sunderland,R Madley,59,70,82,89,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+6/2/2016,Man City,Leicester,A Taylor,3,48,60,87,-,-,-,-,-,A,A,A,H,-,-,-,-,-
+6/2/2016,Newcastle,West Brom,L Mason,32,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+6/2/2016,Southampton,West Ham,M Clattenburg,9,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+6/2/2016,Stoke,Everton,A Marriner,11,28,42,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+6/2/2016,Swansea,Crystal Palace,M Dean,13,47,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+6/2/2016,Tottenham,Watford,R East,64,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+7/2/2016,Bournemouth,Arsenal,K Friend,23,24,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+7/2/2016,Chelsea,Man United,M Oliver,61,90,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+13/2/2016,Bournemouth,Stoke,G Scott,9,52,55,57,-,-,-,-,-,A,A,A,H,-,-,-,-,-
+13/2/2016,Chelsea,Newcastle,R Madley,5,9,17,59,83,90,-,-,-,H,H,H,H,H,A,-,-,-
+13/2/2016,Crystal Palace,Watford,R East,16,45,82,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+13/2/2016,Everton,West Brom,M Oliver,14,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+13/2/2016,Norwich,West Ham,M Jones,55,65,74,77,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+13/2/2016,Sunderland,Man United,A Marriner,3,39,82,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+13/2/2016,Swansea,Southampton,J Moss,69,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+14/2/2016,Arsenal,Leicester,M Atkinson,45,71,90,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+14/2/2016,Aston Villa,Liverpool,N Swarbrick,16,25,58,63,65,71,-,-,-,A,A,A,A,A,A,-,-,-
+14/2/2016,Man City,Tottenham,M Clattenburg,54,74,83,-,-,-,-,-,-,A,H,A,-,-,-,-,-,-
+27/2/2016,Leicester,Norwich,N Swarbrick,89,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+27/2/2016,Southampton,Chelsea,M Atkinson,42,75,89,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+27/2/2016,Stoke,Aston Villa,K Friend,51,56,79,-,-,-,-,-,-,H,H,A,-,-,-,-,-,-
+27/2/2016,Watford,Bournemouth,A Taylor,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+27/2/2016,West Brom,Crystal Palace,J Moss,12,20,31,49,80,-,-,-,-,H,H,H,A,A,-,-,-,-
+27/2/2016,West Ham,Sunderland,M Dean,30,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+28/2/2016,Tottenham,Swansea,M Jones,19,70,77,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+28/2/2016,Man United,Arsenal,C Pawson,29,32,40,65,69,-,-,-,-,H,H,A,H,A,-,-,-,-
+1/3/2016,Aston Villa,Everton,R East,5,30,60,79,-,-,-,-,-,A,A,A,H,-,-,-,-,-
+1/3/2016,Bournemouth,Southampton,M Dean,31,79,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+1/3/2016,Leicester,West Brom,M Clattenburg,11,31,45,50,-,-,-,-,-,A,H,H,A,-,-,-,-,-
+1/3/2016,Norwich,Chelsea,L Mason,1,45,68,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+1/3/2016,Sunderland,Crystal Palace,A Taylor,36,61,67,90,-,-,-,-,-,H,A,A,H,-,-,-,-,-
+2/3/2016,Arsenal,Swansea,R Madley,15,32,74,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+2/3/2016,Liverpool,Man City,M Atkinson,34,41,57,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+2/3/2016,Man United,Watford,M Jones,83,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+2/3/2016,Stoke,Newcastle,N Swarbrick,80,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+2/3/2016,West Ham,Tottenham,A Marriner,7,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+5/3/2016,Chelsea,Stoke,M Clattenburg,39,85,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+5/3/2016,Everton,West Ham,A Taylor,13,56,79,82,90,-,-,-,-,H,H,A,A,A,-,-,-,-
+5/3/2016,Man City,Aston Villa,L Mason,48,50,60,66,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+5/3/2016,Newcastle,Bournemouth,P Tierney,28,70,80,90,-,-,-,-,-,A,A,H,A,-,-,-,-,-
+5/3/2016,Southampton,Sunderland,N Swarbrick,85,90,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+5/3/2016,Swansea,Norwich,C Pawson,61,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+5/3/2016,Tottenham,Arsenal,M Oliver,39,60,62,76,-,-,-,-,-,A,H,H,A,-,-,-,-,-
+5/3/2016,Watford,Leicester,J Moss,56,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+6/3/2016,Crystal Palace,Liverpool,A Marriner,49,72,90,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+6/3/2016,West Brom,Man United,M Dean,67,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+12/3/2016,Bournemouth,Swansea,R East,37,39,50,62,78,-,-,-,-,H,A,H,A,H,-,-,-,-
+12/3/2016,Norwich,Man City,J Moss,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+12/3/2016,Stoke,Southampton,L Mason,11,30,52,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+13/3/2016,Aston Villa,Tottenham,A Taylor,45,48,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+14/3/2016,Leicester,Newcastle,C Pawson,25,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+19/3/2016,Chelsea,West Ham,R Madley,17,45,62,89,-,-,-,-,-,A,H,A,H,-,-,-,-,-
+19/3/2016,Crystal Palace,Leicester,M Jones,34,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+19/3/2016,Everton,Arsenal,M Clattenburg,7,42,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+19/3/2016,Swansea,Aston Villa,M Dean,54,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+19/3/2016,Watford,Stoke,C Pawson,18,51,86,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+19/3/2016,West Brom,Norwich,A Taylor,50,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+20/3/2016,Man City,Man United,M Oliver,16,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+20/3/2016,Newcastle,Sunderland,M Atkinson,44,83,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+20/3/2016,Southampton,Liverpool,R East,17,22,64,84,86,-,-,-,-,A,A,H,H,H,-,-,-,-
+20/3/2016,Tottenham,Bournemouth,N Swarbrick,1,16,52,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+2/4/2016,Arsenal,Watford,A Taylor,4,38,48,90,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+2/4/2016,Aston Villa,Chelsea,N Swarbrick,26,45,46,59,-,-,-,-,-,A,A,A,A,-,-,-,-,-
+2/4/2016,Bournemouth,Man City,R Madley,7,12,19,90,-,-,-,-,-,A,A,A,A,-,-,-,-,-
+2/4/2016,Liverpool,Tottenham,J Moss,51,63,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+2/4/2016,Norwich,Newcastle,M Dean,45,71,74,87,90,-,-,-,-,H,A,H,A,H,-,-,-,-
+2/4/2016,Stoke,Swansea,M Atkinson,13,53,68,79,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+2/4/2016,Sunderland,West Brom,R East,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+2/4/2016,West Ham,Crystal Palace,M Clattenburg,15,18,41,75,-,-,-,-,-,A,H,H,A,-,-,-,-,-
+3/4/2016,Leicester,Southampton,M Oliver,38,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+3/4/2016,Man United,Everton,A Marriner,54,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+9/4/2016,Aston Villa,Bournemouth,M Atkinson,45,74,85,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+9/4/2016,Crystal Palace,Norwich,M Oliver,68,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+9/4/2016,Man City,West Brom,M Jones,6,19,66,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+9/4/2016,Southampton,Newcastle,R Madley,4,38,55,65,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+9/4/2016,Swansea,Chelsea,A Marriner,25,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+9/4/2016,Watford,Everton,K Friend,45,45,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+9/4/2016,West Ham,Arsenal,C Pawson,18,35,44,45,52,70,-,-,-,A,A,H,H,H,A,-,-,-
+10/4/2016,Liverpool,Stoke,M Clattenburg,8,22,32,50,65,-,-,-,-,H,A,H,H,H,-,-,-,-
+10/4/2016,Sunderland,Leicester,A Taylor,66,90,-,-,-,-,-,-,-,A,A,-,-,-,-,-,-,-
+10/4/2016,Tottenham,Man United,M Dean,70,74,76,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+13/4/2016,Crystal Palace,Everton,M Jones,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+16/4/2016,Chelsea,Man City,M Dean,33,54,81,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+16/4/2016,Everton,Southampton,C Pawson,68,76,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+16/4/2016,Man United,Aston Villa,K Friend,32,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+16/4/2016,Newcastle,Swansea,L Mason,40,83,90,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+16/4/2016,Norwich,Sunderland,A Marriner,41,53,90,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+16/4/2016,West Brom,Watford,M Oliver,27,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+17/4/2016,Arsenal,Crystal Palace,R East,45,82,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+17/4/2016,Bournemouth,Liverpool,M Jones,41,45,90,-,-,-,-,-,-,A,A,H,-,-,-,-,-,-
+17/4/2016,Leicester,West Ham,J Moss,18,84,86,90,-,-,-,-,-,H,A,A,H,-,-,-,-,-
+18/4/2016,Stoke,Tottenham,N Swarbrick,9,67,71,82,-,-,-,-,-,A,A,A,A,-,-,-,-,-
+19/4/2016,Newcastle,Man City,K Friend,14,31,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+20/4/2016,Liverpool,Everton,R Madley,43,45,61,76,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+20/4/2016,Man United,Crystal Palace,L Mason,4,55,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+20/4/2016,West Ham,Watford,M Dean,11,45,53,64,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+21/4/2016,Arsenal,West Brom,J Moss,6,38,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+23/4/2016,Aston Villa,Southampton,N Swarbrick,15,39,45,71,85,90,-,-,-,A,A,H,A,H,A,-,-,-
+23/4/2016,Bournemouth,Chelsea,R East,5,34,36,71,90,-,-,-,-,A,A,H,A,A,-,-,-,-
+23/4/2016,Liverpool,Newcastle,A Marriner,2,30,49,66,-,-,-,-,-,H,H,A,A,-,-,-,-,-
+23/4/2016,Man City,Stoke,R Madley,35,43,64,74,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+24/4/2016,Leicester,Swansea,M Clattenburg,10,30,60,85,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+24/4/2016,Sunderland,Arsenal,M Dean,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+25/4/2016,Tottenham,West Brom,M Jones,33,73,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+30/4/2016,Arsenal,Norwich,M Jones,59,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+30/4/2016,Everton,Bournemouth,N Swarbrick,7,9,64,-,-,-,-,-,-,H,A,H,-,-,-,-,-,-
+30/4/2016,Newcastle,Crystal Palace,M Dean,58,-,-,-,-,-,-,-,-,H,-,-,-,-,-,-,-,-
+30/4/2016,Stoke,Sunderland,C Pawson,50,90,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+30/4/2016,Watford,Aston Villa,A Taylor,28,45,48,90,90,-,-,-,-,A,H,A,H,H,-,-,-,-
+30/4/2016,West Brom,West Ham,L Mason,34,45,79,-,-,-,-,-,-,A,A,A,-,-,-,-,-,-
+1/5/2016,Man United,Leicester,M Oliver,8,17,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+1/5/2016,Southampton,Man City,A Marriner,25,28,44,57,68,78,-,-,-,H,H,A,H,H,A,-,-,-
+1/5/2016,Swansea,Liverpool,R East,20,33,65,67,-,-,-,-,-,H,H,A,H,-,-,-,-,-
+2/5/2016,Chelsea,Tottenham,M Clattenburg,35,44,58,83,-,-,-,-,-,A,A,H,H,-,-,-,-,-
+7/5/2016,Aston Villa,Newcastle,R Madley,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+7/5/2016,Bournemouth,West Brom,M Clattenburg,16,82,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+7/5/2016,Crystal Palace,Stoke,K Friend,27,47,68,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+7/5/2016,Leicester,Everton,A Marriner,5,33,65,88,-,-,-,-,-,H,H,H,A,-,-,-,-,-
+7/5/2016,Norwich,Man United,C Pawson,72,-,-,-,-,-,-,-,-,A,-,-,-,-,-,-,-,-
+7/5/2016,Sunderland,Chelsea,M Jones,14,41,45,67,70,-,-,-,-,A,H,A,H,H,-,-,-,-
+7/5/2016,West Ham,Swansea,M Oliver,25,31,51,68,90,-,-,-,-,A,A,A,H,A,-,-,-,-
+8/5/2016,Liverpool,Watford,L Mason,35,76,-,-,-,-,-,-,-,H,H,-,-,-,-,-,-,-
+8/5/2016,Man City,Arsenal,A Taylor,8,10,51,68,-,-,-,-,-,H,A,H,A,-,-,-,-,-
+8/5/2016,Tottenham,Southampton,J Moss,16,31,72,-,-,-,-,-,-,H,A,A,-,-,-,-,-,-
+10/5/2016,West Ham,Man United,M Dean,10,51,72,76,81,-,-,-,-,H,A,A,H,H,-,-,-,-
+11/5/2016,Liverpool,Chelsea,M Oliver,32,90,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+11/5/2016,Norwich,Watford,R East,11,15,18,37,51,57,-,-,-,A,H,H,H,A,H,-,-,-
+11/5/2016,Sunderland,Everton,A Taylor,38,42,55,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+15/5/2016,Arsenal,Aston Villa,M Clattenburg,5,79,80,90,-,-,-,-,-,H,H,H,H,-,-,-,-,-
+15/5/2016,Chelsea,Leicester,C Pawson,66,82,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+15/5/2016,Everton,Norwich,L Mason,19,44,48,-,-,-,-,-,-,H,H,H,-,-,-,-,-,-
+15/5/2016,Newcastle,Tottenham,A Taylor,19,39,61,73,85,86,-,-,-,H,H,A,H,H,H,-,-,-
+15/5/2016,Southampton,Crystal Palace,M Oliver,43,62,64,75,87,-,-,-,-,H,H,A,H,H,-,-,-,-
+15/5/2016,Stoke,West Ham,M Jones,23,55,89,-,-,-,-,-,-,A,H,H,-,-,-,-,-,-
+15/5/2016,Swansea,Man City,M Dean,5,45,-,-,-,-,-,-,-,A,H,-,-,-,-,-,-,-
+15/5/2016,Watford,Sunderland,K Friend,39,48,51,61,-,-,-,-,-,A,H,A,H,-,-,-,-,-
+15/5/2016,West Brom,Liverpool,R Madley,13,23,-,-,-,-,-,-,-,H,A,-,-,-,-,-,-,-
+17/5/2016,Man United,Bournemouth,J Moss,43,75,87,90,-,-,-,-,-,H,H,H,A,-,-,-,-,-

@@ -24,11 +24,8 @@ generate_unif_bdates <- function(n) {
 ## Q2
 ```{r}
 simulate_clashes <- function(m,n) {
-  number_of_clashes <- 0
-  for (i in 1:m) {
-    number_of_clashes <- (number_of_clashes + generate_unif_bdates(n))
-  }
-  return(number_of_clashes/m)
+  clash <- replicate(m, generate_unif_bdates(n))
+  return(mean(clash))
 }
 ```
 
@@ -36,10 +33,7 @@ simulate_clashes <- function(m,n) {
 number of people changing
 ```{r}
 simulate_people <- function(m, low, high) {
-  ret <- numeric(high-low+1)
-  for (i in low:high) {
-    ret[i-low+1] <- simulate_clashes(m, i)
-  }
+  ret <- sapply(low:high, function(x) simulate_clashes(m,x))
   return(ret)
 }
 ```
