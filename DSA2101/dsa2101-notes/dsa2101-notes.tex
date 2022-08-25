@@ -101,6 +101,7 @@
 		\item \texttt{replace}: if \texttt{TRUE}, then sampling is with replacement
 		\item \texttt{prob}: a vector of probability weights
 	\end{itemize}
+	\item \texttt{any(duplicated(vec))}: returns true or false if there are any duplicated elements in a vector
 	\item \texttt{rep(x, times, length.out)}
 	\item \texttt{table()}
 	\item \texttt{args(func)}: list the arguments of a function
@@ -154,9 +155,45 @@
 		\begin{verbatim}
 			str_view(x, ".a.")
 		\end{verbatim}
+
 	\end{itemize}
 	\item \texttt{str\_detect(vec, regex)}: returns a boolean vector
+	\begin{itemize}
+		\item | : means or
+		\begin{verbatim}
+			str_detect(street_names, "Jurong|Boon Lay")
+		\end{verbatim}
+		\item + : means modifier (pattern detected 1 or more times)
+		\item (): to group stuff
+		\item \texttt{$\backslash$$\backslash$w}: any word
+		\item \texttt{[0-9]}: can be 0 to 9
+		\item \texttt{$\backslash$$\backslash$d}: any number
+		\begin{itemize}
+			\item \texttt{$\backslash$$\backslash$d\{3,6\}} to search for digits repeating between 3 and 6 times
+		\end{itemize}
+		\item \impt \texttt{?about\_search\_regex} for help
+		\item \impt \texttt{?base::regex} :help for regex from R base package; \texttt{[:punct:]}, \texttt{[:digit:]}, \texttt{[:space:]}
+	\end{itemize}
 	\item \texttt{str\_extract(vec, regex)}: returns a vector of strings, particularly helpful for \texttt{".a."} regex
+	\begin{lstlisting}[language=R]
+# To find the number of eggs given a sentence
+str_extract(sent, "[0-9]+(?= eggs)")
+# ?= is a look behind operator
+# ?<= is a look ahead operator
+	\end{lstlisting}
+	\item \texttt{str\_trim}: to trim trailing whitespaces
+	\item \texttt{str\_split}
+	\item \texttt{str\_replace}
+	\begin{lstlisting}[language=R]
+# to remove duplicate words
+str_replace(sent_type, "\\b(\\w+)\\b \\1", "\\1")\end{lstlisting}
+Note that \texttt{$\backslash$$\backslash$b} means word boundary and \texttt{$\backslash$$\backslash$1} means group boundary 1
+\item \texttt{str\_match}
+\end{itemize}
+\impt USE \texttt{vignette('stringr')} and \texttt{vignette('regular-expressions')} for help
+\begin{itemize}
+	\item \texttt{devtools::install\_github("gadenbuie/regexplain")} to install regexplain GUI, need to install \texttt{devtools} library first
+	\item Also Tools $\rightarrow$ Addins $\rightarrow$ Browse Addins.. $\rightarrow$ regexplain (cheatsheet/GUI)
 \end{itemize}
 \subsubsection*{Factors}
 \texttt{factor(vec, levels=c(...))}: convert \texttt{vec} to factors with fixes levels\\
@@ -164,6 +201,7 @@
 
 \subsubsection*{Date}
 \begin{itemize}
+	\item \impt \texttt{?strftime} for help page
 	\item \texttt{as.Date(x, format)}: convert string x to \texttt{Date} object \\ e.g. \texttt{as.Date("2014/02/22", "\%Y/\%m/\%d")}
 	\item \texttt{months(d)}: what month of the year is the date in?
 	\item \texttt{weekdays(d)}: what day of the week is the date on?
@@ -173,6 +211,7 @@
 		\item \texttt{breaks}: numeric vector/string (\texttt{"month", "week"})
 		\item \texttt{labels}: if \texttt{TRUE}, return a label vector
 	\end{itemize}
+\item \texttt{seq(d,d+365,by="1 week" or "1 quarter")}
 
 \end{itemize}
 
@@ -191,8 +230,11 @@
 	col <- rgb(..., alpha=?)\end{lstlisting}
 	\item \texttt{cex}: abbr. for character expansion
 	\item \texttt{bty}: change box borders
-	\item \textbf{!!} \texttt{?par} shows all parameters for \texttt{plot()}
+	\item \impt \texttt{?par} shows all parameters for \texttt{plot()}
 	\item use \texttt{points()} or \texttt{lines()} to add more stuff to an existing plot
+	\begin{itemize}
+		\item \texttt{segments(x\_)}
+	\end{itemize}
 
 \end{itemize}
 \subsubsection*{\texttt{barplot()}}
@@ -201,7 +243,62 @@
 	\item \texttt{freq}: makes the y-axis a proportion of all the total shit (count/total), not total count using integer
 \end{itemize}
 
+\section{R Markdown (RMD)}
+\begin{itemize}
+	\item \texttt{.yaml} header
+	\begin{lstlisting}[language=R]
+	title:"..."
+	output:
+		html-document:
+		toc: true #table of content
+		toc_float: true # floating TOC at the left side of the window
+			collapsed: true
+			smooth_scroll: true
+		toc_depth: 2
+		number_sections:true/false
+	date: `r format(Sys.time(), "%d %B %Y")`
+	params:
+		country: Indonesia
+	\end{lstlisting}
+\begin{itemize}
+	\item how to reference?? $\Rightarrow$ I want die liao \texttt{`r params\$country`}
+	\item Referencing is important as it allows more control over the report, don't need to manually change the name of every variable if we want something else
+\end{itemize}
+
+	\item R Setup \impt , will apply settings globally
+	\begin{lstlisting}[language=R]
+	```{r setup, include=FALSE}
+	knitr::opts_chunk$set(fig.align='center', echo=TRUE)
+	```\end{lstlisting}
+	\item Use \texttt{`r var`} to insert inline code and ask R to run it
+	\item Figure
+	\begin{itemize}
+		\item \texttt{include=FALSE/TRUE}: to include the output or not
+		\item \texttt{fig.width}, \texttt{fig.height}, \texttt{fig.dim = c(w,h)}, \texttt{out.width="XX\%"}
+		\item \texttt{fig.align='left'/'centre'}
+		\item \texttt{fig.cap} for captions
+	\end{itemize}
+	\item Bulleted list: just indent and use '-'
+	\item Dsiplay table: use \texttt{kable(df, col.names=c(...))}
+	\begin{itemize}
+		\item Important parameters: \texttt{caption}, \texttt{align="ccc" or "lll"} for text alignment inside boxes
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Code Chunk Settings}
+\begin{itemize}
+	\item \texttt{include=FALSE} doesn't print the code
+	\item \texttt{echo=FALSE} usually for plots, don't include the actual code but just runs it
+	\item \texttt{eval=FALSE} code chunk is not run/evaluated
+	\item \texttt{collapse=TRUE} combines text output and source code in single block
+	\item \texttt{message=FALSE}
+	\item \texttt{warning=FALSE}
+	\item \texttt{error=TRUE} will continue to knit the file even when there are errors and will include error messages in the file
+\end{itemize}
+
 \section{Importing Data}
+
+\impt use \texttt{read.delim} or \texttt{readLines} if none is working
 
 \subsection*{CSV Files}
 \texttt{read.csv()}: main arguments:
@@ -216,7 +313,7 @@
 \end{itemize}
 \textbf{Procedure when dealing with CSV}:
 \begin{itemize}
-	\item \texttt{apply(salaries, 2, function(x) sum(is.na(x)))} (check if any column has missing values)
+	\item \texttt{apply(salaries, 2, function(x) sum(is.na(x)))} \impt (check if any column has missing values)
 	\item if \texttt{read.csv} doesn't work, can try \texttt{readLines} and \texttt{str\_split} to split commas
 \end{itemize}
 
@@ -224,8 +321,73 @@
 \subsection*{Excel Files}
 \begin{itemize}
 	\item import \texttt{readxl}, data is in the form of a tibble
-	\item \texttt{read\_excel}
+	\item \texttt{read\_excel(path, sheet=?)}: \texttt{sheet} parameter can be string or integer
+	\item \texttt{sheet\_names(path)}: to retrieve sheet names
 \end{itemize}
+
+\subsection*{JSON Files}
+\begin{itemize}
+	\item import \texttt{jsonlite}
+	\item \texttt{fromJSON(txt)}: takes up text/string object as an argument
+	\item \texttt{readLines(path)}: returns a string \impt line break will count as another element of a vector
+	\item \texttt{prettify()}
+	\item \impt How to convert list to data frame?
+	\begin{enumerate}
+		\item create a function \texttt{ls\_to\_df} which returns \texttt{data.frame} given an element of a list
+		\item \texttt{lapply} the list to return a list of dataframes
+		\item use \texttt{do.call} to combine the individual dataframes into one single dataframe
+		\begin{lstlisting}[language=R]
+df_row_list <- lapply(list, ls_to_df)
+# combine repeatedly
+do.call(rbind, df_row_list)\end{lstlisting}
+	\end{enumerate}
+	\item Some thoughts \impt Are there missing data for any observation?? if yes then remove
+\end{itemize}
+\subsubsection*{OOP in R}
+\textbf{S3 classes}
+\begin{itemize}
+	\item \texttt{methods}: to search for available methods
+	\item \texttt{summary}
+\end{itemize}
+\begin{lstlisting}[language=R]
+studentBio <- list(studentName = "Harry Potter", studentAge = 19, studentContact="London")
+class(studentBio) <- "StudentInfo"
+
+# how to assign method
+contact <- function(object) {
+	UseMethod("contact")
+}
+contact.StudentInfo <- function(object) {
+	cat("Your contact is", object$studentContact, "\n")
+}
+# can just call contact(studentBio) without .StudentInfo
+\end{lstlisting}
+\textbf{S4 classes}
+\begin{lstlisting}[language=R]
+# How to set Class with slots
+setClass("employee", slots=list(name="character", id="numeric", contact="character"))
+
+# Constructor
+obj <- new("employee",name="Steven", id=1002, contact="West Avenue")
+\end{lstlisting}
+
+\impt How to add method?
+\begin{lstlisting}[language=R]
+setMethod("show",
+signature(object="employee"),
+definition=function(object) {
+	# do stuff
+})
+\end{lstlisting}
+
+\impt Tips for dealing with S4 data
+\begin{itemize}
+	\item \texttt{isS4(obj)}: check if obj is S4
+	\item \texttt{slotNames(obj)} list all the attributes/slots
+	\item \texttt{methods(class="????")}: to list out all the methods
+	\item \texttt{vignette("class")}: for documentation
+\end{itemize}
+\textbf{RC classes}
 \end{multicols}
 
 

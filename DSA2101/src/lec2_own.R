@@ -24,3 +24,21 @@ football <- read.csv("../data/EPL_1415_1516.csv",
 
 football_lines <- readLines("../data/EPL_1415_1516.csv")
 football_lines <- str_split(football_lines, ",")
+
+
+## READ JSON
+library(jsonlite)
+jsontxt <- readLines("../data/read_json_02.txt")
+fromJSON(jsontxt)
+
+
+studentBio <- list(studentName = "Harry Potter", studentAge = 19, studentContact="London")
+class(studentBio) <- "StudentInfo"
+
+# how to assign method
+contact <- function(object) {
+  UseMethod("contact")
+}
+contact.StudentInfo <- function(object) {
+  cat("Your contact is", object$studentContact, "\n")
+}

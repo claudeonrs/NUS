@@ -7,6 +7,7 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{lscape}
+\usepackage{multirow}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -81,7 +82,7 @@
 %\maketitle
 \fontfamily{lmss}\selectfont
 \begin{multicols}{2}
-\section{Chapter 1: Accounting in Action}
+\section{Accounting in Business}
 \begin{description}
 	\item[in the aggregate] accumulate transactions of the same type over a certain period and report the data as one amount in the company's financial statements
 	\item[accounting] the entire process of identifying, recording, and communicating economic events (bookkeeping is part of recording only)\\
@@ -183,25 +184,100 @@ $$\text{Assets} = \text{Liabilities} + \text{Equity}$$
 		\item Current and noncurrent assets/liabilities (can be turned into cash/settled within 1 year?)
 		\item Preferably sorted from higher liquidity to lower
 		\item \impt Assets recorded at \textbf{cost/book value}, not market value
-		\item \impt Revenue vs Loss/Gain\\
-		Revenue:
+		\item \impt Revenue vs Loss/Gain
+		\item \impt Notes Payable vs Accounts Payable \\
+		Notes: usually cash\\
+		Accounts: usually owed to suppliers
 	\end{itemize}
 	\item \textbf{Statement of cash flows (SCF)} summarizes information about the cash inflows (receipts) and outflows (payments) for a specific period of time.
 	$$\Delta Cash = CFO + CFI + CFF$$
 	\item \textbf{Statement of comprehensive income (SCI)} presents other comprehensive income items that are not included in the determination of net income
 \end{enumerate}
 
-\section{Accounting Cycles}
+\section{The Mechanics of Accounting}
 \begin{itemize}
-	\item \textbf{Prepaid rent} is an \textbf{asset}!\\
+	\item \impt \textbf{Prepaid rent} is an \textbf{asset}!\\
 	The benefits are not going to happen now; but will happen in the future
-	\item \textbf{Unearned revenue} is a \textbf{liability}\\
+	\item \impt \textbf{Unearned revenue} is a \textbf{liability}\\
 	Has to be settled in the future
 \end{itemize}
-
-
-
 \end{multicols}
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{image/acc_cycle.png}
+\end{figure}
+%
+
+\begin{multicols}{2}
+	\begin{table}[H]
+		\resizebox{\columnwidth}{!}{
+			\begin{tabular}{c|c|c|c|ccc}
+				& \multirow{2}{*}{Assets}  & \multirow{4}{*}{=} & \multirow{2}{*}{Liabilities} & \multicolumn{3}{c}{Equity}                             \\ \cline{5-7}
+				&                &              &                 & \multicolumn{1}{c|}{Revenues} & \multicolumn{1}{c|}{Expenses} & Dividends \\ \cline{1-2} \cline{4-7}
+				$\uparrow$& Dr.                  &                   &   Cr.                & Cr.                      &  Dr.                     & Dr. \\ \cline{1-2} \cline{4-7}
+				$\downarrow$ &  Cr.                 &               &             Dr.      &   Dr.            &    Cr.                   & Cr.
+			\end{tabular}
+		}
+	\end{table}
+\section{Adjusting Accounts}
+\textbf{Accrual Accounting} can capture the value of the firm much better due to timeliness\\
+Adjusting entries made at the end of a period do not involve cash\\
+Each adjusting entry involves a balance sheet account and an account on the IS/SCI;
+\begin{itemize}
+	\item \textbf{Unrecorded Receivables}: Amount that has not been paid but the work has been done/should be recognized (\eg billing every 3 months)
+	\item \textbf{Unrecorded Liabilities}: Expenses being incurred prior to being paid or recorded (\eg interest payable, wages payable) in other words parts of expense is actually incurred due to the use of resources but it has not been paid
+	\item \textbf{Prepaid Assets}: Payments that a company makes in advance for items charged to expense (\eg insurance premium payment) and the asset slowly loses its value
+	\item \textbf{Unearned Revenues}: Amounts received before the actual recognition of revenues, and work is slowly being done over time which decreases liability and increases revenue
+\end{itemize}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\textbf{Accumulated Depreciation}: is a \textit{Contra-asset} with normal balance of credit
+\begin{itemize}
+	\item Note that for depreciation of PPE, PPE balance is not directly credited but instead Accumulated depreciation is credited (Less)
+\end{itemize}
+\begin{table}[H]
+	\resizebox{\columnwidth}{!}{
+		\begin{tabular}{c|c|c|c|ccc}
+			\multirow{2}{*}{} & \multirow{2}{*}{Assets} & \multirow{6}{*}{=} & \multirow{2}{*}{Liabilities} & \multicolumn{3}{c}{Equity}                             \\ \cline{5-7}
+			&                   &                   &                   & \multicolumn{1}{c|}{Rev.} & \multicolumn{1}{c|}{Exp.} & Div.  \\ \cline{1-2} \cline{4-7}
+			\makecell{Unrecorded \\Receivables}&  Dr.&  &  & Cr. &  &  \\ \cline{1-2} \cline{4-7}
+			\makecell{Unrecorded \\Liabilities}&  &  & Cr. &  & Dr. &  \\ \cline{1-2} \cline{4-7}
+			\makecell{Prepaid\\Expenses}&  Cr.&  &  &  & Dr. &  \\ \cline{1-2} \cline{4-7}
+			\makecell{Unearned\\Revenues}&  &  & Dr.  & Cr. &  &
+		\end{tabular}
+	}
+\end{table}
+
+\section{Financial Statement Analysis (FSA)}
+\textbf{General areas of FSA}:
+\begin{itemize}
+	\item \textbf{Liquidity and efficiency}: able to meet \underline{short term obligations} and efficiently generate revenues
+	\item \textbf{Solvency}: able to meet \underline{long term obligations} and generate \underline{future} revenues
+	\item \textbf{Profitability}: rewards for investors
+	\item \textbf{Cash Flow}: manage cash inflow and outflow
+	\item \textbf{Market Prospects}: generate positive market expectations
+\end{itemize}
+
+\subsection{Return on Assets (ROA)}
+\begin{equation*}
+	\begin{aligned}
+		\text{ROA} &= \frac{\text{Net profit}}{\text{Avg total assets}}
+		%&= \frac{\text{Net profit}}{\frac{\text{balance_{beginning}} + \text{balance_{ending}}}{2}}
+	\end{aligned}
+\end{equation*}
+Measures \textit{profitability}
+\subsection{Debt Ratio}
+\begin{equation*}
+	\begin{aligned}
+		\text{Debt Ratio} = \frac{\text{Total Liabilities}}{\text{Total Assets}}
+	\end{aligned}
+\end{equation*}
+Measures \textit{solvency} and financial leverage (higher financial leverage $\Rightarrow$ higher risk)
+\end{multicols}
+
+
+
+
+
 
 
 
