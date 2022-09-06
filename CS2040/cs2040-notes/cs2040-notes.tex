@@ -81,10 +81,61 @@
 %\maketitle
 \fontfamily{lmss}\selectfont
 \begin{multicols}{2}
+\section{Introduction}
+\textbf{Some questions to ask before starting on a problem}
+\begin{itemize}
+	\item Extract out important keywords (what DS to use?)
+	\item Edge cases? \eg if \texttt{size==0} or \texttt{size==1},
+	\item Trivial cases? can just hardcode
+\end{itemize}
+\textbf{Code styling}
+\begin{itemize}
+	\item \href{https://nus-cs2030.github.io/1718-s2/style/index.html}{CS2030 Code Styling Guide}
+	\item \href{https://google.github.io/styleguide/javaguide.html}{Google Java Styling Guide}
+	\item \textbf{Modularity}: use method to print answers inside main method
+	\begin{lstlisting}[language=java]
+	\\ print answer
+	ans = simulate(n,k,m);
+	printAns();	\end{lstlisting}
+    \item \textbf{No global variables}
+\end{itemize}
+\section{Java}
+
+How to throw exception?
+\begin{lstlisting}[language=Java]
+public class MyException extends Exception {
+	private int var;
+	public MyException(int var) {
+		this.var = var
+	}
+	public int getVar() {
+		return this.var;
+	}
+}
+
+public class Main {
+	public static void main(String[] args) {
+		try {
+			...
+			throw new MyException(errorVar);
+		} catch (MyException e) {
+			System.out.println(e.getVar());
+		}
+	}
+}\end{lstlisting}
+
+
+
+
 \section{Data Structures}
 $$O(1) < O(\log{(n)}) < O(n^c) \text{ where } c<1 $$
 $$O(n) <  O(\log{(n!)}) = O(n\log{(n)}) < O(n^2)$$
 $$O(n^k)[\text{ where } k>2] < O(k^n) [\text{ where } k\geq1] < O(n!) $$
+\textbf{How to implement Data Structures?}
+\begin{itemize}
+	\item Composition: use well-known DS as an attribute of the implemented DS
+	\item Inheritance: extends well-known DS
+\end{itemize}
 \subsection{Linked List}
 \begin{itemize}
 	\item Motivation: implementation of list using array needs to occupy contiguous memory space (can result in memory error)
@@ -105,15 +156,62 @@ $$O(n^k)[\text{ where } k>2] < O(k^n) [\text{ where } k\geq1] < O(n!) $$
 \textbf{Java API}: \texttt{ArrayList} or \texttt{LinkedList}
 \begin{lstlisting}[language=Java]
 	\\ constructor
-	ArrayList<Integer> list = new ArrayList<Integer>;
+	ArrayList<Integer> list = new ArrayList<Integer>();
 \end{lstlisting}
 
+\subsection{Stack}
+\begin{lstlisting}[language=Java]
+	// to construct an array of generics
+	E[] arr = (E[]) new Object[size];
+	/*
+	// does not work
+	E[] arr = new E[size]
+	*/
+\end{lstlisting}
+\textbf{Uses}:
+\begin{itemize}
+	\item \impt Converting infix to postfix expression (Lecture 4 Slide 28)
+	\item \impt Evaluating postfix expression
+\end{itemize}
+
+\subsection{Queue}
+
+\textbf{Uses}:
+\begin{itemize}
+	\item \impt Breadth-first traversal of trees
+\end{itemize}
+\section{Recursion}
+\impt \textbf{Recipe for recursion} (3 fingers)
+\begin{enumerate}
+	\item \underline{General recursive case}: identify simpler instances of the same problem
+	\item \underline{Base case}: cases that we can solve without recursion
+	\item Be sure that we are able to \underline{reach the simplest} instance so that we won't end up in infinite loop
+\end{enumerate}
+\textbf{Uses}
+\begin{itemize}
+	\item Insert item into sorted LinkedList
+	\item Tower of Hanoi
+	\item \impt Combination ($n$ choose $k$)
+	\item Binary search
+	\item Finding $k$-th smalles element (use pivot element \texttt{p})\\
+	move elements \texttt{< p} to the left of \texttt{p}\\
+	move elements \texttt{> p} to the right of \texttt{p}
+	\item Printing all permutations of a String
+\end{itemize}
+\textbf{Overloading}: same function name but with different parameters (useful in Java)
 \section{Algorithms}
 \subsection{Sorting}
 
 
 \section{Java Tricks}
 \begin{itemize}
+	\item OOP is important (CardGame)
+	\begin{itemize}
+		\item If it involves an array, OOP is useful, methods can just modify properties/attributes of the object class (\eg \texttt{reversed=true; increment=4})
+		\begin{itemize}
+			\item Especially true if only need to print statement at the end
+		\end{itemize}
+	\end{itemize}
 	\item Use \texttt{StringBuilder} for return statements
 	\begin{itemize}
 		\item \href{https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html}{Java StringBuilder API}

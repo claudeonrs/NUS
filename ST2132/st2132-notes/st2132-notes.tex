@@ -72,14 +72,53 @@
 %\maketitle
 \fontfamily{lmss}\selectfont
 \begin{multicols}{2}
-\section{Chapter 1}
-Some important functions in R
-\begin{itemize}
-	\item \texttt{rnorm(n)}: generate n realisations of the normal distribution
-	\item \texttt{rbinom(n)}
-\end{itemize}
+\section{Probability Review}
+
 \textbf{Multinomial Distribution}
-$$P(X_1=x_1, \dots, X_r = x_r) = {n \choose {x_1,\dots,x_r}} \prod_{i=1}^rp_i^{x_i}$$
+$$\Pr(X_1=x_1, \dots, X_r = x_r) = {n \choose {x_1,\dots,x_r}} \prod_{i=1}^rp_i^{x_i}$$
+\textbf{Mean Square Error (MSE)}
+$$\text{E}\{(Y-c)^2\} = \text{var}(Y) + \{\text{E}(Y)-c\}^2$$
+$$\text{E}\{(Y-c)^2|x\} = \text{var}[Y|x] + \{\text{E}[Y|x]-c\}^2$$
+which are special cases of $\text{E}(Y^2) = \text{var}(Y) + [\text{E}(Y)]^2$. MSE is minimized if and only if $c=\text{E}(Y)$ or $\text{E}[Y|x]$.\\
+Usually the formula for $\text{E}[Y|x]=f(x)$ is determined from observations/data and $x$ can be a vector of realisations from covariates.
+$$\text{MSE}_{\text{empirical}} = \frac{1}{n}\sum_{i=1}^n\{\text{E}[Y|x_i]-y_i\}^2$$
+In the real world, we have different realisations $x_i$ of the random variable $X$, hence the mean MSE is
+$$\frac{1}{n}\sum_{i=1}^{n}\text{var}[Y|x_i] \approx \text{E}(\text{var}[Y|X]) \leq \text{var}(Y)$$
+\textbf{Analysis of Variance (ANOVA)}\\
+involves breaking of variance into components
+$$\text{var}(Y) = \text{E}(\text{var}[Y|X]) + \text{var}(\text{E}[Y|X])$$
+
+\subsection{Distributions}
+
+\textbf{$\chi^2_1$ distribution}\\
+Let $Z \sim \mathcal{N}(0,1)$. $V = Z^2$ has a $\chi^2$ distribution with 1 degree of freedom
+$$f(v) = \frac{1}{\sqrt{2\pi}}v^{-1/2}e^{-v/2}$$
+
+\textbf{Gamma distribution}
+$$f(t) = \frac{\lambda^\alpha}{\Gamma(\alpha)}t^{\alpha-1}e^{-\lambda t}, t\geq 0$$
+$$\Gamma(\alpha) = \int_{0}^{\infty}x^{\alpha-1}e^{-x}dx$$
+
+\textbf{$\chi^2_n$ distribution}\\
+Let $V_1,\dots,V_n$ be IID $\chi^2_1$
+$$V = \sum_{i=1}^nV_i$$
+has a $\chi^2_n$ distribution with $n$ degrees of freedom\\
+
+\textbf{$t$ distribution}\\
+Let $Z \sim \mathcal{N}(0,1)$ and $V \sim \chi^2_n$ be independent
+$$t_n = \frac{Z}{\sqrt{V/n}}$$ has a $t$ distribution with $n$ degrees of freedom\\
+
+\textbf{$F$ distribution}\\
+Let $V \sim \chi_m^2$ and $W \sim \chi^2_n$ be independent
+$$F_{m,n} = \frac{V/m}{W/n}$$ has an $F$ distribution with $(m,n)$ degrees of freedom\\
+*Note: $t_n^2 = F_{1,n}$
+
+\subsection{Sample Variance}
+$$S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})^2$$
+$$\bar{X} \text{ and } S^2 \text{ are independent}$$
+$$\bar{X} \sim \mathcal{N}\left(\mu,\frac{\sigma^2}{n}\right)$$
+$$\frac{(n-1)S^2}{\sigma^2}\sim \chi^2_{n-1}$$
+$$\frac{\bar{X}-\mu}{S/\sqrt{n}} \sim t_{n-1}$$
+
 \end{multicols}
 
 

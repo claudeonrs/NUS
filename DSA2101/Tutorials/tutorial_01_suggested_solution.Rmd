@@ -1,0 +1,160 @@
+---
+title: "Tutorial 1 Worksheet AY 22/23 Sem 1"
+subtitle: DSA2101
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Birthday paradox
+
+The birthday paradox is commonly introduced in probability classes. It revolves 
+around the question:
+
+> In a set of $n$ randomly chosen people, what is the probability that at least 
+> two will share a birthday?
+
+Assuming that *all birthdates are equally likely*, it is possible to compute that 
+we only require 23 people for this probability to be more than half. In this 
+tutorial, we shall relax these assumptions and obtain some answers using simulation.
+
+In all that follows, assume that everyone was born in a non-leap year, and that 
+birthdates are coded 1 to 365.
+
+## Classical set up
+
+Here are two possible approaches to the functions. The `table` function tabulates
+the count of each value, while `any` is a function that returns TRUE if there is 
+at least a single TRUE in a TRUE/FALSE vector.
+
+```{r echo=FALSE}
+generate_unif_bdates <- function(n=20) {
+  bdates <- sample(1:365, size=n, replace=TRUE)
+  ifelse(any(table(bdates) > 1), 1, 0)
+}
+
+generate_unif_bdates <- function(n=20) {
+  bdates <- sample(1:365, size=n, replace=TRUE)
+  ifelse(anyDuplicated(bdates), 1, 0)
+} 
+```
+
+1. Write an R function `generate_unif_bdates` that 
+    * takes in a single argument, `n`, 
+    * generates `n` birthdates using `sample`, and finally
+    * checks if there is any "clash".
+   The function should return TRUE if there *was* a clash, and FALSE otherwise.
+
+```{r}
+generate_unif_bdates(20)
+```
+
+2. Suppose we were to randomly select $n$ students from NUS, and check to see 
+if there were any birthday clashes. Let $X_{i,n}$ be a Bernoulli random variable
+that takes on the value 1 if there is a clash and 0 otherwise. Then, if 
+all birthdays are equally likely, and are independent of one another, we can compute that
+\[
+P(X_{i,23} = 1) \approx 0.50
+\]
+Note that $i$ is simply an indication that this random variable corresponds to 
+this particular group of $n$ individuals. 
+
+To estimate this probability using simulation, we would generate multiple observations
+of $X_{i,23}$ and compute the proportion of times the value 1 (or TRUE) occurs.
+
+`generate_unif_bdates(23)` generates a single observation of $X_{i,23}$. Repeat
+this 100 times to see if you obtain a number close to 0.50.
+
+```{r}
+X_out <- replicate(100, generate_unif_bdates(23))
+mean(X_out)
+
+# An alternative approach: write a wrapper function that allows you to 
+# modify the number of simulations as well:
+# This is in preparation for the next task.
+wrapper_fn <- function(n, nsim) {
+  mean(replicate(nsim, generate_unif_bdates(n)))
+}
+```
+
+3. Now run 100 simulations each for `n` from 10 to 50. Create a similar graph to 
+this one:
+
+```{r fig.align='center'}
+# Set seed here?
+output_prop <- sapply(10:50, 
+                      function(x) mean(replicate(100, generate_unif_bdates(x))))
+
+# Using the wrapper function from above, the sapply call is cleaner:
+output_prop <- sapply(10:50, wrapper_fn, nsim=100) 
+
+plot(10:50, output_prop, type="b", ylim=c(0,1), xlab="No. of individuals in a group",
+     ylab="Prob.", main="Probability of birthday clash")
+abline(h=0.5, lty=2, col="red")
+abline(v=23, lty=2, col="black")
+```
+
+4. As you observed, we do not all get exactly the same graph. We can compute 
+Confidence Intervals to quantify this uncertainty. To compute 95\% confidence 
+intervals for the probabilities above, we can use this formula:
+\[
+\hat{p} \;\pm\; z_{0.975}\sqrt{\frac{\hat{p}(1- \hat{p})}{100}}
+\]
+  where:
+  * $z_{0.975}$ is the .975-quantile of the N(0,1) distribution. (`qnorm()` function in R)
+  * $\hat{p} = \frac{1}{100}\sum_{i=1}^{100} X_{i, n}$
+  
+  Apply the formula above to update your plot:
+```{r fig.align='center'}
+upper <- output_prop + qnorm(0.975)*sqrt(output_prop*(1-output_prop)/100)
+lower <- output_prop - qnorm(0.975)*sqrt(output_prop*(1-output_prop)/100)
+
+plot(10:50, output_prop, type="b", ylim=c(0,1), xlab="No. of individuals in a group",
+     ylab="Prob.", main="Probability of birthday clash")
+
+lines(10:50, upper, col="red", lty=2)
+lines(10:50, lower, col="red", lty=2)
+segments(10:50, upper, y1=lower, lend=0)
+
+# An alternative, pre-packaged function for error bars:
+#Hmisc::errbar(10:50, output_prop, upper, lower)
+```
+  
+6. How many people do we need if we wish for the probability of 
+    * 3 birthdays on one day to be more than 0.75?
+    * birthdays within 7 days to be more than 0.5?
+    
+```{r}
+generate_unif_bdates2 <- function(n=20) {
+  bdates <- sample(1:365, size=n, replace=TRUE)
+  any(table(bdates) > 2) 
+}
+output_prop2 <- sapply(10:150, 
+                      function(x) mean(replicate(100, generate_unif_bdates2(x))))
+
+plot(10:150, output_prop2, type="b", ylim=c(0,1), xlab="No. of individuals in a group",
+     ylab="Prob.", main="Probability of birthday clash")
+```
+
+```{r}
+generate_unif_bdates3 <- function(n=20) {
+  bdates <- sort(sample(1:365, size=n, replace=TRUE))
+  
+  crossover <- c(bdates[bdates >= 359], bdates[bdates<=7]+365)
+  if(length(crossover) >=2){
+    if(any(diff(crossover)<=7))
+      return(TRUE)
+  }
+  any(diff(bdates) <= 7)
+}
+output_prop3 <- sapply(2:30, 
+                      function(x) mean(replicate(100, generate_unif_bdates3(x))))
+
+plot(2:30, output_prop3, type="b", ylim=c(0,1), xlab="No. of individuals in a group",
+     ylab="Prob.", main="Probability of birthday clash")
+```
+
+
+# References
+
+1. [Wikipedia entry on Birthday paradox](https://en.wikipedia.org/wiki/Birthday_problem)

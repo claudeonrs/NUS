@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  25 AUG 2022 12:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  6 SEP 2022 10:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -294,25 +294,56 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2021/02/02 v1.28 mathematical typesetting tools
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count285
+\calc@Bcount=\count286
+\calc@Adimen=\dimen162
+\calc@Bdimen=\dimen163
+\calc@Askip=\skip62
+\calc@Bskip=\skip63
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count287
+\calc@Cskip=\skip64
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+\g_MT_multlinerow_int=\count288
+\l_MT_multwidth_dim=\dimen164
+\origjot=\skip65
+\l_MT_shortvdotswithinadjustabove_dim=\dimen165
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen166
+\l_MT_above_intertext_sep=\dimen167
+\l_MT_below_intertext_sep=\dimen168
+\l_MT_above_shortintertext_sep=\dimen169
+\l_MT_below_shortintertext_sep=\dimen170
+\xmathstrut@box=\box54
+\xmathstrut@dim=\dimen171
+)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count285
-\lst@gtempboxa=\box54
+\lst@mode=\count289
+\lst@gtempboxa=\box55
 \lst@token=\toks25
-\lst@length=\count286
-\lst@currlwidth=\dimen162
-\lst@column=\count287
-\lst@pos=\count288
-\lst@lostspace=\dimen163
-\lst@width=\dimen164
-\lst@newlines=\count289
-\lst@lineno=\count290
-\lst@maxwidth=\dimen165
+\lst@length=\count290
+\lst@currlwidth=\dimen172
+\lst@column=\count291
+\lst@pos=\count292
+\lst@lostspace=\dimen173
+\lst@width=\dimen174
+\lst@newlines=\count293
+\lst@lineno=\count294
+\lst@maxwidth=\dimen175
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count291
-\lst@skipnumbers=\count292
-\lst@framebox=\box55
+\c@lstnumber=\count295
+\lst@skipnumbers=\count296
+\lst@framebox=\box56
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
@@ -338,12 +369,12 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip62
-\enit@outerparindent=\dimen166
+\labelindent=\skip66
+\enit@outerparindent=\dimen176
 \enit@toks=\toks26
-\enit@inbox=\box56
-\enit@count@id=\count293
-\enitdp@description=\count294
+\enit@inbox=\box57
+\enit@count@id=\count297
+\enitdp@description=\count298
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
@@ -355,13 +386,13 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 )
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2022/01/26 3.70 The Babel package
-\babel@savecnt=\count295
-\U@D=\dimen167
+\babel@savecnt=\count299
+\U@D=\dimen177
 \l@unhyphenated=\language7
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count296
+\bbl@dirlevel=\count300
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
@@ -416,45 +447,44 @@ Package: caption 2020/10/26 v3.5g Customizing captions (AR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
-\captionmargin=\dimen168
-\captionmargin@=\dimen169
-\captionwidth=\dimen170
-\caption@tempdima=\dimen171
-\caption@indent=\dimen172
-\caption@parindent=\dimen173
-\caption@hangindent=\dimen174
+\captionmargin=\dimen178
+\captionmargin@=\dimen179
+\captionwidth=\dimen180
+\caption@tempdima=\dimen181
+\caption@indent=\dimen182
+\caption@parindent=\dimen183
+\caption@hangindent=\dimen184
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count297
-\c@continuedfloat=\count298
+\c@caption@flags=\count301
+\c@continuedfloat=\count302
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2021/10/28 v1.9b multicolumn formatting (FMi)
-\c@tracingmulticols=\count299
-\mult@box=\box57
-\multicol@leftmargin=\dimen175
-\c@unbalance=\count300
-\c@collectmore=\count301
-\doublecol@number=\count302
-\multicoltolerance=\count303
-\multicolpretolerance=\count304
-\full@width=\dimen176
-\page@free=\dimen177
-\premulticols=\dimen178
-\postmulticols=\dimen179
-\multicolsep=\skip63
-\multicolbaselineskip=\skip64
-\partial@page=\box58
-\last@line=\box59
-\maxbalancingoverflow=\dimen180
-\mult@rightbox=\box60
-\mult@grightbox=\box61
-\mult@firstbox=\box62
-\mult@gfirstbox=\box63
-\@tempa=\box64
+\c@tracingmulticols=\count303
+\mult@box=\box58
+\multicol@leftmargin=\dimen185
+\c@unbalance=\count304
+\c@collectmore=\count305
+\doublecol@number=\count306
+\multicoltolerance=\count307
+\multicolpretolerance=\count308
+\full@width=\dimen186
+\page@free=\dimen187
+\premulticols=\dimen188
+\postmulticols=\dimen189
+\multicolsep=\skip67
+\multicolbaselineskip=\skip68
+\partial@page=\box59
+\last@line=\box60
+\maxbalancingoverflow=\dimen190
+\mult@rightbox=\box61
+\mult@grightbox=\box62
+\mult@firstbox=\box63
+\mult@gfirstbox=\box64
 \@tempa=\box65
 \@tempa=\box66
 \@tempa=\box67
@@ -490,65 +520,66 @@ Package: multicol 2021/10/28 v1.9b multicolumn formatting (FMi)
 \@tempa=\box97
 \@tempa=\box98
 \@tempa=\box99
-\c@minrows=\count305
-\c@columnbadness=\count306
-\c@finalcolumnbadness=\count307
-\last@try=\dimen181
-\multicolovershoot=\dimen182
-\multicolundershoot=\dimen183
-\mult@nat@firstbox=\box100
-\colbreak@box=\box101
-\mc@col@check@num=\count308
+\@tempa=\box100
+\c@minrows=\count309
+\c@columnbadness=\count310
+\c@finalcolumnbadness=\count311
+\last@try=\dimen191
+\multicolovershoot=\dimen192
+\multicolundershoot=\dimen193
+\mult@nat@firstbox=\box101
+\colbreak@box=\box102
+\mc@col@check@num=\count312
 )
 (/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
-\col@sep=\dimen184
-\ar@mcellbox=\box102
-\extrarowheight=\dimen185
+\col@sep=\dimen194
+\ar@mcellbox=\box103
+\extrarowheight=\dimen195
 \NC@list=\toks29
-\extratabsurround=\skip65
-\backup@length=\skip66
-\ar@cellbox=\box103
+\extratabsurround=\skip69
+\backup@length=\skip70
+\ar@cellbox=\box104
 )
-\rotheadsize=\dimen186
-\c@nlinenum=\count309
+\rotheadsize=\dimen196
+\c@nlinenum=\count313
 \TeXr@lab=\toks30
 )
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 8
-0.
+1.
 
 (/usr/share/texmf/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count310
-\l__pdf_internal_box=\box104
+\l__color_backend_stack_int=\count314
+\l__pdf_internal_box=\box105
 )
 (./dsa2101-notes.aux)
 \openout1 = `dsa2101-notes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -586,16 +617,16 @@ LaTeX Font Info:    ... okay on input line 80.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count311
-\scratchdimen=\dimen187
-\scratchbox=\box105
-\nofMPsegments=\count312
-\nofMParguments=\count313
+\scratchcounter=\count315
+\scratchdimen=\dimen197
+\scratchbox=\box106
+\nofMPsegments=\count316
+\nofMParguments=\count317
 \everyMPshowfont=\toks31
-\MPscratchCnt=\count314
-\MPscratchDim=\dimen188
-\MPnumerator=\count315
-\makeMPintoPDFobject=\count316
+\MPscratchCnt=\count318
+\MPscratchDim=\dimen198
+\MPnumerator=\count319
+\makeMPintoPDFobject=\count320
 \everyMPtoPDFconversion=\toks32
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -606,7 +637,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 80.
+Package hyperref Info: Link coloring OFF on input line 81.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -617,82 +648,86 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count317
+\c@section@level=\count321
 )
-LaTeX Info: Redefining \ref on input line 80.
-LaTeX Info: Redefining \pageref on input line 80.
-LaTeX Info: Redefining \nameref on input line 80.
+LaTeX Info: Redefining \ref on input line 81.
+LaTeX Info: Redefining \pageref on input line 81.
+LaTeX Info: Redefining \nameref on input line 81.
 
 (./dsa2101-notes.out) (./dsa2101-notes.out)
 \@outlinefile=\write3
 \openout3 = `dsa2101-notes.out'.
 
-\c@lstlisting=\count318
+\c@lstlisting=\count322
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 
-87.
+88.
 
 (/usr/share/texmf/tex/latex/lm/ts1lmss.fd
 File: ts1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8
-7.
+8.
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-22.
+24.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-22.
+24.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-122.
+124.
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-122.
+124.
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 122.
+(Font)              <10> on input line 124.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 122.
+(Font)              <7> on input line 124.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 122.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 122
+(Font)              <5> on input line 124.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 124
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 122
+LaTeX Font Info:    Trying to load font information for U+msb on input line 124
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 140.
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
+[]\T1/lmtt/m/n/10 mapply(func, arg1, arg2, arg3, ...)\T1/lmss/m/n/10 :
+ []
 
-Overfull \hbox (21.67456pt too wide) in paragraph at lines 165--165
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 144.
+
+Overfull \hbox (21.67456pt too wide) in paragraph at lines 169--169
  []\T1/lmtt/m/n/10 str_detect(street_names, "Jurong|Boon Lay")[] 
  []
 
 
-Underfull \hbox (badness 5245) in paragraph at lines 175--176
+Underfull \hbox (badness 5245) in paragraph at lines 179--180
 \T1/lmss/m/n/10 R base pack-age; \T1/lmtt/m/n/10 [:punct:]\T1/lmss/m/n/10 , \T1
 /lmtt/m/n/10 [:digit:]\T1/lmss/m/n/10 ,
  []
@@ -706,66 +741,74 @@ File: lstlang2.sty 2020/03/24 1.8d listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2020/03/24 1.8d listings language file
 )
-Overfull \hbox (88.37996pt too wide) in paragraph at lines 193--195
+Overfull \hbox (88.37996pt too wide) in paragraph at lines 197--199
 []\T1/lmss/bx/n/10 [IMPT] []\T1/lmss/m/n/10 USE \T1/lmtt/m/n/10 vignette('strin
 gr') \T1/lmss/m/n/10 and \T1/lmtt/m/n/10 vignette('regular-expressions')
  []
 
 
-Overfull \hbox (25.92448pt too wide) in paragraph at lines 195--196
+Overfull \hbox (25.92448pt too wide) in paragraph at lines 199--200
 []\T1/lmtt/m/n/10 devtools::install_github("gadenbuie/regexplain")
  []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-Underfull \hbox (badness 6032) in paragraph at lines 211--212
+Underfull \hbox (badness 6032) in paragraph at lines 215--216
 []\T1/lmtt/m/n/10 breaks\T1/lmss/m/n/10 : nu-meric vec-tor/string (\T1/lmtt/m/n
 /10 "month",
  []
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 219.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 223.
 
-Underfull \hbox (badness 10000) in paragraph at lines 312--313
-
- []
-
-
-Overfull \hbox (10.17453pt too wide) in paragraph at lines 316--317
-[]\T1/lmtt/m/n/10 apply(salaries, 2, function(x) sum(is.na(x)))
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
+[]\T1/lmtt/m/n/10 negated_char_class("aiueoAIUEO")\T1/lmss/m/n/10 : self-
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 338--339
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
+
+ []
+
+
+Overfull \hbox (10.17453pt too wide) in paragraph at lines 404--405
+[]\T1/lmtt/m/n/10 apply(salaries, 2, function(x) sum(is.na(x)))
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 []\T1/lmss/m/n/10 use \T1/lmtt/m/n/10 do.call \T1/lmss/m/n/10 to com-bine the i
 n-di-vid-ual
  []
 
-[3] (./dsa2101-notes.aux)
+[3] [4] (./dsa2101-notes.aux)
 Package rerunfilecheck Info: File `dsa2101-notes.out' has not changed.
-(rerunfilecheck)             Checksum: E98CED5BED81F5C189CE6BD26C76DA75;362.
+(rerunfilecheck)             Checksum: B2DF83C686D6428515B5C9D32DDE576F;1178.
  ) 
 Here is how much of TeX's memory you used:
- 16287 strings out of 480171
- 250478 string characters out of 5894489
- 930391 words of memory out of 5000000
- 33926 multiletter control sequences out of 15000+600000
+ 16987 strings out of 480171
+ 263063 string characters out of 5894489
+ 1212161 words of memory out of 5000000
+ 34565 multiletter control sequences out of 15000+600000
  505502 words of font info for 56 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,11n,63p,287b,2066s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
-hare/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/l
-m/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss
-bx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on dsa2101-notes.pdf (3 pages, 171704 bytes).
+ 60i,12n,63p,287b,2074s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmtt10.pfb>
+Output written on dsa2101-notes.pdf (4 pages, 222902 bytes).
 PDF statistics:
- 184 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
- 90 named destinations out of 1000 (max. 500000)
- 25 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 287 PDF objects out of 1000 (max. 8388607)
+ 255 compressed objects within 3 object streams
+ 141 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

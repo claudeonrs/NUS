@@ -1,0 +1,156 @@
+---
+title: "Assignment 01"
+author: "Claudeon Reinard Susanto"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(stringr)
+```
+
+```{r data}
+data <- readRDS("../data/assignment01.rds")
+akima_data <- data$akima_data
+artist_data <- data$artist_data
+```
+# Akima Interpolation
+## Question 1
+`compute_slopes` will return the estimated slope at `x[3]` given two vectors of length 5
+```{r compute-slopes}
+compute_slopes <- function(x, y) {
+  # condition: both x and y are vectors of length 5
+  m <- sapply(1:4, function(index) (y[index+1]-y[index])/(x[index+1]-x[index]))
+  d <- c(abs(m[2]-m[1]), abs(m[4]-m[3]))
+  s <- ifelse((d[1]==0 && d[2]==0), 
+              1/2*(m[2]+m[3]),
+              (d[2]*m[2]+d[1]*m[3])/(mean(d)))
+  s
+}
+
+```
+
+## Question 2
+Finding interpolated points between two given points
+```{r est-poly}
+est_poly <- function(x, y, slopes, n) {
+  deltaY <- y[2]-y[1]
+  deltaX <- x[2]-x[1]
+  p0 <- y[1]
+  p1 <- slopes[1]
+  p2 <- (3*deltaY/deltaX - 2*slopes[1]-slopes[2])/deltaX
+  p3 <- (sum(slopes)-2*deltaY/deltaX)/(deltaX^2)
+  
+  poly <- function(v) {
+    newV <- v-x[1]
+    return(p0 + p1*newV+p2*newV^2+p3*newV^3)
+  }
+  
+  x_vals <- seq(x[1],x[2],length.out=n)
+  interpolated <- poly(x_vals)
+  ret <- cbind(x_vals, interpolated)
+  ret
+}
+```
+
+## Question 3
+```{r akima-plot, fig.align='center', fig.cap="Akima Interpolation"}
+x <- akima_data[,1]; y <- akima_data[,2];
+n <- length(x)
+x <- sort(x); y <- sapply(1:n, function(i) akima_data[which(akima_data[,1]==x[i]),2])
+
+# compute slope for x[3], x[4], ... x[n-2]
+slopes <- sapply(seq(3,n-2,by=1), function(i) 
+  compute_slopes(x[(i-2):(i+2)], y[(i-2):(i+2)]))
+
+pts <- do.call(rbind, lapply(seq(3,n-3,by=1), function(i) est_poly(c(x[i],x[i+1]), c(y[i],y[i+1]), slopes[(i-2):(i-1)],n=5)))
+
+plot(x,y,col="red",pch=19)
+lines(pts,col="blue")
+
+```
+
+## Question 4
+First we will clean up `gender`.
+```{r gender-unique, collapse=TRUE}
+unique(artist_data$gender)
+```
+Based on this result, we can convert all string containing `"F"` or `"f"` to `Female`
+
+```{r}
+gender_clean <- as.factor(str_replace(artist_data$gender, regex("F[\\S ]+$", ignore_case=TRUE), "Female"))
+```
+Next we will clean up `dates`
+```{r}
+# "XXXX-XXXX" format
+pattern1 <- "([0-9]{4})\\S([0-9]{4})"
+# "born XXXX" format
+pattern2 <- "^born +(\\d{4})$"
+# "XXXX/XX-XXXX" format
+pattern3 <- "\\d{4}/\\d+\\S\\d{4}"
+# "b. XXXX" format
+pattern4 <- "b. \\d{4}"
+# "XXXX/XX" format
+pattern5 <- "\\d{4}/\\d+"
+
+dates_clean <- artist_data$dates
+dates_clean <- str_replace(dates_clean, "([0-9]{4}) ?\\S ?([0-9]{4})", "\\1-\\2")
+dates_clean <- str_replace(dates_clean, "^[Bb]orn +(\\d{4})$", "born \\1")
+dates_clean <- str_replace(dates_clean, "(\\d{4}) ?or ?(\\d+) ?\\S ?(\\d{4})", "\\1/\\2-\\3")
+dates_clean <- str_replace(dates_clean, "[Bb]. (\\d{4})", "b. \\1")
+dates_clean <- str_replace(dates_clean, "(\\d{4}) ?- ?(\\d{2})[$ ]", "\\1/\\2")
+```
+The result is stored in `artist_data_clean`
+```{r, collapse=TRUE}
+artist_data_clean <- artist_data
+artist_data_clean$gender <- gender_clean
+artist_data_clean$dates <- dates_clean
+head(artist_data_clean)
+```
+## Question 5
+```{r artist-birth-years, collapse=TRUE}
+artist_birth_years <- sort(as.numeric(unique(unlist(str_extract_all(artist_data_clean$dates, "(?<=born )(\\d{4})")))))
+artist_birth_years
+```
+
+## Question 6
+First, we identify those with the format `<city>, <country>`
+```{r artist-birth-country, collapse=TRUE}
+format_1commas <- sapply(lapply(str_split(artist_data$placeOfBirth, ","),str_trim), length) == 2
+countries_1commas <- sapply(str_split(artist_data[format_1commas,]$placeOfBirth, ","), 
+                    function(x) {
+                      x <- str_trim(x);
+                      return(x[2]);
+                      })
+countries_1commas <- unique(countries_1commas)
+countries_1commas
+```
+We are left with the entries whose formatting is different from the more common one (i.e. with zero or two commas).
+We start with dealing with those containing only one word (zero commas)
+```{r, collapse=TRUE}
+format_0commas <- sapply(lapply(str_split(artist_data$placeOfBirth, ","),str_trim), length) == 1
+countries_0commas <- artist_data$placeOfBirth[format_0commas]
+na_entries <- countries_0commas==""
+countries_0commas <- unique(countries_0commas[!na_entries])
+countries_0commas[!(countries_0commas %in% countries_1commas)]
+```
+We can select the entries which are clearly names of countries
+```{r}
+countries_0commas <- c("Barbados", "Singapore", "Armenia", "Myanmar", "Zimbabwe", "Chung-hua Min-kuo", "Lietuva", "Costa Rica", "Nigeria", "Samoa")
+```
+Moving on for those with 2 commas
+```{r, collapse=TRUE}
+format_2commas = !(format_1commas | format_0commas)
+countries_2commas <- artist_data$placeOfBirth[format_2commas]
+countries_2commas
+```
+Therefore we can create `countries_2commas`
+```{r, collapse=TRUE}
+countries_2commas <- c("France", "Colombia", "Yisra'el", "Hrvatska")
+```
+The resulting `artist_birth_country` is
+```{r, collapse=TRUE}
+artist_birth_country <- unique(c(countries_0commas, countries_1commas, countries_2commas))
+sort(artist_birth_country)
+```

@@ -7,6 +7,7 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{lscape}
+\usepackage{mathtools}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -87,6 +88,7 @@
 	\item \texttt{[[idx]]}: get element in a list
 	\item \texttt{str(ls)}: get \textbf{str}ucture of a list (similar to summary)
 	\item \texttt{saveRDS} and \texttt{loadRDS}
+	\item \texttt{unlist}: convert list to vector \impt
 \end{itemize}
 \subsection*{Recycling Rule}
 \begin{itemize}
@@ -120,6 +122,8 @@
 		\item \texttt{sapply} returns a vector or a matrix, \textbf{input must be 1 dimensional!}
 		\item \texttt{lapply} returns a list, useful when the output of the function may not be all of the same length/type, \textbf{input must be 1 dimensional!}
 		\item \texttt{replicate(n, func)}: replicate anonymous function $n$ number of times (especially useful for random number generations)
+		\item \texttt{tapply()}: used to apply function and then group them into a table using grouping index
+		\item \texttt{mapply(func, arg1, arg2, arg3, ...)}: like \texttt{sapply} but takes multiple vectors containing arguments to \texttt{func}
 	\end{itemize}
 \end{itemize}
 \subsection*{Function debugging}
@@ -238,10 +242,94 @@ Note that \texttt{$\backslash$$\backslash$b} means word boundary and \texttt{$\b
 
 \end{itemize}
 \subsubsection*{\texttt{barplot()}}
+\begin{itemize}
+	\item \texttt{horiz=TRUE} flip y and x axes
+	\item \texttt{las} (under \texttt{?par})
+	\item \texttt{par()}: \impt lists all the default parameters for plots (\texttt{mar}, \texttt{mfrow} etc.)
+	\item How to set graphical param?
+	\begin{lstlisting}[language=R]
+# 1 row 2 columns plot
+opar <- par(mfrow=c(1,2))
+# plot some stuff
+par(opar) # to set it back to default
+	\end{lstlisting}
+\end{itemize}
 \subsubsection*{\texttt{hist()}}
 \begin{itemize}
 	\item \texttt{freq}: makes the y-axis a proportion of all the total shit (count/total), not total count using integer
 \end{itemize}
+\section{Stringr}
+\textbf{(to convert numeric to string) Fixed vs scientific format}
+\begin{itemize}
+	\item Scientific: \texttt{1.989e+30} to denote $10^30$
+	\item \texttt{format(x, scientific=TRUE)} to format number to string by specifying digit numbers etc.\\
+	\impt \texttt{digits=} will format the smallest number so that it only has the specified significant digit, and other numbers in the vector follows
+	\begin{lstlisting}[language=R]
+	format(c(0.0011, 0.011, 1), digits=1)
+	> [1] "0.001" "0.011" "1.000"
+	\end{lstlisting}
+	\item \texttt{formatC(x, format="f" OR "e" or "g")}\\
+	\texttt{f} stands for fixed, \texttt{e} for scientific, and \texttt{g} for scientific if it saves space
+\end{itemize}
+\textbf{Stringr functions}
+\begin{itemize}
+	\item \texttt{str\_c}: concatenate like \texttt{paste}
+	\item \texttt{str\_length}: find length
+	\item \texttt{str\_sub}
+	\item \texttt{str\_detect}: returns boolean vectors
+	\item \texttt{str\_subset}:
+	\item \texttt{str\_count}
+	\item \texttt{str\_split}: \texttt{n=} returns maximum number of n elements, \texttt{simplify=} returns a matrix
+	\begin{itemize}
+		\item \impt \texttt{type=boundary("sentence")}
+	\end{itemize}
+	\item \texttt{str\_match}: returns a matrix with the capture or () regex
+	\item \texttt{str\_to\_upper()}: returns a vec with all uppercase elements
+	\item \texttt{str\_to\_lower()}
+	\item \texttt{regex(expr, ignore\_case = TRUE)}: tells regex to ignore case
+\end{itemize}
+\textbf{Rebus package}
+\begin{itemize}
+	\item \texttt{install.packages("rebus")} $\Rightarrow$ \texttt{library(rebus)}
+	\item \texttt{rebus} syntax can be used for stringr pattern instead of regex
+	\begin{lstlisting}[language =R]
+		pattern = START %R% "a"
+		# strings that start with "a"
+		# same as regex "^a"
+		# END is also possible
+		# %R% is read as 'then'\end{lstlisting}
+	\item \texttt{ANY\_CHAR}
+	\item \texttt{WRD}: word, \texttt{SPC}: Space
+	\begin{lstlisting}[language=R]
+	# to capture word ending in ING
+	one_or_more(WRD) %R% "ING"
+	# equals to \w+ING
+	\end{lstlisting}
+	\item \texttt{or(p1, p2)}: kinda like \texttt{|} in regex
+	\begin{itemize}
+		\item \texttt{or1(vec)}: pass vec as alternatives instead of arguments
+	\end{itemize}
+	\item \texttt{char\_class("Aa")}: kinda like \texttt{"[Aa]"} in regex
+	\item \texttt{negated\_char\_class("aiueoAIUEO")}: self-explanatory
+	\item \texttt{optional()}: \texttt{?} in regex
+	\item \texttt{zero\_or\_more()}: \texttt{*} in regex
+	\item \texttt{one\_or\_more()}: \texttt{+} in regex
+	\item \texttt{repeated()}: \texttt{\{m,n\}} in regex
+	\item \texttt{exactly()}: matches exact string
+	\item \texttt{capture(pattern)}: group parts of pattern together, which is () in regex format\\
+	*use \texttt{REF1}, \texttt{REF2}, \texttt{REF3} to refer to the capture group (exact match) which is \texttt{$\backslash$1}, \texttt{$\backslash$2} and so on in regular regex
+
+\end{itemize}
+\textbf{Stringi functions}
+\begin{itemize}
+	\item \texttt{stri\_isempty()}: returns boolean
+\end{itemize}
+\textbf{Miscellaneous}
+\begin{itemize}
+	\item \texttt{strftime(date, format)}: string from time object
+	\item \texttt{as.POSIXct(date\_string, format)}: convert string to Date time
+\end{itemize}
+
 
 \section{R Markdown (RMD)}
 \begin{itemize}
@@ -343,7 +431,8 @@ do.call(rbind, df_row_list)\end{lstlisting}
 	\end{enumerate}
 	\item Some thoughts \impt Are there missing data for any observation?? if yes then remove
 \end{itemize}
-\subsubsection*{OOP in R}
+\subsection{OOP in R}
+\impt \underline{Main purpose}: call function the same way (with similar syntax but different behaviour for each class) \eg \texttt{plot} works differently for timeseries and vectors
 \textbf{S3 classes}
 \begin{itemize}
 	\item \texttt{methods}: to search for available methods
@@ -384,10 +473,65 @@ definition=function(object) {
 \begin{itemize}
 	\item \texttt{isS4(obj)}: check if obj is S4
 	\item \texttt{slotNames(obj)} list all the attributes/slots
-	\item \texttt{methods(class="????")}: to list out all the methods
+	\item \texttt{methods(class="????")}: to list out all the methods\\
+	\texttt{methods(generic.function="plot")}: to list out all the classes a method can be applied to
 	\item \texttt{vignette("class")}: for documentation
 \end{itemize}
 \textbf{RC classes}
+\section{Databases}
+\textbf{How to connect?}
+\begin{itemize}
+	\item Install the requisite package on R
+	\item Authenticate to the database server
+	\item Query/Extract the data
+	\item Analyse the data
+	\item Close the connection
+\end{itemize}
+\subsection{MongoDB}
+\textbf{Steps to connect}
+\begin{itemize}
+	\item \impt \href{https://www.mongodb.com/docs/v5.0/tutorial/getting-started}{MongoDB Tutorial Docs}
+	\item Code to connect
+	\begin{lstlisting}[language=R]
+library(mongolite)
+library(jsonlite)
+# eXXXXX:pwd
+credentials <- paste0(readLines("mongo_user_pwd.txt", warn=FALSE), collapse=":")
+connection_string <- paste0("mongodb://",credentials, "@rshiny.nus.edu.sg:2717/test")
+con2 <- mongo(verbose=TRUE, collection="restaurants", url=connection_string)
+con2$count()
+	\end{lstlisting}
+\end{itemize}
+\subsection{Data from Web}
+
+\subsubsection{Download File from Link}
+\begin{itemize}
+	\item how to download
+	\begin{lstlisting}[language=R]
+		imda_url <- "https://data.gov.sg/dataset/02c1f624-489f-40ad-8fdd-5e66e46b2722/download"
+		return_val <- download.file(imda_url, "../data/imda_data.zip")
+		con <- unz("../data/imda_data.zip", "wage-02-size2-annual.csv")
+		wages_data <- read.csv(con, header=TRUE)
+	\end{lstlisting}
+	\item \texttt{download.file()}, \texttt{mode="wb"} for Windows
+	\item \texttt{unz}: to unzip
+\end{itemize}
+\subsubsection{Developer API}
+\begin{itemize}
+	\item Normal browser $\xleftrightarrow[response]{request}$ Web server
+	\item request data from server that is continuously running
+	\item \impt Usually for Real-time data
+	\item how to get data?
+	\begin{lstlisting}[language=R]
+library(httr)
+set_config(verbose())
+url <- "https://api.data.gov.sg/v1/transport/taxi-availability"
+taxi_avail <- GET(url, query=list(date_time="2022-08-01T09:00:00"))
+
+taxi_data <- content(taxi_avail)
+	\end{lstlisting}
+\end{itemize}
+
 \end{multicols}
 
 

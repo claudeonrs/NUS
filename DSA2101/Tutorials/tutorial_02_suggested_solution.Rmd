@@ -1,0 +1,176 @@
+---
+title: "Tutorial 2 Worksheet AY 22/23 Sem 1"
+subtitle: DSA2101
+output:
+  html_document: default
+  pdf_document: default
+urlcolor: blue
+---
+
+## Practice with regular expressions
+
+This tutorial focuses on regular expressions, and cleaning and extracting
+information from text data. *Try to answer each question in more than one way.*
+That's a good way to verify that our answer is correct, and also to challenge
+ourselves.
+
+```{r echo=FALSE}
+library(stringr)
+```
+
+The zip file `ieer.zip` contains collections of news documents from the NLTK 
+(natural language toolkit). Unzip it and store the files in your data folder.
+Run the following command to read the filenames into R as a vector.
+
+```{r}
+fnames <- list.files("../data/ieer",  
+                     pattern = "^[^R]", full.names = TRUE)
+# To get absolute path on your computer:
+# normalizePath(fnames) 
+```
+
+Each file contains a set of news documents, tagged with information such as the 
+date, time and source of each document. The text of each document contains tags that 
+indicate the type of entity, e.g. PERSON, ORGANIZATION, etc. (The dataset is 
+from a Named Entity Recognition training task).
+
+The `^` has a special meaning when it is at the beginning of a character class. 
+It tells the regex engine to match anything other than what is in the class. Thus
+`[^R]` means match anything other than `R`.
+
+1.  Extract 
+    * the basename of the files. 
+    * the directory immediately above, along with the filename.
+
+```{r}
+# Using regex:
+str_extract(fnames, "[^/]+$")
+# basename(fnames)
+
+# "lowest"
+# From L to R: match anything other than / one or more times, then a /, then 
+# anything other than / until the end of the string.
+str_extract(fnames, "[^/]+/[^/]+$")
+# From L to R: define a group to be /, then anything other than a slash. Match 
+# that group twice
+str_extract(fnames, "(/[^/]+){2}$")
+# The ? modifer means: match the preceding character 0 or 1 times.
+str_extract(fnames, "([^/]+/?){2}$")
+```
+
+2. Which files contain documents written in April?
+
+```{r}
+# match 04, followed by a digit twice, then the end of the string
+fnames[str_which(fnames, "04[0-9]{2}$")]
+# Filter allows you to specify a predicate function to filter and keep only 
+# the elements that satisfy the criteria.
+Filter(function(x) str_detect(x, "04[0-9]{2}$"), fnames)
+```
+
+3. Read the contents of the first file `r basename(fnames[1])` into R using
+`readLines()`, and find the start and end positions of each document within it.
+
+```{r}
+file1 <- readLines(fnames[1])
+
+# remember that ? says to match the preceding character, /, zero or once.
+start_end <- str_which(file1, "</?DOC>")
+all_starts <- start_end[seq(1, 46, by=2)]
+all_ends <- start_end[seq(2, 46, by=2)]
+```
+
+3. From the first file, extract 
+    * all document numbers,
+    * all document datetimes. Store these as a vector `date_strings`.
+
+```{r}
+# using look ahead and behind
+# remember that [:alnum:] and [:punct:] are R-specific shortcuts for 
+# common character classes
+docnos <- str_extract(file1, "(?<=DOCNO> )[[:alnum:][:punct:]]+(?= +</DOCNO>$)")
+
+# using groups
+# str_match returns all the groups. This is useful when your string has a fixed format.
+docnos <- str_match(file1, "(^<DOCNO>) ([[:alnum:][:punct:]]+) (</DOCNO>$)")[, 3]
+docnos <- docnos[!is.na(docnos)]
+```
+
+```{r}
+date_strings <- str_extract(file1, "(?<=DATE_TIME> )[0-9/: ]+(?= +</DATE_TIME>$)")
+date_strings <- date_strings[!is.na(date_strings)]
+```
+
+4. Swap the month and day positions in the `date_strings`.
+
+```{r}
+str_extract(date_strings, "^[0-9]{2}/[0-9]{2}")
+# Easier for students to see what is actl going on in str_replace
+str_extract(date_strings, "^([0-9]{2})/([0-9]{2})") 
+
+str_replace(date_strings, "^([0-9]{2})/([0-9]{2})", "\\2/\\1")
+
+# can also convert to date and then use strftime()
+```
+
+5. Extract the unique set of entity types found across all files.
+
+```{r}
+# This applies the temporary function to all files. 
+# The function does the following:
+# 1. read in all lines
+# 2. extract all the types from each line
+# 3. UNlist is necessary because we want the output back as a vector.
+l_out <- sapply(fnames, function(x) {
+  ll <- readLines(x)
+  entity_types <- str_extract_all(ll, '(?<=type=")[^"]+' )
+  unique(unlist(entity_types))
+}, USE.NAMES = FALSE)
+
+entity_types <- unique(unlist(l_out))
+```
+
+6. Find and return only the filenames that contain documents with the word
+"Israel" in them.
+
+```{r}
+Filter(function(x)
+  any(str_detect(readLines(x), "Israel")), fnames)
+```
+
+7. Extract all sentences in the TEXT sections in `r basename(fnames[1])`,
+containing the key-word `police`.
+
+```{r}
+# Reads in the entire file
+ll <- readLines(fnames[1])
+# Extracts the start and end position of each article in the file
+start_end <- str_which(ll, "</?TEXT>")
+# identify the starting lines, and ending lines separately.
+all_starts <- start_end[seq(1, 46, by=2)]
+all_ends <- start_end[seq(2, 46, by=2)]
+
+# This is the workhorse function.
+# It does the following for each article:
+# 1. Extract the lines corresponding to each article
+# 2. "Glue" the lines together, so that each article is stored in a character 
+#    vector of length 1.
+# 3. Get rid of all angular brackets
+# 4. Split each article into sentences, using boundary("sentence")
+# 5. Keep only the sentences containing "police"
+extract_sentence <- function(start, end) {
+  text1 <- ll[(start+1):(end-1)]
+  text1 <- paste(text1, sep=" ", collapse="")
+  text1a <- str_replace_all(text1, "<[^>]+>", " ")
+  text1a <- str_split(text1a, boundary("sentence"))[[1]]
+  Filter(function(x) str_detect(x, "police"), text1a)
+}
+
+# This is a version of sapply to iterate over more than one vector.
+mapply(extract_sentence, all_starts, all_ends) %>% unlist()
+
+# Equivalent for loop:
+#for (i in 1:length(all_starts)) {
+#  extract_sentence(all_starts[i], all_ends[i])
+#}
+```
