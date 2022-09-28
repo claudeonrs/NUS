@@ -179,6 +179,7 @@ $$O(n^k)[\text{ where } k>2] < O(k^n) [\text{ where } k\geq1] < O(n!) $$
 \textbf{Uses}:
 \begin{itemize}
 	\item \impt Breadth-first traversal of trees
+	\item Sliding Window (especially important for contiguous blocks of stuff)
 \end{itemize}
 \section{Recursion}
 \impt \textbf{Recipe for recursion} (3 fingers)
@@ -198,11 +199,120 @@ $$O(n^k)[\text{ where } k>2] < O(k^n) [\text{ where } k\geq1] < O(n!) $$
 	move elements \texttt{> p} to the right of \texttt{p}
 	\item Printing all permutations of a String
 \end{itemize}
-\textbf{Overloading}: same function name but with different parameters (useful in Java)
-\section{Algorithms}
-\subsection{Sorting}
-
-
+\textbf{Overloading}: same function name but with different parameters (useful in Java)\\
+\textbf{Backtracking}
+\begin{itemize}
+	\item Solving problems recursively by trying to build a solution incrementally, one piece at a time, removing those solutions that fail to satisfy the constraints of the problem at any point in time
+	\item \eg Queens Lab 4B: board is fixed\\
+	queens can be added or removed!
+\end{itemize}
+\section{Sorting}
+Some definitions
+\begin{itemize}
+	\item \textbf{Sort key}: use particular value of an object to do comparison and sort
+	\item \textbf{In-place}: requires only a constant amount of extra space during the sorting process
+	\item \textbf{Stable}: relative order of elements with the same key value is preserved by the algorithm
+\end{itemize}
+\textbf{Some ideas used in sorting}:
+\begin{itemize}
+	\item Internal vs external sort
+	\item Iterative vs recursive
+	\item \underline{Comparison vs non-comparison based}\\
+	\eg radix sort
+	\item \underline{Divide and conquer}
+\end{itemize}
+\textbf{Applications}
+\begin{itemize}
+	\item Uniqueness testing
+	\item Deleting duplicates
+	\item Frequency counting
+	\item Efficient searching
+\end{itemize}
+\begin{table}[H]
+	\centering{
+	\begin{tabular}{c|c|c}
+		&
+		Iterative &
+		Recursive \\ \hline
+		Comparison &
+		\begin{tabular}[c]{@{}c@{}}Bubble,\\ Selection,\\ Insertion\end{tabular} &
+		\begin{tabular}[c]{@{}c@{}}Quick,\\ Merge\end{tabular} \\ \hline
+		\begin{tabular}[c]{@{}c@{}}Non-\\ comparison\end{tabular} &
+		&
+		Radix
+	\end{tabular}
+}
+\end{table}
+\subsection{Algorithms}
+\subsubsection{Selection Sort}
+Time complexity: $O(n^2)$\\
+Limitation: Not stable
+\subsubsection{Bubble Sort}
+Time complexity: $O(n^2)$
+\begin{itemize}
+	\item Using flag: $O(n)$ \texttt{isSorted}, is the input already sorted?
+\end{itemize}
+\subsubsection{Insertion Sort}
+Time complexity:
+\begin{itemize}
+	\item Best case: input already sorted ($O(n)$)
+	\item Worst case: input reversely sorted ($O(n^2)$)
+\end{itemize}
+\subsubsection{Merge Sort}
+Time complexity:
+\begin{itemize}
+	\item \texttt{merge(arr, left, mid, right)} is $O(right-left+1)$
+	\item \texttt{merge} is called $\log{n}$ times
+	\item Hence $O(n\log{n})$
+\end{itemize}
+Limitations:
+\begin{itemize}
+	\item Need temporary array to store values during the \texttt{merge} process (not in-place)
+\end{itemize}
+\subsubsection{Quick Sort}
+Time complexity:
+\begin{itemize}
+	\item \texttt{partition()}
+	\item \texttt{quicksort(a, i, p)}
+	\item Worst case is when it is already sorted, so the first group (elements < p) is empty: $O(n^2)$
+	\item Best case: occurs when array is divided into 2 equal halves
+	\begin{itemize}
+		\item Depth is $\log{n}$
+		\item Each level takes $n$ comparisons (including swaps)
+		\item Hence $O(n\log{n})$ which is also the average case
+	\end{itemize}
+\end{itemize}
+Limitation: Not stable
+\subsubsection{Radix Sort}
+Treat each data as a character string: no comparison needed\\
+\textbf{Trick}: sort by unit digit $\rightarrow$ tenth digit $\rightarrow$ hundredth and so on...\\
+Time complexity:
+\begin{itemize}
+	\item Initialize 10 groups (queues) to group the elements
+	\item Complexity is $O(dn)$ where $d$ is the maximum number of digits of the $n$ numeric strings in the array
+\end{itemize}
+Limitation: Not in-place
+\subsection{Java Sorting}
+For list/arrays:
+\begin{itemize}
+	\item To convert arrays to list use \texttt{Arrays.asList}
+	\item \texttt{Arrays.sort} or \texttt{Collections.sort}
+\end{itemize}
+For others: use \texttt{Collections.sort(list, compObj)}
+\begin{lstlisting}[language=Java]
+import java.util.Comparator;
+class ObjComparator implements Comparator<Obj> {
+	public int compare(Obj o1, Obj o2) {
+		// if positive, o1 > o2
+		// if negative, o1 < o2
+		// if zero,     o1 = o2
+	}
+    public boolean equals(Object obj) {
+    	// check to see if we have the same comparator object
+    	return this = obj;
+    }
+}
+\end{lstlisting}
 \section{Java Tricks}
 \begin{itemize}
 	\item OOP is important (CardGame)

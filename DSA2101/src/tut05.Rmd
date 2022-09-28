@@ -1,0 +1,124 @@
+---
+title: "Tutorial 05"
+author: "Claudeon Susanto"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(jsonlite)
+library(stringr)
+```
+
+```{r}
+rest_json <- stream_in(file("../data/restaurants_dataset.json")) %>%
+  unnest(cols=c(address,grades))
+```
+## Q1
+```{R}
+q1_tbl <- mutate(rest_json, 
+                 lat=sapply(coord, function(x) x[2]), 
+                 long=sapply(coord, function(x) x[1]), 
+                 .before=street) %>%
+  select(!coord)
+```
+## Q2
+```{R}
+range(q1_tbl$lat, na.rm=TRUE)
+range(q1_tbl$long, na.rm=TRUE)
+```
+```{R}
+mistakes <- q1_tbl %>% filter(lat < 0 & long > 0)
+summarise(group_by(q1_tbl, name), neg_lat=any(lat < 0), pos_long=any(long > 0))
+mistakes2 <- q1_tbl %>% 
+  group_by(restaurant_id) %>%
+  summarise(false_lat = any(lat <0), false_long = any(long > 0)) %>%
+  filter(false_long == TRUE | false_lat == TRUE)
+```
+
+## Q3
+```{R}
+american_manhattan <- q1_tbl %>%
+  filter(borough == "Manhattan" & str_detect(cuisine, "[Aa]merican")) %>%
+  group_by(restaurant_id) %>%
+  summarise(name = max(name))
+# Number of restaurants in Manhattan that serve American
+dim(american_manhattan)[1]
+```
+
+## Q4
+```{R}
+grading <- q1_tbl %>% 
+  group_by(restaurant_id) %>%
+  summarise(name=max(name), n=n()) %>%
+  arrange(desc(n))
+```
+
+## Q5
+```{R}
+shortest_time <- q1_tbl %>%
+  group_by(restaurant_id) %>%
+  filter(n() > 1) %>%
+  arrange(desc(date)) %>%
+  mutate(interval = abs(difftime(date,lag(date)))) %>%
+  summarise(name=max(name), shortest_interval = min(interval, na.rm=TRUE))
+```
+
+## Q6
+```{R}
+summary_score <- q1_tbl %>%
+  group_by(grade) %>%
+  summarise(count = n(), 
+            min = quantile(score, na.rm=TRUE)[1],
+            qtl1 = quantile(score, na.rm=TRUE)[2],
+            med = quantile(score, na.rm=TRUE)[3],
+            qtl3 = quantile(score, na.rm=TRUE)[4],
+            max = quantile(score, na.rm=TRUE)[5])
+```
+
+## Q7
+
+```{R}
+across_stuff <- q1_tbl %>%
+  group_by(restaurant_id) %>%
+  mutate(across(c(grade ,score), list(~ min(.x), ~ max(.x)) )) %>%
+  summarise(grade_min = min(grade_1), grade_max = max(grade_2),
+            score_min= min(score_1), score_max = max(score_2))
+
+```
+
+## Q8
+```{R}
+months_stuff <- q1_tbl %>%
+  mutate(month = months(date)) %>%
+  group_by(borough,month) %>%
+  summarise(n = n(),.groups="drop")
+```
+
+
+## Q9
+```{r}
+# FUCK
+asian <- q1_tbl %>%
+  recode(q1_tbl$cuisine, "Vietnamese/Cambodian/Malaysia" = "Asian",
+         Thai = "Asian",
+         Chinese = "Asian")
+```
+
+## Q10
+```{R}
+grades2 <- q1_tbl %>%
+  group_by(restaurant_id) %>%
+  filter(n() >= 2) %>%
+  filter(nth(grade,1)=="C" & nth(grade,2)=="A")
+```
+
+## Q11
+```{R}
+gradesA <- q1_tbl %>%
+  group_by(restaurant_id) %>%
+  summarise(name = nth(name,1), gradeA=all(grade=="A")) %>%
+  filter(gradeA == TRUE)
+```

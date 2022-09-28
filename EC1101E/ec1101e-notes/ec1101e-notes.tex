@@ -7,6 +7,7 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{lscape}
+\usepackage{multirow}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -557,7 +558,11 @@ $$\text{Social Cost} = \text{Private Cost} + \text{External Cost}$$
 		If private parties can \textit{costlessly} bargain over the allocation of resources, they can solve the externalities problem on their own
 \end{minipage}}
 \vspace{1em}
-
+\begin{itemize}
+	\item The private market achieves the efficient outcome regardless of the initial distribution of rights
+	\item Property rights determine the direction in which compensation payments are made (pay to the person with property rights)
+\end{itemize}
+\vspace{1em}
 \textbf{Why private solution does not always work}:
 \begin{itemize}
 	\item \textbf{Transaction costs}: if costly to reach an agreement (\eg legal fees etc.)
@@ -585,12 +590,22 @@ $$\text{Social Cost} = \text{Private Cost} + \text{External Cost}$$
 \end{center}
 \textbf{Public Good}
 \begin{itemize}
+	\item Tends to be \textbf{underproduced}
+	\begin{itemize}
+		\item The market fails to allocate resources efficiently because property rights are not well-established
+		\item Nobody can charge people who benefit from public resources $\rightarrow$ less than optimal quantity provided
+	\end{itemize}
 	\item Not excludable $\Rightarrow$ free riders (people get benefits without paying for it)
 	\item Firms do not produce the good even if Collective Benefits > Cost of providing it
 	\item If the Total Benefits > Total Costs, the government should provide the good and use taxpayers (people who benefit from it) money to finance it
 \end{itemize}
 \textbf{Common Resource}
 \begin{itemize}
+	\item Tends to be \textbf{overused}
+	\begin{itemize}
+		\item The market fails to allocate resources efficiently because property rights are not well-established
+		\item Nobody can charge people who benefit from public resources $\rightarrow$ more than optimal quantity consumed
+	\end{itemize}
 	\item Not excludable
 	\begin{itemize}
 		\item Free riders who enjoy without paying $\Rightarrow$ Firms will not provide
@@ -650,6 +665,133 @@ $$\text{Social Cost} = \text{Private Cost} + \text{External Cost}$$
 \textbf{MR=P only for perfectly competitive firm}
 \begin{itemize}
 	\item A firm can keep increasing output without affecting market prices
+\end{itemize}
+
+\subsection{Monopoly}
+\begin{itemize}
+	\item Only one firm sells a product with \textbf{no close substitutes}
+	\item Has \textbf{market power} - ability to influence the market $P$ of the product it sells due to
+	\begin{itemize}
+		\item Selling unique product
+		\item Having large market share and few significant competitors
+	\end{itemize}
+	\item \textbf{Barriers to Entry}
+	\begin{itemize}
+		\item \underline{Single firm owns a key resource} (De Beers)
+		\item \underline{Natural monopoly} $\rightarrow$ high fixed costs $\rightarrow$ one firm can produce for all at significantly lower TC as compared to multiple firms
+		\item The government gives a single firm the \underline{exclusive right} to produce the good (patents, copyright)
+	\end{itemize}
+    \item It faces the market demand curve: To $\uparrow$ $Q$, it must $\downarrow$ $P$
+    \begin{itemize}
+    	\item \underline{Output effect}: $\uparrow Q \Rightarrow R\uparrow$
+    	\item \underline{Price effect}: $\downarrow P \Rightarrow R\downarrow$
+    \end{itemize}
+    \item $P > MC \Rightarrow$ buyers' valuation of the unit is more than the MC of producing that unit $\Rightarrow$ DWL
+\end{itemize}
+\subsubsection{Price Discrimination}
+\begin{itemize}
+	\item Selling the same good at different prices to different buyers
+	\begin{itemize}
+		\item Increase profit by charging a higher price to buyers with higher WTP
+		\item \textbf{Perfect discrimination}:
+		\begin{itemize}
+			\item But no firm knows every buyer's WTP
+			\item Buyers do not announce their WTP to sellers
+			\item Solution: divide customers into group based on some traits that are \underline{likely related} to WTP
+		\end{itemize}
+		\begin{figure}[H]
+			\includegraphics[width=16em]{images/price_discrimination.png}
+			\centering
+		\end{figure}
+	    \item Harford The Undercover Economist Chapter 2: \textit{What Supermarkets Don't Want You to Know}
+	    \begin{itemize}
+	    	\item Unique target (first-degree)
+	    	\item Group target (third-degree)
+	    	\item Self-incrimination
+	    \end{itemize}
+	\end{itemize}
+\end{itemize}
+\subsection{Monopolistic Competition}
+\begin{itemize}
+	\item \textbf{Many} buyers and sellers
+	\item Offer \textbf{differentiated} products
+	\item Sellers are \textbf{free} to enter and exit the market
+	\begin{itemize}
+		\item LR Economic profit = 0 due to entry and exit
+		\item New firms enter the market due to existing firms making profits
+	\end{itemize}
+    \item \impt \textbf{Externalities due to entry of new firms}
+    \begin{itemize}
+    	\item \textbf{Product-variety externality}: consumers benefit from intro of new products
+    	\item \textbf{Business-stealing externality}: existing firms lose revenues when new firms enter the market
+    \end{itemize}
+\end{itemize}
+\subsection{Oligopoly}
+\begin{itemize}
+	\item \textbf{N-firm Concentration Ratio}: percentage of the market's total output supplied by the N largest firms
+	\item Only \textbf{a few} sellers offer similar or identical products
+	\item A firm's decision about $P$ or $Q$ can affect other firms
+	\begin{itemize}
+		\item The firm will consider the reactions from other firms when making decisions
+	\end{itemize}
+    \item \textbf{Game theory}: study of how people behave in strategic situations
+    \item \textbf{Types of oligopoly}
+    \begin{itemize}
+    	\item \underline{Collusion}: an agreement among firms in a market about quantities to produce or prices to charge
+    	\item \underline{Cartel}: A group of firms acting in unison (e.g. price fixing)
+    	\begin{itemize}
+    		\item Cartel = Monopoly
+    		\item Collective firms acting as a single unit, hence graph is equal to monopoly
+    	\end{itemize}
+    \end{itemize}
+\end{itemize}
+\subsubsection{Game Theory}
+\textbf{Collusion vs self-interest}
+\begin{itemize}
+	\item Both firms would be better off if they both stick to the cartel agreement
+	\item But each firm has an incentive to cheat
+\end{itemize}
+\textbf{Nash Equilibrium}
+\begin{itemize}
+	\item A situation in which players interacting with one another each chooses his best strategy given the strategies that all the others have chosen
+\end{itemize}
+\textbf{Dominant Strategy}
+\begin{itemize}
+	\item A strategy that is best for a player in a game regardless of the strategies chosen by the other players
+\end{itemize}
+\textbf{Prisoners' Dilemma}
+\begin{itemize}
+	\item Cooperation is difficult even when it is mutually beneficial
+	\item Both players have dominant strategies that result in inefficient outcomes
+	\begin{center}
+		\begin{table}[H]
+			\centering{
+			\begin{tabular}{cc|cc}
+				&  & \multicolumn{2}{c}{P2}     \\ \cline{3-4}
+				&  & \multicolumn{1}{c|}{A} & B \\ \hline
+				\multicolumn{1}{c|}{\multirow{2}{*}{P1}} &
+				A &
+				\multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}P1: Good\\ P2: Good\end{tabular}} &
+				\begin{tabular}[c]{@{}c@{}}P1: Worst\\ P2: Best\end{tabular} \\ \cline{2-4}
+				\multicolumn{1}{c|}{} &
+				B &
+				\multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}P1: Best\\ P2: Worst\end{tabular}} &
+				\begin{tabular}[c]{@{}c@{}}P1: Bad\\ P2: Bad\end{tabular}
+			\end{tabular}}
+		\end{table}
+	\end{center}
+	\item Non-cooperative oligopoly equilibrium will be
+	\begin{itemize}
+		\item Bad for oligopoly firms: prevented from achieving \textbf{monopoly} profits
+		\item Good for society: $Q$ is closer to the socially efficient output, $P$ is closer to MC
+	\end{itemize}
+    \item Strategies that lead to cooperation:
+    \begin{itemize}
+    	\item \textbf{Grim}:\\
+    	Initially, a player using grim trigger will cooperate, but as soon as the opponent defects (thus satisfying the trigger condition), the player using grim trigger will defect for the remainder of the iterated game. Since a single defect by the opponent triggers defection forever, grim trigger is the most strictly unforgiving of strategies in an iterated game.
+    	\item \textbf{Tit for Tat}\\
+    	 For example, two competing economies can use a tit-for-tat strategy so that both participants benefit. One economy \textbf{starts with cooperation }by not imposing import tariffs on the other economy's goods and services to induce good behavior. The idea is that the second economy responds by also choosing not to impose import tariffs. If the second economy reacts by implementing tariffs, the first economy retaliates by implementing tariffs of its own to discourage the behavior.
+    \end{itemize}
 \end{itemize}
 \end{multicols}
 

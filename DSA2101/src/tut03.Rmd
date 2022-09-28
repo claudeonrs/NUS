@@ -1,0 +1,97 @@
+---
+title: "tutorial_03"
+author: "Claudeon Susanto"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(stringr)
+```
+
+```{r}
+list.files("../data/grammatical_facial_expression/")
+```
+
+## Question 1
+```{r}
+tmp_frames <- scan("../data/grammatical_facial_expression/a_negative_datapoints.txt", skip=1)
+```
+
+## Question 2
+```{r}
+tmp_classes <- scan("../data/grammatical_facial_expression/a_negative_targets.txt")
+l_class_vec <- length(tmp_classes)
+output_array <- array(tmp_frames[-seq(1, length(tmp_frames), by=301)],
+                      dim=c(3, 100, length(tmp_classes)))
+output_array <- aperm(output_array, c(2,1,3))
+
+```
+
+## Question 3
+```{r}
+
+read.fe_data <- function(path_to_dir, user, facial_expression) {
+  # @param string path_to_dir
+  # @param string user
+  # @param string facial_expression
+  
+  files <- list.files(path_to_dir, full.names=TRUE)
+  fnames <- str_subset(files, str_c(user,"_",facial_expression))
+  dp_path <- str_subset(fnames, "datapoint")
+  cat(dp_path)
+  tg_path <- str_subset(fnames, "target")
+  dp_vec <- scan(dp_path, skip=1)
+  tg_vec <- scan(tg_path)
+  
+  total_frames <- length(tg_vec)
+  frames <- array(dp_vec[-seq(1, length(dp_vec), by=301)],
+                      dim=c(3, 100, total_frames))
+  frames <- aperm(frames, c(2,1,3))
+  
+  timestamp <- dp_vec[seq(1, length(dp_vec), by=301)]
+  user <- rep(user, length.out=total_frames)
+  facial_expression <- rep(facial_expression, length.out=total_frames)
+  fe_present <- tg_vec
+  df <- data.frame(timestamp, user, facial_expression, fe_present)
+  out <- list(frames=frames,info=df)
+  class(out) <- "gfe"
+  out
+}
+obj1 <- read.fe_data("../data/grammatical_facial_expression", user="b","conditional")
+str(obj1)
+```
+
+## Question 4
+plotting stuff
+
+```{r}
+#plot <- function(object) {
+#  UseMethod("contact")
+#}
+plot.gfe <- function(object, id=1) {
+  mat <- object$frames[ , ,id]
+  x <- -mat[,1]
+  y <- -mat[,2]
+  left_eye <- c(1:8,1)
+  right_eye <- c(9:16,9)
+  left_eyebrow <- c(17:26,17)
+  right_eyebrow <- c(27:36,27)
+  nose <- 37:48
+  mouth1 <- c(49:60,49)
+  mouth2 <- c(61:68,61)
+  face_contour <- 69:87 
+  line_left_eyebrow <- 91:95
+  line_right_eyebrow <- 96:100
+  ls <- list(left_eye, right_eye, left_eyebrow, right_eyebrow, nose, mouth1, mouth2, line_left_eyebrow, line_right_eyebrow)
+  
+  # Plotting
+  plot(x[face_contour], y[face_contour], type="l", col="red", xlim=c(min(x), max(x)),ylim=c(min(y), max(y)), xaxt="n", yaxt="n", xlab="", ylab="",bty="n",asp=1)
+  sapply(ls, function(comp) lines(x[comp], y[comp], col="red", ljoin=2))
+  sapply(88:90, function(comp) points(x[comp], y[comp], col="red", pch=1,cex=1.2))
+}
+
+plot(obj1)
+
+```

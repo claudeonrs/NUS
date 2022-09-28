@@ -118,7 +118,102 @@ $$\bar{X} \text{ and } S^2 \text{ are independent}$$
 $$\bar{X} \sim \mathcal{N}\left(\mu,\frac{\sigma^2}{n}\right)$$
 $$\frac{(n-1)S^2}{\sigma^2}\sim \chi^2_{n-1}$$
 $$\frac{\bar{X}-\mu}{S/\sqrt{n}} \sim t_{n-1}$$
+\section{Survey and Random Sampling}
+Let $X_1, \dots, X_N$ be random draws without replacement from a population of size $N$ with mean $\mu$ and variance $\sigma^2$.
+$$\text{cov}(X_i, X_j) = -\frac{\sigma^2}{N-1} \forall i\neq j$$
+$$\text{var}(\bar{X}) = \left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}$$
 
+\subsection{Exchangeable}
+RV's $Y_1, \dots, Y_k$ are exchangeable if all reordered vectors have the same distribution as $(Y_1, \dots Y_k)$. i.e. for any permutation $\pi$ on $\{1,\dots,K\}$,
+$$(Y_{\pi(1)}, \dots, Y_{\pi(k)}) \stackrel{d}{=}(Y_{1}, \dots, Y_{k})$$
+\subsection{Estimate and Estimator}
+$$\bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i$$
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i$$
+\begin{itemize}
+	\item $\mu$, $\sigma$, $\sigma^2$ are \textbf{parameters}
+	\item $\bar{x}$ is an \textbf{estimate} of $\mu$
+	\item $\bar{x}$ is a realisation of the \textbf{estimator} $\bar{X}$
+	\item \textbf{Standard Error (SE)} is defined as the SD of the estimator
+	$$\text{SE} = \text{SD}(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$
+	which is how much $\bar{X}$ fluctuates around $\mu$
+	\item Estimate of $\sigma$
+	\begin{itemize}
+		\item Biased estimate of $\sigma^2$
+		$$\hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2$$
+		$$E(\hat{\sigma}^2) = \frac{n-1}{n}\sigma^2$$
+		\item Unbiased estimate of $\sigma^2$ (preferred)
+		$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2$$
+		$$E(s^2) = \sigma^2$$
+	\end{itemize}
+
+\end{itemize}
+How to estimate $\mu$?
+\begin{itemize}
+	\item $\mu$ is estimated by $\bar{x}$
+	\item Error in $\bar{x}$ is measured by the SE: $$\text{SD}(\bar{x})=\frac{\sigma}{\sqrt{n}}$$ which is \textbf{estimated} by $\frac{s}{\sqrt{n}}$ since $\sigma$ is unknown
+	\item \textbf{Conclusion}: $\mu$ is estimated as $\bar{x}$, give or take $\frac{s}{\sqrt{n}}$
+	$$ \text{ SE estimated by } \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{n}{n-1}}\times \text{SD} }{\sqrt{n}}$$
+	$$\text{where SD } = \hat{\sigma}$$
+\end{itemize}
+How to estimate $p$?
+\begin{itemize}
+	\item $\hat{p}$ is the estimator of $p$
+	$$E(\hat{p}) = p$$
+	$$\text{var}(\hat{p}) = \frac{\sigma^2}{n} = \frac{p(1-p)}{n}$$
+	$$\text{SE} = \text{SD}(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}$$
+	which is \textbf{estimated }by realisations of $\hat{p}$
+\end{itemize}
+\subsection{Interval estimation}
+\subsubsection{Definitions}
+\begin{itemize}
+	\item For sufficiently large $n$,
+	$$\frac{\bar{X}-\mu}{\sigma/\sqrt{n}} \sim \mathcal{N}(0,1)$$
+	\item The $p$-quantile of $Z\sim\mathcal{N}(0,1)$ is the number $q$ such that
+	$$\Phi(q) = \Pr(Z\leq q) = p$$
+	$$q = \Phi^{-1}(p)$$
+	\begin{lstlisting}[language=R]
+q <- qnorm(p)
+p <- pnorm(q)\end{lstlisting}
+	\item For $0 < p < 0.5$, let $z_p$ be such that
+	$$\Pr(Z > z_p) = p$$
+	$$z_p = \Phi^{-1}(1-p)$$
+
+	In other words, $z_p = (1-p)$-quantile of $Z$
+\subsubsection{CI Estimation}
+	\item For large $n$,
+	$$\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right)$$
+	$$\Pr\left(-z_{\frac{\alpha}{2}} \leq \frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\leq z_{\frac{\alpha}{2}} \right) \approx 1-\alpha$$
+
+	$$\Pr\left( \bar{X} - z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} + z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\right) \approx 1-\alpha$$
+	where the above, $\left( \bar{X} - z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} , \bar{X} + z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\right)$ is a random interval. Realisation $\bar{x}$ of $\bar{X}$ gives the realised interval
+	\item $(1-\alpha)$-CI for $\mu$ is of the form
+	$$\left(\text{estimate} - z_{\frac{\alpha}{2}}\text{SE},\text{estimate} + z_{\frac{\alpha}{2}}\text{SE} \right)$$
+\subsubsection{Exact CI}
+	\item Let $t_{\frac{\alpha}{2}, n-1}$ be the number such that $$\Pr(t_{n-1} > t_{\frac{\alpha}{2}, n-1}) = \alpha/2$$
+	\item \textbf{[Important]} Exact CI only works if $X \sim \mathcal{N}(\mu,\sigma^2)$ and $x_i$'s are realisations from IID \underline{Normal Distribution}\\
+	* CI is exact means that $\Pr$($\mu$ is within the interval) is exactly $1-\alpha$
+	\item $(1-\alpha)$-CI for $\mu$ is
+	$$\left( \bar{x} - t_{\frac{\alpha}{2}, n-1}\frac{s}{\sqrt{n}},\bar{x} + t_{\frac{\alpha}{2}, n-1}\frac{s}{\sqrt{n}}\right)$$
+\end{itemize}
+\subsection{Bias in Survey}
+Famous example: US presidential election survey conducted by \textit{Literary Digest} in 1936
+\subsubsection{Bias in Measurement}
+\begin{itemize}
+	\item $x_1, \dots, x_n$ are realisations of random draws $X_i, \dots, X_n$ from a population with mean $\mu + b$ and variance $\sigma^2$
+	\item SE $= \sigma/\sqrt{n}$ measures how far $\bar{x}$ is from $E(\bar{X}) = \mu + b$
+	\item How to remove bias?
+	\item MSE
+	\begin{equation*}
+		\begin{aligned}
+			\text{E}(\bar{X}-\mu)^2 &= \text{var}(\bar{X}) + \{\text{E}(\bar{X}) - \mu\}^2\\
+			\text{MSE} &= \text{SE}^2 + \text{bias}^2
+		\end{aligned}
+	\end{equation*}
+However $\mu$ is unknowable, hence it is not possible to remove bias unless we make very careful observations
+\end{itemize}
+
+\section{Useful Results}
+$$\sum_{i=1}^n(X_i-\bar{X})^2 = \sum_{i=1}^nX_i^2 - n\bar{X}^2$$
 \end{multicols}
 
 

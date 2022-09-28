@@ -124,7 +124,10 @@
 		\item \texttt{replicate(n, func)}: replicate anonymous function $n$ number of times (especially useful for random number generations)
 		\item \texttt{tapply()}: used to apply function and then group them into a table using grouping index
 		\item \texttt{mapply(func, arg1, arg2, arg3, ...)}: like \texttt{sapply} but takes multiple vectors containing arguments to \texttt{func}
+		\item \texttt{vapply()}: similar to \texttt{sapply} and \texttt{lapply} but we specify the output of operation on each element
 	\end{itemize}
+    \item \texttt{rev()}: reverses elements in a data structure
+    \item \texttt{sort()}: sort elements
 \end{itemize}
 \subsection*{Function debugging}
 \begin{itemize}
@@ -206,10 +209,17 @@ Note that \texttt{$\backslash$$\backslash$b} means word boundary and \texttt{$\b
 \subsubsection*{Date}
 \begin{itemize}
 	\item \impt \texttt{?strftime} for help page
+	\item \impt \textbf{Important packages}
+	\begin{itemize}
+		\item \texttt{lubridate}
+		\item \texttt{zoo}
+		\item \texttt{xts}
+	\end{itemize}
 	\item \texttt{as.Date(x, format)}: convert string x to \texttt{Date} object \\ e.g. \texttt{as.Date("2014/02/22", "\%Y/\%m/\%d")}
 	\item \texttt{months(d)}: what month of the year is the date in?
 	\item \texttt{weekdays(d)}: what day of the week is the date on?
 	\item \texttt{Sys.Date()}
+	\item \texttt{Sys.time()}: class is \texttt{POSIXct}
 	\item \texttt{cut(x, breaks, labels)}: usually used to group dates that fall into a month/week/quarter
 	\begin{itemize}
 		\item \texttt{breaks}: numeric vector/string (\texttt{"month", "week"})
@@ -328,6 +338,13 @@ par(opar) # to set it back to default
 \begin{itemize}
 	\item \texttt{strftime(date, format)}: string from time object
 	\item \texttt{as.POSIXct(date\_string, format)}: convert string to Date time
+	\item \textbf{Base R String Functions}
+	\begin{itemize}
+		\item \texttt{grepl(pattern = , x = )}: basically \texttt{str\_detect}
+		\item \texttt{grep(pattern = , x = )}: basically \texttt{str\_which}
+		\item \texttt{sub(pattern, replacement, x)}: basically \texttt{str\_replace}
+		\item \texttt{gsub(pattern, replacement, x)}: basically \texttt{str\_replace\_all}
+	\end{itemize}
 \end{itemize}
 
 
@@ -419,6 +436,7 @@ par(opar) # to set it back to default
 	\item \texttt{fromJSON(txt)}: takes up text/string object as an argument
 	\item \texttt{readLines(path)}: returns a string \impt line break will count as another element of a vector
 	\item \texttt{prettify()}
+	\item \texttt{RfromJSON()}??????
 	\item \impt How to convert list to data frame?
 	\begin{enumerate}
 		\item create a function \texttt{ls\_to\_df} which returns \texttt{data.frame} given an element of a list
@@ -502,18 +520,48 @@ con2 <- mongo(verbose=TRUE, collection="restaurants", url=connection_string)
 con2$count()
 	\end{lstlisting}
 \end{itemize}
+
+\textbf{Query}: Note that for MongoDB query has to be made with JSON object
+\begin{lstlisting}[language=R]
+	q1 <- toJSON(list(name="Wendy'S"), auto_unbox=TRUE)
+	# {"name": "Wendy'S"} # MongoDB takes JSON as argument
+	q1_out <- con2$find(query=q1, fields='{"borough":1, "cuisine":1}')
+\end{lstlisting}
+\begin{itemize}
+	\item \texttt{fields=}: only shows the data that are specified as 1 (select only relevant columns and remove those with 0)
+	\item \texttt{auto\_unbox}: convert arrayed arguments to normal arguments
+	\item \impt \textbf{Indexed table}: faster to find query results through indexed columns
+	\begin{lstlisting}[language=R]
+		# How to find indexed columns
+		con2$index();\end{lstlisting}
+	\item \impt \textbf{Paginated Queries}: iterate over the query by batch (especially for large datasets) e.g. download the data by 10\% batch
+	\begin{itemize}
+		\item To handle error, use try
+		\begin{lstlisting}[language=R]
+x <- try(expression);
+# let's say x throws an error
+if (inherits(x, "try-error")) {
+	do stuff
+}\end{lstlisting}
+        \item \textbf{Systematic sample}: extract 1 row from each batch to see the structure of the data and stuff
+	\end{itemize}
+    \item Usually RC style objects are returned
+    \item Remember to close connection
+    \begin{lstlisting}[language=R]
+rm(con2)\end{lstlisting}
+\end{itemize}
 \subsection{Data from Web}
 
 \subsubsection{Download File from Link}
 \begin{itemize}
 	\item how to download
 	\begin{lstlisting}[language=R]
-		imda_url <- "https://data.gov.sg/dataset/02c1f624-489f-40ad-8fdd-5e66e46b2722/download"
-		return_val <- download.file(imda_url, "../data/imda_data.zip")
-		con <- unz("../data/imda_data.zip", "wage-02-size2-annual.csv")
-		wages_data <- read.csv(con, header=TRUE)
-	\end{lstlisting}
+imda_url <- "https://data.gov.sg/dataset/02c1f624-489f-40ad-8fdd-5e66e46b2722/download"
+return_val <- download.file(imda_url, "../data/imda_data.zip")
+con <- unz("../data/imda_data.zip", "wage-02-size2-annual.csv")
+wages_data <- read.csv(con, header=TRUE)\end{lstlisting}
 	\item \texttt{download.file()}, \texttt{mode="wb"} for Windows
+	\item \texttt{file.path()}:
 	\item \texttt{unz}: to unzip
 \end{itemize}
 \subsubsection{Developer API}
@@ -532,6 +580,190 @@ taxi_data <- content(taxi_avail)
 	\end{lstlisting}
 \end{itemize}
 
+\textbf{Procedure for working with APIs}
+\begin{itemize}
+	\item Check the Documentation for
+	\begin{itemize}
+		\item URL
+		\item Parameters
+		\item What it returns
+	\end{itemize}
+    \item Check status code (200, 400 etc.)
+    \item Content
+\end{itemize}
+\subsubsection{Web Scraping With R}
+\begin{itemize}
+	\item \impt \href{flukeout.github.io}{Flukeout for CSS}
+	\item \impt \href{selectorgadget.com}{Selector Gadget for HTML}
+\end{itemize}
+\textbf{Procedure}
+\begin{itemize}
+	\item Import \texttt{rvest} and \texttt{xml2}
+	\begin{lstlisting}[language=R]
+		rbloggers_page <- read_html("https://www.r-bloggers.com/")
+		nodes <- html_nodes(rbloggers_page, "#wppp-3 a")\end{lstlisting}
+	\item \texttt{html\_text()}: extract text
+	\item \texttt{html\_table()}: extract table
+	\item \texttt{html\_structure()}
+\end{itemize}
+\subsection{SQL Databases}
+\textbf{Different kinds of SQL}:
+\begin{itemize}
+	\item MySQL: RMySQL
+	\item PostgresSQL: RPostgresSQL
+	\item Oracle Database: ROracle
+	\begin{lstlisting}[language=R]
+install.packages("RMySQL")
+library(DBI)\end{lstlisting}
+\end{itemize}
+\textbf{How to connect}
+\begin{lstlisting}[language=R]
+con <- dbConnect(RMySQL::MySQL(), # Construct SQL Driver
+                 dbname= "company",
+                 host = ...
+                 port = ..., user= ..., password=...)
+\end{lstlisting}
+\textbf{Useful Functions}:
+\begin{itemize}
+	\item List table names
+	\begin{lstlisting}[language=R]
+dbListTables(cons)\end{lstlisting}
+    \item Read Table
+    \begin{lstlisting}[language=R]
+dbReadTable(con, "employees")\end{lstlisting}
+    \item Disconnect
+    \begin{lstlisting}[language=R]
+dbDisconnect(con)\end{lstlisting}
+\item Subset
+\begin{lstlisting}[language=R]
+subset(employees,
+       subset = started_at > "2012-09-01"
+       select = col_names)\end{lstlisting}
+\item Subset using SQL Query (More efficient)
+\begin{lstlisting}[language=R]
+dbGetQuery(con, "SELECT name FROM employees WHERE ... ")\end{lstlisting}
+Internal working: (fetching by chunks)
+\begin{lstlisting}[language=R]
+res <- dbSendQuery(con, "query")
+while(!dbHasCompleted(res)) {
+	chunk <- dbFetch(res, n=2)
+	print(chunk)
+}
+dbDisconnect(res)
+\end{lstlisting}
+\end{itemize}
+\subsubsection{SQL Queries}
+\begin{itemize}
+	\item \texttt{INNER JOIN}: combine tables
+	\item \texttt{CHAR\_LENGTH()}
+\end{itemize}
+
+\section{Data Manipulation}
+\begin{center}
+	verb(df/tibble, ...)
+\end{center}
+\begin{itemize}
+	\item \texttt{filter}:
+	\begin{lstlisting}[language=R]
+	jan1 <- filter(flights, month == 1, day == 1)
+	# or operator
+	filter(flights, month==11 | month==12)
+	filter(flights, month %in% c(11,12))\end{lstlisting}
+	\begin{itemize}
+		\item \texttt{between(v, val1, val2)}: check if \texttt{v} is between the 2 values
+		\item \impt Sometimes a row has \texttt{NA} values, and we can include the row to alter the data later using \texttt{is.na(x)}
+		\item How to drop NA values?
+		\begin{lstlisting}[language=R]
+df %>% filter(!is.na(col))\end{lstlisting}
+	\end{itemize}
+	\item \texttt{mutate}: create new variables
+\begin{lstlisting}[language=R]
+mutate(flights_sml, air_time_mins=air_time/60, .before=...)\end{lstlisting}
+\begin{itemize}
+	\item \impt \texttt{lead()}/\texttt{lag()}: allow us to compute running differences / find when a value has changed
+	\begin{lstlisting}[language=R]
+# compute running differences
+x - lag(x)
+# find when a value has changed
+x != lag(x)\end{lstlisting}
+    \item \impt \texttt{cumsum()}
+    \item \impt \texttt{cummean()}
+    \item \impt \texttt{rank()}: \texttt{min\_rank()}, \texttt{min\_rank(desc(x))}, \texttt{dense\_rank}
+    \item \texttt{col = NULL}: delete a column when doing \texttt{mutate}
+\end{itemize}
+	\item \texttt{select}: pick variables (\textbf{columns}) by their names
+	\begin{lstlisting}[language=R]
+	# select by column
+	select(flights, year, month, day)
+	# select inclusive columns
+	select(flights, year:day)
+	select(flights, !(year:day))\end{lstlisting}
+\begin{itemize}
+	\item \impt \texttt{?select} for more operators
+	\item \impt \texttt{select(df, where(func))}: \texttt{where} will return T/F and only select columns with specified properties (character? numeric?)
+\end{itemize}
+	\item \texttt{arrange}: reorder rows
+\begin{lstlisting}[language=R]
+arrange(flights, desc(arr_delay))
+\end{lstlisting}
+	\item \texttt{summarise}: collapses many values to a smaller set of summary values
+	\begin{itemize}
+		\item Will only return columns that we asked for!
+		\item similar to \texttt{mutate}
+		\item Use \texttt{group\_by} to achieve good results
+	\end{itemize}
+\begin{lstlisting}[language=R]
+by_day2 <- group_by(flights, year, month, day, origin)
+summarise(by_day2, delay= mean(dep_delay,na.rm=TRUE), .group="drop")
+# .groups drop will drop the groups attribute(not grouped anumore)
+\end{lstlisting}
+	\item \texttt{group\_by}: splits dataset by values in variable
+	\begin{itemize}
+		\item will modify how mutate and filter works
+		\item Operations take place within the groups
+	\end{itemize}
+\begin{lstlisting}[language=R]
+by_day <- group_by(flights, year, month, day)
+\end{lstlisting}
+\begin{itemize}
+	\item \texttt{n()}: how many obervations in each group
+	\item \texttt{count()}
+\end{itemize}
+\end{itemize}
+\vspace{1em}
+\textbf{Other useful functions}
+
+\begin{itemize}
+	\item \texttt{slice\_head()}: similar to \texttt{head}
+	\item \texttt{slice\_max()}: extract max specified values
+	\item \texttt{slice\_sample()}
+	\item \impt \texttt{Hmisc::describe()}: more intuitive
+	\item \impt \texttt{first(dest, order\_by=dep\_time)}: returns value in a column sorted by another column\\
+	can only be used inside mutate or summarise
+	\item \impt \texttt{last()}
+	\item \impt \texttt{nth()}
+	\item \texttt{?n()}: only work in grouped summarise or mutate: number of elements in each group
+	\item \texttt{n\_distinct}
+	\item \texttt{add\_tally}: like mutate: add group attributes to original df, useful when need to compare individual data to group data in each row
+\end{itemize}
+\textbf{Miscellaneous}
+\begin{itemize}
+	\item \texttt{across()} apply same functions across a set of columns (something like \texttt{apply})\\
+	can also apply multiple functions (use list to list down the functions!)
+	\item \texttt{rowwise()}: group by row and apply functions by row
+	\item \texttt{c\_across(x:z)}: apply \texttt{c} to the specified columns
+\end{itemize}
+\subsection{Tidy Data}
+\textbf{Ordering variables}
+\begin{itemize}
+	\item \textbf{Fixed variables}: those that describe the experimental design / known in advance
+	\item \textbf{Measured variables}: what we actually measure in the study
+\end{itemize}
+
+\section{Interesting stuff}
+\begin{itemize}
+	\item Can lookup location through zipcode
+\end{itemize}
 \end{multicols}
 
 

@@ -1,0 +1,76 @@
+---
+title: "Tutorial 4"
+author: "Claudeon Susanto"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rvest)
+library(xml2)
+library(tidyverse)
+```
+
+## Web Scraping
+Extracting data from 2010-2011 Season
+```{r}
+starting_years <- 2010:2021
+link <- "http://www.worldfootball.net/all_matches/"
+
+read_season <- function(year) {
+  season <- paste(year, year+1, sep="-")
+  link <- paste(link, "eng-premier-league-", season, "/", sep="")
+  season_page <- read_html(link)
+  season_tbl <- html_table(season_page)[[2]]
+  colnames(season_tbl) <- c("date", "time", "home", "sep", "away", "scores", "add")
+  season_tbl <- season_tbl %>% mutate(season=season)
+  season_tbl
+}
+```
+Apply `read_season` to seasons 2010-2011 to 2021-2022
+```{r}
+raw_epl <- do.call(rbind, lapply(starting_years, read_season))
+```
+
+## Data Cleaning
+```{r}
+raw_epl <- raw_epl %>% 
+  select(!c(sep,add)) %>%
+  filter(str_detect(date, "[Rr]ound", negate=TRUE))
+raw_epl[raw_epl$date == "", 1] <- NA
+raw_epl <- raw_epl %>%
+  fill(date)
+```
+Check if the formatting of `scores` is standardised
+```{r}
+sum(str_detect(raw_epl$scores, "^\\d+:\\d+ \\(\\d+:\\d+\\)$")) == dim(raw_epl)[1]
+```
+Create new columns
+```{r}
+clean_epl <- raw_epl %>%
+  mutate(final_home = as.numeric(str_extract(scores, "(?<=^)(\\d+)(?=:)")),
+         final_away = as.numeric(str_extract(scores, "(?<=:)(\\d+)(?= )")),
+         half_home  = as.numeric(str_extract(scores, "(?<= \\()(\\d+)(?=:)")),
+         half_away  = as.numeric(str_extract(scores, "(?<=:)(\\d+)(?=\\)$)")),
+         )
+```
+
+## Data Visualization
+Extracting 2010-2011 data
+```{r}
+s1011 <- clean_epl #%>% filter(season=="2010-2011")
+barplot(table(s1011$final_home), border=NA)
+```
+\n ### Question 3 & 4
+\n Estimate for $\lambda$
+```{r}
+lam_est <- mean(s1011$final_home)
+exp_goal_count <- sapply(0:(length(table(s1011$final_home))-1), dpois, lambda=lam_est)*(length(s1011$final_home))
+```
+
+### Question 5
+```{r}
+library(vcd)
+rootogram(table(s1011$final_home), exp_goal_count)
+```

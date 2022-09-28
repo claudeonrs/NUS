@@ -51,6 +51,7 @@ credentials <- paste0(readLines("mongo_user_pwd.txt", warn=FALSE), collapse=":")
 connection_string <- paste0("mongodb://",credentials, "@rshiny.nus.edu.sg:2717/test")
 con2 <- mongo(verbose=TRUE, collection="restaurants", url=connection_string)
 con2$count()
+con2$index()
 # rshiny.nus.edu.sg/dlp/dlp2c-wk1
 
 
@@ -74,6 +75,16 @@ taxi_data <- content(taxi_avail)
 coords <- taxi_data$features[[1]]$geometry$coordinates
 matrix <- sapply(coords, function(x) {c(x[[1]], x[[2]])})
 plot(matrix[1,], matrix[2,], pch="+")
+
+
+## WEB FUKIN SCRAPIN
+
+library(rvest)
+library(xml2)
+rbloggers_page <- read_html("https://www.r-bloggers.com/2018/11")
+nodes <- html_nodes(rbloggers_page, ".loop-title a")
+nodes
+
 
 
 

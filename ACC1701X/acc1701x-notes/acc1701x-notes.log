@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  5 SEP 2022 12:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  25 SEP 2022 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -730,33 +730,63 @@ Underfull \hbox (badness 7415) in paragraph at lines 194--195
 []\T1/lmss/bx/n/10 Statement of com-pre-hen-sive in-come (SCI)
  []
 
-<image/acc_cycle.png, id=57, 655.44875pt x 75.28125pt>
+<image/acc_cycle.png, id=113, 655.44875pt x 75.28125pt>
 File: image/acc_cycle.png Graphic file (type png)
 <use image/acc_cycle.png>
 Package pdftex.def Info: image/acc_cycle.png  used on input line 206.
 (pdftex.def)             Requested size: 512.14963pt x 58.82251pt.
+[2 <./image/acc_cycle.png>]
+Overfull \hbox (31.50868pt too wide) in paragraph at lines 368--369
+[]$[]$ 
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
+
+Overfull \hbox (127.98051pt too wide) in paragraph at lines 370--371
+[]$[]$ 
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 401--403
+[]\T1/lmss/m/n/10 a Contra-
+ []
+
+
+Overfull \hbox (41.37016pt too wide) detected at line 419
+[] \OT1/lmr/m/n/10 = [] \OMS/lmsy/m/n/10 ^^B [] ^^B []
+ []
+
+
+Overfull \hbox (5.64735pt too wide) in paragraph at lines 441--443
+\T1/lmss/m/n/10 Hence, it is es-ti-mated at the start and $[]$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 446--446
 []\T1/lmss/bx/n/14.4 Financial State-ment Anal-y-sis
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
 []\T1/lmss/bx/n/10 Liquidity and ef-fi-ciency\T1/lmss/m/n/10 : able to meet
  []
 
-[2 <./image/acc_cycle.png>] [3] (./acc1701x-notes.aux)
+
+Overfull \hbox (11.60373pt too wide) detected at line 480
+[] \OT1/lmr/m/n/10 = []
+ []
+
+[4] [5] (./acc1701x-notes.aux)
 Package rerunfilecheck Info: File `acc1701x-notes.out' has not changed.
-(rerunfilecheck)             Checksum: 0055B1C76E4DE8B7B2A50A175CA5872E;1681.
+(rerunfilecheck)             Checksum: 485D23029BFA5A8D6CA23920DDD87EC5;3883.
  ) 
 Here is how much of TeX's memory you used:
- 15236 strings out of 480171
- 240110 string characters out of 5894489
- 578622 words of memory out of 5000000
- 32948 multiletter control sequences out of 15000+600000
+ 15272 strings out of 480171
+ 240563 string characters out of 5894489
+ 578634 words of memory out of 5000000
+ 32962 multiletter control sequences out of 15000+600000
  507636 words of font info for 55 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,18n,63p,288b,734s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,18n,63p,334b,734s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
 hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -765,10 +795,10 @@ onts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb><
 /usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on acc1701x-notes.pdf (3 pages, 169607 bytes).
+Output written on acc1701x-notes.pdf (5 pages, 185455 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 200 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 198 words of extra memory for PDF output out of 10000 (max. 10000000)
 

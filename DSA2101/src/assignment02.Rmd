@@ -1,0 +1,212 @@
+---
+title: "Assignment 2"
+author: "Claudeon Susanto"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    highlight: tango
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(stringr)
+```
+
+## Question 1
+### Question 1.1
+```{r}
+box_muller <- function(n) {
+  
+  # function to generate two random variables
+  box_muller2 <- function(i) {
+    u <- runif(2, min=0, max=1);
+    x1 <- sqrt(-2*log(u[1]))*cos(2*pi*u[2])
+    x2 <- sqrt(-2*log(u[1]))*sin(2*pi*u[2])
+    c(x1,x2)
+  }
+  
+  # apply n/2 or (n+1)/2 times and return the result as a vector
+  apply_times <- ifelse(n%%2==0, n/2, (n+1)/2)
+  c(sapply(1:apply_times,box_muller2))[1:n]
+  
+}
+```
+### Question 1.2
+```{r}
+box_mueller_output <- box_muller(1000)
+hist(box_mueller_output, probability=TRUE, 
+     xlab="x", main="Histogram of 1000 random variables using box_muller")
+```
+
+### Question 1.3
+If the algorithm is working correctly, we would get a vector $(x_1, x_2, \dots, x_{1000})$ where $X_i \sim \mathcal{N}(0,1)$ as the output for question 1.2.
+
+There are two ways to verify the algorithm:
+
+  - Use the functions `mean` and `sd` to test if the 1000 random numbers
+  generated have mean and SD close to 0 and 1 respectively (within +-0.05), if the results are close to the expected value, the algorithm should work correctly. If the results are far away from 0 and 1, the algorithm is not working properly.
+```{r, collapse=TRUE}
+mean(box_mueller_output)
+sd(box_mueller_output)
+```
+  - Plot the PDF of $\mathcal{N}(0,1)$ on top of the histogram. If the PDF curve largely fits the histogram and have similar shapes, the algorithm should be working correctly. If the histogram and PDF curve have different shapes or do not fit, the algorithm is not working correctly.
+```{r}
+# plot histogram
+hist(box_mueller_output, probability=TRUE, 
+     xlab="x", main="CDF superimposed on histogram")
+
+# plot PDF of N(0,1)
+points(seq(min(box_mueller_output), max(box_mueller_output), by=0.01),dnorm(seq(min(box_mueller_output),max(box_mueller_output),by=0.01)),type="l")
+```
+  
+## Question 2
+Observe that the URL to get the png is of the format `www.nea.gov.sg/docs/default-source/rain-area-240km/dpsri_240km_YYYYMMDDHHMM0000dBR.dpsri.png`
+```{r}
+start_url <- "www.nea.gov.sg/docs/default-source/rain-area-240km/dpsri_240km_"
+end_url <- "0000dBR.dpsri.png"
+
+# start and end times
+start_time <- as.POSIXct("2022-07-31 01:00:00S")
+end_time <- as.POSIXct("2022-07-31 03:00:00S")
+
+# 5-min intervals
+nea_times <- seq(start_time, end_time, by=5*60) # in seconds
+
+# function to download individual image
+download_img <- function(time) {
+  currtime_str <- strftime(time, format="%Y%m%d%H%M")
+  url <- paste(start_url, currtime_str, end_url, sep="")
+  # saved as '../data/nea_YY-mm-ddTHH:MM:SS.png'
+  destfile <- filename(time)
+  download.file(url, destfile)
+}
+
+# function to determine filename
+filename <- function(time) {
+  paste("nea_", strftime(time, format="%Y-%m-%dT%H:%M:%S"), ".png", sep="")
+}
+```
+Steps to creating `radar_files.zip`:
+  
+  - Use `sapply` to download files individually using `download_img` function and `nea_times` which we have already created
+  - Create a character vector `temp_files` of the name of the downloaded files
+  - Zip files into `radar_files.zip`
+  - Delete temporary files (`temp_files`)
+```{r, results=FALSE}
+sapply(nea_times, download_img)
+```
+```{r, echo=FALSE}
+print("Files downloaded successfully!")
+```
+```{r ,message=FALSE, warning=FALSE ,error=TRUE}
+temp_files <- sapply(nea_times, filename)
+zip("../data/radar_files.zip", temp_files)
+```
+```{r, echo=FALSE}
+print("Files zipped successfully!")
+```
+```{r}
+unlink(temp_files)
+```
+```{r, echo=FALSE}
+print("Temporary files deleted successfully!")
+```
+## Question 3
+```{r, include=FALSE}
+read.fe_data <- function(path_to_dir, user, facial_expression) {
+  # @param string path_to_dir
+  # @param string user
+  # @param string facial_expression
+  
+  files <- list.files(path_to_dir, full.names=TRUE)
+  fnames <- str_subset(files, str_c(user,"_",facial_expression))
+  dp_path <- str_subset(fnames, "datapoint")
+  cat(dp_path)
+  tg_path <- str_subset(fnames, "target")
+  dp_vec <- scan(dp_path, skip=1)
+  tg_vec <- scan(tg_path)
+  
+  total_frames <- length(tg_vec)
+  frames <- array(dp_vec[-seq(1, length(dp_vec), by=301)],
+                      dim=c(3, 100, total_frames))
+  frames <- aperm(frames, c(2,1,3))
+  
+  timestamp <- dp_vec[seq(1, length(dp_vec), by=301)]
+  user <- rep(user, length.out=total_frames)
+  facial_expression <- rep(facial_expression, length.out=total_frames)
+  fe_present <- tg_vec
+  df <- data.frame(timestamp, user, facial_expression, fe_present)
+  out <- list(frames=frames,info=df)
+  class(out) <- "gfe"
+  out
+}
+gfe_obj <- read.fe_data("../data/grammatical_facial_expression",
+                        "b","emphasis")
+str(gfe_obj)
+```
+
+```{r}
+`[.gfe` <- function(gfe_obj, vec) {
+  out <- gfe_obj
+  out$frames <- gfe_obj$frames[,,vec]
+  out$info <- gfe_obj$info[vec,]
+  out
+}
+```
+Testcase:
+```{r, collapse=TRUE}
+sub_gfe_obj <- gfe_obj[1:3]
+str(sub_gfe_obj)
+```
+## Question 4
+```{r, attr.source='.numberLines'}
+est_poly1 <- function(x, y, slopes, n) {
+  x_vals <- seq(x[1], x[2], length.out = 5)
+  x_diff <- x_vals - x[1]
+  p2 <- (3*(y[2] - y[1])/(x[2] - x[1]) - 2*slopes[1] - slopes[2])/(x[2] - x[1])
+  p3 <- (slopes[1] + slopes[2] - 2*(y[2] - y[1])/(x[2] - x[1]))/(x[2] - x[1])^2
+  y_vals <- y[1] + slopes[1]*x_diff + p2 *(x_diff^2) + p3*(x_diff^3)
+  return(cbind(x_vals, y_vals))
+}
+```
+For `est_poly1`, in line 2, the `length.out` argument in `seq` should be `n`
+```{r, attr.source='.numberLines'}
+est_poly2 <- function (x,y,slopes,n){
+  x_values <- seq(0, abs(x[1]-x[2]), length = n)
+  p0 <- y[1]
+  p1 <- slopes[1]
+  p2 <- (3*(y[2] - y[1])/(x[2] - x[1])-  2*slopes[1] -slopes[2])/(x[2] -x[1])
+  p3 <- (slopes[1] +slopes[2]  - 2*(y[2] - y[1])/(x[2] - x[1]))/(x[2]- x[1])^2
+  matrix <- matrix(x_values)
+  y_values <- apply(matrix, 2, function(x) p0 + p1*(x-x[1]) + p2 * (x-x[1])^2 + p3 * (x-x[1])^2)
+  ans <- matrix(c(x_values,y_values), ncol = 2)
+  colnames(ans) <- c("x_vals", "")
+  return(ans)
+}
+```
+For `est_poly2`, in line 8, the `MARGIN` argument of `apply` should be changed to 1 so that it is applied by row.
+Furthermore, in line 2, the values inside `x_values` are wrong as they should be between `x[1]` and `x[2]`.
+```{r, attr.source='.numberLines'}
+est_poly3 <-  function(x,y,slopes,n){
+  p0 <- y[1]
+  p1 <- slopes[1]
+  ysub <- y[2] - y[1]
+  xsub <- x[2] - x[1]
+  p2 <- ((3*xsub/ysub) - (2*slopes[1]) - slopes[2])/xsub
+  p3 <- ((slopes[2]+slopes[1]-(2*ysub))/(xsub))/(xsub)^2
+  xvals <- seq(from = 0, to = 1, by = 1/n)
+  eqn <- function(val){
+    newval <- p0 + p1*(val-x[1]) + p2*((val-x[1])^2)+p3*((val-x[1])^3)
+  }
+  yvals <- lapply(xvals,eqn)
+  matrix <- cbind(xvals,yvals)
+  return(matrix)
+}
+```
+For `est_poly3`, line 7 is wrong and is supposed to be `p3 <- (slopes[2]+slopes[1]-(2*ysub)/(xsub))/(xsub)^2`.
+In line 8, `from=` and `to=` are wrong, the correct arguments should be `x[1]` and `x[2]` respectively
