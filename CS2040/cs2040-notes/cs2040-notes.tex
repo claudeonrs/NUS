@@ -292,6 +292,32 @@ Time complexity:
 	\item Complexity is $O(dn)$ where $d$ is the maximum number of digits of the $n$ numeric strings in the array
 \end{itemize}
 Limitation: Not in-place
+
+\subsubsection{Bucket Sort}
+\textbf{How it works}:
+\begin{itemize}
+	\item There are $b$ buckets, and each element \texttt{arr} is inserted into bucket according to a function \eg \texttt{(int) arr[j]*10}
+	\item Similar to radix sort but $b$ can be any number (base?)\\
+	\eg Tut 5 Q 3(b) where $N \leq \texttt{arr[i]} \leq 3N$,  we can have $3N$ buckets $1,2,3, \dots, 3N$ so that each bucket contains only 1 element
+	\item So only 1 pass is needed a.k.a. $O(3N)$ time
+	\item Possible problem: takes up alot of space?
+\end{itemize}
+\begin{table}[H]
+	\centering{
+		\resizebox{\columnwidth}{!}{
+			\begin{tabular}{c|c|c|c|c}
+				& Worst Case     & Best Case      & In-place? & Stable? \\ \hline
+				Selection                                               & $O(n^2)$       & $O(n^2)$       &           & No      \\ \hline
+				Insertion                                               & $O(n^2)$       & $O(n)$         &           &         \\ \hline
+				Bubble                                                  & $O(n^2)$       & $O(n^2)$       &           &         \\ \hline
+				\begin{tabular}[c]{@{}c@{}}Bubble\\ (Flag)\end{tabular} & $O(n^2)$       & $O(n)$         &           &         \\ \hline
+				Merge                                                   & $O(n \log{n})$ & $O(n \log{n})$ & No        &         \\ \hline
+				Radix                                                   & $O(dn)$        & $O(dn)$        & No        &         \\ \hline
+				Quick                                                   & $O(n^2)$       & $O(n \log{n})$ &           & No
+			\end{tabular}
+	}}
+\end{table}
+
 \subsection{Java Sorting}
 For list/arrays:
 \begin{itemize}
@@ -311,8 +337,12 @@ class ObjComparator implements Comparator<Obj> {
     	// check to see if we have the same comparator object
     	return this = obj;
     }
-}
-\end{lstlisting}
+}\end{lstlisting}
+
+
+
+
+
 \section{Java Tricks}
 \begin{itemize}
 	\item OOP is important (CardGame)
@@ -322,6 +352,8 @@ class ObjComparator implements Comparator<Obj> {
 			\item Especially true if only need to print statement at the end
 		\end{itemize}
 	\end{itemize}
+	\item Invariance: property that stays constant???\\
+	Lab 5C: Pancakes: Use number of inversions if it's even or not
 	\item Use \texttt{StringBuilder} for return statements
 	\begin{itemize}
 		\item \href{https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html}{Java StringBuilder API}

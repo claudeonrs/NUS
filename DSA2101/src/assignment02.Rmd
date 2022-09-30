@@ -158,10 +158,14 @@ str(gfe_obj)
   out
 }
 ```
-Testcase:
+Testcases:
 ```{r, collapse=TRUE}
-sub_gfe_obj <- gfe_obj[1:3]
-str(sub_gfe_obj)
+sub_gfe_obj1 <- gfe_obj[1:3]
+str(sub_gfe_obj1)
+sub_gfe_obj2 <- gfe_obj[-1:-3]
+str(sub_gfe_obj2)
+sub_gfe_obj3 <- gfe_obj[c(TRUE,FALSE)]
+str(sub_gfe_obj3)
 ```
 ## Question 4
 ```{r, attr.source='.numberLines'}

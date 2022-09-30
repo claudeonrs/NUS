@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  25 SEP 2022 10:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  1 OCT 2022 07:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -690,22 +690,18 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 131
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-]
-Overfull \vbox (0.95451pt too high) has occurred while \output is active []
-
-
-[2] (./cs2040-notes.aux)
+] [2] [3] (./cs2040-notes.aux)
 Package rerunfilecheck Info: File `cs2040-notes.out' has not changed.
-(rerunfilecheck)             Checksum: A282013A400E3F57B195FE4ECC3648ED;1833.
+(rerunfilecheck)             Checksum: AFE124F2196392A403F4BEEEA43D3D5F;1959.
  ) 
 Here is how much of TeX's memory you used:
- 15636 strings out of 480171
- 243485 string characters out of 5894489
+ 15643 strings out of 480171
+ 243580 string characters out of 5894489
  944158 words of memory out of 5000000
- 33297 multiletter control sequences out of 15000+600000
- 507955 words of font info for 56 fonts, out of 8000000 for 9000
+ 33300 multiletter control sequences out of 15000+600000
+ 508597 words of font info for 58 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,14n,63p,252b,1422s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,15n,63p,252b,2033s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
 hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -716,10 +712,10 @@ b></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type
 share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/pu
 blic/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/sh
 are/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on cs2040-notes.pdf (2 pages, 184968 bytes).
+Output written on cs2040-notes.pdf (3 pages, 188519 bytes).
 PDF statistics:
- 220 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
- 75 named destinations out of 1000 (max. 500000)
- 137 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 230 PDF objects out of 1000 (max. 8388607)
+ 201 compressed objects within 3 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 145 words of extra memory for PDF output out of 10000 (max. 10000000)
 
