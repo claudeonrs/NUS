@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  1 OCT 2022 07:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  18 OCT 2022 16:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -791,32 +791,111 @@ Underfull \hbox (badness 10000) in paragraph at lines 448--449
  []
 
 [4] [5]
-Underfull \hbox (badness 6675) in paragraph at lines 682--683
+Underfull \hbox (badness 6675) in paragraph at lines 689--690
 []\T1/lmss/m/n/10 The gov-ern-ment gives a sin-gle firm the
  []
 
-<images/price_discrimination.png, id=173, 660.4675pt x 633.36626pt>
+<images/price_discrimination.png, id=321, 660.4675pt x 633.36626pt>
 File: images/price_discrimination.png Graphic file (type png)
 <use images/price_discrimination.png>
-Package pdftex.def Info: images/price_discrimination.png  used on input line 70
-3.
+Package pdftex.def Info: images/price_discrimination.png  used on input line 71
+0.
 (pdftex.def)             Requested size: 160.0pt x 153.43167pt.
-[6 <./images/price_discrimination.png>] [7] (./ec1101e-notes.aux)
+[6 <./images/price_discrimination.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 821--822
+[]$[]$\T1/lmss/m/n/10 : Real
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 876--877
+[]\T1/lmss/bx/n/10 Government in-vest-ment\T1/lmss/m/n/10 : high-ways,
+ []
+
+
+Overfull \hbox (13.20349pt too wide) detected at line 887
+[][]
+ []
+
+[8]
+Overfull \hbox (6.98126pt too wide) in paragraph at lines 972--973
+[]$ 
+ []
+
+<images/unemployment.png, id=344, 1179.40625pt x 503.8825pt>
+File: images/unemployment.png Graphic file (type png)
+<use images/unemployment.png>
+Package pdftex.def Info: images/unemployment.png  used on input line 1023.
+(pdftex.def)             Requested size: 251.07481pt x 107.2639pt.
+<images/unemployment2.png, id=345, 1228.59pt x 685.56125pt>
+File: images/unemployment2.png Graphic file (type png)
+<use images/unemployment2.png>
+Package pdftex.def Info: images/unemployment2.png  used on input line 1037.
+(pdftex.def)             Requested size: 251.07481pt x 140.10161pt.
+<images/unemployment3.png, id=346, 1228.59pt x 685.56125pt>
+File: images/unemployment3.png Graphic file (type png)
+<use images/unemployment3.png>
+Package pdftex.def Info: images/unemployment3.png  used on input line 1041.
+(pdftex.def)             Requested size: 251.07481pt x 140.10161pt.
+[9 <./images/unemployment.png> <./images/unemployment2.png>]
+<images/openness.png, id=355, 1228.59pt x 522.95375pt>
+File: images/openness.png Graphic file (type png)
+<use images/openness.png>
+Package pdftex.def Info: images/openness.png  used on input line 1117.
+(pdftex.def)             Requested size: 251.07481pt x 106.87106pt.
+<images/stability.png, id=356, 1228.59pt x 532.99126pt>
+File: images/stability.png Graphic file (type png)
+<use images/stability.png>
+Package pdftex.def Info: images/stability.png  used on input line 1122.
+(pdftex.def)             Requested size: 251.07481pt x 108.92233pt.
+ [10 <./images/unemployment3.png> <./images/openness.png>] [11 <./images/stabil
+ity.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1235--1236
+[]$[]$ \T1/lmss/m/n/10 (op-ti-
+ []
+
+<images/fluctuations.png, id=374, 741.77126pt x 465.74pt>
+File: images/fluctuations.png Graphic file (type png)
+<use images/fluctuations.png>
+Package pdftex.def Info: images/fluctuations.png  used on input line 1281.
+(pdftex.def)             Requested size: 251.07481pt x 157.63884pt.
+<images/boomslump.png, id=375, 752.8125pt x 558.085pt>
+File: images/boomslump.png Graphic file (type png)
+<use images/boomslump.png>
+Package pdftex.def Info: images/boomslump.png  used on input line 1285.
+(pdftex.def)             Requested size: 251.07481pt x 186.12723pt.
+
+Overfull \hbox (58.7009pt too wide) in paragraph at lines 1298--1300
+[]\T1/lmss/bx/n/10 Labour mar-kets do not clear\T1/lmss/m/n/10 : $[]$ 
+ []
+
+[12 <./images/fluctuations.png> <./images/boomslump.png>]
+<images/keynesian.png, id=384, 757.83125pt x 596.2275pt>
+File: images/keynesian.png Graphic file (type png)
+<use images/keynesian.png>
+Package pdftex.def Info: images/keynesian.png  used on input line 1355.
+(pdftex.def)             Requested size: 251.07481pt x 197.52898pt.
+<images/keynesian_eq.png, id=385, 1217.54875pt x 688.5725pt>
+File: images/keynesian_eq.png Graphic file (type png)
+<use images/keynesian_eq.png>
+Package pdftex.def Info: images/keynesian_eq.png  used on input line 1361.
+(pdftex.def)             Requested size: 251.07481pt x 141.9883pt.
+ [13 <./images/keynesian.png> <./images/keynesian_eq.png>] [14] (./ec1101e-note
+s.aux)
 Package rerunfilecheck Info: File `ec1101e-notes.out' has not changed.
-(rerunfilecheck)             Checksum: 286C1DAC5945050DE431767931E8DD67;4331.
+(rerunfilecheck)             Checksum: 43127773E844B5065138122012AF1AC2;10438.
  ) 
 Here is how much of TeX's memory you used:
- 15288 strings out of 480171
- 240979 string characters out of 5894489
- 580644 words of memory out of 5000000
- 32971 multiletter control sequences out of 15000+600000
+ 15447 strings out of 480171
+ 244137 string characters out of 5894489
+ 584680 words of memory out of 5000000
+ 33063 multiletter control sequences out of 15000+600000
  510438 words of font info for 56 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,14n,63p,537b,701s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/f
+ 60i,14n,63p,537b,803s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/f
 onts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.
 pfb></usr/share/texmf/fonts/type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></us
@@ -825,11 +904,12 @@ ic/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 ssbo10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/tex
 mf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-sy10.pfb>
-Output written on ec1101e-notes.pdf (7 pages, 303935 bytes).
+sy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmsy7.pfb>
+Output written on ec1101e-notes.pdf (14 pages, 1616683 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 224 compressed objects within 3 object streams
- 53 named destinations out of 1000 (max. 500000)
- 246 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 499 PDF objects out of 1000 (max. 8388607)
+ 427 compressed objects within 5 object streams
+ 111 named destinations out of 1000 (max. 500000)
+ 587 words of extra memory for PDF output out of 10000 (max. 10000000)
 

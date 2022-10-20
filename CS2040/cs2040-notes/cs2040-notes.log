@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  1 OCT 2022 07:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  19 OCT 2022 22:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -690,32 +690,46 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 131
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2] [3] (./cs2040-notes.aux)
-Package rerunfilecheck Info: File `cs2040-notes.out' has not changed.
-(rerunfilecheck)             Checksum: AFE124F2196392A403F4BEEEA43D3D5F;1959.
+] [2] [3] [4]
+<image/avl_tree.png, id=290, 1043.9pt x 388.45125pt>
+File: image/avl_tree.png Graphic file (type png)
+<use image/avl_tree.png>
+Package pdftex.def Info: image/avl_tree.png  used on input line 610.
+(pdftex.def)             Requested size: 251.07481pt x 93.4258pt.
+ [5 <./image/avl_tree.png>]
+[6] (./cs2040-notes.aux)
+
+Package rerunfilecheck Warning: File `cs2040-notes.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `cs2040-notes.out':
+(rerunfilecheck)             Before: FE04DDD9A81BDA7694A077671DAE69C3;4509
+(rerunfilecheck)             After:  B0AF89CAC41EE6D6E82CB526E92DE7DC;4584.
  ) 
 Here is how much of TeX's memory you used:
- 15643 strings out of 480171
- 243580 string characters out of 5894489
- 944158 words of memory out of 5000000
- 33300 multiletter control sequences out of 15000+600000
+ 15802 strings out of 480171
+ 245782 string characters out of 5894489
+ 944173 words of memory out of 5000000
+ 33361 multiletter control sequences out of 15000+600000
  508597 words of font info for 58 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,15n,63p,252b,2033s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
-c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
-hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on cs2040-notes.pdf (3 pages, 188519 bytes).
+ 60i,15n,63p,279b,2033s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/l
+m/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/f
+onts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+Output written on cs2040-notes.pdf (6 pages, 395972 bytes).
 PDF statistics:
- 230 PDF objects out of 1000 (max. 8388607)
- 201 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
- 145 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 416 PDF objects out of 1000 (max. 8388607)
+ 379 compressed objects within 4 object streams
+ 173 named destinations out of 1000 (max. 500000)
+ 294 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,195 @@
+---
+title: "DSA2101 Midterms"
+author: "Claudeon Susanto"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+library(httr)
+```
+
+## Question 1
+### Question 1.1
+```{r, error=TRUE, warning=FALSE}
+url1 <- paste0("https://data.gov.sg/api/action/datastore_search?", "resource_id=f8c014e4-fc08-4e28-a1b8-27a8390afd1e")
+get_response <- GET(url1, verbose())
+tmp_content <- content(get_response)
+visitor_count <- NULL
+while(NROW(visitor_count) < ifelse(is.null(tmp_content),0, tmp_content$result$total)) {
+  total_visitors <- sapply(tmp_content$result$records, function(x) as.integer(x$total_international_visitor_arrivals))
+  arr_month <- as.Date(sapply(tmp_content$result$records, function(x) str_c(x$month,"-01",sep="")))
+  visitor_count <- bind_rows(visitor_count, tibble(arr_month, total_visitors))
+  new_url <- paste("https://data.gov.sg", tmp_content$result$`_links`$`next`, sep="")
+  get_response <- GET(new_url, verbose())
+  tmp_content <- content(get_response)
+}
+```
+### Question 1.2
+Yes, it is appropriate to use `while` as we can stop retrieving data easily when it reaches a certain condition i.e. when the number of rows retrieved > total number of rows. Meanwhile, using `sapply` or `lapply`, we need to hardcode the number of rows.
+
+### Question 1.3
+```{r}
+moving_average <- stats::filter(visitor_count$total_visitors, c(1,1,1)/3)
+visitor_count <- cbind(visitor_count, moving_average)
+```
+```{r}
+
+plot(x=visitor_count$arr_month, y=visitor_count$moving_average/1000000,type="l", col="blue", ylab="Total visitor count (millions)", xlab="Arrival month", main="Monthly arrivals to Singapore")
+points(x=visitor_count$arr_month,y=visitor_count$total_visitors/1000000,cex=0.25, col="red")
+
+```
+
+### Question 1.4
+```{r}
+q1_4_vec <- sort(abs(visitor_count$total_visitors-visitor_count$moving_average), decreasing=TRUE)[1:10]
+```
+
+## Question 2
+```{r}
+load("../data/mid_term_q2.rdt")
+# get orders and prod_cat
+```
+### Question 2.1
+```{r}
+q2_1_tbl <- prod_cat %>% 
+  group_by(product_category_name_english) %>%
+  summarise(count=n())
+```
+### Question 2.2
+```{r q2_2_code_chunk}
+select(prod_cat, 6:9)
+select(prod_cat, c(product_length_cm, product_width_cm, product_height_cm, product_category_name_english))
+select(prod_cat, contains(c("_cm", "category")))
+```
+### Question 2.3
+```{r}
+q2_3_tbl <- prod_cat %>%
+  mutate(across(6:8,function(x) {x*0.3937})) %>%
+  rename(product_length_in = product_length_cm,
+         product_width_in = product_width_cm,
+         product_height_in = product_height_cm) %>%
+  mutate(product_area_sq_in=product_length_in*product_width_in) %>%
+  group_by(product_category_name_english) %>%
+  summarise(mean_area_sq_in=mean(product_area_sq_in, na.rm=TRUE)) %>%
+  filter(between(mean_area_sq_in,300,310))
+```
+### Question 2.4
+```{r}
+q2_4_tbl <- orders %>%
+  mutate(across(4:6, function(x) strptime(x, "%Y-%m-%d %H:%M:%S"))) %>%
+  mutate(is_late_delivery = order_delivered_customer_date > order_estimated_delivery_date) %>%
+  filter(!is.na(customer_state)) %>%
+  group_by(customer_state) %>% 
+  summarise(late_prop = mean(is_late_delivery,na.rm=TRUE)) %>%
+  arrange(desc(late_prop))
+```
+### Question 2.5
+```{r}
+# Proportion of
+q2_5_tbl <- orders %>%
+  mutate(across(4:6, function(x) strptime(x, "%Y-%m-%d %H:%M:%S"))) %>%
+  mutate(purchase_day = weekdays(order_purchase_timestamp))
+print(sort(table(q2_5_tbl$purchase_day)/dim(q2_5_tbl)[1]))
+barplot(sort(table(q2_5_tbl$purchase_day)/dim(q2_5_tbl)[1]),horiz = TRUE, las=2, main="Likelihood of purchasing on a given weekday")
+```
+
+Note that the nationwide likelihood of purchasing on a Monday is 0.16, which is more than 50% higher as compared to the likelihood of purchasing on a Saturday.
+If the claim was true, then for each of the states, we should observe an almost equal distribution of probability ($\frac{1}{7}$plus-minus$0.05$), which translates to an almost equal distribution of probability nationwide. However, this is not what we observed from the nationwide data. So, in some states, the probability distribution is not equal for all weekdays, which leads to the claim being false.
+
+## Question 3
+I would create a `storms` class where each storms object corresponds to possible storms given a 480x480 radar scan matrix. 
+
+Each object would have an attribute of `storms_list` which is a list of vectors corresponding to the vertices of predicted storm polygons. For example, if there are 2 possible storms in a radar scan, we would have a list of two polygons, and the coordinates of each polygons will be stored.
+
+To achieve this, we must first pass 480x480 matrix to the constructor, and the constructor will create an attribute `storms_list` corresponding to the radar scan. Each storm object in the list will be created through some machine learning algorithms, or if a certain area has a mean moisture level that reaches a certain threshold.
+
+We would also need a `plot` method which we can superimpose with the original radar scan. the plot method will take in a `storms` object and will also need `...` args similar to normal plotting in base R. The graph can also be superimposed with a real-world map which helps us to work as analysts.
+
+
+## Question 4
+```{r}
+load("../data/mid_term_q4.rdt")
+# mon_arrivals and mon_resources
+```
+### Question 4.1
+```{r}
+q4_1_tbl <- mon_arrivals %>%
+  group_by(day) %>%
+  summarise(unserved = sum(finished, na.rm=TRUE))
+```
+### Question 4.2
+```{r}
+q4_2_tbl <- mon_arrivals %>%
+  group_by(day) %>%
+  summarise(mean_service_time=mean(service_time, na.rm=TRUE), last_unserved_customer = max(arr_time), extra_time = max(last_unserved_customer + mean_service_time - 540, 0))
+
+q4_2_scalar <- mean(q4_2_tbl$extra_time)
+```
+
+### Question 4.3
+```{r}
+q4_3_tbl <- mon_resources %>%
+  group_by(day) %>%
+  filter(queue>=9)
+```
+### Question 4.4
+```{r}
+q4_4_tbl <- mon_resources %>%
+  filter(day == 23)
+
+plot(x=q4_4_tbl$time, y=q4_4_tbl$queue, main="Queue length over time, day 23", xlab="Time", ylab="Queue length", type="s")
+```
+
+### Question 4.5
+```{r error=TRUE}
+q4_5_tbl <- mon_resources %>%
+  group_by(day) %>%
+  lead()
+```
+
+## Question 5
+```{r}
+bdates <- read.csv("../data/bdates.csv")
+load("../data/mid_term_q5.rdt")
+```
+### Question 5.1
+```{r}
+bdates_clean <- bdates
+# Cleaning gender and extracting gender from bdate
+extracted_gender <- str_extract(bdates$bdate, "([mM]ale)|([Ff]emale)")
+bdates_clean$bdate <- str_replace_all(bdates$bdate, "([mM]ale)|([fF]emale)", "")
+bdates_clean$gender <- ifelse(bdates$gender=="", extracted_gender, bdates$gender)
+bdates_clean$gender <- str_replace(bdates_clean$gender, "(^[mM]ale$)|(^m$)", "M")
+bdates_clean$gender <- str_replace(bdates_clean$gender, "(^[fF]emale$)|(^f$)", "F")
+bdates_clean$gender <- as.factor(bdates_clean$gender)
+# cleaning bdate
+bdates_clean$bdate <- bdates$bdate %>% 
+  str_replace("(\\d{2}),(\\w{3}),(\\d{4})", "\\3-\\2-\\1") %>%
+  as.Date("%Y-%b-%d")
+
+q5_1_tbl <- bdates_clean
+```
+### Question 5.2
+```{r}
+months_list <- c("January" , "February", "March", "April", "May",
+                 "June", "July", "August", "September", "October",
+                 "November", "December")
+q5_2_table <- table(factor(months(q5_1_tbl$bdate), levels=months_list))/length(q5_1_tbl$bdate)
+q5_2_vec <- as.vector(q5_2_table)
+```
+### Question 5.3
+```{r}
+error1 <- mean((pmf1-q5_2_vec)^2)
+error2 <- mean((pmf2-q5_2_vec)^2)
+error3 <- mean((pmf3-q5_2_vec)^2)
+data.frame(error1, error2, error3)
+```
+Since `pmf1` has the lowest discrepancy between expected and realised pmfs (`error1`), it is the best-fitting pmf.
+```{r}
+library(vcd)
+rootogram(q5_2_table, pmf1, names=1:12, main="Rootogram of pmf of birthday distribution")
+```

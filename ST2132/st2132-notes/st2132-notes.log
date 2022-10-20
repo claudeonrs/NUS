@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  26 SEP 2022 10:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  19 OCT 2022 16:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -717,18 +717,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 202--203
 dom draws
  []
 
-[2] (./st2132-notes.aux)
-Package rerunfilecheck Info: File `st2132-notes.out' has not changed.
-(rerunfilecheck)             Checksum: DEB5D7FF1EE291FD42BAA9467DC32694;1808.
+[2]
+Overfull \hbox (7.79857pt too wide) detected at line 266
+\OMS/lmsy/m/n/10 L\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 p[]; [] ; p[]; ^^U\OT1/lmr/
+m/n/10 ) = \OML/lmm/m/it/10 x[] [] p[] \OT1/lmr/m/n/10 + [] + \OML/lmm/m/it/10 
+x[] [] p[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 ^^U\OT1/lmr/m/n/10 (\OML/lmm/m/it
+/10 p[] \OT1/lmr/m/n/10 + [] + \OML/lmm/m/it/10 p[] \OMS/lmsy/m/n/10 ^^@ \OT1/l
+mr/m/n/10 1)
+ []
+
+[3] (./st2132-notes.aux)
+
+Package rerunfilecheck Warning: File `st2132-notes.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `st2132-notes.out':
+(rerunfilecheck)             Before: 7C8D26640DBE97D7F1FCEC647E623A01;3368
+(rerunfilecheck)             After:  1397ED281390B8BC93F3DF5876A3481D;3368.
  ) 
 Here is how much of TeX's memory you used:
- 16165 strings out of 480171
- 249082 string characters out of 5894489
- 765204 words of memory out of 5000000
- 33876 multiletter control sequences out of 15000+600000
+ 16200 strings out of 480171
+ 249539 string characters out of 5894489
+ 753213 words of memory out of 5000000
+ 33889 multiletter control sequences out of 15000+600000
  507955 words of font info for 56 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,12n,63p,247b,2071s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,63p,307b,2071s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/te
 xmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ma
@@ -741,11 +756,12 @@ ic/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 ssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texm
 f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
-7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on st2132-notes.pdf (2 pages, 226250 bytes).
+7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on st2132-notes.pdf (3 pages, 244350 bytes).
 PDF statistics:
- 157 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
- 19 named destinations out of 1000 (max. 500000)
- 105 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 222 PDF objects out of 1000 (max. 8388607)
+ 184 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 185 words of extra memory for PDF output out of 10000 (max. 10000000)
 

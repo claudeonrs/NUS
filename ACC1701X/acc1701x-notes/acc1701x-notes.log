@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  1 OCT 2022 07:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  19 OCT 2022 15:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -730,75 +730,142 @@ Underfull \hbox (badness 7415) in paragraph at lines 194--195
 []\T1/lmss/bx/n/10 Statement of com-pre-hen-sive in-come (SCI)
  []
 
-<image/acc_cycle.png, id=113, 655.44875pt x 75.28125pt>
+<image/acc_cycle.png, id=234, 655.44875pt x 75.28125pt>
 File: image/acc_cycle.png Graphic file (type png)
 <use image/acc_cycle.png>
 Package pdftex.def Info: image/acc_cycle.png  used on input line 206.
 (pdftex.def)             Requested size: 512.14963pt x 58.82251pt.
-[2 <./image/acc_cycle.png>]
-Overfull \hbox (31.50868pt too wide) in paragraph at lines 368--369
+[2 <./image/acc_cycle.png>] [3]
+Overfull \hbox (1.61922pt too wide) in paragraph at lines 413--419
 []$[]$ 
  []
 
 
-Overfull \hbox (127.98051pt too wide) in paragraph at lines 370--371
+Overfull \hbox (32.48082pt too wide) in paragraph at lines 419--425
 []$[]$ 
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 401--403
+<image/bank_reconciliation.png, id=264, 639.38875pt x 407.5225pt>
+File: image/bank_reconciliation.png Graphic file (type png)
+<use image/bank_reconciliation.png>
+Package pdftex.def Info: image/bank_reconciliation.png  used on input line 485.
+
+(pdftex.def)             Requested size: 251.07481pt x 160.02754pt.
+[4 <./image/bank_reconciliation.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 505--507
 []\T1/lmss/m/n/10 a Contra-
  []
 
 
-Overfull \hbox (41.37016pt too wide) detected at line 419
+Overfull \hbox (41.37016pt too wide) detected at line 523
 [] \OT1/lmr/m/n/10 = [] \OMS/lmsy/m/n/10 ^^B [] ^^B []
  []
 
 
-Overfull \hbox (5.64735pt too wide) in paragraph at lines 441--443
+Overfull \hbox (5.64735pt too wide) in paragraph at lines 545--547
 \T1/lmss/m/n/10 Hence, it is es-ti-mated at the start and $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 446--446
+Overfull \hbox (22.27963pt too wide) in paragraph at lines 584--589
+[] 
+ []
+
+[5]
+Overfull \hbox (2.69649pt too wide) in paragraph at lines 629--637
+ [][] 
+ []
+
+[6]
+<image/ppe_acquisition.png, id=281, 976.64874pt x 246.9225pt>
+File: image/ppe_acquisition.png Graphic file (type png)
+<use image/ppe_acquisition.png>
+Package pdftex.def Info: image/ppe_acquisition.png  used on input line 772.
+(pdftex.def)             Requested size: 251.07481pt x 63.47491pt.
+
+Overfull \hbox (89.20369pt too wide) in paragraph at lines 769--773
+[]\T1/lmss/m/n/10 Including the pur-chase price and all $[]$
+ []
+
+
+Overfull \hbox (9.72862pt too wide) detected at line 790
+[] \OT1/lmr/m/n/10 = [] \OMS/lmsy/m/n/10 ^^B []
+ []
+
+<image/cap_exp.png, id=282, 903.375pt x 369.38pt>
+File: image/cap_exp.png Graphic file (type png)
+<use image/cap_exp.png>
+Package pdftex.def Info: image/cap_exp.png  used on input line 807.
+(pdftex.def)             Requested size: 251.07481pt x 102.65915pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 813--818
+
+ []
+
+[7 <./image/ppe_acquisition.png> <./image/cap_exp.png>]
+Underfull \hbox (badness 6016) in paragraph at lines 832--833
+[]\T1/lmss/m/n/10 Note that Dis-posal is usu-ally clas-si-fied un-der
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 852--852
 []\T1/lmss/bx/n/14.4 Financial State-ment Anal-y-sis
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--450
+Underfull \hbox (badness 10000) in paragraph at lines 855--856
 []\T1/lmss/bx/n/10 Liquidity and ef-fi-ciency\T1/lmss/m/n/10 : able to meet
  []
 
 
-Overfull \hbox (11.60373pt too wide) detected at line 480
+Overfull \hbox (11.60373pt too wide) detected at line 886
 [] \OT1/lmr/m/n/10 = []
  []
 
-[4] [5] (./acc1701x-notes.aux)
-Package rerunfilecheck Info: File `acc1701x-notes.out' has not changed.
-(rerunfilecheck)             Checksum: 485D23029BFA5A8D6CA23920DDD87EC5;3883.
+[8]
+<image/operating_cycle.png, id=297, 1362.08875pt x 510.90875pt>
+File: image/operating_cycle.png Graphic file (type png)
+<use image/operating_cycle.png>
+Package pdftex.def Info: image/operating_cycle.png  used on input line 935.
+(pdftex.def)             Requested size: 251.07481pt x 94.17361pt.
+<image/caterpillar_opcycle.png, id=298, 1145.27875pt x 510.90875pt>
+File: image/caterpillar_opcycle.png Graphic file (type png)
+<use image/caterpillar_opcycle.png>
+Package pdftex.def Info: image/caterpillar_opcycle.png  used on input line 936.
+
+(pdftex.def)             Requested size: 251.07481pt x 112.00269pt.
+ [9 <./image/operating_cycle.png> <./image/caterpillar_opcycle.png>]
+(./acc1701x-notes.aux)
+
+Package rerunfilecheck Warning: File `acc1701x-notes.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `acc1701x-notes.out':
+(rerunfilecheck)             Before: DC5890FAA9A93EE4CE3AA4CCE68E1FE8;8972
+(rerunfilecheck)             After:  826129BB5CBAC497CD48F1AE9FB41CCD;8852.
  ) 
 Here is how much of TeX's memory you used:
- 15272 strings out of 480171
- 240563 string characters out of 5894489
- 578634 words of memory out of 5000000
- 32962 multiletter control sequences out of 15000+600000
+ 15385 strings out of 480171
+ 242805 string characters out of 5894489
+ 578655 words of memory out of 5000000
+ 33027 multiletter control sequences out of 15000+600000
  507636 words of font info for 55 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,18n,63p,334b,734s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
-hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+ 60i,18n,63p,358b,734s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
 -ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/f
 onts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on acc1701x-notes.pdf (5 pages, 185455 bytes).
+e1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmsy10.pfb>
+Output written on acc1701x-notes.pdf (9 pages, 790614 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
- 174 compressed objects within 2 object streams
- 47 named destinations out of 1000 (max. 500000)
- 198 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 371 PDF objects out of 1000 (max. 8388607)
+ 327 compressed objects within 4 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 463 words of extra memory for PDF output out of 10000 (max. 10000000)
 

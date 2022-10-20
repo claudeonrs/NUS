@@ -128,6 +128,9 @@
 	\end{itemize}
     \item \texttt{rev()}: reverses elements in a data structure
     \item \texttt{sort()}: sort elements
+    \item \texttt{duplicated()}: very useful in deleting second duplicated value
+    \item \texttt{case\_when()}: more powerful than if-else
+    \item \texttt{cut\_interval()}: \impt cut a numeric vector into closed/half-open intervals (see tutorial 6)
 \end{itemize}
 \subsection*{Function debugging}
 \begin{itemize}
@@ -658,6 +661,25 @@ dbDisconnect(res)
 	\item \texttt{CHAR\_LENGTH()}
 \end{itemize}
 
+\subsection{Other Databases}
+\begin{itemize}
+	\item SAS (Statistical Analysis Software): used for Business Analytics and Medicine
+	\item STATA (Statistical Data): used for economics: labelled data
+\begin{lstlisting}[language=R]
+ontime$airline <- as.character(as_factor(ontime$airline))
+\end{lstlisting}
+	\item SPSS (Software Package for Social Sciences): for FASS
+\end{itemize}
+\begin{lstlisting}[language=R]
+library(haven)
+library(foreign)
+
+read.dta(file,
+         convert.factors = TRUE,
+         convert.dates = TRUE
+         missing.type = FALSE) # convert to NA
+\end{lstlisting}
+
 \section{Data Manipulation}
 \begin{center}
 	verb(df/tibble, ...)
@@ -754,15 +776,333 @@ by_day <- group_by(flights, year, month, day)
 	\item \texttt{c\_across(x:z)}: apply \texttt{c} to the specified columns
 \end{itemize}
 \subsection{Tidy Data}
-\textbf{Ordering variables}
+\impt \texttt{vignette("tidy-data")}, \texttt{vignette("pivot")}\\
+\textbf{Definitions}
 \begin{itemize}
+	\item \textbf{Variable}: Contains all values that measure the same underlying attribute (\eg height, temperature, duration)
+	\item \textbf{Observation}: contains all values measured on the same unit (\eg a person, a day) across attributes
 	\item \textbf{Fixed variables}: those that describe the experimental design / known in advance
 	\item \textbf{Measured variables}: what we actually measure in the study
+\end{itemize}
+\textbf{Tidy Data}?
+\begin{itemize}
+	\item Each variable forms a column
+	\item each observation forms a row
+	\item Each type of observational unit forms a table
+\end{itemize}
+\subsubsection{pivot\_longer}
+\begin{itemize}
+	\item Column names from the original data go to the year column in the new data
+	\item Column values from the original data go to the cases column in the new data
+\end{itemize}
+\begin{lstlisting}[language=R]
+table4a %>%
+	pivot_longer(!country, names_to ="year", values_to="cases")
+\end{lstlisting}
+\subsubsection{pivot\_wider}
+\begin{itemize}
+	\item Column names in the reshaped data come from the type column in the original data
+	\item Column values in the reshaped data come from the count column in the original data
+	\item \texttt{id\_cols}: identifies observational unit (group)
+	\item \texttt{names\_sep}: separates the last n characters of column name
+\end{itemize}
+\begin{lstlisting}[language=R]
+table2 %>%
+	pivot_wider(id_cols = country:year, names_from="type", values_from ="count")
+\end{lstlisting}
+\subsubsection{separate}
+\begin{itemize}
+	\item pulls apart one column into multiple columns, by splitting wherever a separator character appears.
+	\item Need to convert again by specifying \texttt{convert=TRUE}
+
+\end{itemize}
+\begin{lstlisting}[language=R]
+separate(table3, rate, into=c("cases", "population"), convert = TRUE)
+\end{lstlisting}
+\subsubsection{unite}
+\begin{itemize}
+	\item combines multiple columns into one using a separator character
+\end{itemize}
+
+\subsection{Relational Data}
+
+\begin{itemize}
+	\item \textbf{primary key}: uniquely identifies an observation in its own table. For example, in the \texttt{planes} table, \texttt{tailnum} is a primary key
+	\item \textbf{foreign key}: uniquely identifies an observation in another table. For example, \texttt{planes\$tailnum} appears in the \texttt{flights} table, where it identifies a unique plane
+	\item Sometimes, the best identifier for an observation is still not unique, so best to double-check if they are indeed unique
+	\begin{lstlisting}[language=R]
+# test if they are unique
+table %>% count(column) %>%
+      fiter(n>1)\end{lstlisting}
+\end{itemize}
+
+\textbf{Some operations}
+\begin{itemize}
+	\item \textbf{Mutating joins}: add variables to data frame from matching observations
+	\item \textbf{Filtering joins}: filter observations from one data frame based on whether or not they match an observation in the other table (same as mutate join then filter based on new variable?)
+	\item \textbf{Set operations}: treat observations as if they were set elements
+\end{itemize}
+\subsubsection{Joins}
+\begin{itemize}
+	\item \texttt{inner\_join}: keeps observation only if they keys exist in both columns
+	\item outer join: keeps observation that appear in at least on of the tables
+	\begin{itemize}
+		\item \texttt{left\_join}: keeps all observation in x
+		\item \texttt{right\_join}: keeps all observation in y
+		\item \texttt{full\_join}: keeps all observations in x and all in y
+	\end{itemize}
+\end{itemize}
+\impt What happens if there are duplicates?
+\begin{itemize}
+	\item in x: observations in y will be duplicated
+	\item in y: same
+	\item in both x and y: cartesian product (all possible matches will be created)
+\end{itemize}
+\subsubsection{Filtering Joins}
+\begin{itemize}
+	\item \texttt{semi\_join}: keeps all observations in x that have a match in y
+	\item \texttt{anti\_join}: drops all observations in x that have a match in y (useful for checking mismatches)
+\end{itemize}
+\subsubsection{\impt Rough Guide}
+\begin{enumerate}
+	\item Identify the primary keys in each table
+	\item Check that none of the variables in the primary key are missing
+	\item Check that foreign keys match primary keys in another table
+\end{enumerate}
+\section{Principles of Visualization}
+Some references:
+\begin{itemize}
+	\item \href{https://flowingdata.com}{Guides - flowing data}
+\end{itemize}
+\textbf{What makes a good graph}:
+\begin{itemize}
+	\item Show the data
+	\item Induce the viewer to think about the substance rather than about methodology, graphic design, the software used
+	\item avoid distorting what the data have to say
+	\item present many numbers in a small space
+	\item make large data sets coherent
+	\item encourage the eye to compare different pieces of data
+	\item reveal the data at several different levels of detail, from a broad overview to the fine structure
+	\item serve a reasonably clear purpose: description, exploration, tabulation, or decoration
+	\item be closely integrated with the statistical and verbal descriptions of a dataset
+\end{itemize}
+\textbf{Principles of Graphical Excellence}
+\begin{itemize}
+	\item well-designed presentation of interesting data
+	\item consists of complex ideas communicated with clarity, precision, and efficiency
+	\item is that which gives the viewer the greatest number of ideas in the shortest time with the least ink in the smallest space
+	\item is nearly always \underline{multivariate}
+	\item requires telling the truth about the data
+\end{itemize}
+\textbf{Biases}
+\begin{itemize}
+	\item patternicity bias: see pattern alot of times
+	\item storytelling desire: explain data according to our story
+	\item confirmation bias
+\end{itemize}
+\subsection{What makes a bad graph}
+\begin{itemize}
+	\item Inconsistent basis of comparison
+	\item Design variation
+	\item Dubious integrity (mistakes!)
+	\item Unnecessary chart: a chart should give insight that you didn't expect to see!
+	\item Never adjust for inflation
+	\item Start from 0 for bar charts
+\end{itemize}
+\subsection{A Theory of Data Graphics}
+\begin{itemize}
+	\item Data-ink: strip down the chart to the very bare minimum
+\end{itemize}
+\subsection{Own Notes}
+\textbf{Some pointers}
+\begin{itemize}
+	\item Aggregation of data might distort result (John Snow Cholera example)
+	\item Labelling/Titles/Annotations
+	\item Colours: good to represent magnitude but cannot be used to compare the numbers \eg how big is red compared to yellow?
+	\item Exploratory data analytics (EDA): after seeing the graph what is the next graph you wanna make?
+	\item Ordering
+	\item Sankey chart: internship, breakdown of budgets
+	\item Smallest effective difference: use smallest difference in colours
+	\begin{itemize}
+		\item Use different hues to distinguish different groups
+		\item Use different intensity but same hue in same group
+	\end{itemize}
+\end{itemize}
+
+\subsection{Takeaways from Tutorials}
+\subsubsection{Tutorial 8}
+\begin{itemize}
+	\item Can plot confidence interval to show confidence in predicting
+	\begin{lstlisting}[language=R]
+geom_errorbar(aes(x=..., ymin=..., ymax=...))
+	\end{lstlisting}
+	\item can plot one prediction on top of another (show tutorial 8 question 2)
+\end{itemize}
+
+
+
+\section{Data Visualization}
+
+\impt \texttt{vignette("ggplot2-specs")} for help
+\begin{lstlisting}[language=R]
+ggplot(data = <DATA>) +
+    <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>)) + ...
+\end{lstlisting}
+
+\begin{itemize}
+	\item \underline{Aesthetics}: \texttt{aes(x=..., y=...)}, anything that can change according to the value of the data
+	\begin{itemize}
+		\item \texttt{size}: to determine size of dots
+		\item \texttt{color}: to colour by group
+		\item \texttt{alpha}:
+		\item \texttt{shape}
+	\end{itemize}
+    \item \underline{Label}: \texttt{labs()}
+    \begin{itemize}
+    	\item \texttt{title=}
+    	\item \texttt{x=, y=}
+    \end{itemize}
+    \item \textbf{Types of plot}:
+    \begin{itemize}
+    	\item \texttt{geom\_point()}: scatter plot
+    	\item \texttt{geom\_line()}: line plot
+    	\item \texttt{geom\_col()}: barplot
+    	\item \texttt{geom\_histogram()}: histogram
+    	\item \texttt{geom\_boxplot()}: boxplot
+    \end{itemize}
+	\item \texttt{scale\_x\_log10()}: log10 scale
+	\item \texttt{coord\_cartesian}: magnifying glass to expand some areas
+	\item \texttt{xlim(), ylim()}: to increase/decrease plotting canvas
+	\item \textbf{Faceting}:
+	\begin{itemize}
+		\item \texttt{facet\_wrap(~ ...)}
+		\item \texttt{facet\_grid()}
+	\end{itemize}
+	\item \texttt{expand\_limits(y=...)}: expand graphing limits
+	\item \texttt{coord\_flip()}
+	\item \texttt{theme()}
+\end{itemize}
+
+\subsection{Scatter plot}
+\textbf{General pointers}
+\begin{itemize}
+	\item Is there a general trend/correlation?
+	\begin{itemize}
+		\item Is it linear?
+
+	\end{itemize}
+    \item Who are the ones that \textit{deviate the most} from the trend?
+    \item Add more variables (using colour) to investigate the trend
+    \item Are there duplicates? check for overplotting?
+\end{itemize}
+\textbf{Interesting pointers}
+\begin{itemize}
+	\item If we want to change \texttt{aes} globally, must put the variables outside \texttt{aes(...)} and inside \texttt{geom\_point()}
+	\item \texttt{scale\_<AESTHETIC>\_manual}
+	\item Discrete colouring vs Continuous colouring? can use \texttt{as.factor()}
+	\item to change colour
+	\begin{lstlisting}[language=R]
+# recommended to use a named vector
+cols <- c("8" = "red", "4" = "blue", "6" = "darkgreen", "10" = "orange")
+# to change names in legend labels
+labs <- c("8" = "Eight", "4" = "Four", "6" = "Six", "10" = "Ten")
+scale_colour_mannual(values=cols, labels=labs)\end{lstlisting}
+    \item \textbf{Jittering}: points are not plotted at the precise location, but it is useful to solve overplotting
+    \begin{lstlisting}[language=R]
+geom_point(mapping=..., position="jitter")
+geom_point(mapping=..., position=position_jitter(width=0.5, height=0))\end{lstlisting}
+\end{itemize}
+\subsection{Histogram}
+\textbf{General pointers}
+\begin{itemize}
+	\item Is it symmetric? or skewed?
+	\item Is it bimodal or unimodal??
+	\begin{itemize}
+		\item If bimodal then might be good to separate the two groups
+	\end{itemize}
+    \item Outliers (interesting data far away from the norm)
+\end{itemize}
+\begin{itemize}
+	\item \texttt{geom\_histogram()}
+	\begin{itemize}
+		\item \texttt{bins=...}
+		\item \texttt{binwidth=...}
+		\item \texttt{boundary=...} to set hard x limit for the histogram
+		\item \texttt{col=...}: to control the outline so that it's easy to separate the bin rectangles
+	\end{itemize}
+	\item \texttt{geom\_freqpoly}: something like histogram but line (similar to cdf plotting)
+	\item Aesthetics: \texttt{fill, colour, alpha, x}
+	\begin{itemize}
+		\item Some computed variables: \impt \texttt{after\_stat} R will compute statistics for each bin, and the value of each bin is then plotted
+		\begin{lstlisting}[language=R]
+			geom_histogram(aes(x=..., y=after_stat(density)), col=..., fill=...)
+			geom_histogram(aes(x=..., y=after_stat(count)), col=..., fill=...)\end{lstlisting}
+		\item \texttt{fill=...}: will create two histograms stacked on top of each other
+		\item use \texttt{position="dodge"} to prevent stacking
+		\item use \texttt{position="identity"} and $\alpha$ to stack histograms on top of another without stacking
+
+	\end{itemize}
+\end{itemize}
+
+\subsection{Line Plot}
+\begin{itemize}
+	\item Aesthetic:
+	\begin{itemize}
+		\item Line type: dashed? dotted?
+		\item Line width?
+		\item color=....
+		\item group= if we want to separate lines but same color
+	\end{itemize}
+    \item Usually need Tidy Data to separate time series into different groups
+\end{itemize}
+
+\subsection{Geom Text}
+\begin{itemize}
+	\item \texttt{mapping = aes(x=..., y=..., label=...)}
+	\item Usually used in conjunction with \texttt{geom\_line}
+\end{itemize}
+\subsection{Bar Charts}
+\begin{itemize}
+	\item \texttt{geom\_col()}: normal bar chart
+	\item \texttt{geom\_bar()}: maps count of each category
+	\item How to change ordering of bar charts?
+	\begin{itemize}
+		\item Use \texttt{levels} in \texttt{factor}!
+		\item \texttt{reorder()} in mutate!
+		\begin{lstlisting}[language=R]
+op_budget <- mutate(op+budget, exp_cat = reorder(exp_cat, amount))\end{lstlisting}
+	\end{itemize}
+\end{itemize}
+\begin{lstlisting}[language=R]
+ggplot(tv) +
+geom_col(mapping=aes(x=year,y=pct, fill=media_activity),
+         position="dodge") +
+  facet_wrap(~ age) +
+  theme(legend.position="bottom")
+\end{lstlisting}
+\subsubsection{Facet Wrap}
+\begin{lstlisting}[language=R]
+# to change scale free and wrap labelling
+facet_wrap(~ sex, nrow=2, scales="free_x",
+           labeller=as_labeller(c('female'="Female", 'male'="Male")))
+\end{lstlisting}
+
+\subsection{Smooth Geom}
+\begin{itemize}
+	\item \texttt{geom\_smooth(aes(...), method="lm")}
+	\item \texttt{geom\_smooth(aes(...), method="loess")}
+	\item Is the variability around the line the same??
 \end{itemize}
 
 \section{Interesting stuff}
 \begin{itemize}
 	\item Can lookup location through zipcode
+\end{itemize}
+
+\section{Data Cleaning}
+\begin{itemize}
+	\item Duplicate rows (use id to clean)
+	\item NA values
 \end{itemize}
 \end{multicols}
 

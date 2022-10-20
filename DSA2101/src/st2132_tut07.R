@@ -1,0 +1,7 @@
+x <- rpois(10000*100, 0.8)
+mat <- matrix(x, nrow=10000)
+est1 <- apply(mat, 1, mean)
+est2 <- apply(mat, 1, var)
+sd(est1)
+sd(est2)
+sqrt(0.8/100)

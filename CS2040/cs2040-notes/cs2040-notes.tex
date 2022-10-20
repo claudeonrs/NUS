@@ -340,8 +340,339 @@ class ObjComparator implements Comparator<Obj> {
 }\end{lstlisting}
 
 
+\section{Hashing}
+Map ADT: <key, value> pairs mapping with 3 basic operations
+\begin{itemize}
+	\item \textbf{Retrieval}: retrieve value using the given key
+	\item \textbf{Insertion}: insert/replace a value using the given key
+	\item \textbf{Deletion}: delete the <key, value> pair using the given key
+\end{itemize}
+\textbf{Hash Table}: data structure that uses a \textbf{hash function} to efficiently map keys to values, for efficient search and retrieval\\
+Types of Tables:
+\begin{itemize}
+	\item Direct Addressing Table
+	\begin{itemize}
+		\item Restrictions:
+		\begin{itemize}
+			\item Keys must be \underline{non-negative integer values}
+			\item Range of keys must be \underline{small}
+			\item Keys must be \underline{dense}
+		\end{itemize}
+	\end{itemize}
+    \item Hash Tables
+    \begin{itemize}
+    	\item Map large integers to smaller integers (mod?)
+    	\item Map non-integers to integers
+    	\item \textbf{Collision}: hash function does not guarantee two different keys go to two different slots\\
+    	two different keys have the same \textbf{hash value}
+    	\item \underline{Criteria of good hash functions}
+    	\begin{itemize}
+    		\item Fast to compute
+    		\item Scatter keys evenly
+    		\item Less collisions
+    		\item Need less slots
+    	\end{itemize}
+        \item Perfect hash functions: \textit{one-to-one} mapping between keys and hash values \ie no collision occurs
+        \item Minimal perfect hash functions: table size is the same as the number of keywords supplied
+        \item \textbf{Uniform Hash functions}: distributes keys evenly in the hash table (e.g. mod, floor function)
+        $$hash(k) = \left\lfloor \frac{km}{X}\right\rfloor \text{ where } k=0,1,2,\dots,X-1$$
+        \begin{itemize}
+        	\item Division method: map into a table with $m$ slots
+        	$$hash(k) = k \text{ mod }m$$
+        	\item Multiplication method:
+        	\begin{enumerate}
+        		\item Multiply by a constant real number $A$ between 0 and 1\\
+        		\textit{*Knuth recommends} $A = 1/\phi=0.618033$ \textit{to minimize collisions}
+        		\item Extract the fractional part
+        		\item Multiply by $m$, the hash table size
+        	\end{enumerate}
+        $$hash(k) = \lfloor m (kA- \lfloor kA \rfloor ) \rfloor$$
+        \end{itemize}
+        \item How to choose $m$?\\
+        * Pick a prime number close to a power of two\\
+        * power of 10 or 2 are no good cos it's the same as extracting the last few digits of decimal/binary representation
+        \item \textbf{Hashing of Strings}
+        \begin{itemize}
+        	\item Summing all the characters is no good: because strings with same letters but different orders will collide
+        	\item How to solve: take into account order of characters!
+        	\begin{lstlisting}[language=Java]
+hash(s):
+  sum=0
+  for each character c in s:
+    sum = sum*31+s
+  return sum%m\end{lstlisting}
+        \end{itemize}
+        \end{itemize}
+\end{itemize}
+\subsection{Collision Resolution}
+$$\alpha(\text{load factor}) = \frac{n (\text{total number of keys})}{m (\text{number of slots})}$$
+$\alpha$ measures how full the hash table is\vspace{0.5em}\\
+\textbf{Criteria of good collision resolution method}
+\begin{itemize}
+	\item Minimize clustering
+	\item Always find an empty slot if it exists
+	\item Give different probe sequences when 2 initial probes are the same (secondary hash function)
+	\item Fast
+\end{itemize}
+\subsubsection{Separate Chaining}
+\begin{itemize}
+	\item Use LinkedList to store keys with the same slot location
+	\item Ideally can sort the LinkedList based on key to aid in searching
+\end{itemize}
+\textbf{Some problems}:
+\begin{itemize}
+	\item find(key) and delete(key) takes $O(n)$ time
+	\item $\alpha$ is the average length of the LinkedList and will increase when $n$ increases
+	\begin{itemize}
+		\item Hence it is good to keep $\alpha$ bounded $\Rightarrow$ reconstruct the whole table when $\alpha$ exceeds a bound
+	\end{itemize}
+	\item Not cache friendly
+\end{itemize}
+\subsubsection{Linear Probing}
+Probe sequence:
+\begin{lstlisting}
+hash(key)
+hash(key+1)%m
+hash(key+2)%m ...
+\end{lstlisting}
+\begin{itemize}
+	\item \textbf{Insert:}\\
+	When we get a collision, we scan linearly for the next available slot and put the key there
+	\item \textbf{Find:}\\
+	Probe sequence increases linearly from hash(k) until current key is equal to the key we want to find
+	\item \textbf{Delete}
+	\begin{itemize}
+		\item \impt Cannot simply remove a value because find() only works when contiguous cells are occupied
+		\item So how? Use lazy deletion (three different states of a slot)
+		\begin{itemize}
+			\item Occupied
+			\item Occupied but mark as deleted
+			\item Empty
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\textbf{Some problems:}
+\begin{itemize}
+	\item \textbf{Primary clustering}: Can create many consecutive slots, increasing running time of find/insert/delete $O(n)$
+\end{itemize}
+Modified linear probing: (\texttt{d} and \texttt{m} are co-primes) \underline{to avoid primary clustering}
+\begin{lstlisting}
+	hash(key)
+	hash(key+1*d)%m
+	hash(key+2*d)%m ...
+\end{lstlisting}
 
+\subsubsection{Quadratic Probing}
+\begin{lstlisting}
+	hash(key)
+	hash(key+1^2)%m
+	hash(key+2^2)%m ...
+\end{lstlisting}
+\textbf{Theorem of Quadratic Probing}
+\begin{quote}
+If $\alpha < 0.5$(half-full) and $m$ is prime, the we can always find an empty slot
+\end{quote}
+\textbf{Some problems}
+\begin{itemize}
+	\item When table is more than half-full, there can be endless looping!
+	\begin{itemize}
+		\item To avoid table half-full, we can \textbf{resize} the table
+		\item Usually new $m = 2\times m$
+		\item But also need to re-hash all existing keys (expensive operation)
+	\end{itemize}
+	\item \textbf{Secondary clustering}: if two keys have the same initial position, their probe sequences are the same, but not as bad as linear probing
+\end{itemize}
 
+\subsubsection{Double Hashing}
+Use a secondary hash function
+\begin{lstlisting}
+	hash(key)
+	hash(key+1*hash2(key))%m
+	hash(key+2*hash2(key))%m ...
+\end{lstlisting}
+Note that the secondary hash function must not evaluate to 0 (otherwise it's the same as separate chaining if not worse because of infinite loop)
+$$\text{hash}_2(\text{key}) = p - (\text{key} \text{ mod } p)$$
+
+\section{Trees}
+\textbf{Some terminologies}: ancestor, descendant, parent, sibling, child, root, leaf node
+\begin{itemize}
+	\item Internal node: has one or more children, but root node is not an internal node
+	\item Level of a node: level of root is 0, depends on how far it is from the root
+	\item Height: maximum level of the nodes
+	\item Size: number of nodes
+	\item \textbf{Binary tree}: each node has at most 2 ordered children
+	\item \textbf{Full binary tree}: all nodes at level < $h$ have two children, where $h$ is the height of the tree
+	\item \textbf{Complete binary tree}: full down to level $h-1$, with level $h$ filled in \underline{from left to right}
+\end{itemize}
+\textbf{Implementations}
+\begin{itemize}
+	\item Reference based
+	\item Array based
+	\begin{lstlisting}[language=java]
+class BinaryTree {
+	int root;
+	int free; // free space
+	TreeNode tree[];
+}
+	\end{lstlisting}
+\begin{itemize}
+	\item \underline{What is free space?}\\
+	the last element where the slot is free, if there are multiple free slots, all the slots before the last will link towards the last one $\Rightarrow$ last one is the pointer of the free
+	\item \underline{Representing complete tree} using an array: use heap?
+	$$i_{left} = i*2+1, i_{parent} = i//2$$
+\end{itemize}
+\end{itemize}
+
+\subsection{Traversals}
+\subsubsection{Post-order traversal}
+Traverse the root after traversing the left and right subtrees
+\begin{lstlisting}[language=java]
+postorder(T) {
+	if T is not empty then {
+		postorder(T.left)
+		postorder(T.right)
+		print(T.item)
+}}
+\end{lstlisting}
+\subsubsection{Pre-order traversal}
+Traverse the root before traversing the left and right subtrees
+\begin{lstlisting}[language=java]
+preorder(T) {
+	if T is not empty then {
+		print(T.item)
+		postorder(T.left)
+		postorder(T.right)
+}}
+\end{lstlisting}
+\subsubsection{In-order traversal}
+Traverse the root in between traversing the left and right subtrees (\textbf{Do a sweep from left to right})
+\begin{lstlisting}[language=java]
+inorder(T) {
+	if T is not empty then {
+		postorder(T.left)
+		print(T.item)
+		postorder(T.right)
+}}
+\end{lstlisting}
+\subsubsection{Level-order traversal}
+Traverse the tree level by level and from left to right (Queue is important)
+\begin{lstlisting}[language=java]
+levelorder(T) {
+	if T is empty return
+	Q = new Queue
+	Q.enqueue(T)
+
+	while Q is not empty {
+		curr = Q.dequeue()
+		print curr.item
+		if curr.left is not empty {
+			Q.enqueue(curr.left)
+		} if curr.right is not empty {
+		    Q.enqueue(curr.right)
+        }
+}}
+\end{lstlisting}
+\subsubsection{Evaluation of Expression Tree}
+Note that post-order, in-order, and pre-order of expression tree will produce postfix, infix, and prefix expressions
+\impt Recursive procedure!
+
+\subsection{Binary Search Trees (BST)}
+\textbf{Some operations}: Usually $O(h)$, but note that it's possible that $h=n$ if it is skewed (hence need AVL Tree)
+\begin{itemize}
+	\item Find min/max element
+	\item Search for $x$
+	\item Insertion
+	\item Deletion (3 cases)
+	\begin{itemize}
+		\item node to be deleted T has no children
+		\item T has only 1 child (left)
+		\item node to be deleted T has two children $\Rightarrow$ replace with \textbf{successor (smallest element in the right subtree)}
+	\end{itemize}
+    \item Successor/Predecessor\\
+    \impt note that if this was to be implemented, we need a \texttt{.parent} attribute as an addition to the \texttt{.child attribute}
+    \item Inorder traversal $\Rightarrow$ each node will be traversed not more than 3 times! wow
+\end{itemize}
+
+\subsection{AVL Trees}
+\textbf{Property}:
+\begin{itemize}
+	\item At any node, the difference in height between left and right subtree is at most 1 (invariant)
+	$$|h_l -h_r| \leq 1$$
+	\item A height balanced tree with $N$ vertices has height $h < 2 \times \log_2(N) \Rightarrow h = O(\log(N))$
+	\item Minimal AVL Tree of height $h$: having the height $h$ and fewest possible number of nodes
+\end{itemize}
+\vspace{0.5em}
+\textbf{Operations}
+\begin{itemize}
+	\item \texttt{rotateRight()}/\texttt{rotateLeft()}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\columnwidth]{image/avl_tree.png}
+	\end{figure}
+    \item \texttt{insert()}: do BST to find the appropriate node to insert to, then have two cases, and also need to pass through parents to see if they are height-balanced
+    \begin{itemize}
+    	\item insert outside: single rotation
+    	\item insert inside: double rotation
+    \end{itemize}
+    \item Find $k$-th smallest item\\
+    store \texttt{.size} attribute and do recursive stuff \impt \textbf{Quickselect} and partition on unsorted array\\
+    \textbf{Running time}:
+    \begin{itemize}
+    	\item BST: $O(h)$
+    	\item Unsorted array: Best case is $O(N)$, Worst case is $O(N^2)$
+    \end{itemize}
+\end{itemize}
+\subsection{TreeMap Java API}
+\begin{itemize}
+	\item \texttt{higherkey()}, \texttt{floorkey()}: similar to predecessor and successor
+	\item Has sorted key in tree structure
+\end{itemize}
+
+\section{Priority Queue}
+\textbf{Property}
+\begin{itemize}
+	\item Insert item with a given key
+	\item Remove the item with maximum key
+\end{itemize}
+\textbf{Implementations}
+\begin{itemize}
+	\item Unsorted list: insertion takes $O(1)$ but deletion takes $O(n)$ to remove the maximum key
+	\item Sorted list: insertion takes $O(n)$ time but deletion takes $O(n)$ time
+	\item Heap!
+\end{itemize}
+\subsection{Heap}
+\textbf{Properties}:
+\begin{itemize}
+	\item A \textbf{complete binary tree}
+	\begin{itemize}
+		\item Either is empty,
+		\item, or satisfies the \textbf{heap property}: for every node $v$, the search key in $v$ is greater or equal to those in the children of $v$
+	\end{itemize}
+    \item Usually we talk about max heap
+    \item Some access stuff
+    \begin{lstlisting}[language=Java]
+left(i)   = 2*i + 1
+right(i)  = 2*i + 2
+parent(i) = floor((i-1)/2)\end{lstlisting}
+\end{itemize}
+\textbf{Operations}
+\begin{itemize}
+	\item \texttt{heapRebuild(i)}: swap down from index $i$ until it reaches a leaf and satisfies the heap property
+	\item \texttt{heapify()}: build a heap from an unsorted array (utilises \texttt{heapRebuild}) and is used for heapSort
+	\begin{itemize}
+		\item \textbf{Running time = }$O(n)$
+		\item Total number of nodes = $n = 2^{h+1} - 1$
+		\item Total number of bubbling down = $n-h-1$ which is less than the total number of edges connecting the nodes
+	\end{itemize}
+	\item \texttt{heapSort}: partition the unsorted array into two parts, the heap and sorted portion; remove the max value from heap and put it into the sorted portion so that eventually the array is in ascending order
+	\begin{itemize}
+		\item In-place
+		\item Not stable (because of bubbling/swapping operations)
+		\item Complexity = $O(n\log n)$
+	\end{itemize}
+\end{itemize}
+
+\section{Graphs}
 
 \section{Java Tricks}
 \begin{itemize}
@@ -359,8 +690,10 @@ class ObjComparator implements Comparator<Obj> {
 		\item \href{https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html}{Java StringBuilder API}
 		\item \href{https://leetcode.com/problems/zigzag-conversion/solution/}{Zigzag conversion}
 	\end{itemize}
+    \item Tut 07 $\Rightarrow$ Contiguous cells can be represented by start and end only
 
 \end{itemize}
+
 \end{multicols}
 
 

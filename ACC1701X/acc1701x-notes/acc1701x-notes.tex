@@ -357,22 +357,90 @@ Role of external auditors
 \end{itemize}
 
 \section{Cash}
+\textbf{Definitions}
+\begin{itemize}
+	\item \textbf{Cash}: Currency, coins, and amount of deposit in bank accounts, checking accounts, and some savings accounts. Also includes items such as customer checks, cashier checks, certified checks, and money orders
+	\item \textbf{Cash equivalents}: \underline{Short term, highly liquid} investments that are:
+	\begin{enumerate}
+		\item Readily convertible to known amounts of cash
+		\item Subject to an insignificant \textit{risk of changes} in value
+	\end{enumerate}
+\end{itemize}
 \textbf{Major activities of a business}
 \begin{itemize}
 	\item Operating activities: selling products or services, buying inventory for resale, and incurring and paying for necessary expenses associated with the primary activities of the business
+	\begin{itemize}
+		\item Financed by Current Assets \& Current Liabilities
+	\end{itemize}
 	\item Investing activities: purchase of assets for use in the business (occur less frequently and amounts involved are quite large)
+	\begin{itemize}
+		\item Under Noncurrent Assets
+	\end{itemize}
 	\item Financing activities: raising money to finance a business by means other than operations (debt and equity financing)
+	\begin{itemize}
+		\item Under Noncurrent Liabilities + Equities
+	\end{itemize}
 \end{itemize}
 \textbf{Internal Control of Cash}
 \begin{itemize}
-	\item \underline{Separating duties in handling of cash and accounting for cash}
-	\item \underline{Cash receipts are deposited daily in banks}
-	\item \underline{Except for small-amount payments, all payments are made with prenumbered checks}
+	\item \underline{Separating duties} in handling of cash and accounting for cash
+	\item \underline{Cash receipts are deposited daily in banks} to prevent accumulation of cash in hand
+	\item Except for small-amount payments, all payments are made with \underline{prenumbered checks}
 	\item \underline{Prepare a bank reconciliation periodically}: to compare with the cash balance in the company's accounting records
 \end{itemize}
 
+\textbf{Effective Cash management}:
+\begin{itemize}
+	\item Some goals:
+	\begin{enumerate}
+		\item Plan cash receipts to meet cash payments when due
+		\item Keep a minimum level of cash necessary to operate
+	\end{enumerate}
+    \item Cash management principles
+    \begin{itemize}
+    	\item Encourage collection of receivables
+    	\item Delay payment of liabilities
+    	\item Keep only necessary levels of assets
+    	\item Plan expenditure
+    	\item Invest excess cash
+    \end{itemize}
+\end{itemize}
+
 \subsection{Cash Disbursement for Operating Activities}
-\textbf{Purchases Discounts}: x/10, n/30 means if the customer pays in 10 days, they will get x\% discount but no discount when the customer pays in 30 days
+\textbf{Purchases Discounts}: x/10, n/30 means if the customer pays in 10 days, they will get x\% discount but no discount when the customer pays in 30 days\\
+\textit{Journal entries}
+\begin{itemize}
+	\item \underline{If firm pays full amount of payables and gets discount:}\vspace{0.5em}\\
+	\begin{tabular}{llll}
+	\multicolumn{4}{l}{Accounts Payable}\\
+	& Inventory& &\\
+	& Cash& &
+	\end{tabular}\vspace{0.5em}
+    \item \underline{If customer pays full amount of receivables and gets discount:}\vspace{0.5em}\\
+    \begin{tabular}{llll}
+    	\multicolumn{4}{l}{Cash}\\
+    	\multicolumn{4}{l}{Sales discount}\\
+    	& Receivables& &
+    \end{tabular}\vspace{0.5em}
+    \item \textbf{Purchase returns}: if firm returns merchandise to supplier
+    \item \textbf{Sales returns}: if customer returns merchandise to firm
+    \begin{itemize}
+    	\item Need to take into account COGS and Sales returns (same as reversing sales entries)\vspace{0.5em}\\
+    	\begin{tabular}{llll}
+    		\multicolumn{4}{l}{Sales Returns}\\
+    		& Accounts Receivable& &\\
+    		\multicolumn{4}{l}{Inventory}\\
+    		& COGS& &
+    	\end{tabular}\vspace{1em}
+    \end{itemize}
+\end{itemize}
+\textbf{Contra-revenue accounts}
+\begin{itemize}
+	\item \textbf{Sales Discounts \& Returns} are contra-revenue accounts
+	\item To track negative adjustments to sale, and reduces revenue
+	\item Has normal debit balance
+	\item \impt On IS, \underline{Deducted} from gross revenue to get \underline{Net Sales Revenue} (Less: Sales Discounts \& Returns)
+\end{itemize}
 \subsubsection{Petty Cash Funds}
 \textbf{Establishing the funds}
 \begin{itemize}
@@ -386,7 +454,43 @@ Role of external auditors
 \textbf{Replenishing the funds}: Dr. expenses and Cr. cash\\
 \textbf{Cash Short and Over}: to be adjusted in Dr. or Cr. depending on the discrepancy so that
 $$\text{Cash} - \text{Expenses} = \text{Cash Over and Short}$$
-
+\subsection{Controls from Bank Procedures}
+\textbf{Benefit of banks for businesses to control cash}:
+\begin{itemize}
+	\item Restrict access
+	\item Documenting procedures
+	\item Independently verifying
+\end{itemize}
+\subsubsection{Bank Reconciliation}
+\textbf{Definition}: internal report prepared to verify the accuracy of both the bank statement and the cash accounts of a business or individual\\
+\textbf{Why bank statement balance is not equal to cash account}?
+\begin{itemize}
+	\item \underline{Your bank might not know about}:
+	\begin{itemize}
+		\item \textbf{Errors} made by bank
+		\item \textbf{Time lag} differences:\\
+		\textbf{Deposit in transit} and \textbf{Outstanding Checks}: both were made by user but not processed by bank
+	\end{itemize}
+    \item \underline{You may not know about}:
+    \begin{itemize}
+    	\item \textbf{Bank Credits}: additions by bank to your account (\eg interest)
+    	\item \textbf{Bank Debits}: deductions by bank (bank service fees + charges)
+    	\item \textbf{Direct Deposits}: deposits made directly to your account
+    	\item \textbf{NSF Checks}: customer checks you deposited for which the customer has insufficient funds
+    	\item Errors made by you
+    \end{itemize}
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{image/bank_reconciliation.png}
+\end{figure}
+\subsubsection{Adjusting entries for the Books}
+\begin{itemize}
+	\item \textbf{Collection Expense}: expense due to bank
+	\item \textbf{Interest Revenue}
+	\item \textbf{Miscellaneous Expense}: Bank expenses
+	\item To reverse NSF: same as reversing Cash to Accounts Receivable
+\end{itemize}
 \section{Receivables}
 \subsection{Accounts Receivable}
 \begin{description}
@@ -443,6 +547,308 @@ Hence, it is estimated at the start and \underline{is periodically reassessed} u
 	\item Use most likely amount if the outcome is yes/no
 	\item Use estimation if there are different outcomes with probabilities
 \end{itemize}
+\section{Liabilities}
+Some recap:
+\begin{itemize}
+	\item \textbf{Currency}:
+	\begin{itemize}
+		\item Current if < 1 yr
+		\item Non-current if > 1 yr
+	\end{itemize}
+    \item \textbf{3 Major Uncertainties in Liabilities}
+    \begin{itemize}
+    	\item Whom to pay
+    	\item When to pay
+    	\item How much to pay
+    \end{itemize}
+    \item \textbf{Types of Liabilities}
+    \begin{itemize}
+    	\item \underline{Known Liabilities}: little uncertainty, who, when and how much is determinable
+    	\item \underline{Estimated Liabilities}: a known obligation of an uncertain amount, but one that can be reliably estimated
+    	\item \underline{Contingent Liabilities:} potential obligation created as a result of a past event, but which is not yet an effective liability until some future event happens
+    \end{itemize}
+\end{itemize}
+\subsection{Current Liabilities}
+\textbf{Current Liabilities}:
+\begin{itemize}
+	\item GST Payable
+	\item Payroll Liabilities: CPF\\
+	Employers incur expenses and liabilities from having employees (payroll expenses)
+	\begin{itemize}
+		\item \textbf{20\% contribution by employee}\vspace{0.5em}\\
+		\begin{tabular}{llll}
+			\multicolumn{2}{l}{Salaries Expense}& \multicolumn{2}{l}{$x$} \\
+			& Salaries Payable - to employee& &80\%$x$\\
+			&\multicolumn{3}{l}{CPF Payable - employee contribution}\\
+		\end{tabular}\vspace{0.5em}
+		\item \textbf{17\% contribution by employer}\vspace{0.5em}\\
+		\begin{tabular}{llll}
+			\multicolumn{2}{l}{Payroll Expense - CPF}& \multicolumn{2}{l}{$17\%x$} \\
+			& CPF Payable - employer contribution& &17\%$x$
+		\end{tabular}\vspace{0.5em}
+	\end{itemize}
+    \item Unearned Revenues
+    \item Short-Term (ST) Notes Payable\\
+    \impt use 360 days for daily I/R
+    \begin{itemize}
+    	\item \underline{Entry to record}:
+    	\vspace{0.5em}\\
+    	\begin{tabular}{llll}
+    		\multicolumn{4}{l}{Cash}\\
+    		& Notes Payable - Company Name& &
+    	\end{tabular}\vspace{0.5em}
+    \item \underline{When note is repaid + interest}:\vspace{0.5em}\\
+    \begin{tabular}{llll}
+    	\multicolumn{4}{l}{Notes Payable - Company Name}\\
+    	\multicolumn{4}{l}{Interest Expense (i/r\% $\times$ amt $\times$ days/360)}\\
+    	& Cash& &
+    \end{tabular}\vspace{0.5em}
+\item \underline{End-of-period Adjustments}: Not payable untul the following accounting period, so need to adjust entry at year-end to record the accrued interest expense\vspace{0.5em}\\
+\begin{tabular}{llll}
+	\multicolumn{4}{l}{Interest Expense (i/r\% $\times$ amt $\times$ days/360)}\\
+	& Interest Payable& &
+\end{tabular}\vspace{0.5em}
+    \end{itemize}
+\item \underline{Estimated liabilities}: a known obligation of an uncertain amount, but can be \textbf{reliably estimated}
+\begin{itemize}
+	\item Warranty Liabilities: to comply with \textbf{full disclosure} and \textbf{matching principles}, the seller reports \textbf{Expected warranty expense} in the period when revenue from the sale is reported\\
+	\underline{To record warranty:}\vspace{0.5em}\\
+	\begin{tabular}{llll}
+		\multicolumn{4}{l}{Warranty Expense ($x\% \times $Sales)}\\
+		& Warranty Provision& &
+	\end{tabular}\vspace{0.5em}\\
+\underline{To record returned items:}\vspace{0.5em}\\
+\begin{tabular}{llll}
+	\multicolumn{4}{l}{Warranty Provision}\\
+	& Inventory& &
+\end{tabular}\vspace{0.5em}
+\end{itemize}
+\item \underline{Contingent liabilities}: potential liabilities that are created as a result of a past event. It is not an effective liability until some future event happens (\eg lawsuits and litigation/legal claims, debt guarantees)
+
+\centering
+\begin{tabular}{c|c|c|c}
+& probable & \makecell[c]{reasonably\\possible} & remote \\
+\hline
+estimable & \makecell[c]{\textbf{record as}\\\textbf{liability}} & \makecell[c]{disclose\\in notes} & \makecell[c]{No disclosure\\needed}\\
+\hline
+\makecell[c]{non-\\estimable} & \makecell[c]{disclose\\in notes} & \makecell[c]{disclose\\in notes} & \makecell[c]{No disclosure\\needed}\\
+\end{tabular}\vspace{0.5em}
+\begin{itemize}
+	\item \textbf{Probable}: chance that the future event/events will occur is high (>50\% for IFRS, >70\% for GAAP)
+	\item \textbf{Reasonably possible}: more than remote but less than likely
+	\item \textbf{Remote}: chance of occurring is slight
+\end{itemize}
+\end{itemize}
+
+
+\section{Inventory}
+\textbf{Definition}: Merchandise inventory includes all goods that a company owns and holds for sale, regardless of where the goods are located when inventory is counted
+\begin{itemize}
+	\item \underline{Goods in Transit}:
+	\begin{itemize}
+		\item FOB Shipping Point: goods change ownership at shipping point (goods in transit reported as part of buyer's inventory)
+		\item FOB Destination
+	\end{itemize}
+    \item \underline{Goods on Consignment}:
+    \begin{itemize}
+    	\item Goods the seller (\textbf{consignor}) owns but are on display for sale at another place of business (\textbf{consignee})
+    \end{itemize}
+\end{itemize}
+
+\subsection{Costs of Inventory}
+Cost includes \textbf{all expenditures necessary} to bring an item to a sellable \textbf{condition} and \textbf{location}
+\begin{itemize}
+	\item Invoice cost
+	\item Freight/transport cost
+	\item Insurance cost
+	\item Storage cost
+	\item Import taxes
+	\item Less any purchase discounts/returns
+\end{itemize}
+Note that costs incurred after inventory is ready for use is not included (\eg marketing, salesperson salaries, financing cost, \textbf{Warehouse costs}, \textbf{retail store costs})
+
+\subsection{Perpetual vs Periodic}
+\textbf{Perpetual characteristics}:
+\begin{itemize}
+	\item Up-to-date record maintained
+	\item purchases/returns/discounts are directly added to Inventory account
+	\item Transaction-by-transaction records
+	\item Information on COGS and ending inventory is available on a continuous basis
+\end{itemize}
+\textbf{Periodic characteristics}:
+\begin{itemize}
+	\item No p-to-date records during accounting period
+	\item purchases/returns/discounts are recorded in a temporary account (\textbf{NOT} Inventory)
+	\item Actual physical count of inventory is done at the end of the period
+	\item COGS is then calculated indirectly using the COGS equation
+\end{itemize}
+
+\subsubsection{Periodic Inventory}
+$$\text{Beg. Inventory} + \text{Net Purchases} = \text{COGS} + \text{End Inventory}$$
+\textbf{Types of temporary accounts}:
+\begin{itemize}
+	\item Purchases
+	\item Freight-in: to take into account transport costs, because COGS is unknown
+	\item Purchase returns
+	\item Purchase discounts: might happen when the company pays invoice before the due date and gets discount
+\end{itemize}
+\textbf{Steps to take at the end of the period}:
+\begin{itemize}
+	\item Temporary accounts will all be closed to the inventory account at the end of the period
+	\item COGS will be computed after physical count and using other COGS method, and debit COGS and credit Inventory
+\end{itemize}
+
+\subsubsection{Perpetual Inventory}
+What happens if there's inventory shrinkage (\textbf{loss of merchandise})?
+\begin{itemize}
+	\item Debit COGS and Credit Inventory (since we don't know what happens to the lost goods, we just assume that they're sold)
+\end{itemize}
+\textbf{Advantage of perpetual system}:
+\begin{itemize}
+	\item up-to-date count helps to confirm the amount in the accounting system or highlight shortages of inventory
+\end{itemize}
+
+\subsection{Inventory Costing Methods}
+
+\subsubsection{Specific Identification Method}
+\begin{itemize}
+	\item When specific units are sold, the specific cost of that unit is recorded as COGS.
+	\item Impractical for large quantities of similar items being sold (e.g. toothpaste, clothing etc…)
+	\item Typically used when dealing with expensive unique items (e.g. houses, expensive fine jewelry, unique custom made cars etc…) where costs can be easily tracked to specific item
+\end{itemize}
+\subsubsection{FIFO}
+\textbf{Advantage}:
+\begin{itemize}
+	\item Ending inventory approximates current replacement cost
+\end{itemize}
+\subsubsection{LIFO}
+\textbf{Advantage}:
+\begin{itemize}
+	\item Better matches current costs in COGS with revenues
+\end{itemize}
+\subsubsection{Average Cost Method}
+\begin{itemize}
+	\item When a unit is sold, the avg cost per unit is assigned to COGS
+	$$\text{Avg Cost} = \frac{\text{Cost of Goods available for Sale}}{\text{Number of units available for sale}}$$
+\end{itemize}
+\textbf{Advantage}:
+\begin{itemize}
+	\item Smooth out price changes
+\end{itemize}
+\subsection{Net Realizable Value (NRV)}
+\begin{itemize}
+	\item Ending inventory has to be reported at the \textbf{lower of cost or market value}
+	\item Meaning that if the replacement cost of the same goods in inventory is lower than the inventory cost, it has to report the market value instead.
+	\item NRV can be applied in two ways:
+	\begin{itemize}
+		\item Separately to each individual item
+		\item To major categories of assets
+	\end{itemize}
+\end{itemize}
+\textbf{What happens if NRV < Initial cost}? Need to make a journal entry to change Net Inventory\vspace{0.5em}\\
+\begin{tabular}{llll}
+	\multicolumn{4}{l}{Cost of Goods Sold}\\
+	& Allowance for Inventory Write Down& &
+\end{tabular}\vspace{0.5em}\\
+Where the above is a \textbf{XA} account to Inventory
+$$\text{Net Inventory} = \text{Inventory} - \text{Less: Allowance for Write-Down}$$
+
+\section{PPE}
+\textbf{Types of Assets}:
+\begin{itemize}
+	\item Tangible: \underline{PPE} (Fixed assets such as land, building, equipment) + \underline{Natural resources} (mineral deposits, oil fields)
+	\item Intangible:
+	\begin{itemize}
+		\item \underline{Definite life}: patents, copyright, franchises, licenses
+		\item \underline{Indefinite life}: trademarks, goodwill
+	\end{itemize}
+\end{itemize}
+\subsection{Acquiring PPE}
+PPE (tangible assets actively used in operations that will give future benefits) are initially recorded at \textbf{COST} \impt
+\begin{itemize}
+	\item Including the purchase price and all \underline{expenditures needed to prepare the asset} for its intended use.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\columnwidth]{image/ppe_acquisition}
+	\end{figure}
+    \item \textbf{Lump-sum purchase}: buying different assets at a combined cost, usually in total smaller than buying individual assets
+    \begin{itemize}
+    	\item total cost of a combined purchase is \underline{separated} on the basis of the \textbf{relative fair market values} of each asset component
+    \end{itemize}
+\end{itemize}
+\subsection{Depreciation}
+\begin{itemize}
+	\item Use Depreciation Expense and Accumulated Depreciation (XA) Accounts
+	\item \textbf{Net Book Value} (\textbf{carrying amount}) is the 'current' value of the asset
+	$$\text{NBV} = \text{Acquisition Cost} - \text{Accumulated Depreciation}$$
+\end{itemize}
+\textbf{Some depreciation methods}: to calculate Depreciation Expense
+\begin{itemize}
+	\item \underline{Straight-line method}
+	\item \underline{Unit-of-production method} (used for depletion of natural resources also, but this one need to estimate the usable value of all the natural resources)
+	\item \underline{Double-Declining Balance (DDB)}: usually use multiplier=2
+	$$\text{Depreciation Expense} = \text{Current NBV} \times \frac{\text{Multiplier}}{\text{Useful life in yrs}}$$
+\end{itemize}
+\impt \textbf{Partial-Year Depreciation}: Note that if we buy an equipment in the middle of the year, the depreciation expense for the year is only \underline{a proportion} of annual depreciation expense
+\begin{itemize}
+	\item in the last year, the depreciation would be also a portion of the annual dep. expense since the PPE is supposed to end its life in the middle of the year
+\end{itemize}
+\textbf{Changes in Depreciation estimate}:
+\begin{itemize}
+	\item Need to estimate \textbf{Residual Value} and \textbf{Useful Life}, but this may change
+	\item \impt If it changes, it does not affect past years' depreciation expense, only affects future years!
+\end{itemize}
+\subsection{Capitalize or Expense?}
+\begin{itemize}
+	\item \textbf{R\&D}: Research cost are expensed. Development cost after technological feasibility is established can be capitalized. (IFRS)
+	\item \textbf{PPE:} If we capitalize, there would be less expense and this would boost income (WorldCom scandal where revenues were boosted and assets were inflated)
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\columnwidth]{image/cap_exp.png}
+	\end{figure}
+\end{itemize}
+\subsection{Impairment of PPE}
+\textbf{Definition}:An impairment is the amount by which the \textbf{carrying amount} of an asset exceeds its \textbf{recoverable amount}.
+\begin{itemize}
+	\item Journal entry:\vspace{0.5em}\\
+	\begin{tabular}{llll}
+		\multicolumn{4}{l}{Impairment loss on Equipment}\\
+		& Accumulated Impairment Loss& &
+	\end{tabular}\vspace{0.5em}\\
+    \item Impairment loss: classified under equity and included under IS
+    \item Accumulated Impairment Loss: classified under XA
+\end{itemize}
+\subsection{Disposal of PPE}
+\textbf{Steps to record Disposal}
+\begin{itemize}
+	\item Need to update depreciation expense and add to the accumulated depreciation account first
+	\item Journal entry if there is gain from selling\vspace{0.5em}\\
+	\begin{tabular}{llll}
+		\multicolumn{4}{l}{Cash}\\
+		\multicolumn{4}{l}{Accumulated Depreciation}\\
+		& PPE& &\\
+		& Gain on Sale of Asset
+	\end{tabular}
+    \item Note that Disposal is usually classified under \underline{Accumulated Depreciation and Impairment}
+    \item Note that Gain on Disposal is usually classified under \underline{Operating Profit}
+\end{itemize}
+\subsection{Intangible Assets}
+\textbf{Types}:
+\begin{itemize}
+	\item \textbf{Definite Life}: Amortise over its estimated useful life. Usually assumed to have 0 salvage value (use straight-line method, similar to depreciation but use \textbf{Amortisation expense} and \textbf{Accumulated Amortisation})
+	\begin{itemize}
+		\item \textbf{Patents}: granted by the government for an invention, exclusive right for owner to use, manufacture and sell the product of the patent
+		\item \textbf{Copyrights}: exclusive rights to publish, use and sell literary, musical or artistic work.
+		\item \textbf{Franchises}: contractual right to sell certain products or services, use certain trademarks, or perform activities in a certain region
+	\end{itemize}
+    \item \textbf{Indefinite Life}: Not amortised, but tested at least annually for possible impairment, and book value is reduced to fair value if impaired.
+    \begin{itemize}
+    	\item \textbf{Trademarks}: exclusive legal right to use a distinctive name, image or slogan.
+    	\item \textbf{Goodwill}: when one company buys another company, the \textit{excess} of the purchase price over the fair market value of acquired net assets is goodwill. (Note that only \underline{purchased} goodwill is an intangible asset!)
+    \end{itemize}
+\end{itemize}
+\impt “Intangibles” that are NOT acquired through an exchange is NOT recorded in the company’s books!
+
 \section{Financial Statement Analysis (FSA)}
 \textbf{General areas of FSA}:
 \begin{itemize}
@@ -480,6 +886,69 @@ $$\text{Profit Margin} = \frac{\text{Net Income/Profit}}{\text{Net Sales}}$$
 $$\text{Accounts Receivable Turnover} = \frac{\text{Net Sales Revenue}}{\text{Average Accounts Receivable}}$$
 Measures how well an organization is managing its accounts receivable (collecting receivables/cash, paying short-term loans to cover cash shortage)
 $$\text{Average Collection Period} = \frac{365}{\text{Accounts Receivable Turnover}}$$
+
+\subsection{Current Ratio}
+$$\text{Current Ratio} = \frac{\text{Current Assets}}{\text{Current Liabilities}}$$
+Measures ability of a company to pay its short-term obligations with short-term assets (\textit{liquidity})\\
+\textbf{liquidity}: how easily an asset can be converted to cash\\
+But too high ratio can indicate the firm might not be using resources efficiently
+
+\subsection{Acid-Test Ratio (Quick Ratio)}
+$$\text{Acid-Test Ratio} = \frac{\text{Quick Assets}}{\text{Current Liabilities}}$$
+\begin{equation*}
+\begin{aligned}
+\text{Quick Assets} = &\text{Cash} + \text{Short-Term Investments}\\
+ &+ \text{Current Trade Receivables}
+\end{aligned}
+\end{equation*}
+Measures a company's ability to quickly pay its short-term obligations using liquid assets (exclude inventory, prepaid, and other current assets)\\
+Useful to assess if the company will face \textit{near-term liquidity problems}
+\begin{itemize}
+	\item If Quick Ratio $\geq$ 1.0 then near-term liquidity problems are unlikely, and vice-versa
+\end{itemize}
+
+\subsection{Inventory Turnover}
+$$\text{Inventory Turnover} = \frac{\text{COGS}}{\text{Average Inventory}}$$
+Measures how many times a company turns over (sells) its inventory
+Measures liquidity (if the company is controlling inventory well)
+
+$$\text{Days' Sales in Inventory} = \frac{365}{\text{inventory Turnover}}$$
+Estimates \textit{how many days on average it will take to convert inventory to cash/AR}
+
+\subsection{Operating Cycle of a Company}
+\begin{equation*}
+\begin{aligned}
+\text{Operating Cycle Length} = & \text{Avg Collection Period} \\&+ \text{Days in Inventory}
+\end{aligned}
+\end{equation*}
+Measures: \textit{how much time it takes} from the point inventory is purchased to cash collection from customer
+
+\subsection{Number of Days' Purchases in Accounts Payable}
+$$\text{Days' Purchases in AP} = \frac{365}{\frac{\text{Purchases}}{\text{Avg Accounts Payable}}}$$
+
+Measures how many days' worth of inventory does the company have in accounts payable
+\begin{itemize}
+	\item Avg. length of time between \textbf{purchases} of inventory (on credit) and \textbf{cash payment for that inventory}
+	\item Useful to assess \textbf{how fast} a company is in paying its suppliers
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\columnwidth]{image/operating_cycle.png}
+		\includegraphics[width=\columnwidth]{image/caterpillar_opcycle.png}
+	\end{figure}
+    \item Does the company need to rely on \textbf{external financing} for cash to support its operating activities
+\end{itemize}
+
+\subsection{Fixed Assets Turnover (PPE Turnover Ratio)}
+$$\text{FA Turnover} = \frac{\text{Net Sales}}{\text{Average Fixed Assets}}$$
+$$\text{Avg. Fixed Assets} = \text{Avg. PPE}$$
+\textit{Measures how efficient a company is in using its fixed assets to generate sales} (\underline{Profitability})
+\begin{itemize}
+	\item How much sales is generated per each dollar (unit) of PPE?
+\end{itemize}
+
+\subsection{Total Assets Turnover}
+$$\text{TA Turnover} = \frac{\text{Net Sales}}{\text{Average Assets}}$$
+\textit{Measures how efficient a company is in using its assets as a whole to generate sales} (\underline{Profitability})
 
 \section{Exam stuff}
 \begin{itemize}

@@ -133,9 +133,9 @@ $$\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i$$
 	\item $\mu$, $\sigma$, $\sigma^2$ are \textbf{parameters}
 	\item $\bar{x}$ is an \textbf{estimate} of $\mu$
 	\item $\bar{x}$ is a realisation of the \textbf{estimator} $\bar{X}$
-	\item \textbf{Standard Error (SE)} is defined as the SD of the estimator
+	\item \textbf{Standard Error (SE)} of the \underline{estimate (a number)} is defined as the SD of the estimator
 	$$\text{SE} = \text{SD}(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$
-	which is how much $\bar{X}$ fluctuates around $\mu$
+	which is how much $\bar{X}$ fluctuates around $\mu$ (a number) estimated from the data
 	\item Estimate of $\sigma$
 	\begin{itemize}
 		\item Biased estimate of $\sigma^2$
@@ -151,7 +151,7 @@ How to estimate $\mu$?
 \begin{itemize}
 	\item $\mu$ is estimated by $\bar{x}$
 	\item Error in $\bar{x}$ is measured by the SE: $$\text{SD}(\bar{x})=\frac{\sigma}{\sqrt{n}}$$ which is \textbf{estimated} by $\frac{s}{\sqrt{n}}$ since $\sigma$ is unknown
-	\item \textbf{Conclusion}: $\mu$ is estimated as $\bar{x}$, give or take $\frac{s}{\sqrt{n}}$
+	\item \textbf{Conclusion}: $\mu$ is estimated as $\bar{X}$, give or take $\frac{s}{\sqrt{n}}$
 	$$ \text{ SE estimated by } \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{n}{n-1}}\times \text{SD} }{\sqrt{n}}$$
 	$$\text{where SD } = \hat{\sigma}$$
 \end{itemize}
@@ -201,7 +201,8 @@ Famous example: US presidential election survey conducted by \textit{Literary Di
 \begin{itemize}
 	\item $x_1, \dots, x_n$ are realisations of random draws $X_i, \dots, X_n$ from a population with mean $\mu + b$ and variance $\sigma^2$
 	\item SE $= \sigma/\sqrt{n}$ measures how far $\bar{x}$ is from $E(\bar{X}) = \mu + b$
-	\item How to remove bias?
+	\item \textbf{Definition of Bias}
+	$$\text{Bias of estimate} = \text{E}(\text{estimator}) - \text{parameter}$$
 	\item MSE
 	\begin{equation*}
 		\begin{aligned}
@@ -212,8 +213,109 @@ Famous example: US presidential election survey conducted by \textit{Literary Di
 However $\mu$ is unknowable, hence it is not possible to remove bias unless we make very careful observations
 \end{itemize}
 
+\section{Parameter Estimation}
+Assuming data $x_1, \dots, x_n$ are realisations of IID RV's $X_1, \dots, X_n$ with density $f(x|\theta)$, estimate $\theta$.\\
+The parameter $\theta$ lies in $\Theta \subseteq \mathbb{R}$ where $\Theta$ is the parameter space\\
+How to estimate $\theta$ from realisations $x_1, \dots, x_n$?
+\begin{enumerate}
+	\item Method of moments
+	\item Method of maximum likelihood
+\end{enumerate}
+\subsection{Method of moments}
+Let $\hat{\theta}$ be an estimator for $\theta$.\\
+The $k$-th moments of an RV $X$ is
+$$\mu_k = E(X^k)$$
+$$\frac{1}{n}\sum_{i=1}^{n}x_i^k$$
+is a realisation of $\hat{\mu_k}$ and is used as estimate for $\mu_k$
+$$\hat{\theta} = g(\hat{\mu_1}, \dots, \hat{\mu_q})$$
+is an estimate for $\theta$ \textit{e.g.} for Normal RV,
+$$g : \left[ \begin{matrix}
+	x \\
+	y
+\end{matrix}\right] \rightarrow \left[ \begin{matrix}
+x \\
+y-x^2
+\end{matrix}\right]$$
+\subsection{Monte Carlo Approximation}
+Needed if formula for $\theta$ is complicated/hard to compute the value of its expectation\\
+\textbf{Rough Steps}:
+\begin{enumerate}
+	\item Estimate parameters $\theta$ using MOM/MLE
+	\item Generate $n$ realisations $x_1, x_2, \dots, x_n$ using the estimated parameters and distribution
+	\item From these $n$ realisations, estimate parameters again, these are realisations of $\hat{\theta}^*$
+	\item Repeat steps 2 and 3 $m$ times until we get $m$ realisations of parameters $\theta$
+	$$\text{SE} = \text{SD}(\hat{\theta}) \approx \text{SD}(\hat{\theta}^*)$$
+	$$\text{Bias} = \text{E}(\hat{\theta}) - \theta \approx \text{E}(\hat{\theta^*}) - \theta_{\text{est.}}$$
+	\item Finally, $\theta$ is around $\theta_{\text{est.}} -$ Bias $\pm$ SE, and the fitted distribution + parameter is called a \textbf{statistical model} for the event in question
+\end{enumerate}
+Note that as $n\rightarrow \infty$, $\text{E}(\hat{\theta}^*) \rightarrow \theta_{\text{est}}$ $\Rightarrow$ Bias$\rightarrow 0$, $\text{E}(\hat{\theta}) \rightarrow \theta$.
+\begin{itemize}
+	\item Thus, it is \textbf{asymptotically unbiased}
+	\item Every MOM estimator is consistent, it goes to the parameter as $n \rightarrow \infty$
+\end{itemize}
+
+\subsection{Maximum Likelihood Method}
+Let $x_1, \dots, x_n$ be realisations of IID RV's $X_1, \dots, X_n$ with density/mass function $f(x|\theta)$
+$$L(\theta) = \prod_{i=1}^{n}f(x_i|\theta)$$
+$$l(\theta) = \log{L(\theta)} = \sum_{i=1}^{n}f(x_i|\theta)$$
+Find the value of $\theta$ that maximises the likelihood
+\subsubsection{Multinomial Data}
+$$L(p_1,\dots,p_r) = p_1^{x_1}\dots p_r^{x_r} \times c$$
+$$l(p_1,\dots,p_r) = x_1 \log p_1 + \dots + x_r \log p_r + \log c$$
+Since $p_1 + \dots + p_r = 1$, differentiating $l$ does not work since it's constrained, hence we use the \textbf{Lagrangian} function and treating $p_1, \dots, p_r, \lambda$ as if they are unconstrained
+$$\mathcal{L}(p_1, \dots, p_r, \lambda) = x_1 \log p_1 + \dots + x_r \log p_r + \lambda(p_1 + \dots + p_r-  1)$$
+\subsubsection{Genetics}
+\begin{description}
+	\item[Chromosomes] come in pairs, one from each parent
+	\item[Locus] a subsequence on a chromosome
+	\item[Alleles] different versions of bases at a locus
+	\item[Genotype] an unordered pair of alleles
+	\begin{itemize}
+		\item Given $k$ different alleles, we can construct $k(k+1)/2$ different genotypes
+		\item Given the genotype proportions, we can calculate the allele proportions
+		\item Given the allele proportions, we can calculate the genotype proportions
+	\end{itemize}
+\end{description}
+\textbf{Mendel's Laws of inheritance}
+\begin{itemize}
+	\item The maternal allele is randomly chosen from her two alleles; similarly for the paternal allele
+	\item The two choices are independent
+\end{itemize}
+\textbf{Hardy-Weinberg Equilibrium}: A population is in HWE at a locus if the genotype proportions are
+$$
+f(a_ia_j) =
+\left\{\begin{matrix}
+p_i^2 & i = j\\
+2p_ip_j & i\neq j
+\end{matrix}\right.
+$$
+where $p_i$ is the proportion of allele $a_i$ (assumption: random mating, no mutation, no migration)
+
+\subsection{Large-Sample Variance of ML Estimator}
+$$\mathcal{I}(\theta) = -E\left[\frac{d^2\log{f(X)}}{d\theta^2}\right]$$
+
 \section{Useful Results}
+%\vspace{1em}
+
+%\vspace{1em}
+\subsection{Algebra}
 $$\sum_{i=1}^n(X_i-\bar{X})^2 = \sum_{i=1}^nX_i^2 - n\bar{X}^2$$
+
+\subsection{Procedures}
+\fbox{\begin{minipage}{22em}
+		\textbf{Framework for statistical inference}:
+		\begin{enumerate}
+			\item Parameter is a simple function of the population, real or hypothetical
+			\item Data are realisations of IID RV's (if $n \ll N$)
+			\item Estimate is a realisation of an estimator, whose SD is the SE. For large $n$, can construct CI.
+			\item $\text{MSE} = \text{SE}^2 + \text{bias}^2$
+		\end{enumerate}
+\end{minipage}}
+
+\subsection{Multivariable Calculus}
+\begin{itemize}
+	\item Use Hessian matrix to calculate partial derivatives/maximum points, and $|H| > 0$
+\end{itemize}
 \end{multicols}
 
 

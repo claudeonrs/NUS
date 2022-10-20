@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  28 SEP 2022 13:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  19 OCT 2022 13:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -720,14 +720,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 126--127
  []
 
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 147.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 150.
 
-Overfull \hbox (21.67456pt too wide) in paragraph at lines 172--172
+Overfull \hbox (21.67456pt too wide) in paragraph at lines 175--175
  []\T1/lmtt/m/n/10 str_detect(street_names, "Jurong|Boon Lay")[] 
  []
 
 
-Underfull \hbox (badness 5245) in paragraph at lines 182--183
+Underfull \hbox (badness 5245) in paragraph at lines 185--186
 \T1/lmss/m/n/10 R base pack-age; \T1/lmtt/m/n/10 [:punct:]\T1/lmss/m/n/10 , \T1
 /lmtt/m/n/10 [:digit:]\T1/lmss/m/n/10 ,
  []
@@ -741,87 +741,91 @@ File: lstlang2.sty 2020/03/24 1.8d listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2020/03/24 1.8d listings language file
 )
-Overfull \hbox (88.37996pt too wide) in paragraph at lines 200--202
+Overfull \hbox (88.37996pt too wide) in paragraph at lines 203--205
 []\T1/lmss/bx/n/10 [IMPT] []\T1/lmss/m/n/10 USE \T1/lmtt/m/n/10 vignette('strin
 gr') \T1/lmss/m/n/10 and \T1/lmtt/m/n/10 vignette('regular-expressions')
- []
-
-
-Overfull \hbox (25.92448pt too wide) in paragraph at lines 202--203
-[]\T1/lmtt/m/n/10 devtools::install_github("gadenbuie/regexplain")
  []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-Underfull \hbox (badness 6032) in paragraph at lines 225--226
+Overfull \hbox (25.92448pt too wide) in paragraph at lines 205--206
+[]\T1/lmtt/m/n/10 devtools::install_github("gadenbuie/regexplain")
+ []
+
+
+Underfull \hbox (badness 6032) in paragraph at lines 228--229
 []\T1/lmtt/m/n/10 breaks\T1/lmss/m/n/10 : nu-meric vec-tor/string (\T1/lmtt/m/n
 /10 "month",
  []
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 233.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 236.
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 323--324
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 []\T1/lmtt/m/n/10 negated_char_class("aiueoAIUEO")\T1/lmss/m/n/10 : self-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 343--344
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
 []\T1/lmtt/m/n/10 grepl(pattern = , x = )\T1/lmss/m/n/10 : ba-si-cally
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--345
+Underfull \hbox (badness 10000) in paragraph at lines 347--348
 []\T1/lmtt/m/n/10 grep(pattern = , x = )\T1/lmss/m/n/10 : ba-si-cally
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
 []\T1/lmtt/m/n/10 sub(pattern, replacement, x)\T1/lmss/m/n/10 : ba-si-cally
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 417--418
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
 
  []
 
 
-Overfull \hbox (10.17453pt too wide) in paragraph at lines 421--422
+Overfull \hbox (10.17453pt too wide) in paragraph at lines 424--425
 []\T1/lmtt/m/n/10 apply(salaries, 2, function(x) sum(is.na(x)))
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
 []\T1/lmss/m/n/10 use \T1/lmtt/m/n/10 do.call \T1/lmss/m/n/10 to com-bine the i
 n-di-vid-ual
  []
 
 [4] [5]
-Overfull \hbox (20.58997pt too wide) in paragraph at lines 691--692
+Overfull \hbox (20.58997pt too wide) in paragraph at lines 713--714
 [][]\T1/lmss/bx/n/10 [IMPT] []\T1/lmtt/m/n/10 rank()\T1/lmss/m/n/10 : \T1/lmtt/
 m/n/10 min_rank()\T1/lmss/m/n/10 , \T1/lmtt/m/n/10 min_rank(desc(x))\T1/lmss/m/
 n/10 ,
  []
 
-[6] (./dsa2101-notes.aux)
+[6] [7] [8]
+Overfull \vbox (9.98665pt too high) has occurred while \output is active []
+
+
+[9] (./dsa2101-notes.aux)
 
 Package rerunfilecheck Warning: File `dsa2101-notes.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `dsa2101-notes.out':
-(rerunfilecheck)             Before: 79F2FB9A9FBB8A02F1CC2644F58B8C9A;1840
-(rerunfilecheck)             After:  B4472C200EA658481A21BB67E2293491;1972.
+(rerunfilecheck)             Before: D1A7616BDEB678C8FA99466597962BF3;4805
+(rerunfilecheck)             After:  6F756BD1EC47FE7690B94CE2B9E99288;5110.
  ) 
 Here is how much of TeX's memory you used:
- 17128 strings out of 480171
- 264880 string characters out of 5894489
- 1002345 words of memory out of 5000000
- 34626 multiletter control sequences out of 15000+600000
+ 17298 strings out of 480171
+ 267113 string characters out of 5894489
+ 1101591 words of memory out of 5000000
+ 34714 multiletter control sequences out of 15000+600000
  505502 words of font info for 56 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,12n,63p,287b,2268s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,63p,287b,2160s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -833,10 +837,10 @@ share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/pu
 blic/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/sh
 are/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtt10.pfb>
-Output written on dsa2101-notes.pdf (6 pages, 238076 bytes).
+Output written on dsa2101-notes.pdf (9 pages, 258891 bytes).
 PDF statistics:
- 409 PDF objects out of 1000 (max. 8388607)
- 374 compressed objects within 4 object streams
- 221 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 590 PDF objects out of 1000 (max. 8388607)
+ 550 compressed objects within 6 object streams
+ 303 named destinations out of 1000 (max. 500000)
+ 305 words of extra memory for PDF output out of 10000 (max. 10000000)
 

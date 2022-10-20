@@ -1,0 +1,78 @@
+---
+title: "ST2132 Semester 1 AY2022/2023"
+author: "Claudeon Susanto (A0239079R)"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data Preparation
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+
+data <- read.csv("../data/data2210")
+x <- data %>%
+  filter(V1 == "A0239079R") %>%
+  select(starts_with("X")) %>%
+  apply(1, function(x) x)
+```
+
+## Method of Moments
+Next, we prepare functions to estimate parameters given realisations $x_1, x_2, \dots, x_n$
+```{r}
+# estimate alpha given vector using MOM
+estimate_alpha <- function(x) {
+  mean(x)^2/sd(x)^2
+}
+# estimate lambda given vector using MOM
+estimate_lambda <- function(x) {
+  mean(x)/sd(x)^2
+}
+```
+$\alpha$ and $\lambda$ can be estimated
+```{r}
+alpha_est <- estimate_alpha(x)
+lambda_est <- estimate_lambda(x)
+```
+From here, $\alpha_{\text{est}}$ and $\lambda_{\text{est}}$ are approximately equal to `r alpha_est` and `r lambda_est` respectively
+
+## Monte Carlo Approximation
+We subsequently generate 1000 realisations from $\Gamma (\alpha_{\text{est}}, \lambda_{\text{est}})$, and this is repeated 1000 times until we obtain a $10000 \times 100$ matrix.
+```{r}
+x_star <- rgamma(1000*1000, shape=alpha_est, rate=lambda_est)
+x_mat <- matrix(x_star, nrow=1000)
+```
+Note that while each row represents 1000 realisations from $\Gamma (8.16, 10.16)$, each row can be assumed as 1000 realisations from $\Gamma (\alpha^*, \lambda^*)$. We then try to estimate $\alpha^*$ and $\lambda^*$ for each row using MOM (the method we use to estimate $\alpha_{\text{est}}$ and $\lambda_{\text{est}}$)
+```{r}
+# estimations for parameters of each row
+alpha_star <- apply(x_mat, 1, estimate_alpha)
+lambda_star <- apply(x_mat, 1, estimate_lambda)
+```
+
+Afterwards, we will compute SE of each estimated parameter
+```{r}
+se_alpha <- sd(alpha_star)
+se_lambda <- sd(lambda_star)
+```
+$$\text{SD}(\hat{\alpha}) \approx \text{SD}(\hat{\alpha}^*) = `r se_alpha`$$
+$$\text{SD}(\hat{\lambda}) \approx \text{SD}(\hat{\lambda}^*) = `r se_lambda`$$
+To compute bias, we assume
+$$\text{E}(\hat{\theta}) - \theta \approx \text{E}(\hat{\theta^*}) - \theta_{\text{est}}$$
+```{r}
+E_alpha_star <- mean(alpha_star)
+bias_alpha <- E_alpha_star - alpha_est
+
+E_lambda_star <- mean(lambda_star)
+bias_lambda <- E_lambda_star - lambda_est
+```
+So, bias for approximations for $\alpha$ and $\lambda$ are `r bias_alpha` and `r bias_lambda` respectively. Hence,
+```{r}
+alpha_final <- alpha_est - bias_alpha
+lambda_final <- lambda_est - bias_lambda
+```
+Finally,
+$$\alpha = `r alpha_final` \pm `r se_alpha`$$
+$$\lambda = `r lambda_final` \pm `r se_lambda`$$

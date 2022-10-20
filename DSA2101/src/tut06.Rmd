@@ -1,0 +1,92 @@
+---
+title: "Tutorial 6"
+author: "Claudeon Susanto"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+```{r}
+sets <- read.csv("../data/lego/sets.csv")
+themes <- read.csv("../data/lego/themes.csv")
+inventories <- read.csv("../data/lego/inventories.csv")
+inventory_sets <- read.csv("../data/lego/inventory_sets.csv")
+inventory_parts <- read.csv("../data/lego/inventory_parts.csv")
+colors <- read.csv("../data/lego/colors.csv")
+parts <- read.csv("../data/lego/parts.csv")
+part_categories <- read.csv("../data/lego/part_categories.csv")
+```
+## Question 1
+
+```{r}
+major_theme <- function(theme_id, parent_id) {
+  if (is.na(theme_id) | is.na(parent_id)) {
+    return("Others")
+  }
+  if (between(theme_id, 158, 185) | between(parent_id, 158, 185)) {
+    return("Star Wars")
+  } else if (between(theme_id, 561, 569)) {
+    return("LotR")
+  } else if (between(theme_id, 482, 493)) {
+    return("Superhero")
+  } else {
+    return("Others")
+  }
+}
+
+
+q1_df <- sets %>%
+  left_join(themes, by=c("theme_id" = "id"), suffix=c("_set", "_theme")) %>%
+  rowwise() %>%
+  mutate(major_theme = major_theme(theme_id, parent_id)) %>%
+  select(major_theme, year) %>%
+  group_by(major_theme) %>%
+  summarize(`[1950,1960)` = sum(between(year,1950,1960)) )
+```
+## Question 2
+```{r}
+anti_join(themes, sets, by=c("id"="theme_id"))
+```
+
+## Question 3
+```{r}
+inventories %>%
+  filter(duplicated(set_num))
+```
+## Question 4
+```{r}
+colors %>% 
+  mutate(R=str_sub(rgb,1,2), G=str_sub(rgb,3,4), B=str_sub(rgb,5,6), rgb=NULL) %>%
+  pivot_longer(c(R,G,B), names_to="channel", values_to="hex") %>%
+  mutate(dec = strtoi(hex, base=16)) -> rgb
+```
+## Question 5
+```{r}
+rgb %>%
+  pivot_wider(id_cols=c(id, name), names_from = channel, values_from = dec) %>%
+  mutate(dom_col = )
+```
+##Tut 7
+
+```{r}
+sets %>% 
+  left_join(inventories, by=c("set_num" = "set_num")) %>%
+  left_join(inventory_parts, by=c("id" = "inventory_id")) %>%
+  group_by(set_num) %>%
+  summarise(n=sum(quantity, na.rm = TRUE), num_parts=num_parts[1]) -> yey
+```
+## Question 2
+```{r}
+inventory_parts %>% 
+  filter(is_spare == "t") %>%
+  left_join(parts) %>%
+  left_join(part_categories, by=c("part_cat_id" = "id"), suffix=c("_part", "_part_cat")) %>%
+  group_by(name_part_cat) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
+  
+```
+
