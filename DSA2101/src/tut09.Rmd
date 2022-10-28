@@ -1,0 +1,52 @@
+---
+title: "Tutorial 9"
+author: "Claudeon Susanto"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
+```
+
+## Question 1
+```{r}
+data <- read_excel("../data/happiness_2022_v2.xls")
+
+data %>% 
+  mutate(rank = RANK, RANK = NULL, country = Country, Country=NULL) %>%
+  mutate(happiness = `Happiness score`, `Happiness score`=NULL, region=Region, Region=NULL) %>%
+  pivot_longer(1:7, names_to = "component") %>%
+  mutate(component = str_trim(str_remove(component, "Explained by: "))) %>%
+  mutate(component = str_replace(component, "Dystopia \\(1.83\\)", "Dystopia")) -> q1_data
+
+q1_data %>%
+  mutate(position=ifelse(between(rank, 1,10), "Top 10", ifelse(between(rank,137,146), "Bottom 10", NA))) %>%
+  filter(is.na(position) == FALSE) %>%
+  mutate(position = factor(position, levels = c("Top 10", "Bottom 10")))-> filtered_data
+
+filtered_data %>%
+  ggplot() +
+  geom_col(aes(x=reorder(country, rank), y=value, fill=component), position="stack") +
+  facet_wrap(vars(position), scales = "free_x", nrow=2) + 
+  labs(x="Country", y="Happiness Value") + 
+  scale_fill_discrete(name="Component of Happiness") +
+  theme(axis.text.x = element_text(size=5))
+  
+```
+
+## Question 2
+```{r}
+data %>%
+  filter(Region == "Oceania" | Region == "N. America") -> dev_data
+
+data %>% 
+  filter(Region != "Oceania", Region != "N. America")%>%
+  ggplot() + 
+  xlim(c("Oceania", "N. America", "Europe", "C. America", "S. America", "Asia", "M. East", "Africa")) + 
+  geom_boxplot(aes(x=reorder(Region, `Happiness score`, mean, decreasing= TRUE), y=`Happiness score`), outlier.color="purple") + 
+  geom_point(dev_data, aes(x=Region, y=`Happiness score`)) + 
+  labs(x="Region", y="Happiness score")
+```

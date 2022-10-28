@@ -937,11 +937,25 @@ Some references:
 geom_errorbar(aes(x=..., ymin=..., ymax=...))
 	\end{lstlisting}
 	\item can plot one prediction on top of another (show tutorial 8 question 2)
+	\item $y$-axis is usually for dependent, $x$ for independent variables
 \end{itemize}
 
 
 
+
 \section{Data Visualization}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{img/ggplot.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{img/aes.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{img/aes2.png}
+\end{figure}
 
 \impt \texttt{vignette("ggplot2-specs")} for help
 \begin{lstlisting}[language=R]
@@ -970,7 +984,16 @@ ggplot(data = <DATA>) +
     	\item \texttt{geom\_histogram()}: histogram
     	\item \texttt{geom\_boxplot()}: boxplot
     \end{itemize}
-	\item \texttt{scale\_x\_log10()}: log10 scale
+	\item \textbf{Scales}:
+	\begin{itemize}
+		\item \texttt{scale\_<AES>\_*}: where * is either \texttt{discrete} or \texttt{continuous} or \texttt{manunal}
+		\item \texttt{scale\_x\_log10()}: log10 scale
+		\item \impt \texttt{scale\_fill\_discrete(name = ..., labels=...)
+		\begin{itemize}
+			\item name is to change legend title
+			\item Labels is to change legend labels
+	\end{itemize}}
+	\end{itemize}
 	\item \texttt{coord\_cartesian}: magnifying glass to expand some areas
 	\item \texttt{xlim(), ylim()}: to increase/decrease plotting canvas
 	\item \textbf{Faceting}:
@@ -981,6 +1004,7 @@ ggplot(data = <DATA>) +
 	\item \texttt{expand\_limits(y=...)}: expand graphing limits
 	\item \texttt{coord\_flip()}
 	\item \texttt{theme()}
+	\item \texttt{labs()}: for labels
 \end{itemize}
 
 \subsection{Scatter plot}
@@ -1011,6 +1035,7 @@ scale_colour_mannual(values=cols, labels=labs)\end{lstlisting}
     \begin{lstlisting}[language=R]
 geom_point(mapping=..., position="jitter")
 geom_point(mapping=..., position=position_jitter(width=0.5, height=0))\end{lstlisting}
+    \item \textbf{Nudge position}:
 \end{itemize}
 \subsection{Histogram}
 \textbf{General pointers}
@@ -1040,6 +1065,7 @@ geom_point(mapping=..., position=position_jitter(width=0.5, height=0))\end{lstli
 		\item \texttt{fill=...}: will create two histograms stacked on top of each other
 		\item use \texttt{position="dodge"} to prevent stacking
 		\item use \texttt{position="identity"} and $\alpha$ to stack histograms on top of another without stacking
+		\item \impt we can also use \texttt{position = position\_dodge(arg=...)} to adjust arguments
 
 	\end{itemize}
 \end{itemize}
@@ -1054,6 +1080,8 @@ geom_point(mapping=..., position=position_jitter(width=0.5, height=0))\end{lstli
 		\item group= if we want to separate lines but same color
 	\end{itemize}
     \item Usually need Tidy Data to separate time series into different groups
+    \item \impt \texttt{geom\_area(position="fill")} is interesting
+    \item \impt \texttt{geom\_ribbon()} is also interesting
 \end{itemize}
 
 \subsection{Geom Text}
@@ -1092,11 +1120,127 @@ facet_wrap(~ sex, nrow=2, scales="free_x",
 	\item \texttt{geom\_smooth(aes(...), method="lm")}
 	\item \texttt{geom\_smooth(aes(...), method="loess")}
 	\item Is the variability around the line the same??
+	\item \textbf{Parameters}
+	\begin{itemize}
+		\item \texttt{span=}: to adjust smoothing
+		\item \texttt{se=FALSE}: to remove SE ribbon
+	\end{itemize}
+\end{itemize}
+
+\subsection{Geom Rug}
+\texttt{geom\_rug()}
+
+\subsection{Boxplots}
+\begin{itemize}
+	\item \impt what to look for: which point/interval has the most common combination!!!
+	\item Shows: minimum, 1st quartile, median, 3rd quartile, max values
+	\item Also shows outliers (values that lie < 1.5$\times$IQR below the lower quartile or values that lie < 1.5$\times$IQR above the upper quartile)
+	\item Useful for identifying outliers, but don't dismiss them so quickly, need to analyze why are there outliers in the first place (are they just following the distribution?)
+	\item \impt How to reorder!!!
+	\begin{lstlisting}[language=R]
+		# order by median
+mutate(mpg, class2 = reorder(class, hwy, FUN=median))
+\end{lstlisting}
+    \item Boxplot secrets
+    \begin{lstlisting}[language=R]
+# how to find and separate outliers
+outliers <- boxplot(mpg$hwy, plot=FALSE)$out
+
+# how to hide outliers
+geom_boxplot(outlier.shape=NA)
+\end{lstlisting}
+\end{itemize}
+
+\subsection{2D-Histograms}
+\begin{lstlisting}[language=R]
+ggplot(mpg) +
+	geom_bin2d(aes(x=displ, y=hwy), binwidth=c(0.5,5)) +
+	#scale_fill_gradient(type = "viridis")
+	scale_fill_gradient(name="hmm", low="white", high="red")
+	# scale_fill_gradientn(colours = terrain.colors(10))
+\end{lstlisting}
+
+\subsubsection{Hex bins}
+\begin{lstlisting}[language=R]
+ggplot(mpg) +
+	geom_hex(aes(x=displ, y=hwy), binwidth=c(0.5,5))
+\end{lstlisting}
+
+\subsubsection{2D-Density}
+\begin{lstlisting}[language=R]
+ggplot(mpg) +
+	geom_density_2d(aes(x=displ, y=hwy))
+\end{lstlisting}
+\subsection{2D Heatmaps}
+YAYYAYYY
+\begin{lstlisting}[language=R]
+ggplot(data, mapping=aes(x=displ, y=hwy, z=ma3)) +
+	stat_summary_hex(fun=mean, binwidth=c(0.6,5))
+\end{lstlisting}
+\subsection{Themes}
+\begin{itemize}
+	\item \impt \texttt{?theme} FOR HELP
+	\item \texttt{theme(legend.position = "bottom" OR "none")}
+	\begin{itemize}
+		\item Alternatively, can position inside the plot where (0,0) represents bottom-left and (1,1) represents top-right
+	\end{itemize}
+    \item \texttt{axis.ticks}: to remove lines/ticks
+    \item \texttt{elements}
+    \begin{itemize}
+    	\item \texttt{element\_blank()}: to remove shit
+    	\item \texttt{<ELE> = element\_<ELE>(args =...)} to adjust arguments
+    \end{itemize}
+    \item \impt we can also save themes!
+    \begin{lstlisting}[language=Java]
+t <- theme(...)
+ggplot(...) + t
+\end{lstlisting}
+    \item Import themes
+    \begin{itemize}
+    	\item theme\_tufte
+    	\item theme\_fivethirtyeight
+    	\item theme\_wsj
+    \end{itemize}
+    \item \texttt{theme\_set(t)} to set theme \texttt{t} as default theme
+
+    \item \texttt{panel.grid = NA}: remove grid
+    \item \impt \href{https://exts.ggplot2.tidyverse.org/gallery/}{NICE THEMES}
+\end{itemize}
+
+\subsection{Grid of Plots (gridExtra)}
+\begin{lstlisting}[language=R]
+library(gridExtra)
+list_of_plots <- list(p1, p2, p3, p4)
+grid.arrange(list_of_plots, nrow=2)
+\end{lstlisting}
+
+\subsection{Statistics (stats\_)}
+\begin{itemize}
+	\item \texttt{stat\_count} is basically \texttt{geom\_bar}
+	\item \texttt{stat\_bin} is basically \texttt{geom\_histogram}
+	\item \texttt{stat\_smooth} is basically \texttt{geom\_smooth}
 \end{itemize}
 
 \section{Interesting stuff}
 \begin{itemize}
 	\item Can lookup location through zipcode
+	\item \textbf{Which geom to use?}
+	\begin{itemize}
+		\item What is the question? if no question, just pick two variables
+		\item Inspect types of variables
+		\item Who is your viewer/audience?
+		\item Do I need to add another variable?
+		\item Do we need to transform/bin the data differently?
+		\item Do we need to add a smooth?
+		\item Why are there so many outliers?
+		\item Do they follow some patterns that could be explained by another variable?
+	\end{itemize}
+    \item \impt \texttt{library(GGally)}: for correlation plot, useful for EDA
+    \begin{lstlisting}[language=R]
+# create correlation plot
+ggpairs(data)
+\end{lstlisting}
+    \item \texttt{library(plotly)}: for interactive plot
 \end{itemize}
 
 \section{Data Cleaning}

@@ -151,6 +151,11 @@ $$O(n^k)[\text{ where } k>2] < O(k^n) [\text{ where } k\geq1] < O(n!) $$
 		slow = slow.next;
 		fast = fast.next.next;\end{lstlisting}
 	\item \impt Drawing pictures is very important to visualize the program!
+	\item Sometimes maintaining two pointers is good (especially for deletion)
+	\begin{lstlisting}[language=Java]
+Node head = new Node();
+Node prev = head;
+\end{lstlisting}
 \end{itemize}
 
 \textbf{Java API}: \texttt{ArrayList} or \texttt{LinkedList}
@@ -181,6 +186,14 @@ $$O(n^k)[\text{ where } k>2] < O(k^n) [\text{ where } k\geq1] < O(n!) $$
 	\item \impt Breadth-first traversal of trees
 	\item Sliding Window (especially important for contiguous blocks of stuff)
 \end{itemize}
+\textbf{Implementations}:
+\begin{itemize}
+	\item ArrayDeque: can remove from back and front
+	\begin{itemize}
+		\item However Java API does not allow random access
+		\item Hence, need to implement our own (Lab 3C)
+	\end{itemize}
+\end{itemize}
 \section{Recursion}
 \impt \textbf{Recipe for recursion} (3 fingers)
 \begin{enumerate}
@@ -205,6 +218,14 @@ $$O(n^k)[\text{ where } k>2] < O(k^n) [\text{ where } k\geq1] < O(n!) $$
 	\item Solving problems recursively by trying to build a solution incrementally, one piece at a time, removing those solutions that fail to satisfy the constraints of the problem at any point in time
 	\item \eg Queens Lab 4B: board is fixed\\
 	queens can be added or removed!
+	\begin{lstlisting}[language=Java]
+Pair pos = new Paid(i,j);
+if (isValidBoard(pos, currentQueens)) {
+	currentQueens.add(pos);
+	solveQueens(n, queensLeft-1, currentQueens);
+	currentQueens.remove(pos);
+}
+\end{lstlisting}
 \end{itemize}
 \section{Sorting}
 Some definitions
@@ -577,6 +598,15 @@ Note that post-order, in-order, and pre-order of expression tree will produce po
 \impt Recursive procedure!
 
 \subsection{Binary Search Trees (BST)}
+\textbf{Visualgo Hacks}:
+\begin{itemize}
+	\item Possible number of structurally different BSTs with $n$ distinct elements
+	$$f(n) = \sum_{i=0}^{n-1}f(i)\times f(n-1-i)$$
+	where $f(0) = 1$ and $f(1)=1$
+	\item Minimum number of vertices in an AVL Tree of a given height $h$
+	$$f(h) = f(h-1) + f(h-2) + 1$$
+	where $f(1) = 2$ and $f(2) = 4$
+\end{itemize}
 \textbf{Some operations}: Usually $O(h)$, but note that it's possible that $h=n$ if it is skewed (hence need AVL Tree)
 \begin{itemize}
 	\item Find min/max element
@@ -641,6 +671,11 @@ Note that post-order, in-order, and pre-order of expression tree will produce po
 	\item Heap!
 \end{itemize}
 \subsection{Heap}
+\textbf{VisuAlgo Hacks}
+\begin{itemize}
+	\item Maximum number of swaps between heap elements required to construct a max heap of $n$ elements using the $O(n)$ \texttt{BuildHeap(arrr)}: happens when the array is sorted in ascending order
+	\item Maximum number of comparison between heap elements required to construct a max heap of $n$ elements using the $O(n)$ \texttt{BuildHeap(arrr)}
+\end{itemize}
 \textbf{Properties}:
 \begin{itemize}
 	\item A \textbf{complete binary tree}
@@ -649,6 +684,7 @@ Note that post-order, in-order, and pre-order of expression tree will produce po
 		\item, or satisfies the \textbf{heap property}: for every node $v$, the search key in $v$ is greater or equal to those in the children of $v$
 	\end{itemize}
     \item Usually we talk about max heap
+    \item \impt Half of the items are leaves!
     \item Some access stuff
     \begin{lstlisting}[language=Java]
 left(i)   = 2*i + 1
@@ -663,7 +699,15 @@ parent(i) = floor((i-1)/2)\end{lstlisting}
 		\item \textbf{Running time = }$O(n)$
 		\item Total number of nodes = $n = 2^{h+1} - 1$
 		\item Total number of bubbling down = $n-h-1$ which is less than the total number of edges connecting the nodes
+		\item Worst case is when the array is sorted in ascending order (assuming max heap)
+		\begin{lstlisting}[language=Java]
+heapify(arr) {
+	for (int i=size/2; i>=0; i--) {
+		heapRebuild(i);
+}}
+\end{lstlisting}
 	\end{itemize}
+
 	\item \texttt{heapSort}: partition the unsorted array into two parts, the heap and sorted portion; remove the max value from heap and put it into the sorted portion so that eventually the array is in ascending order
 	\begin{itemize}
 		\item In-place
@@ -673,6 +717,155 @@ parent(i) = floor((i-1)/2)\end{lstlisting}
 \end{itemize}
 
 \section{Graphs}
+\textbf{Properties}
+\begin{itemize}
+	\item Loops are possible; trees don't have loops
+	\item Multiple paths are possible; Trees only have 1 path from A to B
+\end{itemize}
+\textbf{Types of graphs}
+\begin{itemize}
+	\item Weighted/Unweighted
+	\item Directed/Undirected
+	\item \textbf{Complete Graph}: Simple graph with $n$ vertices and $_nC_2$ edges
+	\item Sparse/Dense: not so many edges vs many edges (arbitrary definition)
+	\item Disconnected/Connected
+\end{itemize}
+\textbf{Some problems}
+\begin{itemize}
+	\item \underline{Shortest Path Problem}: What is the shortest way to travel between A and B?
+	\item \underline{Traveling Salesman Problem}: How to minimize the cost of visiting $n$ cities such that we visit each city exactly once, and finishing at the city where we start from?
+	\item \underline{Topological Sort}: Find a sequence of modules to take that satisfy the prerequisite requirements
+	\item \underline{4-Colours Problem}
+\end{itemize}
+\subsection{Implementation}
+\textbf{Some terminologies}
+\begin{itemize}
+	\item In/Out Degree of a vertex: for directed graph
+	\item Cycle: only possible if there are \impt $geq n$ edges!!
+	\item Path: number of \underline{edges} in a path
+	\item Adjacent vertices: $adj(v)$ is a set of vertices adjacent to \texttt{v}
+	\begin{itemize}
+		\item For directed graphs
+		$$\sum_v|adj(v)| = |E|$$
+		\item For undirected graphs
+		$$\sum_v|adj(v)| = 2|E|$$
+	\end{itemize}
+\end{itemize}
+\textbf{Implementations}
+\begin{itemize}
+	\item Adjacency matrix: space complexity is $O(V^2)$
+	\item Edge List: list all the edges (an Edge class) in a list space complexity is $O(E)$ where $E = O(V^2)$
+	\item Adjacency List: stores all the neighbours of vertex A; space complexity is $O(V+E)$
+	\item Vertex Map: similar to adjacency list but uses HashMap
+\end{itemize}
+
+\subsection{Traversal}
+\subsubsection{BFS}
+\begin{itemize}
+	\item Use Queue for ordering
+	\item How to differentiate visited vs univisited vertices?
+	\begin{itemize}
+		\item 1D array \texttt{visited} of size $V$, \texttt{visited[v]=0} initially, and \texttt{visited[v]=1} when \texttt{v} is visited
+	\end{itemize}
+    \item How to memorize the path?
+    \begin{itemize}
+    	\item 1D array \texttt{parent} of size $V$, where \texttt{p[v]} denotes the predecessor of \texttt{v}
+    \end{itemize}
+    \item The edges will form a spanning tree
+    \item Running time is $O(E) + O(V) = O(V+E)$ if adjacency list is used (Main loop (secondary loop) + initialization inside first loop)
+    $$O(\sum_{v}adj(curr)) = O(E)$$
+    \item Running time is $O(V^2)$ if adjacency matrix is used
+\end{itemize}
+\textbf{Uses}:
+\begin{itemize}
+	\item \textbf{Building BFS Tree}
+	\begin{lstlisting}[language=Java]
+		Q = new Queue
+		Q.enq(v)
+		mark v as visited
+		while Q is not empty {
+			curr = Q.deq()
+			print curr
+			for each w in curr.adj { // an array of adjacent nodes
+				if w is not visited {
+					Q.enq(w)
+					w.parent = curr
+					mark w as visited
+		}}}
+\end{lstlisting}
+    \item \textbf{Building BFS Tree}
+    \begin{lstlisting}[language=Java]
+    	Q = new Queue
+    	Q.enq(v)
+    	mark v as visited
+    	v.level=0
+    	while Q is not empty {
+    		curr = Q.deq()
+    		print curr
+    		for each w in curr.adj { // an array of adjacent nodes
+    			if w is not visited {
+    				Q.enq(w)
+    				w.level = curr.level+1
+    				mark w as visited
+    	}}}
+\end{lstlisting}
+\end{itemize}
+
+
+\subsubsection{DFS}
+\begin{itemize}
+	\item Go to each path as far as we can go
+	\item Use a stack
+	\item Edges used in DFS traversal will form a DFS spanning tree
+	\item $O(V+E)$
+\end{itemize}
+\begin{lstlisting}[language=Java]
+S = new Stack
+S.push(v)
+print and mark v as visited
+while S is not empty {
+  curr = S.top() // top of stack
+  if every vertex in adj(curr) is visited {
+  	S.pop()
+  } else {
+    let w be an unvisited vertex in adj(curr)
+    S.push(w)
+    print and mark w as visited
+}}
+\end{lstlisting}
+
+\subsection{Uses of BFS/DFS}
+\begin{itemize}
+	\item Searching for a vertex/node
+	\item Reachability test: is v reachable from vertex u?
+	\item Find shortest path between 2 vertices
+	\item Identifying components (disconnected subgraphs)
+	\begin{itemize}
+		\item Run BFS on one node, and then label the visited vertices if they can be reached from the first node \eg 1,2,3,...
+	\end{itemize}
+    \item \textbf{Cycle Detection}: DFS!
+    \begin{itemize}
+    	\item Undirected: need to make sure that the path goes back to parent node
+    	\begin{itemize}
+    		\item Possible false positive: two-nodes cycle, need to protect against this
+    	\end{itemize}
+        \item Directed: 3 states: unvisited, not completed, completed (Tut 9)
+    \end{itemize}
+	\item \textbf{Topological sort}: Module selection
+	\begin{itemize}
+		\item Should be a \textbf{Directed Acyclic Graph (DAG)}: a directed graph with no cycle since otherwise there will be a cycle where mods are prerequisites of each other
+		\item \textbf{Goal}: Order the vertices, such that if there is a path from $u$ to $v$, $u$ appears before $v$ in the output
+		\item \textbf{Complexity}: $O(V+E)$
+		\begin{lstlisting}[language=Java]
+q = new Queue()
+put all vertices with in-degree 0 into q
+while q is not empty
+  v = q.deq()
+  print v
+  remove v from G
+  enqueue neighbours of v with in-degree 0\end{lstlisting}
+	\end{itemize}
+\end{itemize}
 
 \section{Java Tricks}
 \begin{itemize}
@@ -691,6 +884,17 @@ parent(i) = floor((i-1)/2)\end{lstlisting}
 		\item \href{https://leetcode.com/problems/zigzag-conversion/solution/}{Zigzag conversion}
 	\end{itemize}
     \item Tut 07 $\Rightarrow$ Contiguous cells can be represented by start and end only
+    \item \impt \textbf{Iterator}
+    \begin{lstlisting}[language=Java]
+LinkedList<Integer> ll = new LinkedList<>();
+Iterator<Integer> it = ll.iterator();
+it.next();
+// must call next first before removing;
+it.remove();
+it.next();
+// must call next first
+it.remove();
+\end{lstlisting}
 
 \end{itemize}
 

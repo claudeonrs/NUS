@@ -1,0 +1,42 @@
+How to SSH with Mac OSX?
+
+You may need to VPN in to use the Unix server, if you are unable to connect to it directly.
+For a guide on how to VPN, see: 
+https://dochub.comp.nus.edu.sg/cf/guides/network/vpn (requires SOC login) or
+https://nusit.nus.edu.sg/eguides/
+
+Ok, let's get started:
+1. Run terminal (search in spotlight for 'Terminal' or select 'Terminal' from the applications>utilities folder)
+2. Type <ssh userid@stu.comp.nus.edu.sg> (Note that this userid is your SOC account and password)
+3. Enter your password.
+4. You're in!
+
+
+If you're prompted about a RSA key, just type yes.
+
+
+How to transfer files between Mac and the server?
+1. Use cyberduck
+
+2. Alternatively, you can use the command line to transfer files 
+   to and from the server. 
+
+   Use the scp command from your local Mac terminal. 
+   (NOTE: This is to be done without SSHing into the server)
+   The scp commands works like the cp command.
+
+   The format is:
+            scp <source-path> <destination-path>
+
+   Use  -r flag after scp in case you are transferring an entire directory.
+
+   Example Usage:
+   For transferring a directory lab1 in your Downloads 
+   directory to your home directory on the server,
+            scp -r ~/Downloads/lab1 axxxxxx@stu.comp.nus.edu.sg:~/
+
+   Replace axxxxxxx with your username in the server.
+
+   To transfer the file back to your computer, simply invert the source and destination
+
+            scp -r axxxxxx@stu.comp.nus.edu.sg:~/lab1 ~/Downloads/
