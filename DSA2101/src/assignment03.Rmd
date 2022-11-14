@@ -2,12 +2,226 @@
 title: "Assignment 3"
 author: "Claudeon Susanto"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    number_sections: false
+  pdf_document: default
 ---
+
+<style type="text/css">
+
+h1.title {
+  font-size: 38px;
+  text-align: center;
+}
+h4.author { /* Header 4 - and the author and data headers use this too  */
+  /*font-size: 18px;*/
+  text-align: center;
+}
+h4.date { /* Header 4 - and the author and data headers use this too  */
+  text-align: center;
+}
+</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tufte)
 library(tidyverse)
+library(DescTools)
+library(Hmisc)
+library(tidytuesdayR)
+library(countrycode)
 ```
 
-## Introduction to Data
+## Introduction to the dataset
+
+The data that I have chosen is **Technology Adoption** and can be downloaded from [this [link]](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-07-19). This data provides very useful insights and statistics on each country's development and adoption of technology. 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+technology <- read.csv("../data/technology.csv")
+knitr::kable(head(filter(technology, !duplicated(category)), 10))
+```
+
+There are 491636 observations and 7 rows in this dataset. The rows are:
+
+1. `variable`: variable name
+2. `label`: explanation on what the variable is and what it measures
+3. `iso3c`: country code
+4. `year`
+5. `group`: there are four groups that each variable can be classified as
+    * Consumption: technologies that directly increase the consumer’s utility
+    * Production: technologies involving making goods and services that consumers buy
+    * Creation: involves research and development process of technologies
+    * Non-tech: not involving technologies
+6. `category`: There are 9 categories of the variables, which are Vaccines, Agriculture, Transport, Industry, Financial, Hospital (non-drug medical), Communications, Energy, and Others.
+7. `value`: value of the statistics measured
+
+Note that each variable has different periods in which they are available. For example, `railpkm` has observations from year 1834 to 2019. However, `servers` only has observations from the year 2010 onwards.
+
+Furthermore, within each year, not all countries have observations of a variable in a given year. This means that the number of countries observed in the data given a variable differs from year to year. For example, in year 2020, `elec_coal` has 68 different country observations. However, in 1991 it only has 30 different countries.
+
+## Plot 1
+```{r, echo=FALSE, fig.align='center', warning=FALSE}
+technology %>%
+  mutate(category=as.factor(category), 
+         group=as.factor(group)) %>%
+  mutate(country_name = countrycode(iso3c, origin = 'iso3c', destination = 'country.name')) %>%
+  mutate(continent = countrycode(country_name, origin = 'country.name', destination = 'continent')) -> tech_clean
+```
+```{r, echo=FALSE, fig.align='center', eval=FALSE, warning=FALSE}
+n<-11
+tech_clean %>%
+  filter(year == 2019) %>%
+  filter(variable == "steel_demand" | variable=="steel_production" | variable=="internetuser")%>% 
+  pivot_wider(id_cols=c(iso3c, country_name, continent), names_from=variable, values_from=value) %>%
+  mutate(diff=steel_production-steel_demand) %>%
+  mutate(diff.pct = diff/steel_production) %>%
+  filter(!is.na(diff) & !is.na(diff.pct)) %>%
+  filter(rank(diff.pct, ties.method="last") < n) %>%
+  mutate(position=diff>0) %>%
+  ggplot() + 
+  #geom_col(aes(x=reorder(iso3c, diff, function(x) x), y=diff, fill=position)) +
+  geom_col(aes(x=reorder(country_name, diff.pct, function(x) x), y=diff.pct, fill=continent)) +
+  #geom_point(aes(x=reorder(iso3c, diff, function(x) x), y=internetuser/10000)) +
+  #geom_point(aes(x=reorder(country_name, diff, function(x) x), y=diff)) +
+  theme_bw() + 
+  scale_fill_brewer(palette="Set1") +
+  coord_flip() + 
+  labs(title="Surplus of steel produced by each country in 2019", x="Country", y="Surplus (thousand metric tons)")
+
+```
+
+```{r, echo=FALSE, fig.align='center', warning=FALSE}
+#RColorBrewer::brewer.pal(n=7, name="Set1")
+
+n<-16
+tech_clean %>%
+  filter(year == 2019) %>%
+  filter(variable == "steel_demand" | variable=="steel_production" | variable=="internetuser")%>% 
+  pivot_wider(id_cols=c(iso3c, country_name, continent), names_from=variable, values_from=value) %>%
+  mutate(diff=steel_production-steel_demand) %>%
+  mutate(diff.pct = diff/steel_production) %>%
+  filter(!is.na(diff)) %>%
+  filter(rank(-diff, ties.method="first") < n | rank(diff, ties.method="last") < n) %>%
+  mutate(position=diff>0) %>%
+  ggplot() + 
+  #geom_col(aes(x=reorder(iso3c, diff, function(x) x), y=diff, fill=position)) +
+  geom_col(aes(x=reorder(country_name, diff, function(x) x), y=diff, fill=continent)) +
+  #geom_point(aes(x=reorder(iso3c, diff, function(x) x), y=internetuser/10000)) +
+  geom_point(aes(x=reorder(country_name, diff, function(x) x), y=diff + (2*position-1)*2000, size=internetuser,alpha=internetuser), position="dodge", ) +
+  theme_bw() + 
+  #scale_fill_brewer(palette="Set1") +
+  scale_fill_manual(values=c( "#FF7F00", "#4DAF4A", "#E41A1C", "#377EB8"), name="Continent") +
+  #scale_fill_manual(values=c("#4DAF4A", "#E41A1C", "#377EB8"), name="Continent") +
+  geom_text(aes(label=reorder(country_name, diff, function(x) x), x=reorder(country_name, diff, function(x) x), y=-(2*position-1)*1500, hjust=position), size=1.8) +
+  geom_linerange(aes(x=reorder(country_name, diff, function(x) x), ymin=(-position)*1000, ymax=(1-position)*1000), size=0.25) +
+  geom_hline(aes(yintercept=0),size=0.25) +
+  theme(axis.text.y=element_blank(), axis.line.y=element_blank(), axis.ticks.y=element_blank()) +
+  labs(title="Surplus of steel produced by each country in 2019, arranged by size of surplus", x="Country", y="Surplus (thousand metric tons)") + 
+  scale_size_area(name="Users (Population)") +
+  scale_alpha(name="Users (Population)") +
+  coord_flip()
+  
+  
+
+```
+
+### Insights
+This plot depicts the surplus of steel produced by each country in 2019. Surplus can be calculated as follows
+$$\text{Surplus} = \texttt{steel_produced} - \texttt{steel_demand}$$
+A negative surplus means that the country produced less than what it needed, which most likely means the country would have to import steel from other countries. On the other hand, a positive surplus means that the country produced more than it demanded. The surplus could be stored for future use or exported to other countries. 
+
+Furthermore, `internetuser` (Number of people with internet access), which is directly correlated to the size of population, is also plotted.
+
+There are some observations that can be gleaned from this plot:
+
+* The absolute magnitude of surplus/deficit tends to be larger in Asian countries (red fill) as compared to that in other continents. 
+    * Developed East Asian economies (China, Japan, S. Korea) are among countries with the largest surplus of steel production (exporters).
+    * Emerging South East Asian economies (Thailand, Indonesia, Vietnam, Philippines, Malaysia) are among countries with the largest deficit of steel production (importers). This is likely because large amounts of steel are needed for construction projects in these developing countries experiencing rapid economic growth, but these countries do not have the required productive capacity and efficient technologies to produce enough steel to sustain their demand.
+* Similarly, the magnitude of surplus/deficit tends to be larger in countries where the number of people with internet access (population) is large, such as in China and the US. As the population becomes smaller, the magnitude of surplus/deficit becomes smaller too.
+* the US is the country with the largest deficit of steel production, so it is likely to be the largest steel importer. 
+* China is the country with the largest surplus of steel production, so it is likely to be the biggest exporter of steel. Its surplus is twice than that of Japan's so it is not surprising that the US labelled China as currency manipulator and imposed tariffs on steel.
+* It is interesting to note that despite its large population, India has smaller magnitude of surplus compared to smaller countries. This is likely because it is also a developing country.
+
+### Design choices
+`geom_col` was chosen as it can possibly highlight the surplus differences between countries better than line plot or scatter plot. I also removed the y-axis and chose to shift the country labels closer to the bars as doing so makes it easier for the reader to identify which bar belongs to which country. 
+
+Regarding the colour palette, "Set1" was chosen from `RColorBrewer` as the difference in hues can help highlight the different continents better. For the `geom_point`, I chose to represent the variable `internetuser` using `alpha` and `size` as doing so can highlight the contrast between population sizes.
+
+This plot is more suitable for a layman as it is easy to compare the sizes of surplus using the height of `geom_col` without any technical knowledge.
+
+## Plot 2
+```{r, echo=FALSE, fig.align='center'}
+tech_clean %>%
+  filter(year>=1991 & year<=2020) %>%
+  group_by(year, variable) %>%
+  mutate(total=sum(value), count=n()) %>%
+  mutate(pct_dec=value/total*100) %>%
+  mutate(hhi=sum(pct_dec^2)) %>%
+  filter(variable%in%c("elec_hydro","steel_production","elec_solar", "servers")) %>%
+  ggplot(aes(x=year, y=hhi, color=variable)) +
+  geom_line(size=0.8) + 
+  geom_point(size=0.8) +
+  scale_y_log10() + 
+  scale_color_brewer(palette="Set1", name="Commodity", labels=c("Electricity from Hydro", "Electricity from Solar", "Internet Servers", "Steel Production")) + 
+  geom_hline(aes(yintercept=1500), linetype="dashed") + 
+  geom_hline(aes(yintercept=2500), linetype="dashed") + 
+  geom_text(aes(label="competitive", x=1991,y=1100), color="grey33", size=3, fontface="italic", hjust=0) + 
+  geom_text(aes(label="moderately concentrated", x=1991,y=2000), color="grey33", size=3, fontface="italic", hjust=0) + 
+  geom_text(aes(label="highly concentrated", x=1991,y=5000), color="grey33", size=3, fontface="italic", hjust=0) + 
+  labs(y = "Herfindahl-Hirschman Index (log scale)", x="Year", title="Market concentration of global commodity markets over time") + 
+  theme_bw()
+```
+
+### Insights
+
+In this plot, we calculated the Herfindahl-Hirschman Index (HHI) for each commodity in the global market to measure market concentration over time. HHI can be defined as
+$$\text{HHI} = \sum_{i=1}^ns_i^2$$
+where $s_i$ is the market share percentage of firm $i$ expressed as a whole number, not a decimal (Source: Investopedia.com). The maximum value of HHI is $100^2 = 10000$ which is only achievable if the market is a pure monopoly. 
+
+As HHI increases, market concentration is higher which means there is less competition and can be interpreted as monopoly/oligopoly. Similarly, lower HHI means lower market concentration which leads to higher competition as the market is closer to the perfect competition model. The interpretation of HHI is as follows:
+
+* Highly concentrated: $\text{HHI} \geq 2500$
+* Moderately concentrated: $1500 \leq \text{HHI} \leq 2500$
+* Competitive: $\text{HHI} \leq 1500$
+
+We would like to measure HHI of global commodities to determine the competitiveness of various markets where each country acts as a firm/supplier. We measure the market share of each country by taking the amount produced divided by global total production. From Plot 2, we can see that market concentrations of various global commodities have significantly changed from over 30 years ago. 
+
+* For the market of electricity produced by hydrotechnology, the market still remained competitive in 2019, albeit there has been a slow increase in concentration since the early 2000's. Interestingly, there was a huge jump in market concentration in 2020 so the market is now moderately concentrated.
+* For the market of electricity produced by solar technology, the market concentration has drastically decreased from highly concentrated in 1991 to borderline  competitive in 2020.
+* For the market of servers, the data was only available for 2010 onwards. It experienced a sharp drop in market concentration around the 2015's but market concentration rose up again to highly concentrated in 2020.
+* For the market of steel, it experienced a rapid increase in market concentration from 1991 to 2020 (highly concentrated).
+
+As can be seen, market concentration changes differently over time for different types of goods. However, it can be noted that the market concentrations of the different goods are more similar in 2020 than in 1991 where there was a huge gap in market concentrations between Solar Powered Electricity and Steel Production.
+
+### Design choices
+Line geom is used as it would capture the trend of changing market concentrations better than a scatterplot. Log scale is used for the y-axis as initially the lines were concentrated on the bottom side of the canvas. Regarding the color, "Set1" palette was chosen to differentiate the lines better as other palettes are too light. I also chose to add texts and dashed lines to label the boundaries for different levels of market concentration ratios so that the reader can easily interpret how concentrated a market is without looking at the numbers. Line width and point size were also increased as otherwise they are too thin.
+
+This plot would be appropriate for a technical audience as otherwise it might be difficult to understand what market concentration means and how it can be interpreted.
+
+```{r, echo=FALSE, fig.align='center', error=FALSE, eval=FALSE, warning=FALSE}
+tech_clean %>%
+  filter(year == 2018) %>%
+  filter(variable%in%c("elec_gas", "elec_coal", "elec_hydro", "elec_nuc", "elec_oil", "elec_renew_other", "elec_solar", "elec_wind")) %>%
+  mutate(variable=as.factor(variable, labels=c("elec_renew_other","elec_wind", "elec_solar", "elec_hydro", "elec_nuc", "elec_oil", "elec_gas", "elec_coal"))) %>%
+  group_by(iso3c) %>%
+  mutate(total_prod = sum(value)) %>%
+  arrange(desc(total_prod)) %>%
+  head(64) %>%
+  # slice_max(order_by=total_prod) %>%
+  # filter(iso3c=="CHN") %>%
+  ggplot() + 
+  geom_col(aes(x=iso3c,y=value,fill=variable),position="fill") + 
+  scale_fill_brewer(palette=12)
+```
+
+## References
+Charles Kenny and George Yang, & Shruti Viswanathan and Michael Pisa. (n.d.). _Technology and development: An exploration of the Data_. Center for Global Development | Ideas to Action. Retrieved November 11, 2022, from https://www.cgdev.org/publication/technology-and-development-exploration-data 
+
+Colando, S. (n.d.). _7-19-2022 Tidy Tuesday: Technology Consumption_. RPubs. Retrieved November 11, 2022, from https://rpubs.com/scolando/Tidy-Tuesday-07-19-2022 
+
+Rfordatascience. (n.d.). _Tidytuesday/data/2022/2022-07-19 at master · rfordatascience/tidytuesday_. GitHub. Retrieved November 11, 2022, from https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-07-19 

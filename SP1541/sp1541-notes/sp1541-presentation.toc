@@ -1,0 +1,12 @@
+\beamer@sectionintoc {1}{Problem}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Introduction to cryptocurrency}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Cryptocurrency's volatility}{8}{0}{1}
+\beamer@subsectionintoc {1}{3}{Limitations of past studies}{11}{0}{1}
+\beamer@sectionintoc {2}{Solution}{14}{0}{2}
+\beamer@subsectionintoc {2}{1}{Twitter data and cryptocurrency}{15}{0}{2}
+\beamer@subsectionintoc {2}{2}{Methodology}{17}{0}{2}
+\beamer@subsectionintoc {2}{3}{Results}{17}{0}{2}
+\beamer@sectionintoc {3}{Discussion}{17}{0}{3}
+\beamer@subsectionintoc {3}{1}{Limitations}{17}{0}{3}
+\beamer@subsectionintoc {3}{2}{Applications}{20}{0}{3}
+\beamer@subsectionintoc {3}{3}{Future Research}{20}{0}{3}

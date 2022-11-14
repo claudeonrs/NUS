@@ -988,6 +988,9 @@ ggplot(data = <DATA>) +
 	\begin{itemize}
 		\item \texttt{scale\_<AES>\_*}: where * is either \texttt{discrete} or \texttt{continuous} or \texttt{manunal}
 		\item \texttt{scale\_x\_log10()}: log10 scale
+		\begin{itemize}
+			\item Alternatively can use \texttt{coord\_trans(x="log10")}
+		\end{itemize}
 		\item \impt \texttt{scale\_fill\_discrete(name = ..., labels=...)
 		\begin{itemize}
 			\item name is to change legend title
@@ -996,10 +999,24 @@ ggplot(data = <DATA>) +
 	\end{itemize}
 	\item \texttt{coord\_cartesian}: magnifying glass to expand some areas
 	\item \texttt{xlim(), ylim()}: to increase/decrease plotting canvas
+	\begin{itemize}
+		\item Alternatively can use \texttt{scale\_x\_continuous}
+		\item Alternatively can also use \texttt{coord\_cartesian(xlim=c(..., ...))}
+	\end{itemize}
+    \item \textbf{Aspect ratios}
+    \begin{itemize}
+    	\item \texttt{coord\_fixed()} to set ratio \texttt{ratio=...}
+    \end{itemize}
 	\item \textbf{Faceting}:
 	\begin{itemize}
 		\item \texttt{facet\_wrap(~ ...)}
-		\item \texttt{facet\_grid()}
+		\item \texttt{facet\_grid(var1 ~ var2, labeller=...)}
+		\begin{itemize}
+			\item \texttt{labeller} is for changing the title of each plot
+			\item \texttt{fct\_relevel} is to reorder
+			\item \texttt{space=...} and \texttt{scales} is to adjust free scales
+			\item \texttt{margins=TRUE}: include all points to be plotted in the margins
+		\end{itemize}
 	\end{itemize}
 	\item \texttt{expand\_limits(y=...)}: expand graphing limits
 	\item \texttt{coord\_flip()}
@@ -1219,7 +1236,198 @@ grid.arrange(list_of_plots, nrow=2)
 	\item \texttt{stat\_count} is basically \texttt{geom\_bar}
 	\item \texttt{stat\_bin} is basically \texttt{geom\_histogram}
 	\item \texttt{stat\_smooth} is basically \texttt{geom\_smooth}
+	\item \texttt{stat\_summary} is for confidence intervals?
+	\begin{lstlisting}[language=R]
+ggplot(iris, aes(x=Species, y=Sepal.Length)) +
+  stat_summary(fun.data = mean_sdl,
+               fun.args = list(mult=1), # 1 standard deviation
+               geom="errorbar",
+               width=0.1)
+	\end{lstlisting}
+    \item \impt QQ plot
+    \begin{lstlisting}[language=R]
+iris %>%
+  ggplot(aes(sample=Sepal.Length)) +
+  stat_qq() +
+  geom_qq_line(col="red")
+\end{lstlisting}
 \end{itemize}
+
+\section{Exploratory Data Analysis (EDA)}
+\subsection{Exploration}
+\begin{quote}
+	The greatest value of a picture is when it forces us to notice what we never expected to see
+\end{quote}
+\textbf{Process}
+\begin{itemize}
+	\item Generate questions about our data
+	\begin{itemize}
+		\item What type of variation occurs within my variables?
+		\item What type of covariation occurs between my variables?
+		\item Which values are the most common? Why?
+		\item Which values are rare?
+		\item Are there any unusual patterns in the data?
+	\end{itemize}
+	\item Search for answers by visualizing, transforming, and modelling our data
+	\item Use what we learn to refine our questions and/or generate new questions (technical knowledge)
+	\item Audience? is it for a tech/non-technical audience?
+\end{itemize}
+
+\subsubsection{Contingency Table}
+\begin{itemize}
+	\item Let $A$ and $B$ be two groups with each of them having $E$ or $E^C$, we want to compute the proportions of $E$ within the groups $p_A$ and $p_B$
+	\item $p_A$ is estimated by $\hat{p_A}$, likewise $\hat{p_B}$
+	\item Is the difference of $p$ between the two groups significant? in other words, \underline{is there any association} between the group and event $E$?
+	\begin{itemize}
+		\item Difference of proportion: $\hat{p}_1 - \hat{p}_2$
+		\item Relative risk: $\hat{p}_1/\hat{p}_2$
+		\item Let $p$ be the probability of success, and $1-p$ be the probability of failure
+		$$\text{odds} = \frac{p}{1-p} \in [0,\infty)$$
+		\item Log-odds ratio: ratio of log odds
+	\end{itemize}
+    \item Within different groups, are the distribution/pmf the same?
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=\columnwidth]{img/contingency.png}
+    \end{figure}
+    \item \impt \texttt{geom\_mosaic}!
+    \begin{lstlisting}[language=R]
+library(ggmosaic)
+ggplot(diamonds) +
+  geom_mosaic(aes(x=product(color), fill=cut))
+\end{lstlisting}
+    \item Assuming independence,
+    $$\Pr(AB) = \Pr(A)\Pr(B)$$
+    but this is not always true, so can calculate the probability of each column/row and compare with the real table
+    \begin{itemize}
+    	\item Deviation from independence tells us about association!
+    	\begin{lstlisting}[language=R]
+library(GGally)
+ggtable(d, "color", "cut",
+        cells="col.prop",
+        fill="std.res")
+\end{lstlisting}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Colours}
+\begin{lstlisting}[language=R]
+# table/heatmaps
+diamonds %>%
+  mutate(mean_price_cat = cut(mean_price, c(2000, 3000, 5000, 8000))) %>%
+  ggplot() +
+  geom_tile(aes(x=color, y=cut, fill=mean_price_cat)) +
+  geom_text(aes(x=color, y=cut, label=round(mean_price,0))) +
+  scale_fill_brewer(palette="YlOrRd")
+\end{lstlisting}
+\begin{itemize}
+	\item Different hues: different groups
+	\item Different value: good for ordering
+	\item \texttt{scale\_fill\_gradientn} or \texttt{scale\_fill\_gradient2}
+	\item Example:
+	\begin{lstlisting}[language=R]
+scale_fill_gradient2(low="red", mid="white", high="blue", midpoint=5000)
+\end{lstlisting}
+    \item \texttt{RColorBrewer} package
+    \begin{lstlisting}[language=R]
+?brewer.pal
+display.brewer.all()
+\end{lstlisting}
+\end{itemize}
+
+\subsection{Correlation Matrices}
+\begin{itemize}
+	\item \texttt{Hmisc::describe()}
+	\item Info correlates to how much information the variable is giving, higher info means more useful
+	\item Gmd is Gini's mean difference to measure dispersion
+	\begin{lstlisting}[language=R]
+cor_Cars93 <- select(Cars93, which(!sapply(Cars93, is.factor))) %>%
+cor(. , use="pair")
+# need to convert to tidy data format to plot correlation matrix
+cor_Cars93_df <- as.data.frame(cor=Cars93, row.names=NULL) %>%
+                 mutate(var1=row.names(cor_Cars93)) %>%
+                 pivot_longer(Min.Price:Weight, names_to="var2", values_to="correlation")
+\end{lstlisting}
+\end{itemize}
+\subsection{Hierarchical Clustering}
+\textbf{Definition}: identify groups within the data, such that members within a group are "similar" to one another
+\begin{itemize}
+	\item We can cluster variables (the columns) or the observations (rows)
+\end{itemize}
+\subsubsection{Dissimilarity Measures}
+\textbf{Between individual observations}: $d$ measures pairwise dissimilarity between individual observations (distance?)
+\begin{itemize}
+	\item Euclidean distance is the most common choice
+	$$d(x_i,x_j) = \sum_{s=1}^p(x_{is}-x_{js})^2$$
+	\item $L1$-norm
+	$$d(x_i,x_j) = \sum_{s=1}^p|x_{is}-x_{js}|$$
+\end{itemize}
+\textbf{Between groups}: not just between individual points, we also need to generalize dissimilarity/similarity between groups of observations
+\begin{itemize}
+	\item \underline{Single linkage}: dissimilarity is the closest (least dissimilar) pair
+	$$d_S(G,H) = \min_{i\in G,j\in H}d(x_i,x_j)$$
+	\item \underline{Complete linkage}: dissimilarity is the furthest (most dissimilar) pair
+	$$d_C(G,H) = \max_{i\in G,j\in H}d(x_i,x_j)$$
+	\item \underline{Average linkage}: the average of all pairwise dissimilarities between the groups
+	$$d_A(G,H) = \frac{1}{N_GN_H}\sum_{i\in G}\sum_{j\in H}d(x_i,x_j)$$
+	\item \underline{Ward linkage}: returns more compact clusters
+\end{itemize}
+\textbf{Algorithm}
+\begin{enumerate}
+	\item Assume we start with $n$ observations
+	\item Get pairwise distances between observations, store it in a $n\times n$ matrix
+	\begin{itemize}
+		\item In our case the dissimilarity measure is
+		$$d(v_1,v_2)=\frac{1-\text{cor}(v_1,v_2)}{2}, 0\leq d(v_1,v_2)\leq1$$
+	\end{itemize}
+	\item get the minimum dissimilarity measure (distance) in the matrix, and group the two observations together
+	\item Return a $(n-1)\times (n-1)$ matrix where the two observations are grouped
+	\item Repeat until we have 1$\times$1 matrix
+
+\end{enumerate}
+\textbf{Dendrogram}
+\begin{itemize}
+	\item The height is the dissimilarity measure between the two child nodes
+	\item Cut the tree horizontally and get groupings
+	\begin{lstlisting}[language=R]
+#split into 5 grps
+as.factor(cutree(hc,k=5))
+\end{lstlisting}
+\end{itemize}
+\begin{lstlisting}[language=R]
+# cor_Cars93_df is from section 9.3
+## the disimilarity measure used here is (1-correlation)/2
+hc <- hclust(as.dist((1-cor_mtcars)/2))
+plot(as.dendrogram(hc))
+
+# ordering for plot
+ord <- order.dendrogram(as.dendrogram(hc))
+
+cor_Cars93_df2 <- mutate(cor_Cars93_df,
+                 var1=factor(var1, levels=row.names(cor_Cars93)[ord]),
+                 var2=factor(var2,
+                 levels=row.names(cor_Cars93)[ord]))
+
+ggplot(cor_Cars94_df2) +
+geom_tile(aes(x=var1, y=var2, fill=correlation))  +
+scale_fill_gradient2() +
+theme(axis.text.x=element_text(angle=90,vjust=0,hjust=1))
+\end{lstlisting}
+\subsection{Multidimensional Scaling}
+\begin{itemize}
+	\item To visualize similarities of high-dimensional data
+	\item With a choice of $k$ (number of dimensions?), we seek values $z_1,z_2,\dots,z_N\in\mathbb{R}^k$ such that the following function is minimised
+	$$S(z_1,\dots z_N) = \left[\sum_{i\neq j}(d(x_i,x_j)-||z_i-z_j||)^2\right]^{1/2}$$
+\end{itemize}
+\begin{lstlisting}[language=R]
+cars_dist <- as.dist((1-cor_Cars93)/2)
+mds2 <- MASS::sammon(cars_dist, k=2)
+grps <- as.factor(cutree(hc,k=5))
+mds_df <- data.frame(mds2$points) %>%
+  mutate(label=row.names(mds2$points),Cluster=grps) %>%
+  rename('Var.1' = 'X1', 'Var.2' = 'X2')
+# then plot the data with reduced dimension with all the colouring
+\end{lstlisting}
 
 \section{Interesting stuff}
 \begin{itemize}

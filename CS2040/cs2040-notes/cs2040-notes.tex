@@ -716,6 +716,67 @@ heapify(arr) {
 	\end{itemize}
 \end{itemize}
 
+\section{Union-Find Disjoint Sets (UFDS)}
+\textbf{Definition}: collection of disjoin sets, ordering not important
+\begin{itemize}
+	\item Each set is modeled as a \underline{tree}
+	\item A collection of disjoin sets forms a forest of trees
+	\item Each set is represented by a representative item (root)
+	\item \texttt{p[i]} records the parent of item \texttt{i}, if \texttt{p[i]==i}, then \texttt{i} is a root
+\end{itemize}
+\textbf{Operations}:
+\begin{itemize}
+	\item \texttt{unionSet(i,j)}: union two disjoin sets containing \texttt{i} and \texttt{j} respectively
+	\begin{itemize}
+		\item \textbf{Union-by-Rank} heuristic: make the resulting combined tree shorter by adding shorter tree to longer tree
+		\item If height of trees are the same, we do not use this heuristic and just add normally
+		\item Use another integer array \texttt{rank}
+		\begin{itemize}
+			\item \texttt{rank[i]} is the \texttt{upper bound} of the height of subtree rooted at \texttt{i}
+		\end{itemize}
+	\end{itemize}
+    \begin{lstlisting}[language=Java]
+unionSet(int i, int j) {
+	if (!isSameSet(i,j)) {
+		int x=findSet(i);
+		int y=findSet(j);
+		if (rank[x] > rank[y]) {
+			p[y]=x; // add y to x
+		} else {
+		    p[x]=y; // add x to y
+		    if (rank[x]==rank[y]) {
+		    	rank[y]=rank[y]+1;
+		    }
+	    }
+	}
+}
+\end{lstlisting}
+	\item \texttt{findSet}: which set an item belongs to, trace recursively until \texttt{p[i]==i}
+	\begin{itemize}
+		\item Then we compress the nodes on the path to the root to make future find operations very fast $O(1)$
+		\item Complexity is $O(\log{N})$, but with path compression can get to $O(1)$
+	\end{itemize}
+\begin{lstlisting}[language=Java]
+findSet(int i) {
+	if (p[i]==i) {
+		return i;
+	} else {
+		p[i] = findSet(p[i]);
+		return p[i];
+	}
+}
+\end{lstlisting}
+	\item \texttt{isSameSet(i,j)}: Check if two items belong to the same set
+\end{itemize}
+\subsection{Uses of UFDS}
+\begin{itemize}
+	\item \impt Detect Cycle in a graph!!!!
+	\begin{itemize}
+		\item Process edges one by one, union vertices if they have the same edge
+		\item
+	\end{itemize}
+\end{itemize}
+
 \section{Graphs}
 \textbf{Properties}
 \begin{itemize}
@@ -834,7 +895,7 @@ while S is not empty {
 }}
 \end{lstlisting}
 
-\subsection{Uses of BFS/DFS}
+\subsubsection{Uses of BFS/DFS}
 \begin{itemize}
 	\item Searching for a vertex/node
 	\item Reachability test: is v reachable from vertex u?
@@ -843,6 +904,12 @@ while S is not empty {
 	\begin{itemize}
 		\item Run BFS on one node, and then label the visited vertices if they can be reached from the first node \eg 1,2,3,...
 	\end{itemize}
+    \item \impt Checking bipartite graph
+    \item \impt Finding Spanning Tree
+    \begin{itemize}
+    	\item The tree is the MST if the edges are unweighted
+    	\item If weighted, then maybe not
+    \end{itemize}
     \item \textbf{Cycle Detection}: DFS!
     \begin{itemize}
     	\item Undirected: need to make sure that the path goes back to parent node
@@ -850,10 +917,12 @@ while S is not empty {
     		\item Possible false positive: two-nodes cycle, need to protect against this
     	\end{itemize}
         \item Directed: 3 states: unvisited, not completed, completed (Tut 9)
+        \item \impt Alternatively can also use UFDS!
     \end{itemize}
 	\item \textbf{Topological sort}: Module selection
 	\begin{itemize}
 		\item Should be a \textbf{Directed Acyclic Graph (DAG)}: a directed graph with no cycle since otherwise there will be a cycle where mods are prerequisites of each other
+		\item Nice properties: if we go according to Topological Sort order, we ensure that the vertex will not be revisited again
 		\item \textbf{Goal}: Order the vertices, such that if there is a path from $u$ to $v$, $u$ appears before $v$ in the output
 		\item \textbf{Complexity}: $O(V+E)$
 		\begin{lstlisting}[language=Java]
@@ -865,6 +934,249 @@ while q is not empty
   remove v from G
   enqueue neighbours of v with in-degree 0\end{lstlisting}
 	\end{itemize}
+\end{itemize}
+
+\subsection{Shortest Path}
+\begin{itemize}
+	\item \textbf{Path}: sequence of vertices $v_1, v_2, \dots, v_n$ where $(v_i, v_{i+1}) \in E$
+	\item \textbf{Cost of a path}: sum of the cost of all edges in the path
+	\item \textbf{distance(v)}: shortest distance from s to v
+	\item \textbf{parent(v)}: previous node on the shortest path so far from s to v
+	\item \textbf{weight(u, v)}: the weight of the edge from u to v
+	\item BFS does not work because must track of the smallest distance so far
+	\begin{itemize}
+		\item Need to be able to backtrack and undo path if better solution is found
+	\end{itemize}
+\end{itemize}
+\impt \textbf{Some other uses for SSSP}:
+\begin{itemize}
+	\item Can use Djikstra to compute minimax path (Lab 11A),
+	\begin{itemize}
+		\item Initialize \texttt{maxcap = 0} for all vertices, except \texttt{maxcap[src] = INFINITY}
+		\item Relax operation updates the \texttt{maxcap} for each vertex (\texttt{cap} is the weight of edge connecting \texttt{u} and \texttt{v})
+		\begin{lstlisting}[language=Java]
+// maintains the maximum value of all the edges connected to v
+maxcap[v] = max(maxcap[v], min(maxcap[u], cap))
+\end{lstlisting}
+	\end{itemize}
+\end{itemize}
+\subsubsection{Dijkstra Algorithm}
+\textbf{Some observations} \impt
+\begin{itemize}
+	\item Set an attribute \texttt{distance} in each node, which measures (preliminary) distance from source to the node.
+	\begin{lstlisting}[language=Java]
+d = distance(v) + cost(v,w);
+if (distance(w) > d) {
+	// set distance to be d
+	distance(w) = d;
+	parent(w)=v
+}
+\end{lstlisting}
+    \item Let v be a node with the minimum distance \texttt{distance(v)} out of all the unvisited nodes, then no matter how many times we call \texttt{relax}, the distance is still unchanged
+\end{itemize}
+\begin{lstlisting}[language=Python]
+color all vertices yellow (uncompleted)
+for each vertex w:
+	distance(w) = INFINITY
+distance(s) = 0
+while there are yellow vertices:
+	v = yellow vertex with the min distance (distance(v))
+	color v red
+	for each neighbour w of v:
+		relax(v,w)
+\end{lstlisting}
+\textbf{Time complexity}
+\begin{itemize}
+	\item Total time complexity is $O((V+E)\log{V})$
+	\item Initialization takes $O(V)$ time
+	\item Remember that $\sum_{v}adj(v) = 2|E|$ so there would be $O(E)$ relax operations in total, where hopefully \texttt{relax} is $O(\log{V})$
+	\item \impt \texttt{decreaseKey} need to be efficient (preferably $O(\log{V})$) so that \texttt{relax} can run in $O(\log{V})$ time
+	\begin{itemize}
+		\item Need to keep another array to keep track of where a specified node with id \texttt{w} is in the heap
+		\item Or alternatively can store this attribute in the Vertex class
+		\item \impt since PQ is not updated automatically when an item's priority is updated, then we need to call \texttt{decreaseKey} to update every time we update
+	\end{itemize}
+\end{itemize}
+\begin{lstlisting}[language=Java]
+// initialization is O(V)
+for each vertex w {
+	distance(w) = INFINITY;
+}
+distance(s) = 0;
+pq = new PriorityQueue(V);
+
+// main loop is O((V+E) log V)
+while pq is not empty { // O(V)
+	v = pq.deleteMin(); // O(log V) heap
+	// means is colored red already
+	for each neighbour w of v {
+		//relax(v,w) // O(adj(v) * log V) in total
+		// because when distance is updated, heap is not updated, so need to update manually using heapify() or heapRebuild
+		d = distance(v) + cost(v,w);
+		if (distance(w) > d) {
+			// set distance to be d
+			pq.decreaseKey(w,d);
+			parent(w)=v
+		}
+}}
+\end{lstlisting}
+
+\subsubsection{Modified Dijkstra's Algorithm}
+Key idea (\textbf{Lazy Data Structure}):
+\begin{itemize}
+	\item No \texttt{decreaseKey} operation, simply add the relaxed node to the PriorityQueue (allow duplicate nodes in the PQ)
+	\item Since the relaxed node has lower weight anyways
+	\item If the node is extracted already, mark other nodes with same IDs as processed already
+	\item Optimization: Once we have finalized $|V|$ nodes, we can stop already
+	\item Running time: $O(V+E)\log{V}$
+	\begin{itemize}
+		\item Initialization is $O(V)$
+		\item The number of edges is an upper bound on the queue size (we can relax each edge maximum once)
+		\item Upper bound for the number of edges is $|E|= |V|^2$
+		\item Each enqueue/dequeue operation is $O(\log{|E|}) = O(\log{|V|^2}) = O(\log{|V|})$ where $|E|$ is the max queue size
+		\item Same complexity as original Dijkstra, but probably a constant factor difference
+	\end{itemize}
+\end{itemize}
+\begin{lstlisting}[language=Java]
+for each vertex w {
+	D[w] = INFINITY; // distance array
+}
+D[s] = 0;
+pq = new PriorityQueue();
+pq.push(s,0); // enqueue source
+count = |V|; // optimization
+
+while (pq.isEmpty() && count > 0) {
+	(d,u) = pq.deleteMin();
+	if (d == D[u]) {
+		count--;
+		foreach neighbour w of u {
+			if (D[w] > D[u] + cost(u,w)) {
+				D[w] = D[u] + cost(u,w); // relax
+				pq.push((D[w],w)); // push to pq
+				parent(w) = u;
+			}
+		}
+	}
+}
+\end{lstlisting}
+
+\subsubsection{Bellman-Ford Algorithm}
+\begin{itemize}
+	\item Dijkstra's Algorithm does not allow negative weights as the vertex with minimum distance is already considered as finalized
+	\begin{itemize}
+		\item Can deal with negative weight cycles (detection)
+		\item Can detect negative weight cycles
+		\item Is quite simple (no special data structure needed)
+		\item but has higher runtime complexity than Dijkstra
+	\end{itemize}
+	\item Negative cycle is a special case (a cycle that sums up to negative number) since we can traverse the cycle an infinite number of times to get a $- \infty$ cost of path
+	\item Complexity is $O(VE)$ which can reach up to $O(V^3)$ if $E \sim V^2$
+	\item Use an edge list (don't need to be sorted)
+	\begin{lstlisting}[language=java]
+class Edge {
+	int src, dest, weight;
+	Edge() {
+		src = dest = weight = 0;
+	}
+}
+
+// edge list
+int V, E;
+Edge[] Edge;
+\end{lstlisting}
+    \item Initialization $O(V)$: set the distance of every node to infinite except src
+    \begin{lstlisting}[language=Java]
+int[] dist = new int[V];
+for (int i==0; i<V; ++i) {
+  dist[i] = Integer.MAX_VALUE;
+}
+dist[src] = 0;
+\end{lstlisting}
+    \item Do the following $|V-1|$ times: relax each edge in every round, each round is $O(E)$ which means in total we have $O(VE)$
+    \begin{lstlisting}[language=Java]
+// relax
+if (dist[v] > dist[u] + weight of edge uv) {
+	// update dist[v]
+	dist[v] = dist[u] + weight of edge uv;
+}
+\end{lstlisting}
+\end{itemize}
+\subsection{Minimum Spanning Tree (MST)}
+\textbf{MST Problem}: given connected graph $G$ with positive edge weights, find a minimum weight set of edges that connects all of the vertices
+\begin{itemize}
+	\item Note that a tree of a graph $G$ has $|V|$ number of edges
+	\item Minimize total costs to connect every single vertex
+\end{itemize}
+\impt Uses of MST Algorithms
+\begin{itemize}
+	\item Find the path which contains the max minimum edge to maximize capacity (Lab 11A)
+	\item Find the most difficult cell along the easiest path (Tut 10.1)
+\end{itemize}
+\subsubsection{Kruskal's Algorithm}
+\textbf{Greedy algorithm!}: it works because the tree will confirm have $|V|-1$ edges
+\begin{enumerate}
+	\item Sort all edges in non-decreasing order of their weight (from smallest to largest)
+	\begin{itemize}
+		\item Edge List representation is useful
+	\end{itemize}
+    \item Pick the smallest edge
+    \item Check if it forms a cycle with the spanning tree formed so far. If cycle is not formed, include this edge, else, discard it
+    \begin{itemize}
+    	\item Cycle detection uses UFDS
+    \end{itemize}
+    \item Repeat step 2-3 until there are $(|V|-1)$ edges in the spanning tree
+\end{enumerate}
+\textbf{Complexity}
+\begin{itemize}
+	\item Sorting of Edges takes $O(E \log{E})$ time
+	\item Iterating through all edges and apply union-find algorithm takes at most $O(\log{V})$ per edge, so $O(E\log{V})$
+	\item Overall complexity is $O(E\log{E} + E\log{V}) = O(E\log{V})$
+\end{itemize}
+
+\subsubsection{Prim's Algorithm}
+\textbf{Key Idea}"
+\begin{enumerate}
+	\item Start with an empty spanning tree
+	\item Maintain two sets of vertices
+	\begin{itemize}
+		\item 1st set contains the vertices in the MST
+		\item 2nd set contains vertices not yet included
+	\end{itemize}
+    \item At every step, consider all the edges that connect the two sets, and pick the minimum weight edge from these edges
+    \begin{itemize}
+    	\item Conceptually similar to Dijkstra as we finalize some edges
+    	\item \textbf{Graph cut}: a group of edges that connects two sets of vertices in a graph
+    	\item At this step we need to find the minimum weight edge from the cut and include this vertex into the MST
+    \end{itemize}
+    \item Move the other endpoint of the edge to the set containing the MST
+\end{enumerate}
+\textbf{Procedure/Algorithm}
+\begin{enumerate}
+	\item Initialize an array \texttt{parent} and \texttt{weight} that keeps track of the weight and parent
+	\begin{itemize}
+		\item The parent array is the output which is used to show the constructed MST
+	\end{itemize}
+	\item Create a set \texttt{mstSet} that keeps track of vertices already included in the MST
+	\item Assign a key value to all vertices in the graph
+	\begin{itemize}
+		\item The first vertex has key value 0
+		\item The rest have key value $\infty$
+	\end{itemize}
+    \item While \texttt{mstSet} does not include all vertices, do the following:
+    \begin{enumerate}
+    	\item Pick a vertex $u$ which is not in \texttt{mstSet} and has minimum key value
+    	\item Include $u$ into \texttt{mstSet}
+    	\item Update key values of all adjacent vertices of $u$
+    	\begin{itemize}
+    		\item For every adjacent vertex $v$, if weight of edge $u\leftrightarrow v$ is less than the previous key value of $v$, update the key value as weight$(u\leftrightarrow v)$
+    	\end{itemize}
+    \end{enumerate}
+\end{enumerate}
+\textbf{Complexity}
+\begin{itemize}
+	\item $O(V^2)$ if the input graph is represented using an adjacency list
+	\item With binary heap, can be reduced to $O(E\log{V})$ (same as Kruskal's)
 \end{itemize}
 
 \section{Java Tricks}

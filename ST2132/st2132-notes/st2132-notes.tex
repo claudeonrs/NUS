@@ -257,7 +257,7 @@ Note that as $n\rightarrow \infty$, $\text{E}(\hat{\theta}^*) \rightarrow \theta
 \subsection{Maximum Likelihood Method}
 Let $x_1, \dots, x_n$ be realisations of IID RV's $X_1, \dots, X_n$ with density/mass function $f(x|\theta)$
 $$L(\theta) = \prod_{i=1}^{n}f(x_i|\theta)$$
-$$l(\theta) = \log{L(\theta)} = \sum_{i=1}^{n}f(x_i|\theta)$$
+$$l(\theta) = \log{L(\theta)} = \sum_{i=1}^{n}\log f(x_i|\theta)$$
 Find the value of $\theta$ that maximises the likelihood
 \subsubsection{Multinomial Data}
 $$L(p_1,\dots,p_r) = p_1^{x_1}\dots p_r^{x_r} \times c$$
@@ -292,7 +292,129 @@ $$
 where $p_i$ is the proportion of allele $a_i$ (assumption: random mating, no mutation, no migration)
 
 \subsection{Large-Sample Variance of ML Estimator}
-$$\mathcal{I}(\theta) = -E\left[\frac{d^2\log{f(X)}}{d\theta^2}\right]$$
+Let $X$ have density $f(x|\theta)$, $\theta\in\Theta\subset \mathbb{R}^p$. The Fisher information is the $p \times p$ matrix
+$$\mathcal{I}(\theta) = -\text{E}\left[\frac{d^2\log{f(X)}}{d\theta^2}\right]$$
+with $(i,j)$ entry
+$$-\text{E}\left[\frac{\partial^2\log f(X)}{\partial\theta_i\partial\theta_j}\right]$$
+$$=-\int_{-\infty}^{\infty}\frac{\partial^2\log f(x)}{\partial\theta_i\partial\theta_j}f(x)dx \text{ or }-\sum_{x}\frac{\partial^2\log f(x)}{\partial\theta_i\partial\theta_j}f(x)dx$$
+As $n\rightarrow \infty$,
+$$\text{var}(\hat{\theta}_n)\approx \frac{\mathcal{I}(\theta)^{-1}}{n}$$
+\subsubsection{Joint Density}
+IID $X_1, \dots , X_n$ with density $f(x|\theta)$ can be regarded as a sample from $\textbf{X}=(X_1,\dots , X_n) \in \mathbb{R}^n$ with joint density
+$$g(\textbf{X}|\theta) = f(X_1|\theta) \cdots f(X_n|\theta)$$
+The information in $\textbf{X}$ is
+$$--\text{E}\left[\frac{d^2\log{g(\textbf{X})}}{d\theta^2}\right] = n\mathcal{I}(\theta)$$
+where $\mathcal{I}(\theta)$ is the information in any one of the $X$'s
+\subsubsection{Multinomial}
+Let $\textbf{X}\sim\text{Multinomial}(n,\textbf{p}(\theta))$ where
+$$\textbf{p}(\theta) = (p_1(\theta), \dots, p_r(\theta))$$
+$$\theta \in \Theta \subset \mathbb{R}^k, 1\leq, k\leq r-1$$
+Then,
+$$\log f(\textbf{X}) = \sum_{i=1}^{r}X_i\log{p_i}$$
+$(i,j)$ entry of $\mathbb{I}(\theta)$:
+\begin{equation*}
+\begin{aligned}
+\frac{n}{p_i} + \frac{n}{p_r}&, i=j\\
+\frac{n}{p_r}&, i\neq j
+\end{aligned}
+\end{equation*}
+\subsection{Distribution of MLE}
+As $n\rightarrow\infty$, the distribution of
+$$\sqrt{n\mathcal{I}(\theta)}(\hat{\theta}_n-\theta)$$ converges to $\mathcal{N}(\textbf{0}, \textbf{I}_p)$.\\
+For large $n$,
+$$\hat{\theta}_n \sim \mathcal{N}\left(\theta, \frac{\mathcal{I}(\theta)^{-1}}{n}\right)$$
+$$1-\alpha \approx \Pr\left(-z_{\frac{\alpha}{2}}\leq \frac{\hat{\theta}_n - \theta}{\sqrt{\mathcal{I}(\theta)^{-1}/n}}\leq z_{\frac{\alpha}{2}}\right)$$
+$$1-\alpha \approx \Pr\left( \hat{\theta}_n - z_{\frac{\alpha}{2}}\sqrt{\frac{\mathcal{I}(\theta)^{-1}}{n}}\leq \theta \leq \hat{\theta}_n + z_{\frac{\alpha}{2}}\sqrt{\frac{\mathcal{I}(\theta)^{-1}}{n}} \right)$$
+$$1-\alpha \approx \Pr(\text{estimate}-z_{\frac{\alpha}{2}}\text{SE} \leq \theta \leq \text{estimate}+z_{\frac{\alpha}{2}}\text{SE} )$$
+Where estimate is drawn using MLE from data, and SE is drawn using the estimate and Fischer information
+\subsubsection{Asymptotic Normality}
+Let $\hat{\theta}$ be the ML estimator of $\theta$.
+\begin{itemize}
+	\item For any strictly decreasing/increasing function $h:\Theta \rightarrow \mathbb{R}$, $h(\hat{\theta})$ is also the ML estimator of $h(\theta)$.
+	\item For large $n$, $h(\hat{\theta})$ is approximately normal (\textbf{asymptotically normal})
+\end{itemize}
+
+\subsection{ML vs MOM}
+\begin{itemize}
+	\item Both ML and MOM are \textbf{consistent}: bias goes to 0 as $n\rightarrow \infty$
+	\item ML is better (smaller bias and SE) because it uses all info contained in the density function, whereas MOM uses only sample moments to estimate parameters
+	\item ML estimators have \textbf{asymptotic properties}: as $n\rightarrow \infty$, SE can be estimated without Monte Carlo and so a good CI for the parameter is available
+	\item MOM estimators may not be asymptotically normal so it is more difficult to construct a CI, but it is easier to compute so is sometimes useful
+\end{itemize}
+
+\section{Goodness-of-fit}
+\subsection{Pearson's $X^2$ Test}
+Let $(X_1, \dots, X_r) \sim \text{Multinomial(n,\textbf{p})}$ with $n$, $r$ fixed. Then the set of all possible distributions of \textbf{p} is:
+$$\Omega = \left\{(p_1,\dots,p_r):p_i>0, \sum_{i=1}^rp_i=1\right\}$$
+Consider a subset $\Omega_0$ where \textbf{p} depends on $\theta \in \Theta \subset\mathbb{R}^k, k,r-1$
+$$\Omega_0 = \{(p_1(\theta), \dots, p_r(\theta)):\theta\in\Theta\}$$
+Now we want to judge if $\textbf{p}\in\Omega_0$ given realisations $(x_1,\dots,x_r)$ (in other words, is \textbf{p} a function which takes in a $k$-dimensional vector $\theta$)
+\begin{itemize}
+	\item Assuming $(X_1, \dots, X_r) \sim \text{Multinomial}(n,\textbf{p}(\theta)), \theta\in\Theta\subset\mathbb{R}^{k},k<r-1$
+	\item $\hat{\theta}$ is the ML estimator of $\theta$
+	\item $n\textbf{p}(\hat{\theta})$ is the random expected counts
+	\item \textbf{Chi-square statistic}:
+	$$X^2 = \sum_{i=1}^r\frac{(X_i-np_i(\hat{\theta}))^2}{np_i(\hat{\theta})} = \sum\frac{(O-E)^2}{E}$$
+	\textbf{[Theorem]} As $n\rightarrow\infty$, the distribution of $X^2$ converges to $\chi^2_{r-1-k}$\\
+	Note that \underline{$k$ can be 0}, in the case of assuming fair die where there is no parameter to estimate (when the properties are equal)
+\end{itemize}
+\underline{Steps for $X^2$ goodness-of-fit test}
+\begin{enumerate}
+	\item Let $H_0 :\textbf{p} \in \Omega_0$
+	\item Let $H_1 :\textbf{p} \in \Omega_1$
+	\item Substituting each $X_i$ by $x_i$ (the observed realisations) and $\hat{\theta}$ by the ML estimate (to get the expected counts), we get a realisation $x^2$ of $X^2$
+	\item The $P$-value: (Calculated assuming $H_0$)
+	$$\Pr(X^2\geq x^2) \approx \Pr(\chi^2_{r-1-k}\geq x^2)$$
+	The smaller it is, the more suspicious we are of $H_0$ (more likely to reject $H_0$)\\
+	The bigger it is, we are more likely to accept $H_0$\\
+\end{enumerate}
+\subsection{Likelihood Ratio}
+Assuming multinomial, Maximum of likelihood $L(\textbf{p}) = \prod_{i=1}^{r}p_i^{X_i}$ over $\Omega$, happens when there is no restriction, do MLE as usual
+$$L_1 = L(\hat{p}) = \prod_{i=1}^{r}\left(\frac{X_i}{n}\right)^{X_i}$$
+Maximum of likelihood $L(\theta) = \prod_{i=1}^{r}p_i(\theta)^{X_i}$ over $\Omega_0$
+$$L_0 = L(\hat{\theta}) = \prod_{i=1}^{r} p_i(\hat{\theta})^{X_i}$$
+Note that $L_0/L_1 \geq1$, the larger the ratio, the more we doubt $H_0$
+$$2\log\left(\frac{L_1}{L_0}\right)=G$$
+$$G=2\sum_{i=1}^rX_i\log{ \left(\frac{X_i}{np_i(\hat{\theta})}\right) }$$
+\subsubsection{LR goodness-of-fit test}
+\textbf{Assumptions}
+\begin{itemize}
+	\item $n$ IID RV's density defined by $\theta \in \Omega$ with $k$ independent parameters
+	\item $L_1$: maximum likelihood value over $\Omega$
+	\item $L_0$: maximum likelihood value over $\Omega_0$ with $k_0<k_1$ independent parameters
+\end{itemize}
+\textbf{Theorem}: Suppose $\theta\in\Omega_0$ (Assume $H_0$ is true). As $n\rightarrow\infty$, the distribution of
+$$G = 2\log\left(\frac{L_1}{L_0}\right)$$ converges to $\chi^2_{k_1-k_0}$
+\textbf{LR goodness-of-fit test}
+\begin{enumerate}
+	\item $H_0:\theta\in\Omega_0$
+	\item $H_1:\theta\in\Omega_1$
+	\item $L_0$ and $L_1$ are the maximum likelihood values under $\Omega_0$ and $\Omega_1$
+	$$g=2\log\left(\frac{L_0}{L_1}\right)$$
+	is a realisation of $G$
+	\item The $P$-value is calculated with distribution of $G$ under $H_0$
+	$$\Pr(G\geq g) \approx \Pr(\chi^2_{k_1-k_0}\geq g)$$
+\end{enumerate}
+
+
+
+\subsection{Poisson Dispersion Test}
+For Poisson, if var is more or less the same as mean, then it can fit well. But if var is $\gg$ mean then need to find new distribution or the data might come from two or more different RV's
+\begin{enumerate}
+	\item $H_1:\theta\in\Omega$: For $i=1,\dots,n$, $X_i\sim\text{Poisson}(\lambda_i)$ and each are independent
+	$$l(\lambda_1,\dots,\lambda_n)=\sum_{i=1}^{n}X_i\log{\lambda_i}-\sum_{i=1}^n\lambda_i$$
+	When $l(\lambda_1,\dots,\lambda_n)$ is maximum, $\hat{\lambda} = X_i$, so maximum likelihood under $\Omega:l_1=\sum_{i=1}^nX_i\log X_i - \sum_{i=1}^nX_i$
+	\item $H_0:\theta\in\Omega_0$: Every $\lambda_i=\lambda$
+	$$l(\lambda) = \sum_{i=1}^{n}X_i\log\lambda-n\lambda$$
+	Maximum likelihood is achieved when $\hat{\lambda}=\bar{X}$ under $\Omega_0:l_0 =\sum_{i=1}^nX_i\log\bar{X}-n\bar{X}$
+	\item Calculate $P$-value $$G=2\sum_{i=1}^{n}X_i\log\left(\frac{X_i}{\bar{X}}\right)\approx \frac{\sum_{i=1}^n(X_i-\bar{X})^2}{\bar{X}}$$
+	Suppose every $\lambda_i=\lambda$. For large $n$, $G\sim\chi_{n-1}^2$ approximately
+\end{enumerate}
+
+
+
+
+
 
 \section{Useful Results}
 %\vspace{1em}
@@ -300,7 +422,7 @@ $$\mathcal{I}(\theta) = -E\left[\frac{d^2\log{f(X)}}{d\theta^2}\right]$$
 %\vspace{1em}
 \subsection{Algebra}
 $$\sum_{i=1}^n(X_i-\bar{X})^2 = \sum_{i=1}^nX_i^2 - n\bar{X}^2$$
-
+$$\hat{\theta}_n\sim\mathcal{N}\left(\theta, \frac{\mathcal{I}(\theta)^{-1}}{n}\right)$$
 \subsection{Procedures}
 \fbox{\begin{minipage}{22em}
 		\textbf{Framework for statistical inference}:

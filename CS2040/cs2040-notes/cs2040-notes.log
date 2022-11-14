@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  27 OCT 2022 13:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  12 NOV 2022 18:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -691,24 +691,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ] [2] [3] [4]
-<image/avl_tree.png, id=315, 1043.9pt x 388.45125pt>
+<image/avl_tree.png, id=351, 1043.9pt x 388.45125pt>
 File: image/avl_tree.png Graphic file (type png)
 <use image/avl_tree.png>
 Package pdftex.def Info: image/avl_tree.png  used on input line 640.
 (pdftex.def)             Requested size: 251.07481pt x 93.4258pt.
  [5 <./image/avl_tree.png>]
-[6] [7] [8] (./cs2040-notes.aux)
+[6] [7] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+[8] [9] [10] (./cs2040-notes.aux)
 Package rerunfilecheck Info: File `cs2040-notes.out' has not changed.
-(rerunfilecheck)             Checksum: 93F96B8F13BD8DE6B2625F8F9CB85C71;5120.
+(rerunfilecheck)             Checksum: AA32A962A79784CE348F9FD684759FFA;6705.
  ) 
 Here is how much of TeX's memory you used:
- 15939 strings out of 480171
- 247564 string characters out of 5894489
- 1022180 words of memory out of 5000000
- 33419 multiletter control sequences out of 15000+600000
+ 16237 strings out of 480171
+ 251382 string characters out of 5894489
+ 1055402 words of memory out of 5000000
+ 33578 multiletter control sequences out of 15000+600000
  508597 words of font info for 58 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,15n,63p,279b,2148s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,15n,63p,279b,2042s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/s
 hare/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/l
@@ -721,10 +724,10 @@ lic/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/te
 xmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on cs2040-notes.pdf (8 pages, 414901 bytes).
+Output written on cs2040-notes.pdf (10 pages, 438089 bytes).
 PDF statistics:
- 545 PDF objects out of 1000 (max. 8388607)
- 502 compressed objects within 6 object streams
- 252 named destinations out of 1000 (max. 500000)
- 342 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 743 PDF objects out of 1000 (max. 8388607)
+ 697 compressed objects within 7 object streams
+ 389 named destinations out of 1000 (max. 500000)
+ 414 words of extra memory for PDF output out of 10000 (max. 10000000)
 

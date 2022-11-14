@@ -1,0 +1,686 @@
+---
+title: "DSA2101 mid-term review AY22/23 Sem 1"
+date: "2022-11-10"
+output:
+  html_document: 
+    toc: yes
+    theme: sandstone
+  pdf_document: default
+urlcolor: blue
+---
+
+```{r echo=FALSE, message=FALSE, warn=FALSE}
+library(tidyverse)
+```
+
+
+# Question 1 (10 marks)
+
+## Question 1.1 (3 marks)
+
+## Comments
+The objective of this question was to assess how well you can read, figure out
+and build on other people's code. It is something that we will have to do very
+often, so we should get used to it.
+
+Here is the working code for question 1.1:
+
+```{r echo=FALSE}
+library(httr)
+
+url1 <- "https://data.gov.sg/api/action/datastore_search?resource_id=f8c014e4-fc08-4e28-a1b8-27a8390afd1e"
+get_out <- GET(url1)
+tmp_content <- content(get_out)
+visitor_count <- NULL
+
+while(NROW(visitor_count) < 455) {
+  total_visitors <- sapply(tmp_content$result$records, function (x)  as.integer(x[[1]]))
+  arr_month <- sapply(tmp_content$result$records, function (x)  x[[3]])
+  arr_month <- as.Date(paste(arr_month, "01", sep="-"))
+  visitor_count <- bind_rows(visitor_count, tibble(arr_month, total_visitors))
+  
+  new_url <- paste("https://data.gov.sg", tmp_content$result$`_links`$`next`, sep="")
+  get_out <- GET(new_url)
+  tmp_content <- content(get_out)
+}
+```
+
+One of the most common mistakes was not knowing how to extract the visitors from the 
+returned content. Instead of this:
+````
+total_visitors <- sapply(tmp_content$result$records, function (x)  as.integer(x[[1]]))
+````
+I observed several cases of:
+````
+total_visitors <- tmp_content$result$records$international_visitor_arrivals
+````
+Another common issue was setting the condition wrongly. If the clause put 456 
+instead of 455, for instance, it would lead to an infinite loop. Several 
+scripts contained this error. Such errors would have obtained a 0 mark here.
+
+
+## Question 1.2 (2 marks)
+
+2. Is it appropriate to use a `while` loop above as opposed to `sapply` or
+   `lapply`? Why or why not? Please explain your answer in not more than 100 words
+   in a markdown section entitled "`## Question 1.2`"
+   
+
+## Comments 
+
+In this scenario, using `s/lapply` will not be appropriate because the next 
+iteration depends on the current one (to provide the appropriate URL). Although 
+it is possible to force the use of apply by hardcoding the limit, using a `while`
+loop is more amenable to code re-use across other endpoint, or if the number 
+of records changes.
+
+
+## Question 1.3 (4 marks)
+
+3. When we create a plot of the full dataset, it should look like this:
+```{r echo=FALSE, fig.align='center', out.width='70%'}
+plot(visitor_count, type="l", col="red", xlab="Arrival month", 
+     ylab="Total visitor count", main="Monthly arrivals to Singapore")
+```
+   However, there is clearly a great deal of noise in the data. To smooth out
+   noise in observations over time, we sometimes compute a moving average of the
+   points. For a set of 3 points $x_1, x_2$ and $x_3$ observed at times 1,2 and
+   3, the Moving Average $y_2$ at time 2 is computed as
+   \[
+   y_2 = \frac{x_1 + x_2 + x_3}{3}
+   \] 
+   Compute the moving average for the tourist arrivals data and re-create the 
+   following plot, **matching all labels and values.**
+   
+   * *Hint:* You can use the `filter` function from the `stats` package to help you.
+   * *Note:* You won't be able to compute the Moving Average for the first and 
+     last points.
+```{r fig.align='center', out.width='75%'}
+visitor_count <- mutate(visitor_count, 
+                        MA = stats::filter(visitor_count$total_visitors, c(1/3,1/3,1/3))) %>% 
+  mutate(across(2:3, .fns = ~.x/1e6), resids = total_visitors - MA)
+
+plot(visitor_count[, 1:2], col="red", cex=0.3, xlab="Arrival month", 
+     ylab="Total visitor count (millions)", main="Monthly arrivals to Singapore")
+lines(visitor_count$arr_month, visitor_count$MA, col="blue")
+```
+   
+### Comments
+
+For the Moving Average, some students wrote a function and applied it, just 
+like in the assignment 1. In either case, as long as you called the function 
+without a for-loop, you would have obtained the marks.
+
+## Question 1.4 (1 mark)
+
+4. The Moving Average of the visitor counts can be treated as "fitted" values. 
+   Extract the months with the 10 largest residuals (in absolute value), and 
+   store them in a vector `q1_4_vec`.
+```{r}
+q1_4_vec <- slice_max(visitor_count, order_by = abs(resids), n=10) %>% 
+  pull(arr_month)
+```
+
+### Comments
+
+Be careful that you returned the month and not the residuals here. When we perform
+data analysis, it is the situation around the large residuals that we wish to investigate,
+not just the size of the residuals.
+
+# Question 2 (14 marks)
+
+The file `mid_term_q2.rdt` contains 2 tibbles that contain data on customer transactions 
+on an online shopping website in Brazil.
+
+```{r echo=FALSE}
+load("../data/mid_term_q2.rdt")
+```
+
+The `prod_cat` tibble contains columns describing the products listed on the
+website:
+
+  * `product_id`: a unique identifier for the product.
+  * Columns 2, 3 and 4 describe the number of characters used to describe the 
+    product, and the number of photos of it, on the product page.
+  * Columns 5 - 8 contain the physical dimensions of the product.
+  * Column 9 contains a categorisation of the product.
+   
+The `orders` tibble consists of information on online orders made by customers
+to the website. The columns are:
+
+  * `customer_id`: a unique customer identifier.
+  * `customer_state`: a two-letter abbreviation of the state that the customer is from.
+  * Columns 4 - 6 contain information on when the customer made the purchase, when
+    the item was actually delivered, and an estimated delivery date (which is given 
+    to the customer upon purchase).
+    
+### Comments
+
+For this question, each person received a different dataset. For this code, 
+I am using the one on Canvas.
+    
+## Question 2.1 (1 mark)
+
+1. Count the number of items in each product category and store the counts in a 
+   tibble `q2_1_tbl`. The tibble should only have two columns.
+```{r}
+q2_1_tbl <- prod_cat %>% group_by(product_category_name_english) %>%  
+  count()
+```
+
+
+### Comments
+
+I observed a surprising number of students using `table()` in this question and 
+the first part in question 4. It reflects a worrying unfamiliarity with dplyr, 
+which should not be there, at this stage of the class. 
+
+In general please take note that when manipulating data frames with dplyr, we usually 
+do not need the $-notation to retrieve individual columns.
+
+## Question 2.2 (3 marks)
+
+2. Select the product category column and all physical dimension columns of each
+   product using three different `select` expressions.
+   
+   *The operators in each call must be completely disjoint.*
+   
+   Store your expressions in a code chunk entitled `q2_2_code_chunk`.
+```{r q2_2_code_chunk, eval=FALSE}
+select(prod_cat, product_weight_g:last_col())
+
+select(prod_cat, matches("g$|cm$|english$"))
+
+select(prod_cat, ends_with("g")|ends_with("cm")|ends_with("english"))
+```
+
+### Comments
+
+This question was meant to test your familiarity with dplyr verbs and capabilities. 
+
+Again, a number of students were not aware of select helpers/operators and hence 
+could not comprehend this question. If you used the colon (:) operator with integers
+and then with column names, they would only have counted as one. 
+
+As you can see above, and from ?select, there are many operators to choose from. 
+Although some of the expressions are cumbersome and not natural, forcing ourselves 
+to do the same thing in a few ways allows us to double-check our answers, and allows 
+us to practice a function so that we are familiar with it.
+
+## Question 2.3 (4 marks)
+
+3. From the `prod_cat` table, 
+   * convert all the cm columns to inches (1cm = 0.3937in), 
+   * then compute the area of each product in square inches, 
+   * then compute the mean area (length x width) for each product category.
+   Return those *product categories* whose mean area in sq. inches is between 300
+   and 310 (inclusive). Store your output in a tibble named `q2_3_tbl`.
+```{r}
+prod_cat %>% mutate(across(ends_with("cm"), ~.x*0.3937)) %>% 
+  mutate(area_inches = product_length_cm*product_width_cm) %>% 
+  group_by(product_category_name_english) %>% 
+  summarise(mean_area = mean(area_inches, na.rm=TRUE), .groups="drop") %>% 
+  filter(between(mean_area, 300, 310))
+```
+
+### Comments
+
+This was a straightforward question. It was an opportunity to practice with 
+`across` and `between`, but as long as you got the final answer, you would have 
+got the marks. For some of you, the dataset would have returned 0 rows.
+
+## Question 2.4 (2 marks)
+
+4. A late order is one that the customer receives after the estimated delivery date.
+   What is the proportion of late orders in each state? Store your tibble, which 
+   should have two columns and be in decreasing order of proportion of late orders,
+   as `q2_4_tbl`. There should be one row for each state in the data.
+```{r}
+# COmparing datetimes
+orders %>% 
+  mutate(across(4:6, ~as.POSIXct(.x, format="%F %H:%M:%S"))) -> orders2
+
+orders2 %>% group_by(customer_state) %>% 
+  summarise(prop_late =  
+    mean(order_delivered_customer_date > order_estimated_delivery_date, 
+         na.rm=TRUE)) %>%  
+  arrange(desc(prop_late)) -> q2_4_tbl
+
+# Comparing dates
+orders %>% 
+  mutate(across(4:6, ~as.Date(.x))) -> orders3
+
+orders3 %>% group_by(customer_state) %>% 
+  summarise(prop_late =  
+    mean(order_delivered_customer_date > order_estimated_delivery_date, 
+         na.rm=TRUE)) %>%  
+  arrange(desc(prop_late)) -> q2_4a_tbl
+```
+
+### Comments
+
+The question was not clear enough, so it was possible to perform the computation
+using date-time and using date. To be fair, using date should be the right
+approach, because all estimated delivery times were at midnight. Both answers
+were accepted, of course.
+
+## Question 2.5 (4 marks)
+
+5. A marketing analyst claims that "In all states, purchases are equally likely
+   to be on any day of the week". Do you agree with this claim?
+   Justify your answer with code, a plot, and text explanations in a section
+   entitled "`## Question 2.5`". Please try to keep your text explanation to 
+   less than 200 words.
+   
+   * *Note*: In this question, you are being tested on how well you can translate 
+     a question of interest into queries.
+   
+```{r}
+orders2 %>% mutate(weekday = strftime(order_purchase_timestamp, "%u")) %>% 
+  group_by(customer_state, weekday) %>% count() %>% 
+  arrange(.by_group = TRUE) %>% 
+  group_by(customer_state) %>% 
+  mutate(prop  = n/sum(n)) -> q5_5a_tbl
+
+unique_states <- unique(q5_5a_tbl$customer_state)
+states_sample <- sample(unique_states, size=4, replace=FALSE)
+filter(q5_5a_tbl, customer_state %in% states_sample) %>% 
+  ggplot() + geom_col(aes(x=weekday, y=prop)) + facet_wrap(~customer_state) +
+  geom_hline(aes(yintercept=1/7), lty=2, col="red")
+```
+
+## Comments
+
+It was not easy to get the full marks in the open-ended questions, because these
+questions were meant to be demanding.
+
+The answer should convert timestamps to weekday, group by and compute proportions.
+
+It would be good to raise the issue of sample sizes, as the counts for the 
+states with lowest purchases may not be reliable.
+
+More importantly, there should be some observation that in general, the proportion 
+of purchases on each weekday is higher than the proportion on each weekend day.
+
+Some attempt to quantify this or investigate further would get the last mark.
+
+```{r}
+q5_5a_tbl %>% mutate(res = prop - 1/7,
+                     weekday_flag = if_else(weekday <= 5, 1, 0)) %>% 
+  group_by(customer_state, weekday_flag) %>% 
+  summarise(mean_resid = mean(res)) -> q5_resids
+```
+
+`q5_resids` suggests that deviation from equal proportions occurs through higher 
+proportions on weekdays and lower proportions on weekends (than the equal proportions
+suggested by analyst).
+
+It would not be sufficient to simply talk about the marginal counts/proportions.
+The analyst's statement was deliberately vague, to invite you to iterate the 
+exploration of the data. If the marginal counts suggest that, overall, the weekends
+have fewer purchases, you may want to see if this pattern holds for all states.
+
+# Question 3 (6 marks)
+
+In assignment 2, we downloaded radar scans from NEA. Such radar scans are used
+by meteorologists to monitor weather conditions. The colours on the scans
+indicate regions of high moisture (i.e. most likely clouds). 
+
+Suppose that you have access to several years of (grayscale) timestamped radar
+scans, and you have been tasked with studying storm patterns in the region,
+using these scans. This 
+[animated gif](https://cpb-us-w2.wpmucdn.com/blog.nus.edu.sg/dist/6/8156/files/2022/10/ezgif.com-gif-maker.gif) gives an indication of the kind of analysis expected of you. It is 
+hoped that at the end, you will be able to identify storms from a scan, and even predict 
+the path of the storm.
+
+Each red polygon in the gif denotes a storm at a timepoint. Notice that, as time
+passes, storms can get bigger or smaller. They can even split and merge with one
+another.
+
+Within R, each radar scan is stored as a 480x480 matrix, with each cell containing a
+numeric value between 0 and 1 to indicate the moisture content. Most entries 
+in the matrix will be zero. Storms are usually identified as contiguous cells above 
+some threshold value.
+
+Here is an example of the data for a single scan, after reading into R. The 
+file `q3.rdt` contains an example of such a radar scan. It can be plotted with
+the following code.
+
+```{r eval=FALSE}
+load("../data/mid_term_q3.rdt")
+plot(c(0,480), c(0, 480), type="n", asp=1)
+rasterImage(radar_scan, 0, 0, 480, 480)
+```
+
+Propose an **S3 class** you would define to contain this data, and propose **two** 
+methods you would write for it. Put your answer in a section entitled 
+"`## Question 3`", and please keep your answer to less than 300 words.
+
+*You do not have to write any code for this question.* Your task is to think about
+the following issues:
+
+* For instance, would you define a `storm` class, or a `radar_scans` class?
+* What inputs would go into the function that creates objects of your proposed class?
+* What tasks will the constructor function have to perform to process the inputs?
+* What information would the proposed class contain? Can you describe how they will 
+  be stored in terms of R data structures?
+* What arguments will the methods you propose take? What output will they produce? 
+* How will these methods help in your work as the analyst?
+* There is no need to worry about specific algorithms/code to perform specific tasks.
+
+
+## Comments
+
+In this question, the challenge was to demonstrate knowledge of S3 methods in R,
+and to choose appropriate R objects to store and explore esoteric data.
+
+I would create a `storm` class that would contain the following attributes:
+
+* an array of radar scans, 
+* the storm clouds detected in each radar scan, stored as a sequence of coordinates. Storms 
+  in each radar scan should be labelled.
+* information such as the date and time of the scans.
+* information that matches storms in one scan to storms in the next timestamp. This could 
+  be stored in a matrix or as a list.
+
+To construct an object of class `storm`, the function would take the radar scans 
+as inputs, along with a threshold value to define storm clouds. Contiguous cells 
+above this threshold would define a storm. There should also be a part of the 
+constructor that matches storms in consecutive timestamps, perhaps by 
+location and size. 
+
+I propose the following methods:
+
+1. A summary method, that summarises the number of storms, their sizes, speeds and 
+   directions.
+2. A plot method that plots the trajectory of storms found in a `storm` object.
+3. A `c` method to join radar scans to an existing `storm` object.
+
+These methods will assist me to understand the path, trajectory and behaviour of 
+storms in the region.
+
+If you gave an indication that methods would be part of the class definition, you 
+would have got marks deducted, because that is not how things work in R. It is not 
+that R is better, but it's just that we should be well acquainted with whichever tool
+we are using. 
+
+# Question 4 (11 marks)
+  
+Acme Bank is a small bank that operates with a single bank teller from 9am to
+6pm (540 mins) every weekday. The teller works throughout lunch (12noon to 1pm),
+and the bank closes at 6pm sharp. Customers who are in the queue at this time 
+will have to leave and come back another day.
+
+Over a period of 100 days, data has been recorded on the arrival times,
+departure times and service times of customers. The data is stored in two
+tibbles in `q4.rdt`.
+
+```{r echo=FALSE}
+load("../data/mid_term_q4.rdt")
+```
+
+The first tibble, `mon_arrivals`, contains information on the arrival times of 
+customers to the bank.
+
+* `arr_time` is the time (in minutes after 9am) that the customer arrived.
+* `dep_time` is the time at which the customer departs the bank.
+* `service_time` is the amount of time spent at the counter.
+* `finished` is a Boolean variable indicating if the customer completed his service 
+   before the bank closed. If this is FALSE, it means that the customer did not 
+   reach the counter before 6pm; he/she had to leave and come back the next day.
+* `day` denotes the day on which data was recorded.
+
+The second tibble `mon_resources` contains information on the evolution of the 
+situation within the bank. Suppose the first few rows in the table are as 
+follows:
+```{r echo=FALSE}
+resource <- rep("Counter", 4)
+time <- c(11.3, 22.4, 28.4, 38.2)
+server <- c(1L, 1L, 1L, 0L)
+queue <- c(0L, 1L, 0L, 0L)
+tmp_resource <- tibble(resource, time, server, queue)
+knitr::kable(tmp_resource)
+```
+
+The table indicates that:
+
+* At time 11.3, a new customer arrived, and began service. The server (i.e. the teller)
+  now has one person being served.
+* At time 22.4, another customer arrived, and joined the queue. The previous 
+  customer has not left, which is the value in the `server` column is still 1 in 
+  row 2. The `queue` column is now 1 because the new arrival will have to wait in 
+  line.
+* At time 28.4, the first customer leaves. The second customer begins service, 
+  which results in the `queue` column taking the value 0. The 1 in the `server` 
+  column corresponds to the second customer being served by the teller.
+* At time 38.2, this second customer completes services and departs the bank. At 
+  this point, there are no customers in the bank.
+  
+The rows in the `mon_arrivals` table will corroborate the information in the 
+`mon_resources` table. For instance, you would see the following rows there:
+```{r echo=FALSE}
+tmp_arr <- tribble(
+   ~name,      ~arr_time, ~dep_time, ~service_time, ~finished,   ~day,
+   "Customer0",     11.3,     28.4,        17.1,  TRUE,         1,
+    "Customer1",   22.4,     38.2,         9.82, TRUE,         1
+)
+knitr::kable(tmp_arr)
+```
+
+
+## Question 4.1 (1 mark)
+
+1. Compute the number of unserved customers for each day. Store your information 
+   in a tibble `q4_1_tbl`.
+
+```{r}
+mon_arrivals %>% 
+  filter(!finished) %>% group_by(day) %>% 
+  count() %>% ungroup() -> q4_1_tbl
+```
+
+## Comments
+
+Again, I observed many students using table here, instead of the more 
+convenient count().
+
+## Question 4.2 (3 marks)
+
+2. Suppose that the manager is considering keeping the bank open until all
+   customers who arrived before 6pm have been served. For each day, fill in the
+   service time for the unserved customers to be the average service time for that
+   day. Compute the mean amount of **extra** time (in minutes) the bank would 
+   need to be kept open (beyond 6pm), over the 100 days. Store your answer as 
+   `q4_2_scalar`.
+
+```{r}
+fill_dep_times <- function(arr_times, dep_times, activity_times) {
+  mean_activity_time <- mean(activity_times, na.rm=TRUE)
+  for(i in 1:length(dep_times)){
+    if(is.na(dep_times[i])){
+      max_arr_prev_dep <- max(dep_times[i-1], arr_times[i])
+      dep_times[i] <- max_arr_prev_dep + mean_activity_time
+    }
+  }
+  dep_times
+}
+#start_times <- c(1, 2, 3, 8,9,10); 
+# activity_times <- c(1,1,1, NA, NA, NA); 
+# end_times <- c(2, 3, 4, NA, NA,NA)
+#fill_dep_times(start_times, end_times, activity_times)
+
+mon_arrivals %>% group_by(day) %>% 
+  filter(arr_time > 0) %>% 
+  arrange(arr_time) %>% 
+  mutate(dep_time = fill_dep_times(arr_time, dep_time, service_time)) %>% 
+  summarise(last_dep = max(dep_time) - 540, .groups="drop") %>% 
+  pull(last_dep) ->q4_2_scalar
+  #View()
+  #summary()
+```
+
+### Comments
+
+This was a tricky question. The general idea is to compute the mean service 
+time for each day, then multiply that by the number of unfinished customers 
+on each day. However, this assumes that the first unfinished customer begins service 
+at time 540; it ignores departure time of the last finished customer.
+
+Taking mean_service_time*total_number_of_rows is also incorrect because it assumes
+there was always a customer in service. In fact, there could have been lull periods where
+the server was waiting for a customer to come it. SImilarly, adding arrival time
+to service time also assumes that the next customer is already there when the previous 
+customer finishes his service.
+
+The code above tries to account for all that, and that's why it is complicated.
+For the exam, as long as you did something like number of unfinished * mean service,
+you would have got most of the marks.
+
+
+## Question 4.3 (3 marks)
+
+3. Compute the total amount of time on each day for which there were 10 or more
+   people in the queue. Store your answer as a vector `q4_3_vec`.
+```{r}
+#mon_resources %>% group_by(replication) %>% 
+#  summarise(max_q = max(queue)) %>% summary()
+
+get_start_end <- function(t1, q1) {
+  long_q_indicator <- if_else(q1 >= 10, 1, 0)
+  start_ind <- which(long_q_indicator > lag(long_q_indicator))
+  if(length(start_ind) > 0) {
+    start_times <- t1[start_ind]
+    end_ind <- which(long_q_indicator < lag(long_q_indicator))
+    end_times <- t1[end_ind]
+    if(length(start_ind) - length(end_ind) == 1) {
+      end_times <- c(end_times, 540)
+    }
+    total_time <- sum(end_times - start_times)
+  } else {
+    total_time <- 0
+  }
+  total_time
+}
+
+mon_resources %>% group_by(day) %>% 
+  summarise(total_time_long_q = get_start_end(time, queue))
+```
+
+
+### Comments
+
+ANother tricky question. You would have obtained most of the marks just by 
+using diff() or lead()- time and then summing, but that would drop NAs. This 
+means that if the store closed with more than 10 customers in the queue, the last 
+segment would not be captured. 
+
+## Question 4.4 (2 marks)
+
+4. Create a plot of how queue length evolves for the 23rd day. Your plot 
+   should appear similar to this.
+   
+   * *Hint*: This is known as a stairs plot. Please take a look at the help
+     page for `plot()`.
+```{r echo=FALSE, fig.align='center', out.width='70%'}
+tmp_output <- filter(mon_resources, day==23) 
+plot(tmp_output$time, tmp_output$queue, xlab="Time", ylab="Queue length",
+     type="s", main="Queue length over time, day 23")
+```
+
+### Comments 
+
+As long as you filtered and plotted, you would have obtained both marks here.
+
+## Question 4.5 (2 marks)
+
+5. *For each day*, compute the time-averaged queue length. The time-averaged 
+   queue length is computed as the area underneath the graph above, divided by 
+   540 minutes.
+```{r}
+time_ave_q <- function(t1, q1) {
+  t1a <- c(0, t1, t1[length(t1)])
+  q1a <- c(0, q1)
+  sum(q1a*diff(t1a))/540
+}
+mon_resources %>% group_by(day) %>% 
+  summarise(ave_q = time_ave_q(time, queue))
+```
+
+### Comments
+
+Some of you used a package to compute this, but we can get it with height times 
+width. The grading for question 4 overall was very fluid, and I tried to award as many 
+marks as I could.
+
+# Question 5
+
+The file `bdates.csv` contains information on birthdays of 250 students. The 
+file `q5.rdt` contains the three candidate pmfs shown in the table below.
+
+1. Clean the dataset and store it as `q5_1_tbl`. None of the rows should be 
+   removed.
+2. Estimate the proportion of students born in each month. Store your answer
+   as a vector of length 12 in `q5_2_vec`.
+2. In tutorial 1, we assumed birthdays were uniformly distributed over the year. 
+   There is suspicion that the birthdays in this data are not uniformly distributed.
+   Compare the observed counts in each month from the data, to expected counts 
+   from the following pmfs using rootograms, and decide which pmf below is 
+   most appropriate for the given data (out of the three).
+```{r echo=FALSE}
+beta_to_month_pmf <- function(shape1, shape2) {
+  x_seq <- seq(0, 1, by=1/12)
+  pbeta(x_seq[-1], shape1, shape2) - pbeta(x_seq[1:12], shape1, shape2)
+}
+pmf1 <- beta_to_month_pmf(0.5, 0.5)
+pmf2 <- beta_to_month_pmf(2, 2)
+pmf3 <- beta_to_month_pmf(2, 5)
+
+pmf_table <- tibble(month = 1:12, pmf1, pmf2, pmf3)
+knitr::kable(pmf_table)
+```
+
+
+### Comments
+
+This question required each person to clean their dataset individually. The main
+issues with the dataset were:
+
+1. The dates would be in two different formats within the single column.
+2. There would be misspellings of the Male and Female gender.
+3. The columns would have been misaligned, just like one of the practice exams.
+
+After cleaning up the data, you would have to compute the proportion of 
+birthdays in each month. Note that it is possible that there were no birth days in
+a particular month (see below):
+
+```{r}
+bdates <- read.csv("../data/bdates_clean.csv") %>% 
+  mutate(bdate= as.Date(bdate),
+         mth=as.integer(strftime(bdate, "%m")))
+
+mth_counts <- group_by(bdates, mth) %>% 
+  count() %>% ungroup() 
+
+q5_2_vec <- rep(0, 12)
+q5_2_vec[mth_counts$mth] <- mth_counts$n/250
+
+```
+
+To choose the right pmf, I was looking for you to use residuals to assess the fits:
+
+```{r}
+load("../data/mid_term_q5.rdt")
+
+r1 <- mean(abs(q5_2_vec - pmf1))
+r2 <- mean(abs(q5_2_vec - pmf2))
+r3 <- mean(abs(q5_2_vec - pmf3))
+
+library(vcd)
+
+rootogram(q5_2_vec*250, pmf3*250)
+```
+
+The lowest residuals occur with pmf3.
+
+
+

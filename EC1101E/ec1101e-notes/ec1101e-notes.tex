@@ -1486,8 +1486,19 @@ $$\text{T-Multiplier} = \frac{\Delta Y^*}{\Delta T} = -MPC \times \frac{1}{1-MPC
 \textbf{Functions of money}
 \begin{itemize}
 	\item \underline{Medium of exchange}: without money, people have to barter, but each party has to desire the other party's good
+	\begin{itemize}
+		\item Move purchasing power through space
+	\end{itemize}
 	\item \underline{Unit of account}: measuring stick for valuing g\&s, assets, liabilities on a common basis, also needed to record values
+	\begin{itemize}
+		\item Reference point.
+		\item Different currencies, so need to choose a unit of measurement that is stable relative to the problem at hand
+	\end{itemize}
 	\item \underline{Store of value}: keep money today to be spent in the future (an asset part of people's asset portfolios)
+	\begin{itemize}
+		\item Need to have long lifetime as opposed to having perishables as 'assets' which can expire in a few days
+		\item Store purchasing power
+	\end{itemize}
 \end{itemize}
 \textbf{Money history}
 \begin{itemize}
@@ -1633,6 +1644,10 @@ $$\text{T-Multiplier} = \frac{\Delta Y^*}{\Delta T} = -MPC \times \frac{1}{1-MPC
 		$$\text{Capital Ratio} = \frac{\text{Equity}}{\text{Assets}}$$
 		Leverage amplifies losses and gains (if assets change, the equity will change drastically assuming liabilities is constant and A = L+E)$\Rightarrow$ easy for banks to get \textbf{insolvent}: cannot pay off its liabilities even if it sells all its assets
 		\item "borrow short" and "lend long"
+		\item Banks are required to adhere to capital requirements
+		\begin{itemize}
+			\item In order to meet capital requirements, banks can \textbf{deleverage}: selling assets to pay off liabilities, or \textbf{recapitalize}: et investors to add their own funds to bank capital, in return for getting a share of the bank’s ownership
+		\end{itemize}
 	\end{itemize}
 \end{itemize}
 \textbf{Bank Runs}
@@ -1662,6 +1677,472 @@ $$\text{T-Multiplier} = \frac{\Delta Y^*}{\Delta T} = -MPC \times \frac{1}{1-MPC
     \item \underline{Lender of last resort}: central banks lend to troubled banks when no one else will
     \item \underline{Owner of last resort}: Central banks/govt inject funds to boost bank capital
 \end{itemize}
+
+\section{Crisis, Recession, and Monetary Policy}
+\subsection{2007-08 Financial Crisis}
+\textbf{Factors that caused the financial crisis}
+\begin{itemize}
+	\item \textbf{Financial innvations}
+	\begin{itemize}
+		\item New types of securities
+		\item New ways to borrow short-term
+		\item New ways to insure against falling asset values
+		\item Increased importance of non-bank financial institution \textbf{(NBFI)}
+	\end{itemize}
+    \item \textbf{Securitization}: turning loans into debt securities
+    \begin{enumerate}
+    	\item Bank makes mortgage loans, where loans are \underline{20-30 years} and home is \underline{collateral}
+    	\item Bank bundles the mortgages into a \textbf{Mortgage-Backed Security (MBS)}: owner of MBS gets regular interest payments from the mortgages
+    	\item Bank sells MBS to another financial institution - taking the mortgages \underline{off its balance sheets}
+    \end{enumerate}
+    \item \textbf{Slicing and Dicing}
+    \begin{enumerate}
+    	\item Financial institution buys many different MBS
+    	\item MBS can have high risk if the borrower is of questionable financial background/credit history/low salaries (\textbf{subprime}) or low risk (\textbf{prime})
+    	\item Financial institution \underline{chops up} each MBS into slices and \underline{combine} slices to form \textbf{Collateralized Debt Obligations (CDOs)} to create a security that
+    	\begin{itemize}
+    		\item Pays high interest
+    		\item Has low risk due to diversification
+    	\end{itemize}
+        \item Sells CDOs to other banks, funds; owner of CDOs get regular interest payments from MBS
+        \item More "Slicing and Dicing" even obtaining CDO$^2$
+    \end{enumerate}
+    \item \textbf{A new way to borrow short-term}: Repurchase agreement (repo and reverse repo)
+    \begin{itemize}
+    	\item Bank A sells CDO to bank B for \$10m but agrees to buy it back 7 days later at \$11m
+    	\item 7 days later, Bank A fulfills commitment and buys back the CDO at \$11m
+    	\item The security acts as collateral: if Bank A defaults (doesn't buy back the security 7 days later), Bank B keeps the security
+    	\begin{itemize}
+    		\item liquid and safe assets are preferred as collateral: short-term govt securities, MBS and CDOs (before 2008 Financial Crisis as the markets were deep, making them liquid)
+    	\end{itemize}
+    \end{itemize}
+    \item \textbf{Insuring against falling assets values}
+    \begin{itemize}
+    	\item If the value of assets/securities sold by Bank A falls in value to \$8m, Bank A will just default
+    	\item Bank B will approach American Insurance Group (AIG) and AIG will pay Bank B \$3m
+    	\item Of course Bank B pays premium to AIG
+    \end{itemize}
+    \item \textbf{Shadow Banking}
+    \begin{itemize}
+    	\item NBFIs that undertake short-term liabilities (borrow short-term such as repo) to purchase long-term assets (such as MBS's, CDOs)
+    	\item \eg hedge funds, mutual funds, subsidiaries and divisions of commercial banks
+    	\item Also New York-based investment banks: Goldman Sachs, Morgan Stanley, Merrill Lynch, Lehman Bros, Bear Stearns
+    	\item They are \underline{highly leveraged}: a small fall in asset values would put it into insolvency
+    \end{itemize}
+\end{itemize}
+\subsubsection{Positive Feedback Loop}
+\begin{itemize}
+	\item US Nationwide housing market downturn causes rising mortgage defaults
+	\item Prices of MBS and CDOs fell drastically
+	\item Lenders became less willing to enter into repos as
+	\begin{itemize}
+		\item Borrowers might be insolvent (because value of MBS/CDOs might fall and the borrower can default)
+		\item Less willing to accept securities as collateral as the value of the security is diminishing
+	\end{itemize}
+    \item Since value of assets $\downarrow$, the bank might have to face insolvency
+    \item So Banks and NBFIs try to deleverage
+    \item Deleveraging works if just a few firms do it
+    \begin{itemize}
+    	\item But when all sell at the same time. prices of MBS and CDOs fall even further
+    	\item Become even closer to insolvency
+    \end{itemize}
+    \item Cycle feeds on itself
+\end{itemize}
+\subsubsection{How it Happened}
+\begin{itemize}
+	\item Bear Sterns collapsed but the Fed arranged restructuring and sale
+	\item Lehman Bros failed without Fed intervention and brough on panic in repo market
+	\item Suspect that major financial institutions are close to insolvency
+	\item Since it is AIG's job to pay the amount to cover falling asset values, and meanwhile at the same time asset values are falling drastically everywhere, it could not cover the \textbf{Credit Default Swap} (CDS) it had sol and also collapsed
+\end{itemize}
+
+\textbf{Actions by the Fed and Treasury to restore financial stability}
+\begin{itemize}
+	\item Persuaded healthier financial institutions to \textbf{buy troubled ones}
+	\begin{itemize}
+		\item JP Morgan Chase was persuaded to buy Bear Stearns
+		\item Bank of America was persuaded not to renege on buying Merrill Lynch
+	\end{itemize}
+    \item \textbf{Bought securities} to $\uparrow$Asset prices
+    \begin{itemize}
+    	\item Fed bought MBS + commercial bonds
+    \end{itemize}
+    \item Gave NBFI's \textbf{access to emergency Fed loans}
+    \begin{itemize}
+    	\item Goldman Sachs and Morgan Stanley were \underline{converted} into banks to qualify for the Fed's discount loans (lender of last resort)
+    \end{itemize}
+    \item \textbf{Injected equity into troubled financial intermediaries}
+    \begin{itemize}
+    	\item US Treasury took over ownership of AIG, paid off its liabilities
+    	\item US Treasury became part owner of Citigroup, JP Morgan Chase, Goldman Sachs (owner of last resort)
+    \end{itemize}
+\end{itemize}
+
+\subsection{The Money Market}
+\textbf{Some simplifying assumptions}
+\begin{itemize}
+	\item Only two financial assets that people can buy!
+	\begin{itemize}
+		\item \textbf{Bonds}: pay interest, not used for transaction, risky
+		\item \textbf{Money}: no interest, used for transactions, safe
+	\end{itemize}
+    \item \textbf{Inflation rate is fixed}: nominal and real interest rates move together
+\end{itemize}
+\subsubsection{Money Demand}
+\textbf{Definition:} amount of wealth households choose to hold as money\\
+\textbf{Determinants}:
+\begin{itemize}
+	\item \underline{Asset demand for money}:
+	\begin{itemize}
+		\item The \underline{Nominal i/r falls}: opp. costs. of holding money falls
+	\end{itemize}
+	\item \underline{Transactions demand for money}:
+	\begin{itemize}
+		\item \underline{Price level rises}: need to hold more money to purchase the same g\&s
+		\item \underline{Output rises}: more income hence more purchasing power and wealth
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Money Supply}
+We assume that the Central Bank has complete control of the quantity of money (Vertical Supply Curve) through instruments:
+\begin{itemize}
+	\item Required reserve ratio (RRR)
+	\item Open market operations
+	\item Discount rate
+	\item Interest rate paid on reserves (IOR)
+\end{itemize}
+\subsubsection{Equilibrium in the Money Market}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13em]{images/money_market.png}
+\end{figure}
+\begin{itemize}
+	\item If i/r is above eqm. level:
+	\begin{itemize}
+		\item Excess supply of money: people would rather hold less money
+		\item Excess demand for bonds: people would rather hold more bonds $\Rightarrow$ bond price will $\uparrow$ in the bond market
+		\item As bond price $\uparrow$, i/r $\downarrow$
+		\begin{itemize}
+			\item Bond price here means the initial price buyers need to pay
+			\item The amount payable promised by bonds at the maturity date remains the same
+			\item Hence, returns given by bonds will fall and i/r will fall
+		\end{itemize}
+	    \item i/r fall until people are satisfied with holding the eqm quantity of money
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Interaction Between Goods Market and Money Market}
+\begin{itemize}
+	\item If i/r $\uparrow$, $\downarrow I^P$ and $\downarrow a$ $\Rightarrow$ AE $\downarrow$
+	\item If $Y \uparrow$, $M^D$ (Money demand) $\uparrow$ $\Rightarrow$ i/r $\uparrow$
+	\item Eventually both markets reach equilibrium at some intermediate value of $Y^*$ and some intermediate value of i/r $r^*$
+	\item Expenditure multiplier depends not just on AE slope, but also how i/r changes
+	\item \textbf{Crowding out}: an increase in AE is offset by a decrease due to increase in i/r, but crowding out is not 100\%
+\end{itemize}
+\subsection{Monetary Policy}
+\textbf{Monetary policy} is central bank's actions and communications to manage the money supply to influence economic activity
+\begin{itemize}
+	\item Tools are used to target i/r
+	\item \textbf{Expansionary} monetary policy aims to $\uparrow Y^*$
+	\begin{itemize}
+		\item Money market: $\uparrow M^S$ to $\downarrow$i/r
+		\item Goods market: i/r $\downarrow$, $\uparrow I^P$ and $\uparrow a$ $\Rightarrow$ AE $\uparrow$ $\Rightarrow$ $Y^*\uparrow$
+	\end{itemize}
+    \item \textbf{Contractionary} monetary policy aims to $\downarrow Y^*$
+    \begin{itemize}
+    	\item Money market: $\downarrow M^S$ to $\uparrow$i/r
+    	\item Goods market: i/r $\uparrow$, $\downarrow I^P$ and $\downarrow a$ $\Rightarrow$ AE $\downarrow$ $\Rightarrow$ $Y^*\downarrow$
+    \end{itemize}
+    \item Note that the Central Bank can prevent/allow i/r to rise/fall to prevent/allow \underline{crowding out} due to Fiscal Policy
+\end{itemize}
+\textbf{Countercyclical Monetary Policy}
+\begin{itemize}
+	\item Is \underline{faster to enact} and \underline{easier to reverse}
+	\item If $Y^* < Y_{FE}$, use expansionary monetary policy
+	\item If $Y^* > Y_{FE}$, use contractionary monetary policy
+\end{itemize}
+
+\subsubsection{Conventional Monetary Policy}
+\begin{itemize}
+	\item There isn't a single i/r in the economy, but Central banks usually target one \underline{short-term i/r}
+	\item The Fed targets the \textbf{Fed Funds Rate (FFR)}: rate at which banks lend reserves to one another overnight (\textbf{interbank rate})
+	\item Interbank rate acts as \underline{benchmark} for other i/r
+	\begin{itemize}
+		\item other assets pay higher rates due to being \underline{longer-term} and \underline{higher risk}, thus earning term premiums and risk premiums
+		\item Difference (\textbf{spread}) between these rates and the FFR is usually stable
+		\item When FFR changes, other rates tend to move in tandem
+	\end{itemize}
+    $$\text{IOR} \leq \text{FFR} \leq \text{Discount rate}$$
+    \item If IOR > interbank rate, then banks will not lend reserves to other banks
+    \item If Discount rate < interbank rate, then banks will just borrow from central bank and not borrow from other banks
+\end{itemize}
+\subsubsection{Unconventional Monetary Policy}
+Hard for central bank to keep the nominal i/r significantly below 0\% especially in a deep, prolonged slump where conventional monetary policy may hit the zero lower bound
+\begin{itemize}
+	\item During the 07/08 Financial Crisis, FFR hit 0.25\% in Dec 2008 but long-term i/r did not fall significantly
+	\item \textbf{Spread widened} because lenders were wary of increased defaults; need to take in more money to survive the defaults
+	\item So targeting FFR is not effective
+\end{itemize}
+\textbf{Quantitative Easing (QE)}: large scale purchases of financial assets, paying with newly created reserves
+\begin{itemize}
+	\item "open market purchases on steroids"
+	\item Objectives: \textbf{Boost asset prices} and \textbf{reduce long term i/r}
+	\item Reduce pressure on financial institutions to deleverage and so increase capital ratio
+	\item Increase wealth due to increase in asset values $\Rightarrow$ induce consumption and spending???
+	\item $\uparrow$Bank Reserves but did not lead to a massive increase in deposit creation
+	\begin{itemize}
+		\item No money multiplier since banks wanted to hold excess reserves as a safeguard when there is a massive money pullout from depositors
+		\item As a precaution in the 2007/2008 Financial Crisis, Fed started paying IOR of 0.25 percent, equal to FFR $\Rightarrow$ no urgency for bank to get rid of reserves
+	\end{itemize}
+    \item \impt But QE doesn't directly help the unemployed or people who have lost their homes; may have worsened inequality
+    \begin{itemize}
+    	\item If there is deep and prolonged slump, need to use FP in tandem
+    	\item Fiscal policy was too focused on the long run (deficit reduction for growth)
+    \end{itemize}
+\end{itemize}
+\textbf{Forward guidance}: communicating future monetary policy
+\begin{itemize}
+	\item In 2011, Fed announced that it would keep its target rate at 0.25\% for the extended future
+	\item Meant to influence business and household expectations of the future interest rate
+	\item If banks know that CB will provide lower interest rates, they will also be more willing to lend money at lower interest rates
+	\item Lower interest rates for loans means more people will borrow money $\Rightarrow$ higher $I^P$ and $C$
+\end{itemize}
+\subsubsection{Monetary Policy and Inflation}
+\begin{itemize}
+	\item Central Banks have tried to dampen inflationary pressures by increasing i/r at the cost of lower output
+	\item Inflation can be caused by
+	\begin{itemize}
+		\item Demand shock: overly FP policy
+		\item Supply shock: may cause \textbf{stagflation} (high unemployment + inflation)
+	\end{itemize}
+    \item \textbf{Sustained high inflation} requires two ingredients
+    \begin{itemize}
+    	\item Central banks being hesitant to tighten monetary policy ($\uparrow$i/r)
+    	\begin{itemize}
+    		\item \textbf{Volcker Disinflation}: contractionary monetary policy need to be maintained until the job is done
+    	\end{itemize}
+    	\item People grow to expect high inflation to persist (positive feedback loop)
+    	\begin{itemize}
+    		\item Unions push for cost-of-living adjustments to wages every year (Wages$\uparrow$)
+    		\item Firms raise prices of their products as costs increase
+    		\item Governments raise transfers to help people cope with inflation (Expansionary FP to increase Demand)
+    		\item \textbf{Indexation} becomes more common?
+    	\end{itemize}
+    \end{itemize}
+\end{itemize}
+\section{Exchange Rates}
+\textbf{Currency market}: market where one currency is traded for another\\
+\textbf{Foreign exchange reserves}: foreign currency holdings of central banks\\
+\textbf{Exchange rate}: rate at which one currency is traded for another
+\begin{itemize}
+	\item There are two ways to quote the exchange rate (\eg Dollars per Yen and Yen per Dollar)
+\end{itemize}
+\textbf{Appreciation}: strengthen
+\begin{itemize}
+	\item Note that if USD/JPY falls, then it means USD has appreciated against JPY
+\end{itemize}
+\textbf{Depreciation}: weakened
+\begin{itemize}
+	\item Note that if USD/JPY rises, then it means USD has depreciated against JPY
+\end{itemize}
+\subsection{Demand-Supply Model}
+\subsubsection{Demand for USD in the USD/JPY market}
+Why the demand curve is downward-sloping
+\begin{itemize}
+	\item USD is needed by Japan residents to buy US goods (US exports)
+	\item USD is needed by Japan residents to buy US assets (capital inflow to US -- US receives more cash)
+	\item If USD appreciates against JPY, US exports and assets are more expensive to Japan residents $\Rightarrow$ buy fewer goods and assets $\Rightarrow$ demand fewer dollars
+\end{itemize}
+Factors that can shift the demand curve to the right
+\begin{itemize}
+	\item Japan's real GDP rises
+	\item Tastes/preferences
+	\item Japan's price level rises, relative to US prices
+	\begin{itemize}
+		\item Or alternatively, Japan's inflation rate is higher than US' inflation rate
+		\item Japanese goods become relatively more expensive
+	\end{itemize}
+    \item Japan's interest rate falls relative to US interest rate
+    \item Expectations that the USD will appreciate against JPY
+    \begin{itemize}
+    	\item Japan residents prefer to hold more USD
+    \end{itemize}
+\end{itemize}
+\subsubsection{Supply for USD in the USD/JPY market}
+Why the supply curve is upward-sloping
+\begin{itemize}
+	\item US residents need to sell USD for JPY to buy Japanese goods
+	\item USD sold to buy Japanese assets (capital outflow from US)
+	\item If USD appreciates, choose to import more Japanese goods and buy Japanese assets as they are relatively cheaper $\Rightarrow$ US residents supply more USD
+	\item \impt If USD appreciates against JPY, less dollars is needed to buy the same amount of JPY, so if USD prices increase, Quantity of USD supplied may fall!
+	\begin{itemize}
+		\item Here we use the simplifying assumption that rise in quantity of imports and asset purchases > fall in USD prices so that the supply curve is always upward-sloping
+	\end{itemize}
+\end{itemize}
+Factors that can shift supply curve to the right
+\begin{itemize}
+	\item Similar to JPY
+\end{itemize}
+\impt Note that there are two ways of representing the USD/JPY market!
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17em]{images/exchangerates.png}
+\end{figure}
+\subsection{Explaining Fluctuations in Exchange Rates}
+\subsubsection{Short Run: Economic Fluctuations}
+Usually RGDP changes
+\subsubsection{Very Short Run: Hot Money}
+\textbf{Hot money}: funds that can be moved from one type of asset to another at \underline{very short notice}
+\begin{itemize}
+	\item Changes in \textbf{expectations} and \textbf{interest rates} influence hot money flows!
+	\item Hot money flows can be highly volatile, so exchange rates can be highly volatile
+	\item \impt If i/r changes, both DD and SS will shift!
+	\begin{itemize}
+		\item Example if US i/r$\downarrow$ falls relative to Japan i/r, then DD for USD shifts left and SS for USD shifts right
+		\item Together, there would be a very large change in the price of USD
+	\end{itemize}
+    \item \impt if expectations (will it depreciate/appreciate) change, both DD and SS will shift too
+\end{itemize}
+\textbf{Arbitrage}: buy an item in one market, sell it in another market for a higher price
+\begin{itemize}
+	\item To make riskless profit, a trader can buy another currency where its price is low and sell to the original currency at a higher price at another location
+	\item Demand where price is low will shift right, and supply where price is high will shift right
+	\item Both locations will appreciate and depreciate until exchange rate is equal in the two cities
+	\item \impt So arbitrage removes virtually all geographic differences in exchange rates
+\end{itemize}
+\subsubsection{Long Run: Purchasing Power Parity}
+\textbf{Arbitrage trades}: similar to arbitrage but buy commodities in one country where it is relatively cheaper and sell the commodities in another country where it is more expensive to earn profits
+\begin{itemize}
+	\item USD will stop appreciating against JPY when USD/JPY reaches the PPP Exchange Rate (undervaluation/overvaluation disappears)
+	\begin{equation*}
+		\begin{aligned}
+\text{PPE Exchange Rate} &= \frac{\text{Price of Big Mac in Japan in JPY}}{\text{Price of Big Mac in US in USD}}\\
+&= \frac{\text{Price Level in Japan (JPY)}}{\text{Price level in the US (USD)}}
+		\end{aligned}
+	\end{equation*}
+$$\text{Undervalue} = 100\%\times\left(\frac{\text{PPP exchange rate} - \text{Exchange rate}}{\text{Exchange rate}}\right)$$
+    \item However PPP Theory does not hold exactly because
+    \begin{itemize}
+    	\item Transport costs are not zero
+    	\item Many goods and services are non-tradable (\eg haircuts, education)
+    	\item Barriers to trade may be present
+    	\item Other determinants of exchange rate
+    \end{itemize}
+\end{itemize}
+\textbf{Inflation differentials}\begin{itemize}
+	\item If Japan inflation rate > US inflation rate, USD appreciates against JPY
+	\item If Japan inflation rate < US inflation rate, USD depreciates against JPY
+	\item Proof: see PPP Exchange rate formula and $g_{A/B} \approx g_A-g_B$
+	$$g_{\text{PPP exchange rate}} \approx \text{Japan Inflation rate} - \text{US inflation rate}$$
+	\item \impt PPP Theory predicts that countries with inflation rates $X\%$ per year higher than the US will see their currencies depreciate by $X\%$ per year against the USD
+\end{itemize}
+\subsection{Government's Role in Exchange Market}
+\textbf{Types of central bank's roles}
+\begin{itemize}
+	\item Managed/fixed: \eg HKD/USD market has a fixed exchange rate (aka \textbf{peg})
+	\begin{itemize}
+		\item To prevent/slow down \underline{appreciation} to help exporters and those competing against exports
+		\item To prevent/slow down \underline{depreciation} help import-using industries and consumers
+		\item Keeping the xchange rate stable to reduce the risk for doing international business transactions (SG)
+		\item Pegging one's currency to USD ties one's monetary policy to that of the Fed, gaining credibility to fight inflation
+	\end{itemize}
+	\item Floating/flexible: Central banks allow demand and supply to operate freely in the currency market
+	\item Managed float: \eg would be MAS which manages the value of SGD against a basket of currencies of its major trading partners, but without explicit commitments
+\end{itemize}
+\subsubsection{Managed exchange rate}
+\begin{itemize}
+	\item To prevent \underline{appreciation}, the Central bank sells the currency to increase supply of currency, eliminate excess demand, and accumulates foreign reserves
+	\begin{itemize}
+		\item Amount sold is equal to the amount of excess demand
+	\end{itemize}
+	\item To prevent \underline{depreciation}, the Central bank buys the currency by depleting foreign reserves to eliminate excess supply
+	\begin{itemize}
+		\item Amount bought is equal to the amount of excess supply
+	\end{itemize}
+	\item \impt If currency traders expect depreciation (\eg Thai Baht if they suspect that the Central Bank does not have enough foreign reserves),
+	\begin{itemize}
+		\item Supply of Baht shifts right (Thai residents prefer to hold foreign currencies)
+		\item Demand for Baht shifts left
+		\item Excess supply widens
+		\item Even faster depletion of reserves!
+	\end{itemize}
+    \item \impt If foreign exchange reserves run out
+    \begin{itemize}
+    	\item Allow the Baht to \underline{float}: depreciate
+    	\item \underline{Devalue} the Baht: Lower the peg to a more sustainable level
+    	\item \underline{Impose capital control}: Restrictions on inflows/outflows of funds
+    	\begin{itemize}
+    		\item Effectively lock the currency market
+    		\item Not recommended since this can scare away investor, nobody wants to invest in a country where you cannot take out money
+    	\end{itemize}
+        \item \underline{Borrow from IMF}: IMF as lender of last resort, but it imposes stringent conditions
+    \end{itemize}
+\end{itemize}
+\subsubsection{97/98 Asian Financial Crisis}
+\begin{itemize}
+	\item Bank of Thailand abandoned its peg in July 1997
+	\item Baht depreciated by nearly 20\% but kept weakening
+	\item Thai banks and business with USD debt are now in trouble (could not pay their debts and so bankruptcy?)
+	\item Currency crisis became financial crisis and serious recession!
+	\item By January 1998, the Baht had depreciated by over 50\%
+	\item Investors started to wonder if banks and companies in nearby countries were similarly vulnerable
+	\item Currency crisis spread to rest of Asia
+	\item Thailand Indonesia, and South Korea received IMF loans to stabilize currencies, but had to \underline{cut budget deficits} and \underline{raise interest rates} during \underline{recessions}
+	\item Malaysia imposed capital controls and devalued the MYR
+	\item Lessons learnt
+	\begin{itemize}
+		\item The need for ample foreign exchange reserves
+		\item The need to monitor private sector borrowing in foreign currency
+	\end{itemize}
+\end{itemize}
+\subsection{Exchange Rate and the Macroeconomy}
+\subsubsection{Exchange rate, AE, and Y}
+\begin{itemize}
+	\item $\uparrow Y$ can lead to currency depreciation
+	\item Similarly, currency depreciation leads to $\uparrow$NX $\Rightarrow$ AE$\uparrow$ $\Rightarrow$ $\uparrow Y^*$
+	\item Hence, open economies can be subjected to demand shocks from exchange rates
+\end{itemize}
+\subsubsection{Exchange rate and monetary policy}
+\begin{itemize}
+	\item Monetary policy affects exchange rate
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\columnwidth]{images/xchangerates2.png}
+	\end{figure}
+    \item \impt \underline{Exchange rate channel} makes monetary policy's impact on output more powerful in an open economy than in a closed one
+    \item If exchange rate is fixed against another currency, there will be loss of monetary autonomy
+    \begin{itemize}
+    	\item \eg HK pegs HKD to USD so HK's i/r must follow US i/r, cannot maintain its own monetary policy
+    	\item Suppose HK's and US's initial interest rates are the same, if the Fed chooses to $\uparrow$i/r and if HK Monetary Authority (HKMA) does not follow suit, investors and traders will put depreciation pressure on the HKD
+    	\item Because US assets are perceived to have higher returns, HKMA cannot defend the peg forever
+    	\item Hence, HKMA must follow the Fed's i/r
+    \end{itemize}
+    \item \textbf{The Impossible Trinity} (The Trilemma): We can at most pick 2 out of 3 policy ideals
+    \begin{itemize}
+    	\item Free Capital Mobility
+    	\item Exchange Rate Management
+    	\item Monetary Autonomy
+    \end{itemize}
+\end{itemize}
+\subsubsection{Exchange rate and the trade balance}
+\textbf{Trade deficit}: Imports - Exports > 0\\
+\textbf{Trade surplus}: Exports - Imports > 0\\
+\textbf{Bilateral trade balance}: measured against one other country\\
+\textbf{Overall trade balance}: measured against the world\\
+\textbf{Trade deficit = Net Financial Inflow}
+\begin{equation*}
+	\begin{aligned}
+		Q^D \text{ of USD} &= Q^S \text{ of USD}\\
+		\text{US trade deficit w/ Japan} &= \text{US net financial inflow from Japan}\\
+		\text{Japan trade surplus w/ US} &= \text{Japan net financial outflow to US}\\
+	\end{aligned}
+\end{equation*}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{images/tradebalance.png}
+\end{figure}
+
 \end{multicols}
 
 
