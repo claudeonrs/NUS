@@ -1,0 +1,70 @@
+---
+title: "Tutorial 7 Worksheet AY 22/23 Sem I"
+subtitle: DSA2101
+output:
+  html_document: default
+  pdf_document:
+    keep_tex: yes
+---
+
+# Good and Bad Graphs
+
+For this section, your tutor will introduce some charts to you during the class,
+and discuss their merits and deficiencies. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(knitr)
+l_themes <- read_csv("../data/lego/themes.csv", col_types = cols("i", "c", "i"))
+l_sets <- read_csv("../data/lego/sets.csv", 
+                     col_types = cols("c", "c", "i", "i", "i"))
+l_inv_sets <- read_csv("../data/lego/inventory_sets.csv", 
+                     col_types = cols("i", "c", "i"))
+l_parts <- read_csv("../data/lego/parts.csv", col_types = cols("c", "c", "i"))
+l_part_cat <- read_csv("../data/lego/part_categories.csv",
+                     col_types = cols("i", "c"))
+l_inv_parts <- read_csv("../data/lego/inventory_parts.csv", 
+                     col_types = cols("i", "c", "i", "i", "c"))
+l_inv <- read_csv("../data/lego/inventories.csv", 
+                     col_types = cols("i", "i", "c"))
+l_colors <- read_csv("../data/lego/colors.csv",
+                     col_types = cols("i", "c", "c", "c"))
+```
+
+# Additional dplyr practice 
+
+Here are some questions for additional practice with dplyr, and data exploration.
+The questions use the lego tables from tutorial 6.
+
+1. Theoretically, we can use both the `inventory_parts` table and the `sets` table 
+   to compute the number of parts in a set. Do the numbers tally?
+   
+```{r}
+l_inv_parts %>% 
+  filter(is_spare == "f") %>% 
+  group_by(inventory_id) %>% 
+  summarise(num_parts = sum(quantity), .groups="drop") %>% 
+  left_join(select(l_inv, 1, 3), by=c("inventory_id" = "id")) %>% 
+  left_join(select(l_sets, set_num, num_parts), by="set_num") %>% 
+  filter(num_parts.x != num_parts.y)
+```
+
+2. Within spare parts, which are the top 5 most common part categories?
+```{r}
+l_inv_parts %>% filter(is_spare == "t") %>% 
+  select(part_num, quantity) %>% group_by(part_num) %>% 
+  summarise(qty = sum(quantity), .groups="drop") %>% 
+  left_join(select(l_parts, 1, 3), by="part_num") %>% 
+  left_join(l_part_cat, ., by=c("id" = "part_cat_id")) %>% 
+  slice_max(order_by = qty, n=5)
+```
+
+3. Think of one interesting question to ask about this dataset, and try to
+   answer it using the data.
+   
+   Possible ideas:
+   1. What is the trend of new sets/number of pieces in each set being released?
+   2. What is the trend of unique colours in each set over the years?
+   3. Which movie tie-ins have the most sets?
+   4. What kinds of sets have the most number of pieces? Is it possible to 
+      categorize them by theme?

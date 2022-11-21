@@ -1,0 +1,225 @@
+---
+title: "practice II"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r message=FALSE, echo=FALSE, warning=FALSE}
+library(tidyverse)
+library(knitr)
+library(readxl)
+```
+
+Human Development Index is a measure of average achievement in three key dimensions of
+human development: length of life, education level and standard of living. The HDI is the geometric mean
+of normalised indices for each of these three dimensions. HDI values are between 
+0 and 1; a value closer to 1 indicates that an individual from that country has 
+more opportunities to develop to his or her full potential.
+
+The health dimension is assessed by life expectancy at birth. The education
+dimension is measured by mean years of schooling for adults aged 25 years and
+more, and expected years of schooling for children. The standard of living is
+measured by national income per capita. The scores for the three dimensions are
+then aggregated into a composite index using the geometric mean.
+
+The data in `Human Development Index (HDI).xlsx` contains the HDI ratings for
+189 countries from 1990 until 2017. Some values are missing.
+
+# Question 1 (10 marks)
+
+Here is a visualisation of HDI, taken from the internet.
+
+```{r out.width="75%", fig.align='center', echo=FALSE}
+include_graphics("../figs/final_1920_img1.jpg")
+```
+
+In the text box below, comment on the visualisation. Remember to address the 
+following points:
+
+1. What's good and what's bad about this graphic?
+2. What do you understand/conclude from this graphic?
+3. What alternative geoms could have been used?
+4. What questions/visualisations would you follow up with?
+
+## Suggested Solution 
+
+This looks like a pie-chart, with wedges of different sizes. There is essentially
+only one variable: the number of people in the world falling into a particular 
+level of human-development. The rest is chart-junk: the colours are not from a 
+sequential palette. It is not clear if it is the arc-length of the wedge or the 
+radius of the wedge that corresponds to the HDI category. It is also unclear 
+if the HDI values (0.504, 0.643, etc.) correspond to the average HDI within 
+each category, or if these are the values used to decide which category level 
+a country falls into.
+
+My understanding is that 12\% of the world's population does not have the right 
+opportunities to develop.
+
+A simple bar-chart would have sufficed. I would also be interested to know how 
+many countries fall into each category in addition to the number of people in 
+each category. A comparison with another year would give me a better context 
+to the 2017 situation.
+
+# Question 2 (10 marks)
+
+Re-create the following plot, which depicts how HDI has changed from 1990 until
+2017 for two countries in South-East Asia.
+
+```{r out.width="50%", fig.align="center", fig.width=4, fig.height=2}
+hdi <- read_excel("../data/Human Development Index (HDI).xlsx", na="..")
+
+mysin <- filter(hdi, Country %in% c("Singapore", "Malaysia")) %>% 
+  select(2,3,30) %>% 
+  gather(2:3, key=year, value=hdi)
+
+ggplot(mysin) + 
+  geom_tile(aes(x=year, y=Country, fill=hdi), col="white", show.legend=FALSE) +
+  geom_text(aes(x=year, y=Country, label = hdi), col="white", size=6) + 
+  theme(axis.text = element_text(size=17, face="bold"), 
+        axis.ticks = element_blank())+
+  labs(title="", x="", y="")
+```
+
+# Question 3 (10 marks)
+
+Write a function `get_highest_rank` that will compute and print the highest
+yearly rank that a country has reached, and when it first achieved that rank.
+For instance, here is the output for Colombia. *Just to clarify, rank number 1
+is the best - it corresponds to the country with the highest HDI for that year.*
+
+```{r echo=FALSE}
+hdi_tidy <- select(hdi, -1) %>% gather(-1, key=year, value=hdi)
+
+get_highest_rank <- function(country, data) {
+  rank_added <- group_by(data, year) %>% 
+    mutate(rank = min_rank(desc(hdi)))
+  
+  top_rank <- group_by(rank_added, Country, add=FALSE) %>% 
+    arrange(rank, year, .by_group = TRUE) %>% 
+    filter(row_number() == 1, Country == country)
+
+  cat(paste0("The highest rank achieved by ", country, " was ", 
+             top_rank$rank, "."), "\n")
+  cat(paste0("This was first achieved in ", top_rank$year, "."), "\n")
+}
+```
+
+```{r}
+get_highest_rank("Colombia", hdi_tidy)
+```
+
+# Question 4 (20 marks)
+
+Suppose we wish to invesigate the change in HDI over the years. Create **two
+plots** that visualise this data, and summarize your findings/investigations in
+words. There is an additional dataset (`country_conti.csv`) that groups the
+countries into broad geographical regions, in case you wish to use it.
+
+Remember that you will graded on your ability to follow up on an initial 
+hypothesis, so the two plots should ideally be related, with the second one 
+uncovering or explaining more about the data than the first.
+
+## Some Possible Plots
+
+This is the most direct one to make; in general the HDI is going up.
+
+```{r fig.align='center', out.width='70%'}
+regions <- read.csv("../data/country_conti.csv", stringsAsFactors = FALSE)
+hdi_tidy <- left_join(hdi_tidy, regions, by="Country") %>% 
+  mutate(year = as.numeric(year))
+
+filter(hdi_tidy, !is.na(hdi)) %>%  
+  ggplot() +  
+  geom_line(aes(x=year, y=hdi, group=Country), alpha=0.2) + 
+  labs(title="Human Development Over the Years", x="Year", y="HDI")
+```
+
+Now if we facet by region, we see that a judicious arrangement of regions 
+allows to see how poor the African nations are doing.
+
+```{r out.width="70%", fig.align='center'}
+hdi2 <- mutate(hdi_tidy, 
+       Continent = case_when(
+         str_detect(Region, "Asia") ~ "Asia",
+         Region == "Oceania" ~ "Oceania",
+         str_detect(Region, "Europe") ~ "Europe",
+         str_detect(Region, "Africa") ~ "Africa",
+         TRUE ~ "Americas"
+       )) %>%
+  mutate(Region = factor(Region, levels=c("Western Asia", "Central Asia", 
+                                          "South-Eastern Asia", "Southern Asia", 
+                                          "Eastern Asia", 
+                                          "Western Africa", "Middle Africa", 
+                                          "Southern Africa", "Northern Africa", 
+                                          "Eastern Africa",
+                                          "South America", "Central America", 
+                                          "North America", "Caribbean", 
+                                          "Oceania", "Western Europe", "Eastern Europe")))
+
+filter(hdi2, !is.na(hdi)) %>%  
+  ggplot() +  
+  geom_line(aes(x=year, y=hdi, group=Country, col=Continent), 
+            show.legend = FALSE, alpha=0.6) + 
+  facet_wrap(~Region, ncol=5) + 
+  labs(title="HDI over time, by region and continent")
+```
+
+Next, we follow the categorization from question 1, to see how the distribution 
+of categories has changed over the 27 years.
+
+```{r out.width="70%", fig.align='center'}
+hdi2 <- mutate(hdi2, hdi_cat = case_when(
+                 hdi <= 0.504 ~ "Low",
+                 hdi <= 0.645 ~ "Medium",
+                 hdi <= 0.757 ~ "High",
+                 TRUE ~ "Very High")) %>%
+  mutate(hdi_cat = factor(hdi_cat, levels=c("Low", "Medium", "High", "Very High")))
+
+tmp <- filter(hdi2, year %in% c(2007, 2017)) %>%
+  count(year, Region, hdi_cat) %>% 
+  spread(key=hdi_cat, value=n, fill=0) %>% 
+  gather(Low:`Very High`, key=hdi_cat, value=n) %>% 
+  mutate(hdi_cat = factor(hdi_cat, levels=c("Low", "Medium", "High", "Very High")))
+ggplot(tmp) +
+  geom_col(aes(x=hdi_cat, y=n, fill=as.factor(year)), position="dodge") +
+  facet_wrap( ~ Region, ncol=5) +
+  theme(legend.position = "bottom", axis.text.x=element_text(size=5)) + 
+  labs(title="Change in HDI Category Distribution in 10 years", y="Country count",
+       x="Category") +
+  scale_fill_discrete(name="Year")
+```
+
+A final plot to see how countries in the low category in 1990 are doing now.
+
+```{r out.width="85%", fig.align='center'}
+low_1990 <- filter(hdi2, year == 1990, hdi_cat == "Low") %>%
+  select(Country)
+low_now <- left_join(low_1990, hdi2, by="Country") %>%
+  filter(year %in% c(1990, 2017))
+
+ggplot(low_now, aes(x=year, y=hdi)) +
+  geom_point(alpha=0.4) + 
+  geom_line(aes(group=Country), alpha=0.4) + facet_wrap(~Continent) + 
+  expand_limits(x=c(1985,2020)) + 
+  geom_hline(yintercept=c(0.00, 0.504, 0.645, 0.757), lty=3, col='red') + 
+  theme_minimal() + 
+  labs(x="Year", y="HDI", title="Where are they now?") + 
+  scale_x_continuous(breaks=c(1990, 2017))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

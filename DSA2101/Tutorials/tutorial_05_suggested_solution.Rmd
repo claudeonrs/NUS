@@ -1,0 +1,182 @@
+---
+title: "Tutorial 5 Worksheet AY 22/23 Sem 1"
+subtitle: DSA2101
+output:
+  html_document: default
+  pdf_document:
+    keep_tex: yes
+---
+
+# Restaurants Data
+
+In chapter 2, we worked with the JSON version of the restaurants data. The 
+following code converts the file into a tibble within R. Let us use it to 
+practice with `dplyr` data manipulations.
+
+```{r message=FALSE, warning=FALSE, results='hide'}
+library(tidyverse)
+library(jsonlite)
+
+rest_json <- stream_in(file("../data/restaurants_dataset.json")) %>% 
+  unnest(cols=c(address, grades))
+```
+
+Recall that in the lecture, there 25359 restaurants. The above procedure has 
+removed the 738 records with NULL in the grades section, but it retains those with 
+"Not Yet Graded".
+
+The output tibble should look like this:
+```{r echo=FALSE}
+head(rest_json)
+```
+
+1. As you can see, the `coord` column contains a list instead of numeric elements. 
+  Separate `coord` into two columns, lat and long, and drop the original `coord` column.
+  Assign the name `q1_tbl` to the new tibble. It should look like this:
+```{r }
+q1_tbl <- mutate(rest_json, 
+                   lat = sapply(coord, `[`, 2), long=sapply(coord, `[`, 1), 
+                   coord = NULL, .after=building)
+
+# mutate can also work with a function that returns multiple columns:
+# 
+get_lat_long <- function(list_vec) {
+  lat <- sapply(list_vec, `[`, 2)
+  long <- sapply(list_vec,  `[`, 1)
+  data.frame(lat = lat, long = long)
+}
+q1_tbl <- mutate(rest_json, 
+                 get_lat_long(coord), coord=NULL, .after=building)
+```
+
+2. Find the range of lat and long for the restaurants in `q1_tbl`. Are there 
+   mistakes in the dataset? Identify one restaurant with incorrect coordinates.
+```{r}
+q1_tbl %>% select(lat, long) %>% summary()
+# filter(q1_df, lat < 40 | lat > 41 | long < -75 | long > -73) %>% View()
+```
+
+2. How many restaurants in Manhattan serve American cuisine?
+
+If you inspect the cuisine types, you would find that American is listed with
+an extra space at the back. We can trim off that space first before listing the
+count.
+
+```{r}
+q1_tbl %>% mutate(cuisine = str_trim(cuisine)) %>%
+  filter(borough == "Manhattan", cuisine == "American") %>%
+  select(restaurant_id) %>% unique() %>% NROW
+# 3199 restaurants
+```
+
+4. Find the restaurants that have been graded the most number of times. 
+   Include the restaurant name in your output. Store your output as `q4_tbl`. 
+   The columns should match this output (only first 2 rows shown):
+```{r}
+q4_tbl <- q1_tbl %>% filter(grade != "Not Yet Graded") %>%
+  group_by(restaurant_id) %>%
+  summarise(name = name[1], n=n(), .groups="drop") %>%
+  slice_max(n, n = 1)
+head(q4_tbl, n=2)
+```
+
+5. For each restaurant, compute the shortest duration (in days) between gradings. 
+   You may want to take a look at the `difftime` function in R.
+```{r}
+q5_tbl <- q1_tbl  %>% #head() %>%
+  filter(grade != "Not Yet Graded") %>%
+  arrange(restaurant_id, desc(date)) %>%
+  mutate(d2 = as.numeric(difftime(lag(date), date, units="days"))) %>%
+  group_by(restaurant_id) %>%
+  filter(row_number() > 1) %>%
+  filter(d2 == min(d2)) %>% ungroup() %>% 
+  select(restaurant_id, name, d2) %>% arrange(d2)
+head(q5_tbl)
+```
+
+6. The 5-number summary of a dataset consists of the minimum, 1st-quartile,
+   median, 3rd-quartile and maximum of the dataset. Compute the five-number summary
+   score for each grade. Include the count for each grade.
+```{r}
+fivenum <- function(x) {
+  out <- as.vector(summary(x))
+  data.frame(min=out[1], q1=out[2], median=out[3], q3=out[5], max=out[6])
+}
+q6_tbl <- q1_tbl %>% filter(grade != "Not Yet Graded") %>%
+  group_by(grade) %>%
+  summarise(fivenum(score))
+```
+
+7. Count the number of gradings in each calendar month in each borough.  It is
+   ok for month to be of class "character".
+```{r}
+q7_tbl <- q1_tbl %>% mutate(month = cut(date, breaks="month"),
+                    yr = cut(date, breaks="year")) %>%
+  group_by(borough, yr, month) %>%
+  summarise(month_total=n(), .groups = "drop_last") %>%
+  mutate(yr_total = sum(month_total)) %>% ungroup() %>%
+  select(-yr)
+q7_tbl
+```
+
+8. Recode the following cuisines as `Asian`, and then find the proportion of Asian
+   restaurants in each borough:
+      * Vietnamese/Cambodian/Malaysia
+      * Thai
+      * Chinese
+      * Chinese/Japanese
+      * Pakistani
+      * Korean
+      * Indonesian
+      * Indian
+      * Asian
+   You may want to take a look at `recode()`.
+
+```{r}
+q8_tbl <- q1_tbl %>% mutate(cuisine2 = recode(cuisine,
+                                      `Vietnamese/Cambodian/Malaysia`="Asian",
+                                      Thai = "Asian", Chinese = "Asian",
+                                      `Chinese/Japanese` = "Asian",
+                                      Pakistani = "Asian",
+                                      Korean = "Asian", Indonesian = "Asian",
+                                      Indian = "Asian",
+                                      default = cuisine)) %>%
+  group_by(borough) %>%
+  summarise(prop = sum(cuisine2 == "Asian")/n(), .groups="drop")
+```
+
+9. Use `across` to compute the min. and max. letter grade and score for each
+   restaurant.
+```{r}
+q1_tbl %>% filter(grade != "Not Yet Graded") %>%
+  group_by(restaurant_id, name ) %>%
+  summarise(across(c(grade, score), .fns=list(min = min, max=max)),
+            num_gradings=n())
+```
+
+10. List the names of all restaurants that have "C" as their first grade, and
+   "A" as the second grade.
+
+```{r}
+q10_tbl <- q1_tbl %>% group_by(restaurant_id) %>%
+  summarise(tf = if_else((first(grade, date) == "C") &&
+                           (nth(grade, 2, date) == "A"), 1, 0),
+            name = name[1]) %>%
+  filter(tf == 1)  %>% sample_n(15)
+
+q10a_tbl <- q1_tbl %>% group_by(restaurant_id) %>%
+  arrange(date, .by_group = TRUE) %>%
+  summarise(tf = if_else(grade[1] == "C" && grade[2] == "A", 1, 0),
+            name = name[1]) %>%
+  filter(tf == 1)  %>% sample_n(15)
+```
+
+11. List all restaurants with only "A" grades.
+
+```{r}
+q11_tbl <- q1_tbl %>%
+  group_by(restaurant_id) %>%
+  filter(!(any(grade != "A")))%>%
+  ungroup() %>% 
+  select(restaurant_id,name) %>% unique()
+```

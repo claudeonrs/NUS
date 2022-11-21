@@ -1,0 +1,221 @@
+---
+title: "Tutorial 4 Worksheet AY 22/23 Sem 1"
+subtitle: DSA2101
+output:
+  pdf_document: default
+  html_document: default
+urlcolor: blue
+---
+
+```{r message=FALSE, echo=FALSE, warning=FALSE}
+library(rvest)
+library(httr)
+library(tidyverse)
+```
+
+## Practice with Web Scraping
+
+Read in the English Premier League (football) scores from
+http://www.worldfootball.net for the seasons 2010/2011 and 2021/2022 (just the
+two seasons). You will probably have to navigate to England > Schedule or
+Results and Tables to see the table. Your data frame should have the following
+columns at this point:
+
+If you wrote a function to scrape one of the links, and then used `lapply` with 
+it, that is very good. It shows good planning and good R code.
+
+In the code below, I used a "for" loop for a couple of reasons:
+
+1. I wouldn't be re-using the code elsewhere in this tutorial,
+2. As each link required a separate scrape, I was afraid one of them would fail.
+   Hence I included print/cat statements to update my progress. If it did fail,
+   I would know where it broke down.
+```{r eval=FALSE, echo=FALSE}
+all_tables <- NULL
+season <- 2010
+for (season in c(2010,2021)){
+  for(ii in 1:38) {
+    epl_url3 <- paste("https://www.worldfootball.net/schedule/eng-premier-league",
+                      season, season+1, "spieltag", sep="-", collapse="")
+    
+    epl_url3a <- paste(epl_url3, ii, sep="/", collapse="")
+    html_page <- read_html(epl_url3a) 
+    nodes2 <- html_elements(html_page, css="#site :nth-child(4) .standard_tabelle") %>% 
+      html_table()
+    nodes2 <- nodes2[[1]]
+    nodes2 <- cbind(nodes2, season=paste(season, season+1, sep="-", collapse=""))
+    all_tables <- rbind(all_tables, nodes2)
+    cat("done with round", ii, ", season", season, "\n")
+    cat(NROW(all_tables), "\n")
+  }
+  cat("done with season", season, "\n")
+}
+```
+
+Some of you obtained the full table for each season from a slightly different 
+link:
+````
+https://www.worldfootball.net/all_matches/eng-premier-league-2010-2011/
+````
+
+The important thing about web-scraping is to realise that we almost always need
+to inspect the structure of the website and guess/decipher patterns about the
+URL.
+
+```{r echo=FALSE}
+all_tables <- readRDS("../data/epl_raw_2010_2021.rds")
+head(all_tables)
+```
+
+## Cleaning up the dataset
+
+If you are having problems scraping the tables, work with the prepared dataset
+on Canvas: `epl_raw_2010_2021.rds`. As you can see, there are issues with the
+dataset. Address the following issues
+
+1. Fill up the empty date fields with the most recent date above. For instance, 
+   Rows 2 - 6 should all contain `14/08/2010` in column `X1`.
+   
+```{r echo=FALSE}
+i <- 1
+X1a <- all_tables$X1
+m_recent <- X1a[i]
+
+for(i in 2:length(X1a)) {
+  if(X1a[i] == "") 
+    X1a[i] <- m_recent else
+      m_recent <- X1a[i]
+}
+
+all_tables$X1 <- X1a
+```
+
+An alternative is to use the `fill` function from the tidyr package, which is 
+part of tidyverse.
+
+```{r}
+library(tidyverse)
+all_tables <- readRDS("../data/epl_raw_2010_2021.rds") %>% 
+  mutate(X1 = if_else(X1 == "", NA_character_, X1)) %>% 
+  fill(X1, .direction = "down")
+```
+
+
+2. Split up the column with scores - the scores in parentheses are half-time scores.
+   The scores outside parentheses are the full-time scores of each match. 
+
+Your final table should resemble this, with 760 rows in it.
+```{r echo=FALSE}
+all_tables <- all_tables[, -c(4, 7)]
+colnames(all_tables) <- c("date", "time", "home", "away", "scores", "season")
+
+ind_scores <- str_match(all_tables$scores, "([0-9]+):([0-9]+) \\(([0-9]+):([0-9]+)\\)")
+ind_scores <- apply(ind_scores[, -1], 2, as.numeric)
+colnames(ind_scores) <- c("final_home", "final_away", "half_home", "half_away")
+all_tables2 <- cbind(all_tables, ind_scores)
+#knitr::kable(all_tables2[1:4,])
+```
+
+It is common, at least to begin with, to model the number of goals scored in a 
+football match using a Poisson distribution. With continuous distributions, we
+can use qq-plots to inspect how well the distribution fits to the data. But
+these are not appropriate for discrete distributions. In this tutorial, we shall
+see how we can use something known as a *rootogram* to assess the fit visually.
+
+>A rootogram displays the observed counts against the expected counts from a 
+>fitted distribution. 
+
+Formally speaking: 
+
+Let $X_i$ be the number of **home goals** scored in a game in the 2010-2011 season, 
+$i$ ranging from 1 to 380. We assume that $X_i \sim Pois(\lambda)$. We are going 
+to find the Maximum Likelihood Estimate (MLE) for $\lambda$ and then assess how 
+well that distribution fits to the data.
+
+To prepare the data for the rootogram, perform the following steps:
+
+1. Extract the data for the 2010-2011 season and store it in a data frame `s1011`.
+2. Tabulate the number of matches where 0 home goals, 1 home goal, 2 home goals,
+   etc. were scored. In other words, let $N_j = \sum_{i=1}^{380} I(X_i = j)$, for
+   $j = 0, 1, 2, \ldots, 7$. These are the observed counts. At this point, you
+   should be able to make this bar chart:
+
+```{r fig.align='center', echo=FALSE}
+s1011 <- all_tables2[all_tables2$season == "2010-2011", ]
+barplot(table(s1011$final_home), names.arg = 0:7, xlab="Home goal count",
+        border=NA)
+```
+3. Compute the mean number of **home goals** scored in this 2010-2011 season.
+   Store it in a (scalar) variable `lam_est`. This is the MLE for $\lambda$.
+   
+```{r echo=FALSE}
+lam_est <- mean(as.numeric(s1011$final_home))
+```
+
+3. Using the estimated lambda, compute the expected number of games with 0, 
+   1, 2, etc. home goals. In other words, compute 
+   \begin{equation*}
+   \hat{N}_j = 380 \times P(X_i = j \; | \; \lambda = \hat{\lambda}), \quad j=0,1,\ldots,7
+   \end{equation*}
+   Store your vector as `exp_goal_count`.
+
+```{r echo=FALSE}
+exp_goal_count <- dpois(0:7, lambda=lam_est)*380
+#rootogram(table(s1011$final_home), exp_goal_count, type = "standing", scale = "raw")
+#rootogram(table(s1011$final_home), exp_goal_count, type = "deviation")
+```
+
+5. Now, we can construct the rootogram with:
+```{r echo=TRUE, fig.align='center', message=FALSE}
+library(vcd)
+rootogram(table(s1011$final_home), exp_goal_count)
+```
+
+The gray bars are the observed counts from earlier. The red lines represented the 
+counts using the fitted distribution. The mis-alignments with the horizontal axis 
+denote residuals. With the rootogram, we can tell where our fitted model is not 
+appropriate, and in which direction.
+
+Construct rootograms for the home and away goals in both seasons, and think 
+about the following:
+
+* Is the Poisson appropriate for all of them?
+    * Yes, it is. We can see that the gaps (close to the horizontal axis) 
+      are not very big, and do not have a pattern.
+* We can visually assess things now, but how can we make things more objective,
+  i.e. to decide if the fit is acceptable or not?
+    * Suppose we are choosing between a Poisson distribution and another 
+      discrete distribution for one of the datasets above. Then we can use the 
+      residuals to decide which one fits better. Residuals are defined to be 
+      observed minus fitted values. Above, our observed values are in the 
+      $N_j$'s, and the expected counts are from `dpois() * 380`. If a model 
+      fits well, residuals should be small, randomly distributed about 0. There 
+      shouldn't be any patterns in them. If there, it gives us an indication 
+      about how to improve our model.
+       
+      To compute residuals, we can use:
+```{r}
+# Computing residuals on sqrt scale:
+resids <- sqrt(table(s1011$final_home)) - sqrt(exp_goal_count)
+
+# Computing residuals on raw scale:
+resids <- table(s1011$final_home) - exp_goal_count
+```
+
+* Why is it a square-root scale on the vertical axis?
+    * This is because, working with counts, we tend to have some counts that are 
+      very large, and some that are very close to 0. In such cases, taking a 
+      square-root transformation allows us to fit both extremes on a single plot 
+      better. It is similar to taking the log-transformation. We will see more 
+      about this in chapter 5.
+
+
+## Learning points
+
+* Scraping data is tedious; there is no single method that works for all websites.
+* The rootogram is a useful plot for assessing if our data conforms to a particular 
+  discrete distribution. Here, we used a Poisson, but we could also use a Binomial,
+  Negative Binomial or Hypergeometric as a reference. 
+  *Don't forget our Probability material!*
+* The concept of residuals is relevant no matter how complex or simple a model we fit.
+  It gives us clues about what to investigate next.

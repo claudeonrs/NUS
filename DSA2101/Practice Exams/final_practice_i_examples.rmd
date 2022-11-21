@@ -1,0 +1,190 @@
+---
+title: "Practice I Example Solutions"
+author: "Vik"
+output:
+  html_document: default
+  pdf_document: default
+---
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+library(readxl)
+library(lubridate)
+library(classInt)
+```
+
+# Question 1: Monthly Revenue
+
+## Question Statement
+
+The monthly revenue is computed as `sum(UnitPrice * Quantity)`. Comment on the
+quality of the following plot, which is meant to depict the monthly revenue that
+the company receives. Is it accurate? *Hint: Check the range of invoice dates.*
+
+If you feel that there are mistakes in this plot, produce a corrected one. On
+the other hand, if you feel this plot cannot be improved, create a variation of
+it using at least one different geom or aesthetic.
+
+```{r echo=FALSE, fig.align="center", out.width="70%"}
+retail_clean <- readRDS("../data/retail_clean.rds") %>% 
+  filter(UnitPrice > 0) %>% 
+  mutate(idate = as.Date(InvoiceDate))
+  
+monthly_rev <- mutate(retail_clean, month = month(InvoiceDate, label=FALSE)) %>% 
+  group_by(month) %>% 
+  summarise(rev = sum(UnitPrice*Quantity)/1e3, .groups="drop")
+ggplot(monthly_rev) +
+  geom_col(aes(x=factor(month, levels=1:12), y=rev)) +
+  labs(title="Monthly Revenue", y="Thousand Pounds", x="Month")
+```
+
+## Solution
+
+Here is a corrected version of the plot. It separates the two December months,
+which have only been partially observed.
+
+```{r fig.align="center", out.width="75%"}
+monthly_rev <- mutate(retail_clean, yr_mth = strftime(InvoiceDate, "%Y-%m")) %>%
+  group_by(yr_mth) %>%
+  summarise(rev = sum(UnitPrice*Quantity)/1e3,
+            days = as.numeric(max(InvoiceDate) - min(InvoiceDate)),
+            .groups="drop") %>%
+  mutate(project = c(1, rep(0, 11), 1)) %>%
+  mutate(projected = if_else(project==1, rev/days * 31, rev))
+ggplot(monthly_rev) +
+  geom_col(aes(x=factor(yr_mth), y=projected, fill=as.factor(project)),
+           show.legend = FALSE) +
+  labs(title="Monthly Revenue", y="Thousand Pounds", x="Month",
+       subtitle="Revenue for Dec. months have been estimated from fewer than 31 days.")
+```
+
+# Question 2: Christmas Shopping
+
+## Question statement
+
+The company would like to figure out when people begin Christmas shopping, so
+that they can start preparing for it. In the box below, write the R code that
+will perform the following tasks:
+
+In this question, a line item refers to a record in the dataset. For instance, 
+the first line item refers to StockCode 85123A bought in Invoice 536365.
+
+1. Create a new column from `InvoiceDate`, that is of class `Date`.
+2. Use a regular expression to count the number of *line items* each day, that 
+are related to Christmas. Look for the following keywords in the Description of 
+each item: CHRISTMAS, XMAS, SANTA or REINDEER.
+3. Create a visualisation of this daily count, and use it to conclude when 
+Christmas shopping begins.
+
+## Solution
+
+```{r fig.align="center"}
+xmas <- filter(retail_clean,
+               str_detect(Description,
+                          "(CHRISTMAS)|(XMAS)|(SANTA)|(REINDEER)")) %>%
+  group_by(idate) %>% count() %>% ungroup() 
+ggplot(xmas) + geom_line(aes(x=idate, y=n)) +
+  labs(x='Date', y='Number of item orders',
+       title='How early does Xmas shopping begin?')
+```
+
+Let us compute the mean number of detections of Xmas items for each month, along 
+with the standard deviation.
+
+```{r}
+xmas %>% mutate(mths= cut(idate, "months")) %>% 
+  group_by(mths) %>% 
+  summarise(mm = mean(n), sd=sd(n), .groups="drop") %>% 
+  knitr::kable()
+```
+
+It looks as though the month of July has a dramatic pick-up from June. Hence we
+conclude Xmas shopping begins in July.
+
+# Growth outside United Kingdom
+
+## Question statement
+
+The company in question is located within the United Kingdom (UK). Naturally,
+most of the revenue comes from within the UK. In this question, we shall 
+investigate the change in revenue to countries in Asia.
+
+Use the country table `cty_coords.rds` to create the following chart, where
+point size indicates the revenue from Asian countries in the *third* quarter of
+2011.
+
+```{r}
+cty <- readRDS("../data/cty_coords.rds")
+out_UK <- left_join(retail_clean, cty, by=c("Country"="rtl")) %>% 
+  mutate(quarter = cut(InvoiceDate, "quarters")) %>% 
+  filter(quarter == "2011-07-01", group == "Asia") %>% 
+  group_by(Country) %>% 
+  summarise(total_rev = sum(UnitPrice * Quantity),
+            long=long[1], 
+            lat = lat[1], .groups="drop")
+out_UK$label <- c("Australia, 32K", "Israel, 6K", "Japan, 4K", 
+                  "Singapore, 4K", "UAE, 1K")
+
+ggplot(out_UK) + geom_point(aes(x=long, y=lat, size = total_rev),
+                            alpha=0.8, colour ="royalblue2") + 
+  coord_fixed() + 
+  geom_text(aes(x=long, y=lat, label=label, 
+                hjust=c(1.2, -.2, 1.1, -.1, -.2)), size=3) +
+  labs(title="Revenue from Asian countries, Q3 2011", 
+       y="Latitude", x="Longitude") + 
+  scale_size(name="Revenue")
+```
+
+# Customer features
+
+## Question statement
+
+The table `cust_features.rds` contains the following features for each customer 
+id in the retail table:
+
+1. Country: The country in which the customer is located.
+2. CustomerID: The customer id.
+3. m_amt: The average revenue per invoice to this customer.
+4. m_item: The average number of items ordered by this customer, per invoice.
+5. m_uq: The average number of unique items ordered by this customer, per invoice.
+6. n_inv: The number of invoices issued to this customer.
+7. group: A grouping of countries into continents, except for United Kingdom.
+8. grp2: Same as `group`, except for an abbreviation of United Kingdom to UK.
+
+Here is one plot that begins to explore the relationship between unique items 
+bought and total number of items bought by a customer.
+
+```{r echo=FALSE}
+cust_features <- group_by(retail_clean, Country, CustomerID, InvoiceNo) %>%
+  summarise(amt = sum(UnitPrice * Quantity),
+            item_total = sum(Quantity),
+            item_uq = n_distinct(StockCode), .groups="drop_last") %>%
+  summarise(m_amt = mean(amt),
+            m_item = mean(item_total),
+            m_uq = mean(item_uq),
+            n_inv = n_distinct(InvoiceNo))
+cust_features <- left_join(cust_features,
+                           select(cty, rtl, group),
+                           by=c("Country" = "rtl")) %>%
+  ungroup()
+cust_features <- mutate(cust_features,
+                        grp2 = if_else(Country == "United Kingdom", "UK", group))
+```
+
+```{r}
+#filter(cust_features, m_uq > 1, grp2 != "S_America", !is.na(grp2)) %>%
+#  ggplot() +
+#  geom_point(aes(x=m_item, y=m_uq, col=grp2), alpha=0.2, show.legend = FALSE) +
+#  facet_wrap( ~ grp2) +
+#  scale_x_log10() + scale_y_log10()
+
+filter(cust_features, m_uq > 1, grp2 != "S_America", grp2 != "NA", grp2!='Africa') %>%
+  ggplot() +
+  geom_point(aes(x=m_item, y=m_uq, col=grp2), alpha=0.3, show.legend = FALSE) +
+  facet_wrap( ~ grp2) +
+  scale_x_log10() + scale_y_log10() + 
+  labs(title="Number of unique items and total number of items", 
+       x="Total number of items", y="Unique",
+       subtitle="(103 customers with only one unique item removed)")
+```
+
+

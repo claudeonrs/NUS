@@ -598,6 +598,10 @@ Note that post-order, in-order, and pre-order of expression tree will produce po
 \impt Recursive procedure!
 
 \subsection{Binary Search Trees (BST)}
+\textbf{Some interesting stuff}
+\begin{itemize}
+	\item We can construct an AVL Tree/BST from a sorted array in $O(N)$ time where $N$ is the size of the array
+\end{itemize}
 \textbf{Visualgo Hacks}:
 \begin{itemize}
 	\item Possible number of structurally different BSTs with $n$ distinct elements
@@ -914,10 +918,19 @@ while S is not empty {
     \begin{itemize}
     	\item Undirected: need to make sure that the path goes back to parent node
     	\begin{itemize}
+    		\item \impt Running time is $O(V)$ if the graph is not necessarily connected; can just stop if there are more than $V-1$ edges traversed in that particular connected component
     		\item Possible false positive: two-nodes cycle, need to protect against this
     	\end{itemize}
         \item Directed: 3 states: unvisited, not completed, completed (Tut 9)
         \item \impt Alternatively can also use UFDS!
+    \end{itemize}
+    \item \textbf{Alternative DFS cycle detection in directed graph}
+    \begin{itemize}
+    	\item There is a cycle in a graph only if there is a back edge present in the graph
+    	\item Check vertices currently in the recursion stack to detect back edge
+    	\begin{itemize}
+    		\item Basically check if we visit a vertex where it is on the path we are currently tracing
+    	\end{itemize}
     \end{itemize}
 	\item \textbf{Topological sort}: Module selection
 	\begin{itemize}
@@ -1101,6 +1114,10 @@ if (dist[v] > dist[u] + weight of edge uv) {
 	dist[v] = dist[u] + weight of edge uv;
 }
 \end{lstlisting}
+\item \impt Last round ($V^{th}$ round) is used to check \textbf{negative weight cycle}
+\begin{itemize}
+	\item If there is anymore changing edgeweight, then it has negative cycle and thus not valid
+\end{itemize}
 \end{itemize}
 \subsection{Minimum Spanning Tree (MST)}
 \textbf{MST Problem}: given connected graph $G$ with positive edge weights, find a minimum weight set of edges that connects all of the vertices
@@ -1207,6 +1224,14 @@ it.next();
 // must call next first
 it.remove();
 \end{lstlisting}
+    \item \textbf{Mix and Match}:
+    \begin{itemize}
+    	\item Sometimes it's useful to combine two data structures rather than maintaining two separate DS
+    	\begin{itemize}
+    		\item \eg BST + Sorted List for easy successor and printOrder access
+    		\item \eg Queue + Doubly Linked List + BST
+    	\end{itemize}
+    \end{itemize}
 
 \end{itemize}
 

@@ -498,7 +498,7 @@ $$\text{Cash} - \text{Expenses} = \text{Cash Over and Short}$$
 \begin{description}
 	\item[Subsidiary accounts] Individual accounts of customers under accounts receivable\\
 	e.g. \textit{Accounts Receivable - Customer Name}
-	\item[Expected Credit Loss] Alternative names:
+	\item[Expected Credit Loss] is an expense; Alternative names:
 	\begin{itemize}
 		\item Bad Debt Expense
 		\item Accounts Receivable Impairment Loss
@@ -507,6 +507,7 @@ $$\text{Cash} - \text{Expenses} = \text{Cash Over and Short}$$
     \item[Allowance for Bad Debts/Loss Allowance] a Contra-asset (XA)\\
     Allowance method is preferred under Accrual Accounting Principle as it accounts receivable can be paid by customers in 5 years? 10 years? which might be uncertain
     $$\text{AR} - \text{Loss Allowance} = \text{Net AR}$$
+    ending balance for loss allowance account in a given year must be equal to the expected loss allowance from probability stuff (need to adjust using ECL)
 \end{description}
 \textbf{How to estimate ending balance for Loss Allowance?}
 \begin{itemize}
@@ -518,6 +519,26 @@ $$\text{Cash} - \text{Expenses} = \text{Cash Over and Short}$$
 	\end{itemize}
     \item Result is the ending balance of Loss Allowance Account
 \end{itemize}
+\impt \textbf{Journal entries}\vspace{0.5em}
+\begin{itemize}
+	\item \underline{At the end of FY}:\vspace{0.5em}\\
+	\begin{tabular}{llll}
+		\multicolumn{4}{l}{Expected Credit Loss}\\
+		& Loss Allowance& &
+	\end{tabular}\vspace{0.5em}
+    \item \underline{To write-off uncollectible AR}:\vspace{0.5em}\\
+\begin{tabular}{llll}
+	\multicolumn{4}{l}{Loss Allowance}\\
+	& Accounts Receivable& &
+\end{tabular}\vspace{0.5em}
+    \item \underline{To reinstate AR}:\vspace{0.5em}\\
+    \begin{tabular}{llll}
+    	\multicolumn{4}{l}{Accounts Receivable}\\
+    	& Loss Allowance& &
+    \end{tabular}\vspace{0.5em}
+\end{itemize}
+
+
 \subsection{Notes Receivable}
 \begin{itemize}
 	\item \textbf{Maturity date}: due date; when it is expressed in terms of month, will include the date of issuance, but when expressed in terms of day, will not include the date of issuance but start counting for the day after
@@ -1034,6 +1055,7 @@ Reissuance of Treasury Shares
     	\item Preferred stockholders paid \underline{dividends in arrears} and current dividends before common stockholders receive any if at all
     	\item \textbf{Dividends in arrears}: unpaid dividends from past years
     	\item Dividends in arrears do not represent actual liabilities, so not recorded in accounts, but is \textit{recorded in notes to FS}
+    	\item Example: if dividend in arrears is $5\%$ cumulative and the total value of preferred stocks is \$30,000 and the company has not paid dividends in arrears in 2 years, then the total dividend in arrears is $5\%\times30,000\times2=3,000$ and this is prioritized over dividends for common stocks
     \end{itemize}
 \end{itemize}
 
@@ -1223,8 +1245,13 @@ $$\text{Ending Cash (SFP)} = \text{Beg. Cash} + \Delta\text{Cash}$$
 	\item \textbf{Market Prospects}: generate positive market expectations
 \end{itemize}
 
+\subsection{Profitability}
+\subsubsection{Return on Equity (ROE)}
+$$\text{ROE} = \frac{\text{Net Income} - \text{Preferred Dividends}}{\text{Average Ordinary Shareholders' Equity}}$$
+$$\text{ROE} = \frac{\text{Net Income}}{\text{Average Total Equity}}$$
+Measures \textbf{profitability}: how much income is earned per dollar investment made by ordinary shareholders
 
-\subsection{Return on Assets (ROA)}
+\subsubsection{Return on Assets (ROA)}
 \begin{equation*}
 	\begin{aligned}
 		\text{ROA} &= \frac{\text{Net profit}}{\text{Avg total assets}}
@@ -1232,14 +1259,8 @@ $$\text{Ending Cash (SFP)} = \text{Beg. Cash} + \Delta\text{Cash}$$
 	\end{aligned}
 \end{equation*}
 Measures \textit{profitability}
-\subsection{Debt Ratio}
-\begin{equation*}
-	\begin{aligned}
-		\text{Debt Ratio} = \frac{\text{Total Liabilities}}{\text{Total Assets}}
-	\end{aligned}
-\end{equation*}
-Measures \textit{solvency} and financial leverage (higher financial leverage $\Rightarrow$ higher risk)
-\subsection{Profit Margin/Return on Sales}
+
+\subsubsection{Profit Margin/Return on Sales}
 $$\text{Profit Margin} = \frac{\text{Net Income/Profit}}{\text{Net Sales}}$$
 \textit{Profitability?}: How much profit is generated every one dollar of sales?
 \begin{itemize}
@@ -1247,24 +1268,31 @@ $$\text{Profit Margin} = \frac{\text{Net Income/Profit}}{\text{Net Sales}}$$
 	\item Start-ups will usually have negative growth, but if it's decreasing in magnitude it's good
 \end{itemize}
 
-\subsection{Accounts Receivable Turnover}
-$$\text{Accounts Receivable Turnover} = \frac{\text{Net Sales Revenue}}{\text{Average Accounts Receivable}}$$
-Measures how well an organization is managing its accounts receivable (collecting receivables/cash, paying short-term loans to cover cash shortage)
-$$\text{Average Collection Period} = \frac{365}{\text{Accounts Receivable Turnover}}$$
+\subsubsection{Earnings per Share (EPS)}
+$$
+\text{EPS} = \frac{\text{Net Profit} - \text{Preferred Dividends}}{\text{Weighted-average Ordinary Shares Outstanding}}
+$$
+\impt Measures \underline{profitability}: ability to produce income for each ordinary share outstanding
+\begin{itemize}
+	\item Required to disclose on the IS!
+	\item \textbf{Diluted EPS}: EPS but assumes that all convertible securities are converted into ordinary shares
+\end{itemize}
 
-\subsection{Current Ratio}
+
+\subsection{Liquidity \& Efficiency}
+\subsubsection{Current Ratio}
 $$\text{Current Ratio} = \frac{\text{Current Assets}}{\text{Current Liabilities}}$$
 Measures ability of a company to pay its short-term obligations with short-term assets (\textit{liquidity})\\
 \textbf{liquidity}: how easily an asset can be converted to cash\\
 But too high ratio can indicate the firm might not be using resources efficiently
 
-\subsection{Acid-Test Ratio (Quick Ratio)}
+\subsubsection{Acid-Test Ratio (Quick Ratio)}
 $$\text{Acid-Test Ratio} = \frac{\text{Quick Assets}}{\text{Current Liabilities}}$$
 \begin{equation*}
-\begin{aligned}
-\text{Quick Assets} = &\text{Cash} + \text{Short-Term Investments}\\
- &+ \text{Current Trade Receivables}
-\end{aligned}
+	\begin{aligned}
+		\text{Quick Assets} = &\text{Cash} + \text{Short-Term Investments}\\
+		&+ \text{Current Trade Receivables}
+	\end{aligned}
 \end{equation*}
 Measures a company's ability to quickly pay its short-term obligations using liquid assets (exclude inventory, prepaid, and other current assets)\\
 Useful to assess if the company will face \textit{near-term liquidity problems}
@@ -1272,7 +1300,15 @@ Useful to assess if the company will face \textit{near-term liquidity problems}
 	\item If Quick Ratio $\geq$ 1.0 then near-term liquidity problems are unlikely, and vice-versa
 \end{itemize}
 
-\subsection{Inventory Turnover}
+
+\subsubsection{Accounts Receivable Turnover}
+$$\text{Accounts Receivable Turnover} = \frac{\text{Net Sales Revenue}}{\text{Average Accounts Receivable}}$$
+Measures how well an organization is managing its accounts receivable (collecting receivables/cash, paying short-term loans to cover cash shortage)
+$$\text{Average Collection Period} = \frac{365}{\text{Accounts Receivable Turnover}}$$
+
+
+
+\subsubsection{Inventory Turnover}
 $$\text{Inventory Turnover} = \frac{\text{COGS}}{\text{Average Inventory}}$$
 Measures how many times a company turns over (sells) its inventory
 Measures liquidity (if the company is controlling inventory well)
@@ -1280,15 +1316,15 @@ Measures liquidity (if the company is controlling inventory well)
 $$\text{Days' Sales in Inventory} = \frac{365}{\text{inventory Turnover}}$$
 Estimates \textit{how many days on average it will take to convert inventory to cash/AR}
 
-\subsection{Operating Cycle of a Company}
+\subsubsection{Operating Cycle of a Company}
 \begin{equation*}
-\begin{aligned}
-\text{Operating Cycle Length} = & \text{Avg Collection Period} \\&+ \text{Days in Inventory}
-\end{aligned}
+	\begin{aligned}
+		\text{Operating Cycle Length} = & \text{Avg Collection Period} \\&+ \text{Days in Inventory}
+	\end{aligned}
 \end{equation*}
 Measures: \textit{how much time it takes} from the point inventory is purchased to cash collection from customer
 
-\subsection{Number of Days' Purchases in Accounts Payable}
+\subsubsection{Number of Days' Purchases in Accounts Payable}
 $$\text{Days' Purchases in AP} = \frac{365}{\frac{\text{Purchases}}{\text{Avg Accounts Payable}}}$$
 
 Measures how many days' worth of inventory does the company have in accounts payable
@@ -1300,10 +1336,10 @@ Measures how many days' worth of inventory does the company have in accounts pay
 		\includegraphics[width=\columnwidth]{image/operating_cycle.png}
 		\includegraphics[width=\columnwidth]{image/caterpillar_opcycle.png}
 	\end{figure}
-    \item Does the company need to rely on \textbf{external financing} for cash to support its operating activities
+	\item Does the company need to rely on \textbf{external financing} for cash to support its operating activities
 \end{itemize}
 
-\subsection{Fixed Assets Turnover (PPE Turnover Ratio)}
+\subsubsection{Fixed Assets Turnover (PPE Turnover Ratio)}
 $$\text{FA Turnover} = \frac{\text{Net Sales}}{\text{Average Fixed Assets}}$$
 $$\text{Avg. Fixed Assets} = \text{Avg. PPE}$$
 \textit{Measures how efficient a company is in using its fixed assets to generate sales} (\underline{Profitability})
@@ -1311,21 +1347,42 @@ $$\text{Avg. Fixed Assets} = \text{Avg. PPE}$$
 	\item How much sales is generated per each dollar (unit) of PPE?
 \end{itemize}
 
-\subsection{Total Assets Turnover}
+\subsubsection{Total Assets Turnover}
 $$\text{TA Turnover} = \frac{\text{Net Sales}}{\text{Average Assets}}$$
 \textit{Measures how efficient a company is in using its assets as a whole to generate sales} (\underline{Profitability})
 
-\subsection{Earnings per Share (EPS)}
-$$
-\text{EPS} = \frac{\text{Net Profit} - \text{Preferred Dividends}}{\text{Weighted-average Ordinary Shares Outstanding}}
-$$
-\impt Measures \underline{profitability}: ability to produce income for each ordinary share outstanding
+\subsubsection{Working Capital}
+$$\text{Working Capital} = \text{Current Assets} - \text{Current Liabilities}$$
+Measures \textbf{liquidity}: represents current assets that do not require near-term repayment
 \begin{itemize}
-	\item Required to disclose on the IS!
-	\item \textbf{Diluted EPS}: EPS but assumes that all convertible securities are converted into ordinary shares
+	\item more working capital suggests a strong liquidity position and an ability to meet current obligations
 \end{itemize}
 
-\subsection{Price-Earnings (PE) Ratios}
+\subsection{Solvency}
+\subsubsection{Times Interest Earned}
+$$\text{Times Interest Earned} = \frac{\text{EBIT}}{\text{Interest Expense}}$$
+\begin{itemize}
+	\item Indicates how many times a company is able to pay its interest with its income before its interest and tax
+	\item EBITDA: earnings before interest, taxes, depreciation, and amortization
+	$$\text{EBITDA} = E + I + T + D + A$$
+	where $E=$Net income, $I$=interest, $T=$taxes, $D$=depreciation, $A$=amortization
+\end{itemize}
+\subsubsection{Debt Ratio}
+\begin{equation*}
+	\begin{aligned}
+		\text{Debt Ratio} = \frac{\text{Total Liabilities}}{\text{Total Assets}}
+	\end{aligned}
+\end{equation*}
+Measures \textit{solvency} and financial leverage (higher financial leverage $\Rightarrow$ higher risk)
+\subsubsection{Debt-to-Equity Ratio}
+\begin{equation*}
+	\begin{aligned}
+		\text{Debt-to-Equity Ratio} = \frac{\text{Total Liabilities}}{\text{Total Equity}}
+	\end{aligned}
+\end{equation*}
+Measures how much liabilities a company has relative to its equity
+\subsection{Market Prospects}
+\subsubsection{Price-Earnings (PE) Ratios}
 $$
 \text{PE Ratio} = \frac{\text{Mkt value (price) per share}}{EPS}
 $$
@@ -1334,7 +1391,7 @@ Assessing \textbf{Market expectations}: Measures what the market is willing to p
 	\item High ratio means that a company is overpriced (too high expectations for low earnings)
 \end{itemize}
 
-\subsection{Dividend Payout Ratio}
+\subsubsection{Dividend Payout Ratio}
 $$\text{Dividend Payout Ratio} = \frac{\text{Cash Dividends}}{\text{Net Income}}$$
 Measures the percentage of net income paid out during the year in the form of cash dividends (for Net Income use profit for the year/profit attributable to owners of the company)
 \begin{itemize}
@@ -1342,17 +1399,81 @@ Measures the percentage of net income paid out during the year in the form of ca
 	\item \textbf{Growth shares}: companies that distribute little to no dividends, because usually profits are reinvested back to generate bigger revenues for the company
 \end{itemize}
 
-\subsection{SCF Analysis}
+\subsubsection{Dividend Yield Ratio}
+$$\text{Dividend Yield} = \frac{\text{Dividends per share}}{\text{Mkt price per share}}$$
+Measures the amount of \underline{cash dividends} distributed to ordinary shares \textbf{relative} to \underline{market value}
+\begin{itemize}
+	\item Assess an investor's ROI based on dividends, need to compare performance on different investment alternatives
+\end{itemize}
+
+\subsection{Cash Flow}
+What
+
+\subsubsection{SCF Analysis}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\columnwidth]{image/scf_analysis.png}
 \end{figure}
 
+\subsubsection{Cash Flow to Net Income}
+$$\text{CF to NI} = \frac{\text{Cash Flow from Operations}}{\text{Net Income}}$$
+Reflects the extent to which accrual accounting assumptions and adjustments have been included in computing net income
+
+\subsubsection{Cash Flow Adequacy}
+$$\text{CF Adequacy} = \frac{\text{Cash Flow from Operations}}{\text{Cash paid for CAPEX}}$$
+Assess if a company is generating enough cash flow from operations (CFO) to pay for its \textbf{capital expenditures (CAPEX)} and still have cash left over to be used for paying liabilities or for its stockholders
+\begin{itemize}
+	\item A business that generates excess cash from its operations is referred to as a \underline{cash cow}
+\end{itemize}
+
+
+
+
 \section{Financial Statement Analysis (FSA)}
 \begin{itemize}
 	\item Help users make better economic decisions [External parties and Internal (Management)]
-	\item Financial
+	\item Purpose of FSA
+	\begin{itemize}
+		\item \underline{Diagnostic purposes}: helps users to evaluate and identify problems in a company
+		\item \underline{Prognostic purposes}: helps users predict future performance of a company based on its past performance
+	\end{itemize}
+    \item \textbf{Standards for comparison}: need to be compared to appropriate benchmarks/standards
+    \begin{itemize}
+    	\item \underline{Intracompany}: time series analysis
+    	\item \underline{Comparison with competitors}: relative performance
+    	\item \underline{Industry benchmarks}: industry statistics (Dun \& Bradstreet, Standard \& Poor's, Moody's)
+    \end{itemize}
 \end{itemize}
+\subsection{Vertical Analysis}
+Common-size statements express each item on the financial statement as a percentage of a single base amount
+\begin{itemize}
+	\item For balance sheet, the base amount is total assets
+	\item For the IS, the base amount is net sales revenue
+\end{itemize}
+\textbf{Some questions}
+\begin{itemize}
+	\item Profit margin growth over time?
+	\item Comparison of capital structure between companies
+\end{itemize}
+\subsection{Horizontal Analysis}
+\begin{itemize}
+	\item Dollar change
+	\item Percent change
+	\item Trend percent
+\end{itemize}
+
+\subsection{Ratio Analysis (DuPont Framework)}
+$$\text{ROE} = \text{Profitability} \times \text{Efficiency} \times \text{Leverage}$$
+\begin{itemize}
+	\item Profitability is measured using Return on Sales
+	$$\text{Return on sales} = \frac{\text{Net income}}{\text{Net sales}}$$
+	\item Efficiency is measured using Asset Turnover
+	$$\text{Asset turnover} = \frac{\text{Net sales}}{\text{Average total assets}}$$
+	\item Leverage is measured using Assets-to-Equity Ratio (Leverage Ratio?)
+	$$\text{Assets-to-equity ratio} = \frac{\text{Average total assets}}{\text{Average total equity}}$$
+\end{itemize}
+
+
 
 \section{Exam stuff}
 \begin{itemize}

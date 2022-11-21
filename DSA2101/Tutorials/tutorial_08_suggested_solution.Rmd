@@ -1,0 +1,191 @@
+---
+title: "Tutorial 8 Worksheet AY 22/23 Sem 1"
+subtitle: DSA2101
+output:
+  html_document: default
+  pdf_document: default
+urlcolor: blue
+---
+
+The dataset for this tutorial comes from the UCI machine learning repository.
+The dataset `wdbc.data` can be obtained from Canvas or from 
+[here.](https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+(diagnostic))
+
+The dataset contains information on 569 cancer patients. We shall use it to 
+explore the relationship between certain numerical features - features
+computed from images of the cancer cells, and whether the cancer is 
+malignant or benign. Hence our response variable is *categorical*, while our 
+features are all *numerical*.
+
+Here is a brief description of the columns in the data:
+
+* Col. 1: ID number of patient
+* Col. 2: Diagnosis of cancer type: M = malignant and B = benign.
+* Col. 3 - 12: mean of ten different real-valued numerical features of cancer cells:
+  * radius (mean of distances from center to points on the perimeter)
+  * texture (standard deviation of gray-scale values)
+  * perimeter
+  * area
+  * smoothness (local variation in radius lengths)
+  * compactness (perimeter^2 / area - 1.0)
+  * concavity (severity of concave portions of the contour)
+  * concave points (number of concave portions of the contour) 
+  * symmetry
+  * fractal dimension ("coastline approximation" - 1)
+* Col. 13 - 22: resp. standard error of the above features.
+* Col. 23 - 32: mean of the largest three of each of the above features. 
+
+We will only be working with the first 12 columns for this tutorial.
+
+## Histogram of radius
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(gridExtra)
+```
+
+```{r}
+wdbc <- read.csv("../data/wdbc.data", sep = ",", header=FALSE) %>% 
+  select(1:12) 
+colnames(wdbc) <- c("ID", "diagnosis", "radius", "texture", "perimeter", 
+                      "area", "smoothness", "compactness", "concavity", 
+                      "concave_points", "symmetry", "fractal_dimension")
+```
+
+The following overlays the density plot of radius on the histogram, for each 
+type of diagnosis. Recreate the plot as best you can.
+
+```{r fig.align='center', out.width='70%'}
+wdbc %>% mutate(diagnosis = recode(diagnosis, "B"="Benign", "M"="Malignant")) %>% 
+  ggplot(aes(x=radius)) + 
+  geom_histogram(aes(y=after_stat(density),fill=diagnosis), 
+                 bins=30,
+                 position = position_dodge2())+ 
+  geom_density(aes(col=diagnosis)) +
+  labs(title="Distribution of Radius by Diagnosis", x="Radius", y="Density") + 
+  scale_fill_discrete(name="Diagnosis") + scale_color_discrete(name="Diagnosis")
+```
+
+Here are some alternative ways in which we can present the two distributions:
+
+1. Simply showing the two densities, differentiated by colour (note that fill 
+   aesthetic for densities will fill the area under the density).
+```{r}
+wdbc %>% mutate(diagnosis = recode(diagnosis, "B"="Benign", "M"="Malignant")) %>% 
+  ggplot(aes(x=radius)) + 
+  geom_density(aes(col=diagnosis))
+```
+
+2. Faceting the two distributions and showing both histogram and density geoms.
+```{r}
+wdbc %>% mutate(diagnosis = recode(diagnosis, "B"="Benign", "M"="Malignant")) %>% 
+  ggplot(aes(x=radius)) + 
+  geom_histogram(aes(y=after_stat(density), fill=diagnosis))  + 
+  geom_density(aes(col=diagnosis)) + facet_wrap(~diagnosis, nrow=2)
+```
+
+3. Stacking the histograms on top of one another. This is usually the hardest to read/interpret.
+```{r}
+wdbc %>% mutate(diagnosis = recode(diagnosis, "B"="Benign", "M"="Malignant")) %>% 
+  ggplot(aes(x=radius)) + geom_histogram(aes(fill=diagnosis))
+```
+
+4. To **overlay** the histograms on top of one another, we need to introduce 
+   some transparency, and we can achieve the objective in two ways:
+   
+   First, by manually adding layers one by one. This underlines the point that 
+   `ggplot` calls return an object that you can re-use, unlike base R plots.
+```{r}
+wdbc %>% mutate(diagnosis = recode(diagnosis, "B"="Benign", "M"="Malignant")) %>% 
+  filter(diagnosis == "Benign") -> wbc1
+wdbc %>% mutate(diagnosis = recode(diagnosis, "B"="Benign", "M"="Malignant")) %>% 
+  filter(diagnosis == "Malignant") -> wbc2
+
+tmp_colours <- scales::hue_pal()(2)
+ggplot() + 
+  geom_histogram(data=wbc1, aes(x=radius), fill=tmp_colours[1], alpha=0.6) +
+  geom_histogram(data=wbc2, aes(x=radius), fill=tmp_colours[2], alpha=0.6)
+
+```
+
+   Alternatively, we can use position identity:
+```{r}
+wdbc %>% mutate(diagnosis = recode(diagnosis, "B"="Benign", "M"="Malignant")) %>% 
+  ggplot(aes(x=radius)) + geom_histogram(aes(fill=diagnosis), position="identity",
+                                         alpha=0.6)
+```
+
+## Proportion of Benign Cancer
+
+The plot above shows the distribution of radius for each type of diagnosis. However,
+when our response variable is categorical, we would be more interested in how 
+the proportion of benign cancer changes as radius changes. 
+
+```{r}
+wdbc %>% mutate(diagnosis = recode(diagnosis, "B"="Benign", "M"="Malignant"),
+                radius_intervals = cut_interval(radius, length=2)) %>% 
+  group_by(radius_intervals) %>% 
+  summarise(prop_b =  mean(diagnosis == "Benign"), .groups="drop")  %>% 
+  ggplot(aes(x=radius_intervals, y=prop_b)) + geom_point() + 
+  geom_line(aes(group=1)) + 
+  labs(y="Proportion of Benign cases", x="Radius intervals",
+       title="Proportion of Benign Diagnosis falls as Radius increases")
+```
+
+How can we update or improve this plot?
+
+* We should reflect the counts within each interval. We could also create 
+  intervals that have equal number of observations, but we would have to realign
+  the positions at which the x-values are plotted.
+* We could show error  bars at each position. 
+* If numbers are very unbalanced (which is not in this case), we may want to use 
+  a Bayesian method.
+* We may also annotate the graph to show where the proportion dips below half.
+
+Here are a couple of such improvements:
+
+1. First, we can introduce error bars to show the uncertainty around the 
+   estimate in each bin:
+```{r}
+wdbc %>% mutate(diagnosis = recode(diagnosis, "B"="Benign", "M"="Malignant"),
+                radius_intervals = cut_interval(radius, length=2)) %>% 
+  group_by(radius_intervals) %>% 
+  summarise(prop_b =  mean(diagnosis == "Benign"), 
+            prop_u = prop_b + 2*sqrt(prop_b*(1-prop_b)/n()),
+            prop_l = prop_b - 2*sqrt(prop_b*(1-prop_b)/n()),
+            .groups="drop")  %>%
+  ggplot(aes(x=radius_intervals, y=prop_b)) + geom_point() + 
+  geom_line(aes(group=1))  + 
+  geom_errorbar(aes(ymin=prop_l, ymax=prop_u), width=0.2)
+```
+
+2. Second, we could introduce a second variable, and show how the trend 
+   differs conditional on the second variable.
+```{r}
+
+wdbc %>% mutate(diagnosis = recode(diagnosis, "B"="Benign", "M"="Malignant"),
+                radius_intervals = cut_interval(radius, length=2),
+                symmetry_intervals = cut_number(symmetry, n=2)) %>% 
+  group_by(radius_intervals, symmetry_intervals) %>% 
+  summarise(prop_b =  mean(diagnosis == "Benign"), .groups="drop")  %>% 
+  ggplot(aes(x=radius_intervals, y=prop_b,col=symmetry_intervals)) + geom_point() + 
+  geom_line(aes(col=symmetry_intervals, group=symmetry_intervals)) 
+
+```
+
+
+
+## Data Exploration
+
+Create a plot of your own using radius, diagnosis and one other numerical feature.
+How does this update your information of how diagnosis changes with radius?
+
+```{r fig.align='center'}
+ggplot(wdbc, aes(x=radius, y=concavity)) + 
+  geom_point(aes(col=diagnosis), alpha=0.5)
+```
+
+The general impression that as radius is larger, the chance of malignant 
+diagnosis increases. However, for small radius as concavity is high, 
+there is still a chance for malignant. Similarly, for large radius when concavity 
+is low, there is a chance for benign.

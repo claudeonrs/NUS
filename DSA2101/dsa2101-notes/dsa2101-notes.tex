@@ -1428,7 +1428,30 @@ mds_df <- data.frame(mds2$points) %>%
   rename('Var.1' = 'X1', 'Var.2' = 'X2')
 # then plot the data with reduced dimension with all the colouring
 \end{lstlisting}
-
+\subsection{Scatterplot Stuff}
+\begin{itemize}
+	\item Use jitter and alpha to reduce overplotting
+	\item To fix heteroscedacity, we need to linearize the thing
+	\item \underline{Ladder of transformations}
+	$$-y^{-2}, -y^{-1}, \log{y}, y, y^2, y^3$$
+	\item How to interpret: (use triangle method)
+	\begin{itemize}
+		\item If $x$ is doubled, $y$ will be quadrupled (log-log scale)
+		\item If $x$ is doubled, $y$ will increase by ... (log-identity scale)
+	\end{itemize}
+\end{itemize}
+\subsection{GGally}
+\begin{itemize}
+	\item lower/upper: lower/upper triangle
+	\item combo: when one variable is discrete and the other one is continuous
+	\item discrete/continuous
+\end{itemize}
+\begin{lstlisting}[language=R]
+library(GGally)
+ggpairs(diamonds[,1:4], upper=list(discrete="colbar"),
+        lower=list(combo="facetdensitystrip",
+                   discrete="crosstable"))
+\end{lstlisting}
 \section{Interesting stuff}
 \begin{itemize}
 	\item Can lookup location through zipcode

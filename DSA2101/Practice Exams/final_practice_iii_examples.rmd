@@ -1,0 +1,152 @@
+---
+title: "Practice III soln"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Questions
+
+The dataset in `Real estate valuation data set.xlsx` contains real estate prices
+in Sindian (Xindian) District of New Taipei City in Taiwan. The seven inputs are
+as follows:
+
+| Column name   | Description                                                |
+| ------------- | :--------------------------------------------------------- |
+| X1            | transaction date. (for example, 2013.250=2013 March, etc.) |
+| X2            | age of the house. (unit: years)                            |
+| X3            | distance to the nearest MRT station. (unit: meters)        |
+| X4            | number of convenience stores within walking distance.      |
+| X5            | latitude. (unit: degree)                                   |
+| X6            | longitude. (unit: degree)                                  |
+
+The output variable, price, is as follows:
+
+*  Y = house price of unit area (10000 New Taiwan Dollar/Ping, where Ping is a 
+local unit, 1 Ping = 3.3 meter squared) 
+
+
+## Question 1 (15 marks)
+
+Re-create the following plot as closely as you can. You may need the following 
+information:
+
+1. The EPSG code 3825 was used to project the coordinates.
+2. If the hex bins are not available to you, use `stat_summary_2d`.
+3. The fill aesthetic was mapped the the median house price in each bin.
+
+```{r fig.align='center', out.width='70%', message=FALSE, warning=FALSE}
+library(tidyverse)
+library(sf)
+library(readxl)
+
+re <- read_excel("../data/Real estate valuation data set.xlsx")
+colnames(re) <- c("id", "trans_date", "house_age", "dist_MRT", "num_stores", 
+                  "lat", "long", "price")
+
+re_sf <- st_as_sf(re, coords = c("long", "lat"), crs="+proj=longlat +datum=WGS84")
+re_sf2 <- st_transform(re_sf, 3825) # convert to units of metres.
+re_coords <- st_coordinates(re_sf2)
+re2 <- bind_cols(re, data.frame(re_coords)) 
+
+ggplot(re2, aes(x=X, y=Y, z=price)) + 
+  scale_fill_binned(breaks=c(27,38,46), type="viridis") + 
+  stat_summary_hex(fun="median")  + coord_fixed() + 
+  labs(title = "Binned median property prices", fill="Median price", x="", y="") + 
+  theme(legend.position = "bottom")
+```
+
+## Question 2 (15 marks)
+
+A property analyst informs you that the centre of town is at (506800, 2765500).
+Add a column to your dataset that contains the Euclidean distance the the centre
+of town. 
+
+Now, create **two** graphics that demonstrate how price varies with the other variables. 
+Please ensure that the following criteria are satisfied:
+    * Distance to the centre of town must be present in at least one of the graphs.
+    * The price variable must be present in both of them.
+
+```{r fig.align='center', out.width='70%'}
+X_centre <- 506800
+Y_centre <- 2765500
+
+re2 <- mutate(re2, dist_centre = sqrt((X - X_centre)^2 + ( Y - Y_centre)^2))
+
+ggplot(re2, aes(x=dist_centre, y=price)) + geom_point() + 
+  geom_smooth(method="lm") + facet_wrap(~num_stores) + scale_x_sqrt() +
+  labs(title="Distance to centre and number of stores")
+```
+
+## Question 3 (10 marks)
+
+The same property analyst suspects that price has a non-linear relationship 
+with house age: For modern houses, the price decreases with age but for 
+vintage houses, the prices increases with age.
+
+The problem is that the change-point is unknown - at what age should we classify 
+a house as vintage? The following function will return the parameters for a line 
+of best fit through these points, given a change-point. 
+
+```{r}
+get_gradient_intercept <- function(price, age, breakpoint) {
+  modern <- pmin(age - breakpoint, 0)
+  vintage <- pmax(age - breakpoint, 0)
+  lm0 <- lm(price ~ modern + vintage)
+  coef(lm0)
+}
+```
+
+For instance, *if the analyst believed* the change-point was at 10 years:
+
+```{r}
+(coefs <- get_gradient_intercept(re2$price, re2$house_age, 10))
+```
+
+Then the fitted line would be plotted like this:
+
+```{r echo=FALSE, fig.align='center', out.width='70%'}
+xvals1 <- 1:10
+yvals1 <- coefs[1] + coefs[2]*(xvals1 - 10)
+xvals2 <- 10:45
+yvals2 <- coefs[1] + coefs[3]*(xvals2 - 10)
+
+df1 <- data.frame(x= c(xvals1, xvals2), y= c(yvals1, yvals2))
+ggplot(re2) + geom_point(aes(x=house_age, y=price), alpha=0.2) + 
+  geom_line(data=df1, aes(x=x, y=y), col="red") + 
+  annotate("label", x=c(7.5, 10, 30), y=c(55, 30, 30), 
+           label=c("slope = -1.88", "y-value = 34.36", "slope = 0.09"))
+```
+
+Find the optimal line of best fit. Desribe what criteria you used to find it, 
+and create a properly annotated plot similar to the one above that summarises
+the relationship.
+
+One way to do this is to vary the changepoint and compute the one that minimises 
+the sum of the squared residuals.
+
+```{r}
+get_gradient_intercept2 <- function(price, age, breakpoint) {
+  modern <- pmin(age - breakpoint, 0)
+  vintage <- pmax(age - breakpoint, 0)
+  lm0 <- lm(price ~ modern + vintage)
+  mean(residuals(lm0)^2)
+}
+rmses <- sapply(1:43, get_gradient_intercept2, price=re2$price, age=re2$house_age)
+which.min(rmses)
+```
+
+
+```{r echo=FALSE, fig.align='center', out.width='70%'}
+coefs2 <- get_gradient_intercept(re2$price, re2$house_age, 24)
+xvals1 <- 1:24
+yvals1 <- coefs2[1] + coefs2[2]*(xvals1 - 24)
+xvals2 <- 24:45
+yvals2 <- coefs2[1] + coefs2[3]*(xvals2 - 24)
+
+df2 <- data.frame(x= c(xvals1, xvals2), y= c(yvals1, yvals2))
+ggplot(re2) + geom_point(aes(x=house_age, y=price), alpha=0.2) + 
+  geom_line(data=df2, aes(x=x, y=y), col="red")  + 
+  labs(title="Houses can be classifed as vintage after 24 years", 
+       x="House age (years)", y="Price")
+```

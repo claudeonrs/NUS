@@ -396,7 +396,11 @@ $$G = 2\log\left(\frac{L_1}{L_0}\right)$$ converges to $\chi^2_{k_1-k_0}$
 	$$\Pr(G\geq g) \approx \Pr(\chi^2_{k_1-k_0}\geq g)$$
 \end{enumerate}
 
-
+\subsubsection{Conclusion}
+\begin{itemize}
+	\item The LR test assumes the larger model is valid, and does not assess its goodness-of-fit
+	\item $P$-value is not a probability that $H_0$ is true, $P$-value is computed assuming $H_0$ is true
+\end{itemize}
 
 \subsection{Poisson Dispersion Test}
 For Poisson, if var is more or less the same as mean, then it can fit well. But if var is $\gg$ mean then need to find new distribution or the data might come from two or more different RV's

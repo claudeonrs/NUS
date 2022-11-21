@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  7 NOV 2022 17:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  21 NOV 2022 11:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -757,13 +757,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 367--370
 
 [4] [5] (./st2132-notes.aux)
 Package rerunfilecheck Info: File `st2132-notes.out' has not changed.
-(rerunfilecheck)             Checksum: 6822DA6561304E2B0B74F269FE473917;4843.
+(rerunfilecheck)             Checksum: 943AC69D1868B2826695F4DFD5E2044B;4961.
  ) 
 Here is how much of TeX's memory you used:
- 16261 strings out of 480171
- 250271 string characters out of 5894489
+ 16263 strings out of 480171
+ 250311 string characters out of 5894489
  753225 words of memory out of 5000000
- 33919 multiletter control sequences out of 15000+600000
+ 33920 multiletter control sequences out of 15000+600000
  525527 words of font info for 73 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  60i,12n,63p,307b,2071s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -782,10 +782,10 @@ ts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts
 /type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on st2132-notes.pdf (5 pages, 287189 bytes).
+Output written on st2132-notes.pdf (5 pages, 287555 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
- 64 named destinations out of 1000 (max. 500000)
- 265 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 255 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
 

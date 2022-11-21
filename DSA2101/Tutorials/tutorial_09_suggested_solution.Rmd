@@ -1,0 +1,112 @@
+---
+title: "Tutorial 9 Worksheet AY 22/23 Sem 1"
+subtitle: DSA2101
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+```
+
+The dataset for this week is derived from the [World Happiness Report 2022.](https://worldhappiness.report/) You can download the excel sheet 
+`happiness_2022_v2.xls` from Canvas. It contains the happiness scores for 
+countries in the year 2022. Happiness scores are based on a survey of the 
+residents of the country.
+
+These are the columns in the dataset:
+
+1. `RANK`: the happiness ranking of the country. 1 is the happiest country.
+2. `Country`: the name of the country.
+3. `Happiness`: the happiness score of the country.
+4. Columns 4 - 9: Using a regression model, the happiness score of each country
+   is broken down into 6 components:
+   * `Dystopia + residual` - an unexplained component of the happiness.
+   * `GDP` - Gross Domestic Product
+   * `Social support`
+   * `Healthy Life Expectancy`
+   * `Freedom to make Life Choices`
+   * `Generosity`
+   * `Perceptions of Corruption`
+   
+   The idea is to try to attribute happiness to these 6 components using a model.
+5. `Region`: the geographical region the country belongs to.
+
+## Question 1
+
+Re-create the following plot, which tries to compare how the individual components 
+compare between the happiest and least happiest countries:
+
+```{r fig.align='center', out.width='95%', echo=FALSE}
+happ2022 <- read_excel("../data/happiness_2022_v2.xls", range = "A1:K147")
+colnames(happ2022) <-  c("rank","country", "happiness", 
+                         "dystopia_residual",
+                        "GDP", "social_support", "healthy_life_expectancy",      
+                        "freedom_choices", "generosity", "perceptions_corruption",
+                        "region")
+named_vec <- c("dystopia_residual"="Dystopia + residual", 
+               "GDP" = "GDP",
+               "social_support" = "Social Support",
+               "healthy_life_expectancy" = "Healthy Life Expectancy",
+               "freedom_choices" = "Freedom of choices",
+               "generosity"= "Generosity",
+               "perceptions_corruption" = "Perception of corruption")
+happ2022 %>% 
+  mutate(desc_rank = min_rank(desc(rank)), .after=rank) %>% 
+  filter(rank <= 10 | desc_rank <= 10) %>% 
+  mutate(top_bot = if_else(rank <= 10, "top", "bottom")) %>% 
+  mutate(country = reorder(country, rank),
+         top_bot = factor(top_bot, levels=c("top", "bottom"),
+                          labels=c("Top 10", "Bottom 10"))) %>% 
+  select(country, top_bot, dystopia_residual:perceptions_corruption)  %>% 
+  pivot_longer(3:9, names_to="component", values_to="values") %>% 
+  ggplot() + 
+  geom_col(aes(x=country, y=values, fill=component)) + 
+  scale_fill_discrete(labels=named_vec, name="Component of Happiness") + 
+  facet_wrap(~top_bot, scales = "free_x",nrow = 2) + 
+  labs(y="Happiness Value", x="Country", 
+       title = "Components of happiness for top 10 and bottom 10\nranked countries") +
+  theme(axis.text.x = element_text(size=4.5), 
+        legend.text = element_text(size=8), 
+        legend.title = element_text(size=10))
+
+```
+
+   
+## Question 2
+
+Re-create the following boxplot, which compares how happiness scores vary from region
+to region.
+
+```{r fig.align='center', out.width='90%', echo=FALSE}
+s1 <- mutate(happ2022, 
+             region = reorder(region, happiness, FUN=median)) %>% 
+  filter(!region %in% c("N. America", "Oceania")) 
+
+s2 <- filter(happ2022, region %in% c("N. America", "Oceania"))  %>% 
+  arrange(rank)
+s3 <- filter(happ2022, region == "Asia", happiness < 3)
+  
+region_medians <- group_by(happ2022, region) %>% 
+  summarise(median = median(happiness))
+uniq_regions <- region_medians$region
+order_regions <- order(region_medians$median, decreasing = TRUE)
+
+happ2022 %>%  
+  arrange(rank) %>% 
+  filter(!region %in% c("N. America", "Oceania"))  %>% 
+  ggplot() + 
+  geom_boxplot(aes(x=region, y=happiness),
+               outlier.colour = "red",
+               outlier.alpha = 0.6) +
+  xlim(uniq_regions[order_regions]) + 
+  geom_point(data=s2, aes(x=region, y=happiness), alpha=0.6) + 
+  geom_text(data=s2, aes(x=region, y=happiness, label=country), size=2.5,
+            hjust="left", nudge_x = 0.05, nudge_y=c(0.1, -0.1)) +
+  geom_text(data=s3, aes(x=region, y=happiness, label=country), size=2.5,
+            hjust="left", nudge_x = 0.05) + 
+  labs(title="Happiness scores by region", y="Happiness score", 
+       x="Region")
+```

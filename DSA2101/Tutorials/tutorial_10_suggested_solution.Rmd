@@ -1,0 +1,210 @@
+---
+title: "Tutorial 10 Worksheet AY 22/23 Sem 1"
+subtitle: DSA2101
+output:
+  html_document: default
+  pdf_document: default
+---
+
+In this tutorial, we continue with the Wisconsin Breast Cancer Dataset from 
+Tutorial 8. The following plot is created using the GGally package. It 
+shows scatterplots of all combinations of continuous variables in the dataset.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width='100%'}
+library(tidyverse)
+library(GGally)
+wdbc <- read.csv("../data/wdbc.data", sep = ",", header=FALSE) %>% 
+  select(1:12) %>% as_tibble()
+colnames(wdbc) <- c("ID", "diagnosis", "radius", "texture", "perimeter", 
+                      "area", "smoothness", "compactness", "concavity", 
+                      "concave_points", "symmetry", "fractal_dimension") 
+
+knitr::include_graphics("../figs/t10_2210.png")
+
+select(wdbc, -1) %>%  
+  ggpairs(mapping=aes(color=diagnosis),#columns = 2:4,
+        lower=list(continuous=wrap("points", alpha=0.5),
+                   combo="box_no_facet"),
+        upper=list(combo="facethist"),
+        diag=list(continuous=wrap("densityDiag", alpha=0.5)))
+```
+
+Take some time to study the plots. Remember that, for this dataset, we are 
+interested in which variables would aid in predicting the diagnosis variable.
+
+What observations can you make? Here are some ideas to help us decide what to do next:
+
+1. radius, perimeter, and area are very highly correlated with one another. We 
+   can probably do with just one of them.
+2. On their own, symmetry and fractal dimension will probably not allow us to 
+   discriminate between diagnoses.
+3. The points in some of the scatter plots can be neatly divided with a horizontal 
+   or vertical line, e.g. compactness-concavity, and texture-area. In some others,
+   the dividing line is a diagonal line, e.g. texture-compactness. This suggests 
+   that maybe some combination of 3 or more numerical variables can allow us to 
+   classify a tumour better.
+
+Pick at least two continuous variables along with `diagnosis`, and create a chart of 
+your own.
+
+Here is one possible chart, similar to one in our lecture notes. It is similar to a
+coloured scatter plot, but reflects proportion of malignant cases in each bin.
+
+```{r fig.align='center', out.width='70%'}
+mutate(wdbc, diagnosis=recode(diagnosis, "M"= 1, "B"=0)) %>%  
+  ggplot(wdbc, mapping= aes(x=radius, y=concavity, z=diagnosis)) +  
+  stat_summary_hex(fun= mean, binwidth = c(2, 0.05))
+```
+
+Here is one more. This is a heat-map or pivot table.
+
+```{r fig.align='center', out.width='70%'}
+cat_levels <- mutate(wdbc, 
+                     rad_levels = cut_number(radius, 4),
+                     concav_levels= cut_number(concavity, n=4))
+
+group_by(cat_levels, rad_levels, concav_levels) %>% 
+  summarise(prop_mal = mean(diagnosis == "M"), 
+            n=n(), .groups="drop") %>% 
+ggplot() + 
+  geom_tile(aes(x=rad_levels, y=concav_levels, fill = prop_mal)) + 
+  geom_text(aes(x=rad_levels, y=concav_levels, 
+                label=paste0(sprintf("%.3f", prop_mal), "\n Count:", n)))
+
+```
+
+In fact, it is similar to a chart we created in a previous tutorial using lines.
+Once we have the binned data, we can create it:
+```{r}
+group_by(cat_levels, rad_levels, concav_levels) %>% 
+  summarise(prop_mal = mean(diagnosis == "M"), 
+            n=n(), .groups="drop") %>% 
+  ggplot(aes(x=rad_levels, y=prop_mal, col=concav_levels)) + 
+  geom_line(aes(group=concav_levels)) + 
+  geom_point() + #scale_color_brewer(palette="Greens")
+  labs(title="Proportion of Malignant cases, by concavity level")
+```
+
+With binning, we can also add a third numeric variable in this way:
+```{r}
+ggplot(cat_levels, aes(col=diagnosis)) + 
+  geom_point(aes(x=compactness, y=fractal_dimension)) + 
+  facet_wrap(~rad_levels, nrow=2)
+
+#ggplot(cat_levels, aes(col=diagnosis)) + 
+#  geom_density_2d(aes(x=compactness, y=fractal_dimension)) + 
+#  facet_wrap(~rad_levels, nrow=2)
+```
+In a plot such as this, we would be checking if the separation of points by
+colour improves as compared to not faceting.
+
+If you prefer to keep all 3 variables unbinned, one option to visualise them is to use 
+an interactive 3D plot. Here is one way we can create such an interactive plot:
+```{r}
+library(plotly)
+
+fig <- plot_ly(wdbc, 
+               x = ~radius, y = ~symmetry, 
+               z = ~concavity, color = ~diagnosis, 
+               colors = c('#BF382A', '#0C4B8E'))
+
+fig <- fig %>% add_markers()
+fig <- fig %>% layout(scene = list(xaxis = list(title = 'radius'),
+                     yaxis = list(title = 'symmetry'),
+                     zaxis = list(title = 'concavity')))
+fig
+```
+
+*plotly will not be covered in our exam*.
+
+
+## Question 2
+
+Create a parallel coordinates plot of the dataset, just like in the lecture notes
+(topic 05). How can you improve it to flesh out the relationship between the 
+variables and `diagnosis`?
+
+```{r}
+ggparcoord(wdbc,3:12, groupColumn = "diagnosis")
+```
+
+The chart above has a couple of deficiencies:
+
+* Overplotting makes it look cluttered.
+  * let us try a little transparency to fix this
+* It is not easy to tell if each group has a "profile" across all the variables.
+  * let us try to order the variables to help with this, and then provide a reference 
+    line for each variable.
+
+This code chunk orders the variables by difference in median for the two groups. 
+```{r}
+select(wdbc, 3:12) %>% 
+  scale() -> scaled_vars
+
+scaled_wdbc <- bind_cols(diagnosis= wdbc$diagnosis, as.data.frame(scaled_vars)) %>% 
+  as_tibble()
+
+scaled_wdbc %>% group_by(diagnosis) %>% 
+  summarise(across(radius:fractal_dimension, .fns=median)) -> tmp_groups
+abs(tmp_groups[1,-1] - tmp_groups[2, -1]) %>% as.vector() %>% unlist() %>% 
+  sort(decreasing = TRUE) -> ordered_vars
+
+ordered_scaled_wdbc <- bind_cols(scaled_wdbc[,1], scaled_wdbc[, names(ordered_vars)])
+
+bind_cols(wdbc[,2], wdbc[,names(ordered_vars)]) %>%  
+  ggparcoord(columns = 2:11, groupColumn = 1, alphaLines = 0.1) -> p1
+
+scaled_wdbc %>% mutate(id = row_number(), .before=diagnosis) %>% 
+  pivot_longer(radius:fractal_dimension, names_to = "variable", values_to="value") %>% 
+  group_by(diagnosis, variable) %>% 
+  summarise(qtles = quantile(value, probs=c(0.25, 0.5, 0.75)), .groups="drop") %>% 
+  mutate(qtl_level  = rep(c("lower", "med", "upper"), 20)) %>%
+  pivot_wider(id_cols = 1:2, values_from = qtles, names_from="qtl_level") -> df2
+```
+
+This first attempt uses a line geom to show the interquartile range within each 
+group.
+
+```{r fig.align='center', out.width='75%'}
+p1  + geom_line(data=df2, aes(x=variable, y=lower, col=diagnosis, group=diagnosis), 
+                inherit.aes = FALSE, lwd=1.2, lty=3) +  
+  geom_line(data=df2, aes(x=variable, y=upper, col=diagnosis, group=diagnosis),  
+            inherit.aes = FALSE,
+            lwd=1.2, lty=3) +  
+  geom_line(data=df2, aes(x=variable, y=med, col=diagnosis, group=diagnosis),  
+            inherit.aes=FALSE,
+            lwd=1.5, lty=2)  
+
+```
+
+The second attempt uses vertical lines because the previous one seems overshadowed 
+by the lines in the background, despite the transparency.
+
+```{r fig.align='center', out.width='75%'}
+p1 + geom_point(data=df2, mapping=aes(x=variable, y=med, col=diagnosis), 
+                inherit.aes = FALSE) +
+  geom_errorbar(data=df2, aes(x=variable, ymin=lower, ymax=upper,
+                              col=diagnosis), width=0.1, inherit.aes=FALSE)
+```
+
+If we are just interested in the univariate distributions, we could just use a boxplot:
+
+```{r}
+scaled_wdbc %>% mutate(id = row_number(), .before=diagnosis) %>% 
+  pivot_longer(radius:fractal_dimension, names_to = "variable", values_to="value") %>% 
+  ggplot() + 
+  geom_boxplot(aes(x=variable, y=value, fill=diagnosis), outlier.alpha = 0.7) +
+  xlim(names(ordered_vars))
+```
+
+We could even show lines and boxplot together:
+```{r}
+scaled_wdbc %>% mutate(id = row_number(), .before=diagnosis) %>% 
+  pivot_longer(radius:fractal_dimension, names_to = "variable", values_to="value") %>% 
+  ggplot() + 
+  geom_line(aes(x=variable, y=value, group=id, col=diagnosis), alpha=0.1)+
+  geom_boxplot(aes(x=variable, y=value, fill=diagnosis), outlier.alpha = 0.7) +
+  xlim(names(ordered_vars))
+```
+
+

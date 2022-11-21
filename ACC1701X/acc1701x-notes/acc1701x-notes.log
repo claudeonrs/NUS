@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  8 NOV 2022 07:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  21 NOV 2022 17:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -730,7 +730,7 @@ Underfull \hbox (badness 7415) in paragraph at lines 196--197
 []\T1/lmss/bx/n/10 Statement of com-pre-hen-sive in-come (SCI)
  []
 
-<image/acc_cycle.png, id=310, 655.44875pt x 75.28125pt>
+<image/acc_cycle.png, id=370, 655.44875pt x 75.28125pt>
 File: image/acc_cycle.png Graphic file (type png)
 <use image/acc_cycle.png>
 Package pdftex.def Info: image/acc_cycle.png  used on input line 208.
@@ -745,7 +745,7 @@ Overfull \hbox (32.48082pt too wide) in paragraph at lines 421--427
 []$[]$ 
  []
 
-<image/bank_reconciliation.png, id=340, 639.38875pt x 407.5225pt>
+<image/bank_reconciliation.png, id=401, 639.38875pt x 407.5225pt>
 File: image/bank_reconciliation.png Graphic file (type png)
 <use image/bank_reconciliation.png>
 Package pdftex.def Info: image/bank_reconciliation.png  used on input line 487.
@@ -757,192 +757,192 @@ Underfull \hbox (badness 10000) in paragraph at lines 507--509
  []
 
 
-Overfull \hbox (41.37016pt too wide) detected at line 525
+Overfull \hbox (41.37016pt too wide) detected at line 546
 [] \OT1/lmr/m/n/10 = [] \OMS/lmsy/m/n/10 ^^B [] ^^B []
  []
 
 
-Overfull \hbox (5.64735pt too wide) in paragraph at lines 547--549
+Overfull \hbox (5.64735pt too wide) in paragraph at lines 568--570
 \T1/lmss/m/n/10 Hence, it is es-ti-mated at the start and $[]$
  []
 
 
-Overfull \hbox (22.27963pt too wide) in paragraph at lines 586--591
+Overfull \hbox (22.27963pt too wide) in paragraph at lines 607--612
 [] 
  []
 
 [5]
-Overfull \hbox (2.69649pt too wide) in paragraph at lines 631--639
+Overfull \hbox (2.69649pt too wide) in paragraph at lines 652--660
  [][] 
  []
 
 [6]
-<image/ppe_acquisition.png, id=358, 976.64874pt x 246.9225pt>
+<image/ppe_acquisition.png, id=418, 976.64874pt x 246.9225pt>
 File: image/ppe_acquisition.png Graphic file (type png)
 <use image/ppe_acquisition.png>
-Package pdftex.def Info: image/ppe_acquisition.png  used on input line 774.
+Package pdftex.def Info: image/ppe_acquisition.png  used on input line 795.
 (pdftex.def)             Requested size: 251.07481pt x 63.47491pt.
 
-Overfull \hbox (89.20369pt too wide) in paragraph at lines 771--775
+Overfull \hbox (89.20369pt too wide) in paragraph at lines 792--796
 []\T1/lmss/m/n/10 Including the pur-chase price and all $[]$
  []
 
 
-Overfull \hbox (9.72862pt too wide) detected at line 792
+Overfull \hbox (9.72862pt too wide) detected at line 813
 [] \OT1/lmr/m/n/10 = [] \OMS/lmsy/m/n/10 ^^B []
  []
 
-<image/cap_exp.png, id=359, 903.375pt x 369.38pt>
+[7 <./image/ppe_acquisition.png>]
+<image/cap_exp.png, id=426, 903.375pt x 369.38pt>
 File: image/cap_exp.png Graphic file (type png)
 <use image/cap_exp.png>
-Package pdftex.def Info: image/cap_exp.png  used on input line 809.
+Package pdftex.def Info: image/cap_exp.png  used on input line 830.
 (pdftex.def)             Requested size: 251.07481pt x 102.65915pt.
-[7 <./image/ppe_acquisition.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 815--820
+
+Underfull \hbox (badness 10000) in paragraph at lines 836--841
 
  []
 
 
-Underfull \hbox (badness 6016) in paragraph at lines 834--835
+Underfull \hbox (badness 6016) in paragraph at lines 855--856
 []\T1/lmss/m/n/10 Note that Dis-posal is usu-ally clas-si-fied un-der
  []
 
 [8 <./image/cap_exp.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 899--905
+Underfull \hbox (badness 10000) in paragraph at lines 920--926
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 905--911
+Underfull \hbox (badness 10000) in paragraph at lines 926--932
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 914--919
+Underfull \hbox (badness 10000) in paragraph at lines 935--940
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 919--924
+Underfull \hbox (badness 10000) in paragraph at lines 940--945
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 946--957
+Underfull \hbox (badness 10000) in paragraph at lines 967--978
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 975--980
+Underfull \hbox (badness 10000) in paragraph at lines 996--1001
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 980--986
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1007
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 986--992
+Underfull \hbox (badness 10000) in paragraph at lines 1007--1013
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 992--999
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1013--1018
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1019--1024
+Underfull \hbox (badness 10000) in paragraph at lines 1013--1020
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 1048--1054
+Underfull \hbox (badness 10000) in paragraph at lines 1034--1039
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1055--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1040--1045
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1070--1076
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1070--1075
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1082
 
  []
 
 
-Overfull \hbox (0.38995pt too wide) in paragraph at lines 1097--1099
+Underfull \hbox (badness 10000) in paragraph at lines 1086--1091
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1092--1097
+
+ []
+
+
+Overfull \hbox (0.38995pt too wide) in paragraph at lines 1119--1121
 []\T1/lmss/bx/n/10 Operating\T1/lmss/m/n/10 : re-lated to earn-ings from $[]$
  []
 
-<image/intdiv.png, id=380, 1157.32375pt x 574.145pt>
+<image/intdiv.png, id=440, 1157.32375pt x 574.145pt>
 File: image/intdiv.png Graphic file (type png)
 <use image/intdiv.png>
-Package pdftex.def Info: image/intdiv.png  used on input line 1124.
+Package pdftex.def Info: image/intdiv.png  used on input line 1146.
 (pdftex.def)             Requested size: 251.07481pt x 124.55138pt.
-[10 <./image/intdiv.png>]
-<image/magic.png, id=390, 1032.85875pt x 157.58875pt>
+[10]
+<image/magic.png, id=445, 1032.85875pt x 157.58875pt>
 File: image/magic.png Graphic file (type png)
 <use image/magic.png>
-Package pdftex.def Info: image/magic.png  used on input line 1151.
+Package pdftex.def Info: image/magic.png  used on input line 1173.
 (pdftex.def)             Requested size: 251.07481pt x 38.30779pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1219--1220
+Underfull \hbox (badness 10000) in paragraph at lines 1241--1242
 []\T1/lmss/bx/n/10 Liquidity and ef-fi-ciency\T1/lmss/m/n/10 : able to meet
  []
 
-
-Overfull \hbox (11.60373pt too wide) detected at line 1251
+[11 <./image/intdiv.png> <./image/magic.png>]
+Overfull \hbox (11.60373pt too wide) detected at line 1305
 [] \OT1/lmr/m/n/10 = []
  []
 
-[11 <./image/magic.png>]
-<image/operating_cycle.png, id=413, 1362.08875pt x 510.90875pt>
+<image/operating_cycle.png, id=474, 1362.08875pt x 510.90875pt>
 File: image/operating_cycle.png Graphic file (type png)
 <use image/operating_cycle.png>
-Package pdftex.def Info: image/operating_cycle.png  used on input line 1300.
+Package pdftex.def Info: image/operating_cycle.png  used on input line 1336.
 (pdftex.def)             Requested size: 251.07481pt x 94.17361pt.
-<image/caterpillar_opcycle.png, id=414, 1145.27875pt x 510.90875pt>
+<image/caterpillar_opcycle.png, id=475, 1145.27875pt x 510.90875pt>
 File: image/caterpillar_opcycle.png Graphic file (type png)
 <use image/caterpillar_opcycle.png>
-Package pdftex.def Info: image/caterpillar_opcycle.png  used on input line 1301
+Package pdftex.def Info: image/caterpillar_opcycle.png  used on input line 1337
 .
 (pdftex.def)             Requested size: 251.07481pt x 112.00269pt.
- [12 <./image/operating_cycle.png> <./image/caterpillar_opcycle.png>]
-<image/scf_analysis.png, id=424, 795.97375pt x 532.99126pt>
+[12 <./image/operating_cycle.png> <./image/caterpillar_opcycle.png>]
+<image/scf_analysis.png, id=484, 795.97375pt x 532.99126pt>
 File: image/scf_analysis.png Graphic file (type png)
 <use image/scf_analysis.png>
-Package pdftex.def Info: image/scf_analysis.png  used on input line 1348.
+Package pdftex.def Info: image/scf_analysis.png  used on input line 1415.
 (pdftex.def)             Requested size: 251.07481pt x 168.12085pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1351--1351
+ [13 <./image/scf_analysis.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1432--1432
 []\T1/lmss/bx/n/14.4 Financial State-ment Anal-y-sis
  []
 
-[13 <./image/scf_analysis.png>] (./acc1701x-notes.aux)
+[14] (./acc1701x-notes.aux)
 Package rerunfilecheck Info: File `acc1701x-notes.out' has not changed.
-(rerunfilecheck)             Checksum: F462E17954648F1A04EAD2E53AA474F6;12144.
+(rerunfilecheck)             Checksum: AEF1A682EA21CDC8709EFE2D99BA3DF4;14725.
  ) 
 Here is how much of TeX's memory you used:
- 15473 strings out of 480171
- 244138 string characters out of 5894489
- 578673 words of memory out of 5000000
- 33064 multiletter control sequences out of 15000+600000
+ 15504 strings out of 480171
+ 244833 string characters out of 5894489
+ 578690 words of memory out of 5000000
+ 33079 multiletter control sequences out of 15000+600000
  507636 words of font info for 55 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,18n,63p,358b,724s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,18n,63p,373b,724s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -952,10 +952,10 @@ onts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb
 e1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/
 public/lm/lmsy10.pfb>
-Output written on acc1701x-notes.pdf (13 pages, 1137022 bytes).
+Output written on acc1701x-notes.pdf (14 pages, 1144508 bytes).
 PDF statistics:
- 505 PDF objects out of 1000 (max. 8388607)
- 450 compressed objects within 5 object streams
- 137 named destinations out of 1000 (max. 500000)
- 630 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 574 PDF objects out of 1000 (max. 8388607)
+ 517 compressed objects within 6 object streams
+ 153 named destinations out of 1000 (max. 500000)
+ 750 words of extra memory for PDF output out of 10000 (max. 10000000)
 

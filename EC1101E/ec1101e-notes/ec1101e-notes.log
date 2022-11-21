@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  8 NOV 2022 16:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.13)  16 NOV 2022 11:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -900,10 +900,10 @@ Underfull \hbox (badness 7595) in paragraph at lines 1539--1540
 <images/centralbank.png, id=553, 1451.4225pt x 593.21625pt>
 File: images/centralbank.png Graphic file (type png)
 <use images/centralbank.png>
-Package pdftex.def Info: images/centralbank.png  used on input line 1599.
+Package pdftex.def Info: images/centralbank.png  used on input line 1600.
 (pdftex.def)             Requested size: 251.07481pt x 102.6105pt.
 
-Underfull \hbox (badness 5431) in paragraph at lines 1621--1622
+Underfull \hbox (badness 5431) in paragraph at lines 1622--1623
 []\T1/lmss/m/n/10 Open Mar-ket Sale $\OMS/lmsy/m/n/10 )$ \T1/lmss/m/n/10 Reserv
 es$\OMS/lmsy/m/n/10 #$\T1/lmss/m/n/10 , Loans$\OMS/lmsy/m/n/10 #$\T1/lmss/m/n/1
 0 ,
@@ -913,58 +913,58 @@ es$\OMS/lmsy/m/n/10 #$\T1/lmss/m/n/10 , Loans$\OMS/lmsy/m/n/10 #$\T1/lmss/m/n/1
 <images/money_market.png, id=580, 484.81125pt x 474.77374pt>
 File: images/money_market.png Graphic file (type png)
 <use images/money_market.png>
-Package pdftex.def Info: images/money_market.png  used on input line 1818.
+Package pdftex.def Info: images/money_market.png  used on input line 1819.
 (pdftex.def)             Requested size: 130.0pt x 127.3068pt.
  [18 <./images/money_market.png>] [19]
 <images/exchangerates.png, id=593, 764.8575pt x 771.88374pt>
 File: images/exchangerates.png Graphic file (type png)
 <use images/exchangerates.png>
-Package pdftex.def Info: images/exchangerates.png  used on input line 1990.
+Package pdftex.def Info: images/exchangerates.png  used on input line 1991.
 (pdftex.def)             Requested size: 170.0pt x 171.55809pt.
 
-Overfull \hbox (16.0893pt too wide) detected at line 2023
+Overfull \hbox (16.0893pt too wide) detected at line 2024
 [][]
  []
 
 
-Overfull \hbox (33.61655pt too wide) detected at line 2024
+Overfull \hbox (33.61655pt too wide) detected at line 2025
 [] \OT1/lmr/m/n/10 = 100% \OMS/lmsy/m/n/10 ^^B []
  []
 
 
-Overfull \hbox (11.09288pt too wide) detected at line 2037
+Overfull \hbox (11.09288pt too wide) detected at line 2038
 \OML/lmm/m/it/10 g[] \OMS/lmsy/m/n/10 ^^Y [] ^^@ []
  []
 
 [20 <./images/exchangerates.png>]
-Underfull \hbox (badness 7221) in paragraph at lines 2074--2076
+Underfull \hbox (badness 7221) in paragraph at lines 2075--2077
 []$[]$\T1/lmss/m/n/10 : Re-stric-tions on in-
  []
 
 
-Underfull \hbox (badness 5924) in paragraph at lines 2091--2092
+Underfull \hbox (badness 5924) in paragraph at lines 2092--2093
 []\T1/lmss/m/n/10 Thailand In-done-sia, and South Ko-rea re-ceived
  []
 
 
-Underfull \hbox (badness 6725) in paragraph at lines 2091--2092
+Underfull \hbox (badness 6725) in paragraph at lines 2092--2093
 []$ \T1/lmss/m/n/10 and $[]$ dur-ing
  []
 
 <images/xchangerates2.png, id=600, 881.2925pt x 299.1175pt>
 File: images/xchangerates2.png Graphic file (type png)
 <use images/xchangerates2.png>
-Package pdftex.def Info: images/xchangerates2.png  used on input line 2111.
+Package pdftex.def Info: images/xchangerates2.png  used on input line 2112.
 (pdftex.def)             Requested size: 251.07481pt x 85.21742pt.
 [21 <./images/xchangerates2.png>]
-Overfull \hbox (20.34042pt too wide) detected at line 2140
+Overfull \hbox (20.34042pt too wide) detected at line 2141
 [][]
  []
 
 <images/tradebalance.png, id=607, 1416.29124pt x 632.3625pt>
 File: images/tradebalance.png Graphic file (type png)
 <use images/tradebalance.png>
-Package pdftex.def Info: images/tradebalance.png  used on input line 2143.
+Package pdftex.def Info: images/tradebalance.png  used on input line 2144.
 (pdftex.def)             Requested size: 251.07481pt x 112.1028pt.
 [22 <./images/tradebalance.png>] (./ec1101e-notes.aux)
 Package rerunfilecheck Info: File `ec1101e-notes.out' has not changed.
@@ -992,7 +992,7 @@ ssbo10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/tex
 mf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 sy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fo
 nts/type1/public/lm/lmsy7.pfb>
-Output written on ec1101e-notes.pdf (22 pages, 2601602 bytes).
+Output written on ec1101e-notes.pdf (22 pages, 2601706 bytes).
 PDF statistics:
  725 PDF objects out of 1000 (max. 8388607)
  631 compressed objects within 7 object streams
